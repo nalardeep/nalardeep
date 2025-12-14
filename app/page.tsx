@@ -23,7 +23,7 @@ export default function Home() {
               <h2 className="text-4xl font-bold text-gray-900 mb-4">Recent Articles</h2>
               <p className="text-lg text-gray-500">Latest thoughts on the state of AI.</p>
             </div>
-            <Link href="/" className="hidden md:flex items-center gap-2 text-primary-500 font-bold hover:text-primary-600 transition-colors">
+            <Link href="/articles" className="hidden md:flex items-center gap-2 text-primary-500 font-bold hover:text-primary-600 transition-colors">
               View all <ArrowRight className="w-4 h-4" />
             </Link>
           </div>
