@@ -12,7 +12,7 @@ const PostPreview = ({ post }: Props) => {
             {/* Image Placeholder */}
             <div className="relative overflow-hidden rounded-2xl mb-6 aspect-[16/9] bg-gray-100">
                 <img
-                    src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?auto=format&fit=crop&w=800&q=80"
+                    src={post.coverImage || "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?auto=format&fit=crop&w=800&q=80"}
                     alt={post.title}
                     className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                 />

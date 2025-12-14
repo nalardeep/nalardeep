@@ -16,7 +16,7 @@ export default async function Post({ params }: { params: Promise<{ slug: string 
     return (
         <Container>
             <article className="mb-32">
-                <PostHeader title={post.title} date={post.date} />
+                <PostHeader title={post.title} date={post.date} coverImage={post.coverImage} />
                 <PostBody content={post.content} />
             </article>
         </Container>
