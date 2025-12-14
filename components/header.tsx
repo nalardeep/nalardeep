@@ -1,7 +1,13 @@
+"use client";
+
 import Link from 'next/link';
 import Container from './container';
+import { useState } from 'react';
+import { Menu, X } from 'lucide-react';
 
 const Header = () => {
+    const [isOpen, setIsOpen] = useState(false);
+
     return (
         <header className="py-5 border-b border-gray-100 bg-white/80 backdrop-blur-md sticky top-0 z-50">
             <Container>
@@ -14,7 +20,7 @@ const Header = () => {
                         minggo-commits
                     </Link>
 
-                    {/* Centered Nav */}
+                    {/* Centered Nav (Desktop) */}
                     <nav className="hidden md:block">
                         <ul className="flex items-center gap-8 text-sm font-medium text-gray-600">
                             <li>
@@ -29,13 +35,34 @@ const Header = () => {
                         </ul>
                     </nav>
 
-                    {/* CTA Button */}
-                    <div>
-                        <button className="bg-primary-500 hover:bg-primary-600 text-white text-sm font-medium px-5 py-2.5 rounded-full transition-colors">
+                    {/* CTA Button & Mobile Toggle */}
+                    <div className="flex items-center gap-4">
+                        <button className="hidden md:block bg-primary-500 hover:bg-primary-600 text-white text-sm font-medium px-5 py-2.5 rounded-full transition-colors">
                             Subscribe
+                        </button>
+
+                        {/* Mobile Subscribe (Icon or Mini) - Optional, hiding text for cleaner mobile */}
+                        <button className="md:hidden bg-primary-500 hover:bg-primary-600 text-white text-xs font-medium px-4 py-2 rounded-full transition-colors">
+                            Subscribe
+                        </button>
+
+                        <button
+                            className="md:hidden p-2 text-gray-600"
+                            onClick={() => setIsOpen(!isOpen)}
+                        >
+                            {isOpen ? <X /> : <Menu />}
                         </button>
                     </div>
                 </div>
+
+                {/* Mobile Menu */}
+                {isOpen && (
+                    <div className="md:hidden absolute top-full left-0 w-full bg-white border-b border-gray-100 shadow-lg py-4 px-4 flex flex-col gap-4">
+                        <Link href="/articles" className="text-gray-600 hover:text-primary-500 font-medium py-2 block" onClick={() => setIsOpen(false)}>Articles</Link>
+                        <Link href="/" className="text-gray-600 hover:text-primary-500 font-medium py-2 block" onClick={() => setIsOpen(false)}>Newsletter</Link>
+                        <Link href="/" className="text-gray-600 hover:text-primary-500 font-medium py-2 block" onClick={() => setIsOpen(false)}>About</Link>
+                    </div>
+                )}
             </Container>
         </header>
     );
