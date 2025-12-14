@@ -1,0 +1,51 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+@theme {
+  --color-primary-50: #ecfdf5;
+  --color-primary-100: #d1fae5;
+  --color-primary-200: #a7f3d0;
+  --color-primary-300: #6ee7b7;
+  --color-primary-400: #34d399;
+  --color-primary-500: #10b981;
+  --color-primary-600: #059669;
+  --color-primary-700: #047857;
+  --color-primary-800: #065f46;
+  --color-primary-900: #064e3b;
+  
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, SFMono-Regular, monospace;
+}
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    /* Keeping it light/clean as requested, but providing dark mode overrides just in case (optional) 
+       User asked for "white and green", so we enforce white background by default, 
+       but respectful of system prefs if we want. 
+       Let's stick to the prompt "clean design (white and green)" -> implies light mode mostly.
+       I will set dark mode to be very subtle or just keep it light for now to match strict "white".
+       Actually, I will comment out dark mode for now to ensure "white" theme is dominant, 
+       or implement a very clean dark green/black if needed. 
+       Let's force light mode for the "clean white" look, or mostly light.
+    */
+    --background: #f8fafc; /* slightly off-white instead of black */
+    --foreground: #171717;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: var(--color-primary-900);
+}
