@@ -18,7 +18,7 @@ const Header = () => {
                     <nav className="hidden md:block">
                         <ul className="flex items-center gap-8 text-sm font-medium text-gray-600">
                             <li>
-                                <Link href="/" className="hover:text-primary-500 transition-colors">Articles</Link>
+                                <Link href="/articles" className="hover:text-primary-500 transition-colors">Articles</Link>
                             </li>
                             <li>
                                 <Link href="/" className="hover:text-primary-500 transition-colors">Newsletter</Link>
