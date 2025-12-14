@@ -1,14 +1,69 @@
+import Link from 'next/link';
 import Container from './container';
+import { Twitter, Github } from 'lucide-react';
 
 const Footer = () => {
     return (
-        <footer className="py-10 border-t border-gray-100 mt-20">
+        <footer className="py-20 border-t border-gray-100 bg-white">
             <Container>
-                <div className="flex flex-col items-center justify-center text-gray-500 text-sm">
-                    <p>&copy; {new Date().getFullYear()} My Blog. All rights reserved.</p>
-                    <p className="mt-2">
-                        Built with Next.js and Tailwind CSS.
-                    </p>
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+                    {/* Brand Column */}
+                    <div className="lg:pr-8">
+                        <Link href="/" className="flex items-center gap-2 text-xl font-bold tracking-tight text-gray-900 group mb-6">
+                            <div className="w-8 h-8 bg-primary-500 rounded-full flex items-center justify-center text-white">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 2a10 10 0 1 0 10 10 4 4 0 0 1-5-5 4 4 0 0 1-5-5c0-2-2-3-4-3-1 2-3 2-3 6 0 5.5 5 10 10 10 6-3 6-7 6-7" /></svg>
+                            </div>
+                            minggo-commits
+                        </Link>
+                        <p className="text-gray-500 leading-relaxed">
+                            Making sense of the artificial intelligence revolution, one article at a time.
+                        </p>
+                    </div>
+
+                    {/* Content Column */}
+                    <div>
+                        <h4 className="font-bold text-gray-900 mb-6">Content</h4>
+                        <ul className="space-y-4 text-gray-500">
+                            <li><Link href="/" className="hover:text-primary-500 transition-colors">Latest Articles</Link></li>
+                            <li><Link href="/" className="hover:text-primary-500 transition-colors">Tutorials</Link></li>
+                            <li><Link href="/" className="hover:text-primary-500 transition-colors">Interviews</Link></li>
+                            <li><Link href="/" className="hover:text-primary-500 transition-colors">Case Studies</Link></li>
+                        </ul>
+                    </div>
+
+                    {/* Company Column */}
+                    <div>
+                        <h4 className="font-bold text-gray-900 mb-6">Company</h4>
+                        <ul className="space-y-4 text-gray-500">
+                            <li><Link href="/" className="hover:text-primary-500 transition-colors">About Us</Link></li>
+                            <li><Link href="/" className="hover:text-primary-500 transition-colors">Newsletter</Link></li>
+                            <li><Link href="/" className="hover:text-primary-500 transition-colors">Privacy Policy</Link></li>
+                            <li><Link href="/" className="hover:text-primary-500 transition-colors">Contact</Link></li>
+                        </ul>
+                    </div>
+
+                    {/* Connect Column */}
+                    <div>
+                        <h4 className="font-bold text-gray-900 mb-6">Connect</h4>
+                        <div className="flex items-center gap-4">
+                            <Link href="/" className="w-10 h-10 bg-gray-50 rounded-full flex items-center justify-center text-gray-500 hover:bg-gray-100 hover:text-primary-500 transition-all">
+                                <Twitter className="w-5 h-5" />
+                            </Link>
+                            <Link href="/" className="w-10 h-10 bg-gray-50 rounded-full flex items-center justify-center text-gray-500 hover:bg-gray-100 hover:text-primary-500 transition-all">
+                                <Github className="w-5 h-5" />
+                            </Link>
+                        </div>
+                    </div>
+                </div>
+
+                {/* Bottom Bar */}
+                <div className="pt-8 border-t border-gray-100 flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-gray-400">
+                    <p>&copy; {new Date().getFullYear()} minggo-commits. All rights reserved.</p>
+                    <div className="flex items-center gap-8">
+                        <Link href="/" className="hover:text-gray-600 transition-colors">Privacy</Link>
+                        <Link href="/" className="hover:text-gray-600 transition-colors">Terms</Link>
+                        <Link href="/" className="hover:text-gray-600 transition-colors">Cookies</Link>
+                    </div>
                 </div>
             </Container>
         </footer>
