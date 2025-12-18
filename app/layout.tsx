@@ -15,7 +15,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "minggo-commits",
+  title: "KodeMinggo",
   description: "A clean white & green tech blog.",
 };
 

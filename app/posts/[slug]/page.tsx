@@ -32,7 +32,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     }
 
     return {
-        title: `${post.title} | minggo-commits`,
+        title: `${post.title} | KodeMinggo`,
     };
 }
 
