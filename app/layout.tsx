@@ -15,8 +15,18 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "minggo-commits",
+  metadataBase: new URL("https://kodeminggo.com"),
+  title: "KodeMinggo",
   description: "A clean white & green tech blog.",
+  openGraph: {
+    siteName: "KodeMinggo",
+    type: "website",
+    locale: "en_US",
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
 };
 
 export default function RootLayout({

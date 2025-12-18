@@ -25,19 +25,19 @@ git init
 git add .
 
 # Commit changes
-git commit -m "Initial commit: minggo-commits blog"
+git commit -m "Initial commit: KodeMinggo blog"
 ```
 
 ## 4. Create Repository on GitHub
 1.  Go to [github.com/new](https://github.com/new).
-2.  Name it `minggo-commits`.
+2.  Name it `KodeMinggo`.
 3.  Click **Create repository**.
 
 ## 5. Push Code
 Copy the commands shown on GitHub (under "…or push an existing repository from the command line") and run them. They will look like this:
 
 ```bash
-git remote add origin https://github.com/YOUR_USERNAME/minggo-commits.git
+git remote add origin https://github.com/YOUR_USERNAME/KodeMinggo.git
 git branch -M main
 git push -u origin main
 ```
