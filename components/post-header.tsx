@@ -1,13 +1,15 @@
 import { format, parseISO } from 'date-fns';
+import ShareButtons from './share-buttons';
 
 type Props = {
     title: string;
     date: string;
     coverImage?: string;
     readingTime: string;
+    slug: string;
 };
 
-const PostHeader = ({ title, date, coverImage, readingTime }: Props) => {
+const PostHeader = ({ title, date, coverImage, readingTime, slug }: Props) => {
     return (
         <>
             <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tighter leading-tight md:leading-none mb-12 text-center md:text-left">
@@ -16,7 +18,8 @@ const PostHeader = ({ title, date, coverImage, readingTime }: Props) => {
             <div className="hidden md:flex items-center justify-center gap-4 mb-12 text-gray-500 font-medium">
                 <time dateTime={date}>{format(parseISO(date), 'LLLL d, yyyy')}</time>
                 <span>•</span>
-                <span>{readingTime}</span>
+                <span className="mx-2 text-gray-300">|</span>
+                <ShareButtons title={title} slug={slug} />
             </div>
 
             {coverImage && (

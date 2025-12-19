@@ -19,7 +19,13 @@ export default async function Post({ params }: { params: Promise<{ slug: string 
     return (
         <Container>
             <article className="mb-32">
-                <PostHeader title={post.title} date={post.date} coverImage={post.coverImage} readingTime={post.readingTime} />
+                <PostHeader
+                    title={post.title}
+                    date={post.date}
+                    coverImage={post.coverImage}
+                    readingTime={post.readingTime}
+                    slug={post.slug}
+                />
 
                 <div className="flex flex-col xl:flex-row gap-12">
                     <div className="flex-1 min-w-0">
