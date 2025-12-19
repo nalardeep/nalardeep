@@ -40,9 +40,14 @@ export default function SearchResults({ results, query, onSelect }: SearchResult
                             <h4 className="text-sm font-bold text-gray-900 group-hover:text-primary-600 truncate transition-colors">
                                 {post.title}
                             </h4>
-                            <p className="text-xs text-gray-500 line-clamp-1 mt-0.5">
-                                {post.excerpt}
-                            </p>
+                            <div className="flex items-center gap-2 mt-1">
+                                <span className="text-[10px] uppercase font-bold text-primary-600 bg-primary-50 px-1.5 py-0.5 rounded">
+                                    {post.readingTime}
+                                </span>
+                                <p className="text-xs text-gray-500 line-clamp-1">
+                                    {post.excerpt}
+                                </p>
+                            </div>
                         </div>
                         <ArrowRight className="w-4 h-4 text-gray-300 group-hover:text-primary-500 self-center transition-colors" />
                     </Link>

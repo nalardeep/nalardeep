@@ -37,6 +37,8 @@ const PostPreview = ({ post }: Props) => {
                 <span>Author Name</span>
                 <span>•</span>
                 <time dateTime={post.date}>{format(parseISO(post.date), 'MMM d, yyyy')}</time>
+                <span>•</span>
+                <span>{post.readingTime}</span>
             </div>
         </div>
     );

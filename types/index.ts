@@ -5,6 +5,7 @@ export type Post = {
     excerpt: string;
     coverImage?: string;
     content: string;
+    readingTime: string;
 };
 
 export type Frontmatter = {
