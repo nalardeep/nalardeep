@@ -2,7 +2,7 @@
 
 ![Project Banner](https://img.shields.io/badge/Status-Active-success?style=flat-square)
 
-**KodeMinggo** is a modern, high-performance tech blog platform built to democratize artificial intelligence and software engineering knowledge. It serves as a digital garden for in-depth tutorials, technical analysis, and industry insights, all delivered through a lightning-fast, SEO-optimized web experience.
+**KodeMinggo** is a personal blog for side project, this blog platform built to democratize artificial intelligence and software engineering knowledge. It serves as a digital garden for in-depth tutorials, technical analysis, and industry insights, all delivered through a lightning-fast, SEO-optimized web experience.
 
 ## Tech Stack
 
