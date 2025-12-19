@@ -42,3 +42,13 @@ export function getAllPosts(): Post[] {
         .sort((post1, post2) => (post1.date > post2.date ? -1 : 1));
     return posts;
 }
+
+export function getRelatedPosts(currentSlug: string, count: number = 3): Post[] {
+    const allPosts = getAllPosts();
+    const related = allPosts
+        .filter((post) => post.slug !== currentSlug)
+        // Simple randomization for variety
+        .sort(() => 0.5 - Math.random())
+        .slice(0, count);
+    return related;
+}
