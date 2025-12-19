@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # KodeMinggo
 
 ![Project Banner](https://img.shields.io/badge/Status-Active-success?style=flat-square) ![License](https://img.shields.io/badge/License-MIT-blue?style=flat-square)
@@ -37,7 +38,6 @@ This project leverages the latest advancements in the React ecosystem, utilizing
 ---
 
 ## 🛠 Getting Started
-
 Follow these steps to set up the project locally.
 
 ### Prerequisites
