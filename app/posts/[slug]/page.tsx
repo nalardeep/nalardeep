@@ -1,13 +1,16 @@
-import { getAllPosts, getPostBySlug } from "@/lib/api";
+import { getAllPosts, getPostBySlug, getRelatedPosts } from "@/lib/api";
 import Container from "@/components/container";
 import PostBody from "@/components/post-body";
 import PostHeader from "@/components/post-header";
+import TableOfContents from "@/components/table-of-contents";
+import RelatedPosts from "@/components/related-posts";
 import { notFound } from "next/navigation";
 import { Metadata } from "next";
 
 export default async function Post({ params }: { params: Promise<{ slug: string }> }) {
     const { slug } = await params;
     const post = getPostBySlug(slug);
+    const relatedPosts = getRelatedPosts(slug);
 
     if (!post) {
         return notFound();
@@ -16,8 +19,28 @@ export default async function Post({ params }: { params: Promise<{ slug: string 
     return (
         <Container>
             <article className="mb-32">
-                <PostHeader title={post.title} date={post.date} coverImage={post.coverImage} readingTime={post.readingTime} />
-                <PostBody content={post.content} />
+                <PostHeader
+                    title={post.title}
+                    date={post.date}
+                    coverImage={post.coverImage}
+                    readingTime={post.readingTime}
+                    slug={post.slug}
+                />
+
+                <div className="flex flex-col xl:flex-row gap-12">
+                    <div className="flex-1 min-w-0">
+                        <PostBody content={post.content} />
+                        <RelatedPosts posts={relatedPosts} />
+                    </div>
+
+                    {/* Sidebar with Table of Contents */}
+                    <aside className="hidden xl:block w-[250px] shrink-0">
+                        <div className="sticky top-32">
+                            <TableOfContents />
+                        </div>
+                    </aside>
+                </div>
+
             </article>
         </Container>
     );
