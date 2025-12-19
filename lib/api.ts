@@ -18,6 +18,10 @@ export function getPostBySlug(slug: string): Post {
     const fileContents = fs.readFileSync(fullPath, 'utf8');
     const { data, content } = matter(fileContents);
 
+    // Calculate reading time
+    const words = content.trim().split(/\s+/).length;
+    const readingTime = Math.ceil(words / 200) + ' min read';
+
     return {
         slug: realSlug,
         title: data.title,
@@ -25,6 +29,7 @@ export function getPostBySlug(slug: string): Post {
         excerpt: data.excerpt,
         coverImage: data.coverImage,
         content: content,
+        readingTime: readingTime,
     } as Post;
 }
 
