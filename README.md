@@ -1,11 +1,10 @@
-<<<<<<< HEAD
 # KodeMinggo
 
 ![Project Banner](https://img.shields.io/badge/Status-Active-success?style=flat-square) ![License](https://img.shields.io/badge/License-MIT-blue?style=flat-square)
 
 **KodeMinggo** is a modern, high-performance tech blog platform built to democratize artificial intelligence and software engineering knowledge. It serves as a digital garden for in-depth tutorials, technical analysis, and industry insights, all delivered through a lightning-fast, SEO-optimized web experience.
 
-## 🚀 Tech Stack
+## Tech Stack
 
 This project leverages the latest advancements in the React ecosystem, utilizing a "bleeding-edge" stack for maximum performance and developer experience.
 
@@ -27,7 +26,7 @@ This project leverages the latest advancements in the React ecosystem, utilizing
 
 ---
 
-## ✨ Key Features
+## Key Features
 
 - **Dynamic MDX Blog**: Seamlessly renders Markdown files as rich React pages.
 - **SEO Optimized**: Built-in `sitemap.xml`, `robots.txt`, JSON-LD structured data, and dynamic Open Graph tags for social sharing.
@@ -37,7 +36,7 @@ This project leverages the latest advancements in the React ecosystem, utilizing
 
 ---
 
-## 🛠 Getting Started
+## Getting Started
 Follow these steps to set up the project locally.
 
 ### Prerequisites
@@ -70,7 +69,7 @@ Ensure you have **Node.js 18+** installed on your machine.
 
 ---
 
-## 📂 Project Structure
+## Project Structure
 
 A quick look at the top-level files and directories you'll see in this project.
 
@@ -92,8 +91,3 @@ A quick look at the top-level files and directories you'll see in this project.
 
 ---
 
-## 📄 License
-
-This project is open source and available under the [MIT License](LICENSE).
-
-&copy; 2024-2025 KodeMinggo. All rights reserved.
