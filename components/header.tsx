@@ -1,6 +1,7 @@
 "use client";
 
 import Link from 'next/link';
+import Image from 'next/image';
 import Container from './container';
 import { useState } from 'react';
 import { Menu, X } from 'lucide-react';
@@ -13,11 +14,16 @@ const Header = () => {
             <Container>
                 <div className="flex items-center justify-between h-12">
                     {/* Logo */}
-                    <Link href="/" className="flex items-center gap-2 text-xl font-bold tracking-tight text-gray-900 group">
-                        <div className="w-8 h-8 bg-primary-500 rounded-full flex items-center justify-center text-white">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 2a10 10 0 1 0 10 10 4 4 0 0 1-5-5 4 4 0 0 1-5-5c0-2-2-3-4-3-1 2-3 2-3 6 0 5.5 5 10 10 10 6-3 6-7 6-7" /></svg>
-                        </div>
-                        KodeMinggo
+                    <Link href="/" className="flex items-center gap-2 group">
+                        <Image
+                            src="/logo.png"
+                            alt="KodeMinggo Logo"
+                            width={150}
+                            height={40}
+                            className="h-10 w-auto object-contain"
+                            priority
+                            unoptimized
+                        />
                     </Link>
 
                     {/* Centered Nav (Desktop) */}
