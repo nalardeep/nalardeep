@@ -7,7 +7,16 @@ type Props = {
 };
 
 const components = {
-    // Add custom components here if needed
+    h2: ({ children, id }: any) => (
+        <h2 id={id} className="scroll-mt-24 text-2xl font-bold mt-8 mb-4">
+            {children}
+        </h2>
+    ),
+    h3: ({ children, id }: any) => (
+        <h3 id={id} className="scroll-mt-24 text-xl font-bold mt-6 mb-3">
+            {children}
+        </h3>
+    ),
 };
 
 const PostBody = ({ content }: Props) => {
