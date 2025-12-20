@@ -12,7 +12,7 @@ export default function Home() {
   const allPosts = getAllPosts();
 
   return (
-    <main>
+    <>
       <Hero posts={allPosts} />
       <LogoStrip />
 
@@ -44,6 +44,6 @@ export default function Home() {
       </div>
 
       <Newsletter />
-    </main>
+    </>
   );
 }
