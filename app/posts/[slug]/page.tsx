@@ -25,6 +25,8 @@ export default async function Post({ params }: { params: Promise<{ slug: string 
                     coverImage={post.coverImage}
                     readingTime={post.readingTime}
                     slug={post.slug}
+                    author={post.author}
+                    tags={post.tags}
                 />
 
                 <div className="flex flex-col xl:flex-row gap-12">
@@ -75,6 +77,9 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
             title,
             description,
             images: images,
+        },
+        alternates: {
+            canonical: `/posts/${slug}`,
         },
     };
 }

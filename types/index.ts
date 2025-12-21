@@ -1,9 +1,16 @@
+export type Author = {
+    name: string;
+    picture: string;
+};
+
 export type Post = {
     slug: string;
     title: string;
     date: string;
     excerpt: string;
     coverImage?: string;
+    author: Author;
+    tags?: string[];
     content: string;
     readingTime: string;
 };
@@ -13,4 +20,6 @@ export type Frontmatter = {
     date: string;
     excerpt: string;
     coverImage?: string;
+    author: Author;
+    tags?: string[];
 };

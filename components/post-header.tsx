@@ -1,5 +1,7 @@
 import { format, parseISO } from 'date-fns';
 import ShareButtons from './share-buttons';
+import { Author } from '@/types';
+import Link from 'next/link';
 
 type Props = {
     title: string;
@@ -7,9 +9,11 @@ type Props = {
     coverImage?: string;
     readingTime: string;
     slug: string;
+    author?: Author;
+    tags?: string[];
 };
 
-const PostHeader = ({ title, date, coverImage, readingTime, slug }: Props) => {
+const PostHeader = ({ title, date, coverImage, readingTime, slug, author, tags }: Props) => {
     return (
         <>
             <div className="max-w-4xl mx-auto text-center md:text-left">
@@ -17,14 +21,39 @@ const PostHeader = ({ title, date, coverImage, readingTime, slug }: Props) => {
                     {title}
                 </h1>
 
-                <div className="flex flex-wrap items-center gap-4 mb-8 text-sm md:text-base text-gray-500 font-medium">
-                    <time dateTime={date} className="text-gray-900">{format(parseISO(date), 'MMMM d, yyyy')}</time>
+                <div className="flex flex-wrap items-center gap-4 mb-6 text-sm md:text-base text-gray-500 font-medium justify-center md:justify-start">
+                    {author && (
+                        <div className="flex items-center gap-2 mr-2">
+                            <img
+                                src={author.picture}
+                                alt={author.name}
+                                className="w-10 h-10 rounded-full object-cover border border-gray-100"
+                            />
+                            <span className="text-gray-900 font-bold">{author.name}</span>
+                        </div>
+                    )}
+
+                    <time dateTime={date} className="text-gray-500">{format(parseISO(date), 'MMMM d, yyyy')}</time>
                     <span className="text-gray-300">•</span>
                     <span>{readingTime}</span>
-                    <span className="hidden md:inline text-gray-300">|</span>
-                    <div className="flex items-center">
-                        <ShareButtons title={title} slug={slug} />
+                </div>
+
+                {tags && tags.length > 0 && (
+                    <div className="flex flex-wrap items-center gap-2 mb-8 justify-center md:justify-start">
+                        {tags.map((tag) => (
+                            <Link
+                                key={tag}
+                                href={`/tags/${tag.toLowerCase().replace(/\s+/g, '-')}`}
+                                className="bg-gray-100 hover:bg-gray-200 text-gray-700 text-sm font-medium px-3 py-1 rounded-full transition-colors"
+                            >
+                                #{tag}
+                            </Link>
+                        ))}
                     </div>
+                )}
+
+                <div className="flex items-center justify-center md:justify-start gap-4 mb-8">
+                    <ShareButtons title={title} slug={slug} />
                 </div>
             </div>
 

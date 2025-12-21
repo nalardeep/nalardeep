@@ -33,8 +33,12 @@ const PostPreview = ({ post }: Props) => {
             </div>
 
             <div className="flex items-center gap-3 mt-4 text-sm font-medium text-gray-500">
-                <div className="w-6 h-6 rounded-full bg-gray-200 flex items-center justify-center text-xs">A</div>
-                <span>Arsan</span>
+                <img
+                    src={post.author.picture}
+                    alt={post.author.name}
+                    className="w-6 h-6 rounded-full object-cover"
+                />
+                <span className="text-gray-900">{post.author.name}</span>
                 <span>•</span>
                 <time dateTime={post.date}>{format(parseISO(post.date), 'MMM d, yyyy')}</time>
                 <span>•</span>
