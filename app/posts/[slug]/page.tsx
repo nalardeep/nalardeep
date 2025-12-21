@@ -25,6 +25,7 @@ export default async function Post({ params }: { params: Promise<{ slug: string 
                     coverImage={post.coverImage}
                     readingTime={post.readingTime}
                     slug={post.slug}
+                    author={post.author}
                 />
 
                 <div className="flex flex-col xl:flex-row gap-12">

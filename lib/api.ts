@@ -28,6 +28,10 @@ export function getPostBySlug(slug: string): Post {
         date: data.date,
         excerpt: data.excerpt,
         coverImage: data.coverImage,
+        author: {
+            name: data.author?.name || 'KodeMinggo Team',
+            picture: data.author?.picture || '/assets/blog/authors/team.png',
+        },
         content: content,
         readingTime: readingTime,
     } as Post;

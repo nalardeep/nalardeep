@@ -1,5 +1,6 @@
 import { format, parseISO } from 'date-fns';
 import ShareButtons from './share-buttons';
+import { Author } from '@/types';
 
 type Props = {
     title: string;
@@ -7,9 +8,10 @@ type Props = {
     coverImage?: string;
     readingTime: string;
     slug: string;
+    author?: Author;
 };
 
-const PostHeader = ({ title, date, coverImage, readingTime, slug }: Props) => {
+const PostHeader = ({ title, date, coverImage, readingTime, slug, author }: Props) => {
     return (
         <>
             <div className="max-w-4xl mx-auto text-center md:text-left">
@@ -17,8 +19,19 @@ const PostHeader = ({ title, date, coverImage, readingTime, slug }: Props) => {
                     {title}
                 </h1>
 
-                <div className="flex flex-wrap items-center gap-4 mb-8 text-sm md:text-base text-gray-500 font-medium">
-                    <time dateTime={date} className="text-gray-900">{format(parseISO(date), 'MMMM d, yyyy')}</time>
+                <div className="flex flex-wrap items-center gap-4 mb-8 text-sm md:text-base text-gray-500 font-medium justify-center md:justify-start">
+                    {author && (
+                        <div className="flex items-center gap-2 mr-2">
+                            <img
+                                src={author.picture}
+                                alt={author.name}
+                                className="w-10 h-10 rounded-full object-cover border border-gray-100"
+                            />
+                            <span className="text-gray-900 font-bold">{author.name}</span>
+                        </div>
+                    )}
+
+                    <time dateTime={date} className="text-gray-500">{format(parseISO(date), 'MMMM d, yyyy')}</time>
                     <span className="text-gray-300">•</span>
                     <span>{readingTime}</span>
                     <span className="hidden md:inline text-gray-300">|</span>
