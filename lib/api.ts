@@ -32,9 +32,17 @@ export function getPostBySlug(slug: string): Post {
             name: data.author?.name || 'KodeMinggo Team',
             picture: data.author?.picture || '/assets/blog/authors/team.png',
         },
+        tags: data.tags || [],
         content: content,
         readingTime: readingTime,
     } as Post;
+}
+
+export function getPostsByTag(tag: string): Post[] {
+    const allPosts = getAllPosts();
+    return allPosts.filter((post) =>
+        post.tags && post.tags.map(t => t.toLowerCase().replace(/\s+/g, '-')).includes(tag.toLowerCase())
+    );
 }
 
 export function getAllPosts(): Post[] {

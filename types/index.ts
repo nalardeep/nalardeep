@@ -10,6 +10,7 @@ export type Post = {
     excerpt: string;
     coverImage?: string;
     author: Author;
+    tags?: string[];
     content: string;
     readingTime: string;
 };
@@ -20,4 +21,5 @@ export type Frontmatter = {
     excerpt: string;
     coverImage?: string;
     author: Author;
+    tags?: string[];
 };
