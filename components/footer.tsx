@@ -21,7 +21,7 @@ const Footer = () => {
                             />
                         </Link>
                         <p className="text-gray-500 leading-relaxed">
-                            Making sense of the artificial intelligence revolution, one article at a time.
+                            KodeMinggo adalah jembatan antara baris kode dan kecerdasan buatan. Kami menyajikan wawasan teknologi masa depan, tutorial praktis, dan eksperimen AI untuk developer modern Indonesia.
                         </p>
                     </div>
 
@@ -54,7 +54,7 @@ const Footer = () => {
                             <Link href="/" className="w-10 h-10 bg-gray-50 rounded-full flex items-center justify-center text-gray-500 hover:bg-gray-100 hover:text-primary-500 transition-all">
                                 <Twitter className="w-5 h-5" />
                             </Link>
-                            <Link href="/" className="w-10 h-10 bg-gray-50 rounded-full flex items-center justify-center text-gray-500 hover:bg-gray-100 hover:text-primary-500 transition-all">
+                            <Link href="https://github.com/minggo-commits" className="w-10 h-10 bg-gray-50 rounded-full flex items-center justify-center text-gray-500 hover:bg-gray-100 hover:text-primary-500 transition-all">
                                 <Github className="w-5 h-5" />
                             </Link>
                         </div>
