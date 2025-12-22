@@ -33,10 +33,10 @@ const Header = () => {
                                 <Link href="/articles" className="hover:text-primary-500 transition-colors">Articles</Link>
                             </li>
                             <li>
-                                <Link href="/" className="hover:text-primary-500 transition-colors">Newsletter</Link>
+                                <Link href="/contact" className="hover:text-primary-500 transition-colors">Contact</Link>
                             </li>
                             <li>
-                                <Link href="/" className="hover:text-primary-500 transition-colors">About</Link>
+                                <Link href="/about" className="hover:text-primary-500 transition-colors">About</Link>
                             </li>
                         </ul>
                     </nav>
