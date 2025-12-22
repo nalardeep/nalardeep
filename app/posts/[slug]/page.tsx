@@ -41,6 +41,25 @@ export default async function Post({ params }: { params: Promise<{ slug: string 
                             <TableOfContents />
                         </div>
                     </aside>
+                    <script
+                        type="application/ld+json"
+                        dangerouslySetInnerHTML={{
+                            __html: JSON.stringify({
+                                '@context': 'https://schema.org',
+                                '@type': 'BlogPosting',
+                                headline: post.title,
+                                datePublished: post.date,
+                                dateModified: post.date,
+                                description: post.excerpt,
+                                image: post.coverImage ? [post.coverImage] : [],
+                                url: `https://kodeminggo.com/posts/${post.slug}`,
+                                author: {
+                                    '@type': 'Person',
+                                    name: post.author.name,
+                                },
+                            }),
+                        }}
+                    />
                 </div>
 
             </article>
