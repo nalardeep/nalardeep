@@ -1,93 +1,30 @@
 # KodeMinggo
 
-![Project Banner](https://img.shields.io/badge/Status-Active-success?style=flat-square)
+A modern tech blog built with **Next.js 16**, **React 19**, and **Tailwind CSS 4**. Designed for showcasing AI and software engineering knowledge with a focus on performance and SEO.
 
-**KodeMinggo** is a personal blog for side project, this blog platform built to democratize artificial intelligence and software engineering knowledge. It serves as a digital garden for in-depth tutorials, technical analysis, and industry insights, all delivered through a lightning-fast, SEO-optimized web experience.
+## Quick Start
 
-## Tech Stack
-
-This project leverages the latest advancements in the React ecosystem, utilizing a "bleeding-edge" stack for maximum performance and developer experience.
-
-### Core Framework
-- **[Next.js 16](https://nextjs.org/)**: Utilizing the App Router for robust routing, server components, and optimized rendering.
-- **[React 19](https://react.dev/)**: Building on the latest React concurrent features and server actions.
-- **[TypeScript](https://www.typescriptlang.org/)**: extensive static typing for type safety and improved developer tooling.
-
-### Styling & UI
-- **[Tailwind CSS 4](https://tailwindcss.com/)**: The latest generation of the utility-first CSS framework (Oxide engine).
-- **[Lucide React](https://lucide.dev/)**: Beautiful, consistent, and lightweight icon library.
-- **[Geist Font](https://vercel.com/font)**: Vercel's precision-engineered font family for optimal readability.
-- **clsx & tailwind-merge**: Robust utility class management and conflict resolution.
-
-### Content & Data
-- **[MDX](https://mdxjs.com/)**: Writing content in Markdown with the power of dynamic React components.
-- **Gray Matter**: Efficient frontmatter parsing for article metadata.
-- **date-fns**: Modern date utility library.
-
----
-
-## Key Features
-
-- **Dynamic MDX Blog**: Seamlessly renders Markdown files as rich React pages.
-- **SEO Optimized**: Built-in `sitemap.xml`, `robots.txt`, JSON-LD structured data, and dynamic Open Graph tags for social sharing.
-- **Performance First**: Zero-layout shift, optimized font web loading, and server-side rendering.
-- **Responsive Design**: Mobile-first approach ensuring a premium experience across all devices.
-- **E-E-A-T Pages**: Dedicated About and Contact pages to establish domain authority.
-
----
-
-## Getting Started
-Follow these steps to set up the project locally.
-
-### Prerequisites
-
-Ensure you have **Node.js 18+** installed on your machine.
-
-### Installation
-
-1.  Clone the repository:
-    ```bash
-    git clone https://github.com/yourusername/kodeminggo.git
-    cd kodeminggo
-    ```
-
-2.  Install dependencies:
+1.  **Install dependencies**:
     ```bash
     npm install
-    # or
-    pnpm install
-    # or
-    yarn install
     ```
 
-3.  Run the development server:
+2.  **Run locally**:
     ```bash
     npm run dev
     ```
 
-4.  Open [http://localhost:3000](http://localhost:3000) in your browser.
+3.  Open [http://localhost:3000](http://localhost:3000).
 
----
+## Key Features
 
-## Project Structure
+-   ⚡ **Fast**: Server-side rendering and optimized assets.
+-   🔎 **SEO Ready**: Sitemap, JSON-LD, and Open Graph tags.
+-   📝 **MDX Blog**: Write content in Markdown with React components.
+-   📱 **Responsive**: Mobile-first design.
 
-A quick look at the top-level files and directories you'll see in this project.
+## Tech Stack
 
-```
-.
-├── _posts/             # MDX blog content files
-├── app/                # Next.js App Router source
-│   ├── about/          # About page
-│   ├── articles/       # Articles listing page
-│   ├── contact/        # Contact page
-│   ├── posts/          # Dynamic individual post routes
-│   ├── layout.tsx      # Root layout and metadata
-│   └── page.tsx        # Home page
-├── components/         # Reusable UI components
-├── lib/                # Utility functions (API, types)
-├── public/             # Static assets
-└── package.json        # Project manifest and scripts
-```
-
----
-
+-   **Frontend**: Next.js 16, React 19, TypeScript
+-   **Styling**: Tailwind CSS 4, Lucide React
+-   **Content**: MDX, Gray Matter
