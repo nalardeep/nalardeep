@@ -38,6 +38,9 @@ const Header = () => {
                             <li>
                                 <Link href="/about" className="hover:text-primary-500 transition-colors">About</Link>
                             </li>
+                            <li>
+                                <Link href="/newsletter" className="hover:text-primary-500 transition-colors">Newsletter</Link>
+                            </li>
                         </ul>
                     </nav>
 
