@@ -51,10 +51,10 @@ const Footer = () => {
                     <div>
                         <h4 className="font-bold text-gray-900 mb-6">Connect</h4>
                         <div className="flex items-center gap-4">
-                            <Link href="/" className="w-10 h-10 bg-gray-50 rounded-full flex items-center justify-center text-gray-500 hover:bg-gray-100 hover:text-primary-500 transition-all">
+                            <Link href="/" aria-label="Visit our Twitter page" className="w-10 h-10 bg-gray-50 rounded-full flex items-center justify-center text-gray-500 hover:bg-gray-100 hover:text-primary-500 transition-all">
                                 <Twitter className="w-5 h-5" />
                             </Link>
-                            <Link href="https://github.com/minggo-commits" className="w-10 h-10 bg-gray-50 rounded-full flex items-center justify-center text-gray-500 hover:bg-gray-100 hover:text-primary-500 transition-all">
+                            <Link href="https://github.com/minggo-commits" aria-label="Visit our Github profile" className="w-10 h-10 bg-gray-50 rounded-full flex items-center justify-center text-gray-500 hover:bg-gray-100 hover:text-primary-500 transition-all">
                                 <Github className="w-5 h-5" />
                             </Link>
                         </div>
