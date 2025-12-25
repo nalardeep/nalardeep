@@ -39,9 +39,9 @@ const Hero = ({ posts = [] }: HeroProps) => {
     }, [query, fuse]);
 
     return (
-        <section className="relative overflow-hidden pt-16 pb-24 md:pt-24 md:pb-32 bg-white">
+        <section className="relative pt-16 pb-24 md:pt-24 md:pb-32 bg-white">
             {/* Background Gradients - Subtle */}
-            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full max-w-7xl pointer-events-none opacity-40">
+            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full max-w-7xl pointer-events-none opacity-40 overflow-hidden">
                 <div className="absolute top-[-10%] left-[-10%] w-[500px] h-[500px] bg-sky-200/40 rounded-full blur-3xl mix-blend-multiply filter animate-blob" />
                 <div className="absolute top-[-10%] right-[-10%] w-[500px] h-[500px] bg-primary-200/40 rounded-full blur-3xl mix-blend-multiply filter animate-blob animation-delay-2000" />
             </div>

@@ -16,7 +16,7 @@ export default function About() {
                         About KodeMinggo
                     </h1>
                     <p className="text-xl text-primary-600 leading-relaxed max-w-2xl">
-                        We are dedicated to making complex technology accessible, understandable, and actionable for everyone.
+                        KodeMinggo adalah platform yang menyediakan informasi tentang AI dan teknologi terkini. Kami berkomitmen untuk membuat AI terbuka dan transparan untuk semua orang.
                     </p>
                 </div>
 
@@ -24,17 +24,20 @@ export default function About() {
                 <div className="grid grid-cols-1 md:grid-cols-12 gap-12">
                     <div className="md:col-span-8 space-y-8 text-lg text-gray-600 leading-relaxed">
                         <p>
-                            Founded in 2024, KodeMinggo started with a simple idea: that artificial intelligence shouldn't be a black box reserved for experts. We believe that with the right explanation, anyone can understand the mechanisms that are reshaping our world.
+                            Kami percaya bahwa teknologi seharusnya mempermudah, bukan mempersulit. Itulah mengapa KodeMinggo hadir dengan dua misi utama yaitu, Mengedukasi dan Memberdayakan.
                         </p>
                         <p>
-                            Our team of engineers, writers, and designers work together to break down the latest papers, frameworks, and tools into easy-to-digest articles and tutorials.
+                            Sebagai blog teknologi, kami menyajikan analisis mendalam tentang Artificial Intelligence. Namun, kami tidak berhenti pada teori.
+                        </p>
+                        <p>
+                            KodeMinggo juga merupakan platform utilitas gratis. Kami menyediakan berbagai tools berbasis AI dan developer utilities yang dirancang untuk mempercepat workflow Anda tanpa biaya berlangganan, tanpa batasan tersembunyi.
                         </p>
 
-                        <h2 className="text-3xl font-bold text-gray-900 mt-12 mb-4">Our Mission</h2>
+                        <h2 className="text-3xl font-bold text-gray-900 mt-12 mb-4">Misi Kami</h2>
                         <ul className="space-y-4 list-disc pl-5 marker:text-primary-500">
-                            <li><strong>Democratize Knowledge:</strong> Free, high-quality tech education for all.</li>
-                            <li><strong>Practical Focus:</strong> Real-world examples over abstract theory.</li>
-                            <li><strong>Community First:</strong> Learning is better when we do it together.</li>
+                            <li><strong>Demokratisasi Pengetahuan:</strong> Edukasi teknologi gratis dan berkualitas tinggi untuk semua orang.</li>
+                            <li><strong>Fokus Praktis:</strong> Mengutamakan penerapan dunia nyata di atas teori abstrak.</li>
+                            <li><strong>Utamakan Komunitas:</strong> Belajar menjadi lebih baik saat kita melakukannya bersama-sama.</li>
                         </ul>
                     </div>
 

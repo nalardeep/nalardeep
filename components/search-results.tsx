@@ -22,7 +22,7 @@ export default function SearchResults({ results, query, onSelect }: SearchResult
     return (
         <div
             onMouseDown={(e) => e.preventDefault()}
-            className="absolute top-full left-0 right-0 mt-2 bg-white rounded-xl shadow-xl border border-gray-100 overflow-hidden z-50 animate-in fade-in slide-in-from-top-2 max-h-[60vh] overflow-y-auto"
+            className="absolute top-full left-0 right-0 mt-2 bg-white rounded-xl shadow-xl border border-gray-100 overflow-hidden z-50 animate-in fade-in slide-in-from-top-2 max-h-[60vh] overflow-y-auto text-left"
         >
             <div className="p-2">
                 <h3 className="text-xs font-bold text-gray-400 uppercase tracking-wider px-3 py-2">Suggested Articles</h3>
