@@ -58,6 +58,7 @@ const Header = () => {
                         <button
                             className="md:hidden p-2 text-gray-600"
                             onClick={() => setIsOpen(!isOpen)}
+                            aria-label="Toggle navigation menu"
                         >
                             {isOpen ? <X /> : <Menu />}
                         </button>
