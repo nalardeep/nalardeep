@@ -1,6 +1,7 @@
 import { MDXRemote } from 'next-mdx-remote/rsc';
 import rehypeSlug from 'rehype-slug';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
+import Image from 'next/image';
 
 type Props = {
     content: string;
@@ -17,6 +18,34 @@ const components = {
             {children}
         </h3>
     ),
+    img: (props: any) => {
+        // Helper to clean the source path
+        const getCleanSrc = (src: string) => {
+            if (!src) return '';
+            // If it starts with 'public/', remove it
+            let cleanSrc = src.replace(/^public\//, '');
+            // Ensure it starts with '/' if it's not a remote URL
+            if (!cleanSrc.startsWith('/') && !cleanSrc.startsWith('http')) {
+                cleanSrc = '/' + cleanSrc;
+            }
+            return cleanSrc;
+        };
+
+        return (
+            <span className="relative block w-full h-auto my-8">
+                <Image
+                    src={getCleanSrc(props.src)}
+                    alt={props.alt || 'Article image'}
+                    width={800}
+                    height={500}
+                    className="rounded-lg object-cover w-full h-auto"
+                />
+                {props.title && (
+                    <span className="block text-center text-gray-500 text-sm mt-2">{props.title}</span>
+                )}
+            </span>
+        );
+    },
 };
 
 const PostBody = ({ content }: Props) => {
