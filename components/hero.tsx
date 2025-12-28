@@ -13,9 +13,9 @@ interface HeroProps {
 
 const SUGGESTIONS = [
     "Generative AI",
-    "LLM Tutorials",
-    "Ethics",
-    "Future Tech"
+    "Tutorial LLM",
+    "Etika AI",
+    "Teknologi Masa Depan"
 ];
 
 const Hero = ({ posts = [] }: HeroProps) => {
@@ -52,7 +52,7 @@ const Hero = ({ posts = [] }: HeroProps) => {
                     {/* Badge */}
                     <div className="inline-flex items-center gap-2 bg-primary-50 border border-primary-100 px-3 py-1 rounded-full text-xs font-bold text-primary-600 mb-8 animate-in fade-in slide-in-from-bottom-4 duration-700">
                         <Sparkles className="w-3.5 h-3.5 fill-primary-600" />
-                        <span>AI Knowledge Engine</span>
+                        <span className="font-semibold">Mesin Pengetahuan AI</span>
                     </div>
 
                     {/* Headline */}
@@ -93,7 +93,7 @@ const Hero = ({ posts = [] }: HeroProps) => {
 
                     {/* Suggestions */}
                     <div className="mt-8 flex flex-wrap justify-center gap-3 animate-in fade-in slide-in-from-bottom-4 duration-700 delay-400">
-                        <span className="text-sm text-gray-400 font-medium py-1.5">Try searching:</span>
+                        <span className="text-sm text-gray-400 font-medium py-1.5">Coba cari:</span>
                         {SUGGESTIONS.map((suggestion) => (
                             <button
                                 key={suggestion}
