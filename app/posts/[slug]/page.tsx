@@ -37,9 +37,7 @@ export default async function Post({ params }: { params: Promise<{ slug: string 
 
                     {/* Sidebar with Table of Contents */}
                     <aside className="hidden xl:block w-[250px] shrink-0">
-                        <div className="sticky top-32">
-                            <TableOfContents />
-                        </div>
+                        <TableOfContents />
                     </aside>
                     <script
                         type="application/ld+json"

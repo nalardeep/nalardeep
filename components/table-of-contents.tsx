@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { AlignLeft } from 'lucide-react';
 
 interface Heading {
@@ -41,10 +41,28 @@ export default function TableOfContents() {
         return () => observer.disconnect();
     }, []);
 
+    const navRef = useRef<HTMLDivElement>(null);
+
+    // Auto-scroll the TOC to keep the active item in view
+    useEffect(() => {
+        if (!activeId || !navRef.current) return;
+
+        const activeLink = navRef.current.querySelector(`a[href="#${activeId}"]`);
+        if (activeLink) {
+            activeLink.scrollIntoView({
+                behavior: 'smooth',
+                block: 'nearest', // Keeps it in view without jarring jumps
+            });
+        }
+    }, [activeId]);
+
     if (headings.length === 0) return null;
 
     return (
-        <div className="hidden xl:block sticky top-32 h-fit max-w-[250px]">
+        <div
+            ref={navRef}
+            className="hidden xl:block sticky top-32 h-fit max-h-[calc(100vh-9rem)] overflow-y-auto max-w-[250px] pb-4"
+        >
             <div className="flex items-center gap-2 mb-4 text-gray-900 font-bold">
                 <AlignLeft className="w-4 h-4" />
                 <span className="text-sm uppercase tracking-wider">On this page</span>
@@ -53,7 +71,7 @@ export default function TableOfContents() {
                 <ul className="space-y-3 text-sm">
                     {headings.map((heading, index) => (
                         <li key={heading.id || index}
-                            className={`pl-4 transition-colors ${heading.level === 3 ? 'ml-4' : ''}`}
+                            className={`pl-4 relative transition-colors ${heading.level === 3 ? 'ml-4' : ''}`}
                         >
                             <a
                                 href={`#${heading.id}`}
@@ -73,9 +91,7 @@ export default function TableOfContents() {
                             </a>
                             {/* Active indicator line */}
                             {activeId === heading.id && (
-                                <div className="absolute left-[-1px] top-auto h-5 bg-primary-500 w-[2px] rounded-full transition-all duration-300"
-                                    style={{ transform: `translateY(-${heading.level === 2 ? '1.5rem' : '1.5rem'})` }} // Approximation, specific implementation relies on ref mapping for perfect positioning
-                                />
+                                <div className="absolute left-[-1px] top-0 bottom-0 w-[2px] bg-primary-500 rounded-full transition-all duration-300" />
                             )}
                         </li>
                     ))}
