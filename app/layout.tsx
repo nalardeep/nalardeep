@@ -17,11 +17,11 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL("https://kodeminggo.com"),
   title: "KodeMinggo",
-  description: "A clean white & green tech blog.",
+  description: "Wawasan Teknologi & AI untuk Developer Indonesia.",
   openGraph: {
     siteName: "KodeMinggo",
     type: "website",
-    locale: "en_US",
+    locale: "id_ID",
   },
   robots: {
     index: true,
@@ -38,7 +38,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="id" suppressHydrationWarning>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased flex flex-col min-h-screen`}
       >

@@ -20,11 +20,11 @@ export default function Home() {
         <Container>
           <div className="flex items-end justify-between mb-12">
             <div>
-              <h2 className="text-4xl font-bold text-gray-900 mb-4">Recent Articles</h2>
-              <p className="text-lg text-gray-500">Latest thoughts on the state of AI.</p>
+              <h2 className="text-4xl font-bold text-gray-900 mb-4">Artikel Terbaru</h2>
+              <p className="text-lg text-gray-500">Wawasan terkini seputar perkembangan AI.</p>
             </div>
             <Link href="/articles" className="hidden md:flex items-center gap-2 text-primary-500 font-bold hover:text-primary-600 transition-colors">
-              View all <ArrowRight className="w-4 h-4" />
+              Lihat semua <ArrowRight className="w-4 h-4" />
             </Link>
           </div>
 
@@ -37,7 +37,7 @@ export default function Home() {
           )}
           <div className="mt-12 md:hidden flex justify-center">
             <Link href="/" className="flex items-center gap-2 text-primary-500 font-bold hover:text-primary-600 transition-colors">
-              View all <ArrowRight className="w-4 h-4" />
+              Lihat semua <ArrowRight className="w-4 h-4" />
             </Link>
           </div>
         </Container>
