@@ -12,7 +12,7 @@
   --color-primary-700: #047857;
   --color-primary-800: #065f46;
   --color-primary-900: #064e3b;
-  
+
   --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
   --font-mono: var(--font-geist-mono), ui-monospace, SFMono-Regular, monospace;
 }
@@ -33,7 +33,8 @@
        or implement a very clean dark green/black if needed. 
        Let's force light mode for the "clean white" look, or mostly light.
     */
-    --background: #f8fafc; /* slightly off-white instead of black */
+    --background: #f8fafc;
+    /* slightly off-white instead of black */
     --foreground: #171717;
   }
 }
@@ -46,6 +47,11 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   color: var(--color-primary-900);
 }
