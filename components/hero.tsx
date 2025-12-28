@@ -57,11 +57,11 @@ const Hero = ({ posts = [] }: HeroProps) => {
 
                     {/* Headline */}
                     <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-gray-900 tracking-tight mb-6 animate-in fade-in slide-in-from-bottom-4 duration-700 delay-100">
-                        What do you want to learn about <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-600 to-sky-600">AI today?</span>
+                        Hari ini mau ngulik <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-600 to-sky-600 pr-2">AI apa?</span>
                     </h1>
 
                     <p className="text-lg text-gray-500 mb-10 max-w-lg animate-in fade-in slide-in-from-bottom-4 duration-700 delay-200">
-                        Explore our database of in-depth tutorials, technical analysis, and industry insights.
+                        Jelajahi gudang tutorial lengkap dan langsung praktik aja.
                     </p>
 
                     {/* Search Interface */}
@@ -73,7 +73,7 @@ const Hero = ({ posts = [] }: HeroProps) => {
                             <input
                                 type="text"
                                 className="w-full h-16 pl-12 pr-4 rounded-xl border border-gray-200 bg-white text-lg placeholder:text-gray-400 focus:outline-none focus:border-primary-500 focus:ring-4 focus:ring-primary-500/10 transition-all"
-                                placeholder="Search articles, topics, or keywords..."
+                                placeholder="Cari artikel, topik, atau kata kunci..."
                                 value={query}
                                 onChange={(e) => setQuery(e.target.value)}
                                 onFocus={() => setIsFocused(true)}

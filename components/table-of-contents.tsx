@@ -30,7 +30,7 @@ export default function TableOfContents() {
                     }
                 });
             },
-            { rootMargin: '0px 0px -40% 0px' }
+            { rootMargin: '0px 0px -80% 0px' }
         );
 
         elements.forEach(({ id }) => {
@@ -81,9 +81,11 @@ export default function TableOfContents() {
                                     }`}
                                 onClick={(e) => {
                                     e.preventDefault();
-                                    document.getElementById(heading.id)?.scrollIntoView({
-                                        behavior: 'smooth'
-                                    });
+                                    const element = document.getElementById(heading.id);
+                                    if (element) {
+                                        const y = element.getBoundingClientRect().top + window.scrollY - 100; // 100px offset for header
+                                        window.scrollTo({ top: y, behavior: 'smooth' });
+                                    }
                                     setActiveId(heading.id);
                                 }}
                             >

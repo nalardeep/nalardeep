@@ -1,11 +1,11 @@
 ---
 title: "Cara Menjalankan LLM di Laptop Kentang (RAM 8GB) Tanpa Internet"
 excerpt: "Panduan lengkap menjalankan Large Language Model di laptop spesifikasi rendah dengan RAM 8GB tanpa koneksi internet. Hemat biaya, privasi terjaga, dan tetap produktif!"
-coverImage: "/images/llm-laptop-kentang.jpg"
+coverImage: '/assets/blog/cara-menjalankan-llm-di-laptop-kentang/cara-menjalankan-llm-di-laptop-kentang.png'
 date: "2025-12-28"
 author:
-  name: "Tech Blogger"
-  picture: "/images/avatar.jpg"
+  name: "Arsan"
+  picture: "https://ui-avatars.com/api/?name=Arsan+Akbar&background=0D8ABC&color=fff"
 tags: ["AI", "LLM", "Tutorial", "Offline", "Low-Spec"]
 ---
 
@@ -42,30 +42,30 @@ Sebelum memulai, pastikan laptop kamu memenuhi spesifikasi minimal berikut:
 
 Kita akan menggunakan beberapa tools open-source yang powerful:
 
-1. **Ollama** - Platform untuk menjalankan LLM secara lokal
+1. **LM Studio** - Platform untuk menjalankan LLM secara lokal
 2. **Model LLM yang ringan** - Seperti Llama 2 7B, Mistral 7B, atau Phi-2
 
-## Langkah 1: Install Ollama
+## Langkah 1: Install LM Studio
 
 ### Untuk Windows
 
-1. Download installer Ollama dari [ollama.ai](https://ollama.ai)
+1. Download installer LM Studio dari [lmstudio.ai](https://lmstudio.ai)
 2. Jalankan file installer yang sudah didownload
 3. Ikuti instruksi instalasi hingga selesai
 4. Buka Command Prompt atau PowerShell untuk verifikasi:
 
 ```bash
-ollama --version
+lmstudio --version
 ```
 
 ### Untuk macOS
 
-1. Download installer untuk macOS dari website Ollama
-2. Drag aplikasi Ollama ke folder Applications
+1. Download installer untuk macOS dari website LM Studio
+2. Drag aplikasi LM Studio ke folder Applications
 3. Buka Terminal dan verifikasi instalasi:
 
 ```bash
-ollama --version
+lmstudio --version
 ```
 
 ### Untuk Linux
@@ -73,18 +73,18 @@ ollama --version
 Jalankan command berikut di terminal:
 
 ```bash
-curl -fsSL https://ollama.ai/install.sh | sh
+curl -fsSL https://lmstudio.ai/install.sh | sh
 ```
 
 ## Langkah 2: Download Model LLM
 
-Setelah Ollama terinstall, saatnya download model LLM. Untuk laptop dengan RAM 8GB, berikut rekomendasi model yang cocok:
+Setelah LM Studio terinstall, saatnya download model LLM. Untuk laptop dengan RAM 8GB, berikut rekomendasi model yang cocok:
 
 ### Model Rekomendasi untuk RAM 8GB
 
 #### 1. **Phi-2 (2.7B parameters)** - Paling Ringan
 ```bash
-ollama pull phi
+lmstudio pull phi
 ```
 - **Ukuran**: ~1.6GB
 - **RAM Usage**: ~3-4GB
@@ -252,28 +252,12 @@ jadi. Setiap rumah (object) punya karakteristik yang sama
 
 ## Kesimpulan
 
-Menjalankan LLM di laptop dengan RAM 8GB tanpa internet ternyata sangat memungkinkan! Dengan tools seperti Ollama dan model yang tepat, kamu bisa:
+Menjalankan LLM di laptop dengan RAM 8GB tanpa internet ternyata sangat memungkinkan! Dengan tools seperti lmstudio dan Ollama serta model yang tepat, kamu bisa:
 
 ✅ Menghemat biaya langganan AI  
 ✅ Menjaga privasi data  
 ✅ Bekerja offline kapan saja  
 ✅ Belajar dan bereksperimen dengan AI  
-
-Jangan takut untuk mencoba dan bereksperimen dengan berbagai model. Setiap model punya kelebihan masing-masing untuk task yang berbeda.
-
-## Pertanyaan yang Sering Diajukan (FAQ)
-
-**Q: Apakah bisa digunakan untuk coding?**  
-A: Sangat bisa! Model seperti Phi-2 dan CodeLlama sangat bagus untuk coding assistance.
-
-**Q: Berapa lama waktu response-nya?**  
-A: Tergantung model dan spesifikasi laptop. Untuk Phi-2 di RAM 8GB, biasanya 1-3 detik per response.
-
-**Q: Apakah legal?**  
-A: Ya, semua model yang disebutkan adalah open-source dan legal untuk digunakan.
-
-**Q: Bisa untuk bahasa Indonesia?**  
-A: Bisa, tapi hasilnya mungkin tidak sebaik bahasa Inggris. Beberapa model seperti Llama 2 cukup bagus untuk bahasa Indonesia.
 
 ---
 
