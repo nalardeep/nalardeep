@@ -51,7 +51,7 @@ const components = {
 const PostBody = ({ content }: Props) => {
     return (
         <div className="max-w-2xl mx-auto">
-            <div className="prose prose-lg prose-green max-w-none">
+            <div className="prose prose-lg prose-green max-w-none prose-a:no-underline">
                 <MDXRemote
                     source={content}
                     components={components}
