@@ -32,6 +32,7 @@ const Footer = () => {
                             <li><Link href="/" className="hover:text-primary-500 transition-colors">Artikel Terbaru</Link></li>
                             <li><Link href="/" className="hover:text-primary-500 transition-colors">Tutorial</Link></li>
                             <li><Link href="/" className="hover:text-primary-500 transition-colors">Wawancara</Link></li>
+                            <li><Link href="/templates" className="hover:text-primary-500 transition-colors">Free Templates</Link></li>
                             <li><Link href="/" className="hover:text-primary-500 transition-colors">Studi Kasus</Link></li>
                         </ul>
                     </div>
