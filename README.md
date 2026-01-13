@@ -18,10 +18,10 @@ A modern tech blog built with **Next.js 16**, **React 19**, and **Tailwind CSS 4
 
 ## Key Features
 
--   ⚡ **Fast**: Server-side rendering and optimized assets.
--   🔎 **SEO Ready**: Sitemap, JSON-LD, and Open Graph tags.
--   📝 **MDX Blog**: Write content in Markdown with React components.
--   📱 **Responsive**: Mobile-first design.
+-   **Fast**: Server-side rendering and optimized assets.
+-   **SEO Ready**: Sitemap, JSON-LD, and Open Graph tags.
+-   **MDX Blog**: Write content in Markdown with React components.
+-   **Responsive**: Mobile-first design.
 
 ## Tech Stack
 
@@ -29,7 +29,26 @@ A modern tech blog built with **Next.js 16**, **React 19**, and **Tailwind CSS 4
 -   **Styling**: Tailwind CSS 4, Lucide React
 -   **Content**: MDX, Gray Matter
 
-## ✍️ Content Guide
+## Template Management
+
+This project includes a feature to showcase landing page templates.
+
+### Adding a New Template
+1.  Open `lib/templates.ts`.
+2.  Add a new object to the `templates` array with the template details (slug, title, demoUrl, etc.).
+3.  For the `thumbnail`, use the path `/assets/templates/your-slug.webp`.
+
+### Generating Thumbnails
+We have an automated script to generate thumbnails from the `demoUrl` of each template.
+
+1.  Ensure your internet connection is active.
+2.  Run the generation script:
+    ```bash
+    npm run generate-thumbnails
+    ```
+3.  This will using Puppeteer to visit each demo URL, take a screenshot, and save it as a WebP image in `public/assets/templates/`.
+
+## Content Guide
 
 ### Creating a New Article
 
@@ -41,13 +60,13 @@ A modern tech blog built with **Next.js 16**, **React 19**, and **Tailwind CSS 4
     ---
     title: "Your Article Title"
     excerpt: "A brief summary for the preview card."
-    coverImage: "/assets/blog/your-image-folder/cover.jpg"
+    coverImage: "/assets/blog/your-image-folder/cover.webp"
     date: "2024-03-20T05:35:07.322Z"
     author:
       name: "Author Name"
       picture: "/assets/blog/authors/profile.png"
     ogImage:
-      url: "/assets/blog/your-image-folder/cover.jpg"
+      url: "/assets/blog/your-image-folder/cover.webp"
     tags: ["Tag1", "Tag2"]
     ---
     ```
@@ -56,17 +75,14 @@ A modern tech blog built with **Next.js 16**, **React 19**, and **Tailwind CSS 4
 
 We support optimized, responsive images inside articles.
 
-1.  **Store your image**: Save your image file in `public/assets/blog/`. It's best to create a folder for each post to keep things organized (e.g., `public/assets/blog/my-new-post/image.png`).
+1.  **Store your image**: Save your image file in `public/assets/blog/`. It is best to create a folder for each post to keep things organized (e.g., `public/assets/blog/my-new-post/image.webp`).
 2.  **Insert in Markdown**: Use standard markdown syntax where you want the image to appear.
 
     ```markdown
-    ![Image Description](/assets/blog/my-new-post/image.png "Optional Caption")
+    ![Image Description](/assets/blog/my-new-post/image.webp "Optional Caption")
     ```
 
-    > **Tip**: The system automatically detects internal paths. You can start the path with `/assets/...` or `public/assets/...` — both work!
-
-    **What happens automatically:**
-    -   Images are lazy-loaded for performance.
-    -   They are responsive and scale on mobile.
-    -   They get rounded corners and proper styling.
-    -   Captions appear centered below the image if you provide a title.
+    **Important Notes:**
+    -   Always use the absolute path starting with `/assets/...`.
+    -   Do not include `public` in the path string in your markdown or frontmatter.
+    -   We recommend using **WebP** format for better performance.
