@@ -45,12 +45,13 @@ async function generateThumbnails() {
                 // Add a small delay to ensure animations/fonts settle
                 await new Promise(r => setTimeout(r, 2000));
 
-                const fileName = `${template.slug}.png`;
+                const fileName = `${template.slug}.webp`;
                 const outputPath = path.join(outputDir, fileName);
 
                 await page.screenshot({
                     path: outputPath,
-                    type: 'png',
+                    type: 'webp',
+                    quality: 80,
                     fullPage: false // Capture viewport only for thumbnail
                 });
 
