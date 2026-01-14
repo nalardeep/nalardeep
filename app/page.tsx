@@ -13,7 +13,7 @@ export default function Home() {
 
   return (
     <>
-      <Hero posts={allPosts} />
+      <Hero />
       <LogoStrip />
 
       <div className="py-24 bg-white">

@@ -1,45 +1,54 @@
 "use client";
 
-import { useState, useMemo } from 'react';
+import Image from 'next/image';
 import Container from './container';
-import { Search, Sparkles } from 'lucide-react';
-import { Post } from '@/types';
-import Fuse from 'fuse.js';
-import SearchResults from './search-results';
+import { Sparkles, Layout, BookOpen, Rocket } from 'lucide-react';
+import useEmblaCarousel from 'embla-carousel-react';
+import Autoplay from 'embla-carousel-autoplay';
+import Link from 'next/link';
 
-interface HeroProps {
-    posts?: Post[];
-}
+const Hero = () => {
+    const [emblaRef] = useEmblaCarousel({ loop: true }, [Autoplay({ delay: 5000 })]);
 
-const SUGGESTIONS = [
-    "Generative AI",
-    "Tutorial LLM",
-    "Etika AI",
-    "Teknologi Masa Depan"
-];
-
-const Hero = ({ posts = [] }: HeroProps) => {
-    const [query, setQuery] = useState("");
-    const [isFocused, setIsFocused] = useState(false);
-
-    // Initialize Fuse
-    // Safe check if posts is undefined
-    const safePosts = posts || [];
-
-    const fuse = useMemo(() => {
-        return new Fuse(safePosts, {
-            keys: ['title', 'excerpt'],
-            threshold: 0.3,
-        });
-    }, [safePosts]);
-
-    const results = useMemo(() => {
-        if (!query) return [];
-        return fuse.search(query).map(result => result.item).slice(0, 5);
-    }, [query, fuse]);
+    // Feature Highlights for Carousel
+    const highlights = [
+        {
+            type: "template",
+            title: "Premium Landing Page Templates",
+            desc: "Boost your project with SEO-optimized, high-performance designs.",
+            icon: <Layout className="w-6 h-6 text-emerald-500" />,
+            action: "Explore Templates",
+            href: "/templates",
+            bg: "bg-emerald-50 border-emerald-100",
+            text: "text-emerald-700",
+            image: "/assets/templates/basreng-pedas-landing.webp"
+        },
+        {
+            type: "article",
+            title: "Deep-Dive AI Tutorials",
+            desc: "Master LLMs and Generative AI with our step-by-step guides.",
+            icon: <BookOpen className="w-6 h-6 text-blue-500" />,
+            action: "Read Articles",
+            href: "/articles",
+            bg: "bg-blue-50 border-blue-100",
+            text: "text-blue-700",
+            image: "/assets/blog/cara-menjalankan-llm-di-laptop-kentang/cara-menjalankan-llm-di-laptop-kentang.webp"
+        },
+        {
+            type: "future",
+            title: "Tools & Courses (Coming Soon)",
+            desc: "Interactive AI tools and comprehensive courses are on the way.",
+            icon: <Rocket className="w-6 h-6 text-purple-500" />,
+            action: "Stay Tuned",
+            href: "#",
+            bg: "bg-purple-50 border-purple-100",
+            text: "text-purple-700",
+            image: null
+        }
+    ];
 
     return (
-        <section className="relative pt-16 pb-24 md:pt-24 md:pb-32 bg-white">
+        <section className="relative pt-10 pb-24 md:pt-16 md:pb-32 bg-white overflow-hidden">
             {/* Background Gradients - Subtle */}
             <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full max-w-7xl pointer-events-none opacity-40 overflow-hidden">
                 <div className="absolute top-[-10%] left-[-10%] w-[500px] h-[500px] bg-sky-200/40 rounded-full blur-3xl mix-blend-multiply filter animate-blob" />
@@ -47,62 +56,74 @@ const Hero = ({ posts = [] }: HeroProps) => {
             </div>
 
             <Container>
-                <div className="relative max-w-3xl mx-auto text-center flex flex-col items-center z-10">
+                <div className="relative max-w-5xl mx-auto flex flex-col items-center z-10">
 
-                    {/* Badge */}
-                    <div className="inline-flex items-center gap-2 bg-primary-50 border border-primary-100 px-3 py-1 rounded-full text-xs font-bold text-primary-600 mb-8 animate-in fade-in slide-in-from-bottom-4 duration-700">
-                        <Sparkles className="w-3.5 h-3.5 fill-primary-600" />
-                        <span className="font-semibold">Mesin Pengetahuan AI</span>
-                    </div>
+                    {/* Carousel Section (Top) */}
+                    <div className="w-full mb-12 animate-in fade-in slide-in-from-top-4 duration-700">
+                        <div className="overflow-hidden rounded-3xl border border-gray-100 shadow-2xl shadow-gray-200/50 bg-white" ref={emblaRef}>
+                            <div className="flex">
+                                {highlights.map((item, index) => (
+                                    <div key={index} className="flex-[0_0_100%] min-w-0">
+                                        <div className={`grid md:grid-cols-2 gap-8 p-8 md:p-10 ${item.bg} h-full items-center`}>
 
-                    {/* Headline */}
-                    <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-gray-900 tracking-tight mb-6 animate-in fade-in slide-in-from-bottom-4 duration-700 delay-100">
-                        Hari ini mau ngulik <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-600 to-sky-600 pr-2">AI apa?</span>
-                    </h1>
+                                            {/* Text Content */}
+                                            <div className="flex flex-col items-start gap-4">
+                                                <div className="p-3 bg-white rounded-xl shadow-sm w-fit">
+                                                    {item.icon}
+                                                </div>
+                                                <div>
+                                                    <h3 className={`text-2xl md:text-3xl font-bold ${item.text} mb-3`}>{item.title}</h3>
+                                                    <p className="text-gray-600 mb-8 text-lg leading-relaxed">{item.desc}</p>
 
-                    <p className="text-lg text-gray-500 mb-10 max-w-lg animate-in fade-in slide-in-from-bottom-4 duration-700 delay-200">
-                        Jelajahi gudang tutorial lengkap dan langsung praktik aja.
-                    </p>
+                                                    {item.href !== '#' ? (
+                                                        <Link href={item.href} className="inline-flex items-center gap-2 px-6 py-3 bg-white text-gray-900 font-bold rounded-xl shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all">
+                                                            {item.action} <span aria-hidden="true">→</span>
+                                                        </Link>
+                                                    ) : (
+                                                        <span className="inline-flex items-center gap-2 px-6 py-3 bg-white/60 text-gray-500 font-bold rounded-xl cursor-not-allowed">
+                                                            {item.action}
+                                                        </span>
+                                                    )}
+                                                </div>
+                                            </div>
 
-                    {/* Search Interface */}
-                    <div className="w-full max-w-2xl relative animate-in fade-in slide-in-from-bottom-4 duration-700 delay-300">
-                        <div className={`relative transition-all duration-300 ${isFocused ? 'scale-[1.02] shadow-2xl shadow-primary-500/10' : 'shadow-xl shadow-gray-200/50'}`}>
-                            <div className="absolute inset-y-0 left-4 flex items-center pointer-events-none">
-                                <Search className={`w-5 h-5 transition-colors ${isFocused ? 'text-primary-500' : 'text-gray-400'}`} />
+                                            {/* Image Content */}
+                                            <div className="relative aspect-[4/3] md:aspect-square lg:aspect-[4/3] rounded-2xl overflow-hidden shadow-lg bg-white ring-4 ring-white/50">
+                                                {item.image ? (
+                                                    <Image
+                                                        src={item.image}
+                                                        alt={item.title}
+                                                        fill
+                                                        className="object-cover transition-transform duration-700 hover:scale-105"
+                                                        sizes="(max-width: 768px) 100vw, 50vw"
+                                                    />
+                                                ) : (
+                                                    <div className="w-full h-full flex items-center justify-center bg-gray-50 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')]">
+                                                        <Rocket className="w-24 h-24 text-gray-300 opacity-50" />
+                                                    </div>
+                                                )}
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                ))}
                             </div>
-                            <input
-                                type="text"
-                                className="w-full h-16 pl-12 pr-4 rounded-xl border border-gray-200 bg-white text-lg placeholder:text-gray-400 focus:outline-none focus:border-primary-500 focus:ring-4 focus:ring-primary-500/10 transition-all"
-                                placeholder="Cari artikel, topik, atau kata kunci..."
-                                value={query}
-                                onChange={(e) => setQuery(e.target.value)}
-                                onFocus={() => setIsFocused(true)}
-                                onBlur={() => setTimeout(() => setIsFocused(false), 200)} // Delay to allow click
-                            />
-
-                            {/* Live Results Dropdown */}
-                            {isFocused && (
-                                <SearchResults
-                                    results={results}
-                                    query={query}
-                                    onSelect={() => setIsFocused(false)}
-                                />
-                            )}
                         </div>
                     </div>
 
-                    {/* Suggestions */}
-                    <div className="mt-8 flex flex-wrap justify-center gap-3 animate-in fade-in slide-in-from-bottom-4 duration-700 delay-400">
-                        <span className="text-sm text-gray-400 font-medium py-1.5">Coba cari:</span>
-                        {SUGGESTIONS.map((suggestion) => (
-                            <button
-                                key={suggestion}
-                                onClick={() => setQuery(suggestion)}
-                                className="px-3 py-1.5 rounded-lg bg-white border border-gray-200 text-sm font-medium text-gray-600 hover:border-primary-200 hover:text-primary-600 hover:bg-primary-50/50 transition-all"
-                            >
-                                {suggestion}
-                            </button>
-                        ))}
+                    {/* Headline */}
+                    <div className="text-center">
+                        <div className="inline-flex items-center gap-2 bg-white border border-gray-200 px-3 py-1 rounded-full text-xs font-bold text-gray-600 mb-6 shadow-sm">
+                            <Sparkles className="w-3.5 h-3.5 fill-yellow-400 text-yellow-500" />
+                            <span className="font-semibold">Your Hub for Tech Excellence</span>
+                        </div>
+                        <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-gray-900 tracking-tight mb-6">
+                            Explore <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-600 to-emerald-500">Articles, Templates</span> & More
+                        </h1>
+
+                        <p className="text-lg text-gray-500 max-w-2xl mx-auto leading-relaxed">
+                            Discover high-quality resources to accelerate your development. From deep-dive AI tutorials to production-ready website templates.
+                        </p>
                     </div>
 
                 </div>
