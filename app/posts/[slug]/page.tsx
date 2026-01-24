@@ -50,7 +50,7 @@ export default async function Post({ params }: { params: Promise<{ slug: string 
                                 dateModified: post.date,
                                 description: post.excerpt,
                                 image: post.coverImage ? [post.coverImage] : [],
-                                url: `https://kodeminggo.com/posts/${post.slug}`,
+                                url: `https://nalardeep.com/posts/${post.slug}`,
                                 author: {
                                     '@type': 'Person',
                                     name: post.author.name,
@@ -73,7 +73,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
         return notFound();
     }
 
-    const title = `${post.title} | KodeMinggo`;
+    const title = `${post.title} | NalarDeep`;
     const description = post.excerpt;
     const ogImage = post.coverImage;
     const images = ogImage ? [ogImage] : [];
@@ -86,7 +86,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
             description,
             type: 'article',
             publishedTime: post.date,
-            url: `https://kodeminggo.com/posts/${slug}`,
+            url: `https://nalardeep.com/posts/${slug}`,
             images: images,
         },
         twitter: {

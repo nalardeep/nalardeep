@@ -2,7 +2,7 @@
 
 import Image from 'next/image';
 import Container from './container';
-import { Sparkles, Layout, BookOpen, Rocket } from 'lucide-react';
+import { Sparkles, BookOpen, Rocket } from 'lucide-react';
 import useEmblaCarousel from 'embla-carousel-react';
 import Autoplay from 'embla-carousel-autoplay';
 import Link from 'next/link';
@@ -12,17 +12,6 @@ const Hero = () => {
 
     // Feature Highlights for Carousel
     const highlights = [
-        {
-            type: "template",
-            title: "Premium Landing Page Templates",
-            desc: "Boost your project with SEO-optimized, high-performance designs.",
-            icon: <Layout className="w-6 h-6 text-emerald-500" />,
-            action: "Explore Templates",
-            href: "/templates",
-            bg: "bg-emerald-50 border-emerald-100",
-            text: "text-emerald-700",
-            image: "/assets/templates/basreng-pedas-landing.webp"
-        },
         {
             type: "article",
             title: "Deep-Dive AI Tutorials",
@@ -115,14 +104,14 @@ const Hero = () => {
                     <div className="text-center">
                         <div className="inline-flex items-center gap-2 bg-white border border-gray-200 px-3 py-1 rounded-full text-xs font-bold text-gray-600 mb-6 shadow-sm">
                             <Sparkles className="w-3.5 h-3.5 fill-yellow-400 text-yellow-500" />
-                            <span className="font-semibold">Your Hub for Tech Excellence</span>
+                            <span className="font-semibold">Your Hub for AI Excellence</span>
                         </div>
                         <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-gray-900 tracking-tight mb-6">
-                            Explore <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-600 to-emerald-500">Articles, Templates</span> & More
+                            Explore <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-600 to-sky-500">Deep-Dive</span> AI Articles
                         </h1>
 
                         <p className="text-lg text-gray-500 max-w-2xl mx-auto leading-relaxed">
-                            Discover high-quality resources to accelerate your development. From deep-dive AI tutorials to production-ready website templates.
+                            Discover high-quality resources to accelerate your development. Master LLMs and Generative AI with our step-by-step guides.
                         </p>
                     </div>
 

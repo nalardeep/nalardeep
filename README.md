@@ -29,24 +29,7 @@ A modern tech blog built with **Next.js 16**, **React 19**, and **Tailwind CSS 4
 -   **Styling**: Tailwind CSS 4, Lucide React
 -   **Content**: MDX, Gray Matter
 
-## Template Management
 
-This project includes a feature to showcase landing page templates.
-
-### Adding a New Template
-1.  Open `lib/templates.ts`.
-2.  Add a new object to the `templates` array with the template details (slug, title, demoUrl, etc.).
-3.  For the `thumbnail`, use the path `/assets/templates/your-slug.webp`.
-
-### Generating Thumbnails
-We have an automated script to generate thumbnails from the `demoUrl` of each template.
-
-1.  Ensure your internet connection is active.
-2.  Run the generation script:
-    ```bash
-    npm run generate-thumbnails
-    ```
-3.  This will using Puppeteer to visit each demo URL, take a screenshot, and save it as a WebP image in `public/assets/templates/`.
 
 ## Content Guide
 
