@@ -2,7 +2,7 @@ import Container from "@/components/container";
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-    title: 'About Us | KodeMinggo',
+    title: 'About Us | NalarDeep',
     description: 'Learn about our mission to democratize tech education.',
 };
 
@@ -13,10 +13,10 @@ export default function About() {
                 {/* Header */}
                 <div className="py-16 md:py-24 max-w-4xl">
                     <h1 className="text-5xl md:text-6xl font-bold text-gray-900 tracking-tight mb-6">
-                        About KodeMinggo
+                        About NalarDeep
                     </h1>
                     <p className="text-xl text-primary-600 leading-relaxed max-w-2xl">
-                        KodeMinggo adalah platform yang menyediakan informasi tentang AI dan teknologi terkini. Kami berkomitmen untuk membuat AI terbuka dan transparan untuk semua orang.
+                        NalarDeep adalah platform yang menyediakan informasi tentang AI dan teknologi terkini. Kami berkomitmen untuk membuat AI terbuka dan transparan untuk semua orang.
                     </p>
                 </div>
 
@@ -24,13 +24,13 @@ export default function About() {
                 <div className="grid grid-cols-1 md:grid-cols-12 gap-12">
                     <div className="md:col-span-8 space-y-8 text-lg text-gray-600 leading-relaxed">
                         <p>
-                            Kami percaya bahwa teknologi seharusnya mempermudah, bukan mempersulit. Itulah mengapa KodeMinggo hadir dengan dua misi utama yaitu, Mengedukasi dan Memberdayakan.
+                            Kami percaya bahwa teknologi seharusnya mempermudah, bukan mempersulit. Itulah mengapa NalarDeep hadir dengan dua misi utama yaitu, Mengedukasi dan Memberdayakan.
                         </p>
                         <p>
                             Sebagai blog teknologi, kami menyajikan analisis mendalam tentang Artificial Intelligence. Namun, kami tidak berhenti pada teori.
                         </p>
                         <p>
-                            KodeMinggo juga merupakan platform utilitas gratis. Kami menyediakan berbagai tools berbasis AI dan developer utilities yang dirancang untuk mempercepat workflow Anda tanpa biaya berlangganan, tanpa batasan tersembunyi.
+                            NalarDeep juga merupakan platform utilitas gratis. Kami menyediakan berbagai tools berbasis AI dan developer utilities yang dirancang untuk mempercepat workflow Anda tanpa biaya berlangganan, tanpa batasan tersembunyi.
                         </p>
 
                         <h2 className="text-3xl font-bold text-gray-900 mt-12 mb-4">Misi Kami</h2>

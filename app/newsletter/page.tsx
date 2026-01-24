@@ -4,10 +4,10 @@ import { Check, Mail } from "lucide-react";
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-    title: 'Newsletter | KodeMinggo',
+    title: 'Newsletter | NalarDeep',
     description: 'Subscribe to our weekly newsletter for the latest in AI and tech.',
     openGraph: {
-        title: 'Newsletter | KodeMinggo',
+        title: 'Newsletter | NalarDeep',
         description: 'Stay smarter than the algorithm. Get weekly AI insights.',
     },
     alternates: {
