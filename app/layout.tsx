@@ -15,7 +15,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://kodeminggo.com"),
+  metadataBase: new URL("https://nalardeep.com"),
   title: "KodeMinggo",
   description: "Wawasan Teknologi & AI untuk Developer Indonesia.",
   openGraph: {
