@@ -3,7 +3,7 @@ import { Metadata } from 'next';
 import { Mail, MapPin, Phone } from "lucide-react";
 
 export const metadata: Metadata = {
-    title: 'Contact Us | KodeMinggo',
+    title: 'Contact Us | NalarDeep',
     description: 'Get in touch with the team.',
 };
 
@@ -69,7 +69,7 @@ export default function Contact() {
                                     </div>
                                     <div>
                                         <div className="font-bold text-gray-900">Email</div>
-                                        <a href="mailto:hello@kodeminggo.com" className="text-gray-500 hover:text-primary-500 transition-colors">arsan05062003@gmail.com</a>
+                                        <a href="mailto:hello@nalardeep.com" className="text-gray-500 hover:text-primary-500 transition-colors">arsan05062003@gmail.com</a>
                                     </div>
                                 </div>
                                 <div className="flex items-start gap-4">

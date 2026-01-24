@@ -16,10 +16,10 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://nalardeep.com"),
-  title: "KodeMinggo",
+  title: "NalarDeep",
   description: "Wawasan Teknologi & AI untuk Developer Indonesia.",
   openGraph: {
-    siteName: "KodeMinggo",
+    siteName: "NalarDeep",
     type: "website",
     locale: "id_ID",
   },

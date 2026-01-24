@@ -13,7 +13,7 @@ const Footer = () => {
                         <Link href="/" className="inline-block mb-6">
                             <Image
                                 src="/logo.png"
-                                alt="KodeMinggo Logo"
+                                alt="NalarDeep Logo"
                                 width={240}
                                 height={64}
                                 className="h-16 w-auto object-contain"
@@ -21,7 +21,7 @@ const Footer = () => {
                             />
                         </Link>
                         <p className="text-gray-500 leading-relaxed">
-                            KodeMinggo adalah jembatan antara baris kode dan kecerdasan buatan. Kami menyajikan wawasan teknologi masa depan, tutorial praktis, dan eksperimen AI untuk developer modern Indonesia.
+                            NalarDeep adalah jembatan antara baris kode dan kecerdasan buatan. Kami menyajikan wawasan teknologi masa depan, tutorial praktis, dan eksperimen AI untuk developer modern Indonesia.
                         </p>
                     </div>
 
@@ -63,7 +63,7 @@ const Footer = () => {
 
                 {/* Bottom Bar */}
                 <div className="pt-8 border-t border-gray-100 flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-gray-400">
-                    <p>&copy; {new Date().getFullYear()} KodeMinggo. Hak Cipta Dilindungi.</p>
+                    <p>&copy; {new Date().getFullYear()} NalarDeep. Hak Cipta Dilindungi.</p>
                     <div className="flex items-center gap-8">
                         <Link href="/" className="hover:text-gray-600 transition-colors">Privacy</Link>
                         <Link href="/" className="hover:text-gray-600 transition-colors">Terms</Link>

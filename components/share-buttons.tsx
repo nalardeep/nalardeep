@@ -10,7 +10,7 @@ interface ShareButtonsProps {
 
 export default function ShareButtons({ title, slug }: ShareButtonsProps) {
     const [copied, setCopied] = useState(false);
-    const url = `https://kodeminggo.com/posts/${slug}`;
+    const url = `https://nalardeep.com/posts/${slug}`;
     const encodedUrl = encodeURIComponent(url);
     const encodedTitle = encodeURIComponent(title);
 
@@ -47,8 +47,8 @@ export default function ShareButtons({ title, slug }: ShareButtonsProps) {
             <button
                 onClick={handleCopy}
                 className={`p-2 rounded-full transition-all duration-300 ${copied
-                        ? "bg-green-100 text-green-600"
-                        : "bg-gray-100 text-gray-600 hover:bg-gray-200"
+                    ? "bg-green-100 text-green-600"
+                    : "bg-gray-100 text-gray-600 hover:bg-gray-200"
                     }`}
                 aria-label="Copy Link"
             >
