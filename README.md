@@ -31,6 +31,14 @@ A modern tech blog built with **Next.js 16**, **React 19**, and **Tailwind CSS 4
 
 
 
+## Branch
+
+We follow a structured workflow to ensure code quality and stability:
+
+-   **`main`**: The production-ready branch. Contains stable code deployed to the live site.
+-   **`feature`**: Used for developing new features. Create a new branch from `main` (e.g., `feature/new-hero`) and merge back via Pull Request.
+-   **`bug`**: Dedicated to fixing issues. specific fixes (e.g., `bug/fix-header-mobile`) are merged back into `main` after verification.
+
 ## Content Guide
 
 ### Creating a New Article
