@@ -4,7 +4,6 @@ import { getAllPosts } from "@/lib/api";
 
 import Hero from "@/components/hero";
 import LogoStrip from "@/components/logo-strip";
-import Newsletter from "@/components/newsletter";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 
@@ -43,7 +42,6 @@ export default function Home() {
         </Container>
       </div>
 
-      <Newsletter />
     </>
   );
 }
