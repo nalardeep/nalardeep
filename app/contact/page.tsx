@@ -52,9 +52,12 @@ export default function Contact() {
                                     placeholder="Tell us what's on your mind..."
                                 ></textarea>
                             </div>
-                            <button type="button" className="bg-primary-500 hover:bg-primary-600 text-white font-bold py-3 px-8 rounded-full transition-colors">
+                            <a
+                                href="mailto:arsan05062003@gmail.com"
+                                className="inline-block text-center bg-primary-500 hover:bg-primary-600 text-white font-bold py-3 px-8 rounded-full transition-colors"
+                            >
                                 Send Message
-                            </button>
+                            </a>
                         </form>
                     </div>
 

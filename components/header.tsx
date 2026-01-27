@@ -38,22 +38,12 @@ const Header = () => {
                             <li>
                                 <Link href="/about" className="hover:text-primary-500 transition-colors">Tentang</Link>
                             </li>
-                            <li>
-                                <Link href="/newsletter" className="hover:text-primary-500 transition-colors">Newsletter</Link>
-                            </li>
                         </ul>
                     </nav>
 
                     {/* CTA Button & Mobile Toggle */}
                     <div className="flex items-center gap-4">
-                        <button className="hidden md:block bg-primary-500 hover:bg-primary-600 text-white text-sm font-medium px-5 py-2.5 rounded-full transition-colors">
-                            Berlangganan
-                        </button>
 
-                        {/* Mobile Subscribe (Icon or Mini) - Optional, hiding text for cleaner mobile */}
-                        <button className="md:hidden bg-primary-500 hover:bg-primary-600 text-white text-xs font-medium px-4 py-2 rounded-full transition-colors">
-                            Berlangganan
-                        </button>
 
                         <button
                             className="md:hidden p-2 text-gray-600"
@@ -69,8 +59,6 @@ const Header = () => {
                 {isOpen && (
                     <div className="md:hidden absolute top-full left-0 w-full bg-white border-b border-gray-100 shadow-lg py-4 px-4 flex flex-col gap-4">
                         <Link href="/articles" className="text-gray-600 hover:text-primary-500 font-medium py-2 block" onClick={() => setIsOpen(false)}>Artikel</Link>
-                        <Link href="/templates" className="text-primary-600 hover:text-primary-500 font-bold py-2 block" onClick={() => setIsOpen(false)}>Templates</Link>
-                        <Link href="/newsletter" className="text-gray-600 hover:text-primary-500 font-medium py-2 block" onClick={() => setIsOpen(false)}>Newsletter</Link>
                         <Link href="/about" className="text-gray-600 hover:text-primary-500 font-medium py-2 block" onClick={() => setIsOpen(false)}>Tentang</Link>
                     </div>
                 )}
