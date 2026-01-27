@@ -77,3 +77,25 @@ We support optimized, responsive images inside articles.
     -   Always use the absolute path starting with `/assets/...`.
     -   Do not include `public` in the path string in your markdown or frontmatter.
     -   We recommend using **WebP** format for better performance.
+
+### Formatting Rules
+
+To maintain consistency across all articles, please follow these formatting guidelines:
+
+1.  **Bold Text**: Use double asterisks `**text**` for emphasis.
+    -   Right: `**Deep Learning** is a subset of AI.`
+    -   Wrong: `__Deep Learning__` or `<b>Deep Learning</b>`
+2.  **Lists**:
+    -   Use hyphens `-` for unordered lists.
+    -   Use numbers `1.` for ordered lists.
+3.  **Headings**:
+    -   Use `##` for H2 (Main sections).
+    -   Use `###` for H3 (Subsections).
+    -   Do NOT use H1 `#` inside the article body (the title is the H1).
+4.  **Tables**: Use standard Markdown table syntax.
+5.  **Code Blocks**: Always specify the language for syntax highlighting.
+    ```markdown
+    ```python
+    print("Hello World")
+    ```
+    ```
