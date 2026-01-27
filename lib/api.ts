@@ -64,3 +64,20 @@ export function getRelatedPosts(currentSlug: string, count: number = 3): Post[] 
         .slice(0, count);
     return related;
 }
+
+export function getPopularTags(limit: number = 3): string[] {
+    const allPosts = getAllPosts();
+    const tagCounts: Record<string, number> = {};
+
+    allPosts.forEach((post) => {
+        post.tags?.forEach((tag) => {
+            const normalizedTag = tag.toLowerCase().replace(/\s+/g, '-');
+            tagCounts[normalizedTag] = (tagCounts[normalizedTag] || 0) + 1;
+        });
+    });
+
+    return Object.entries(tagCounts)
+        .sort(([, countA], [, countB]) => countB - countA)
+        .slice(0, limit)
+        .map(([tag]) => tag);
+}

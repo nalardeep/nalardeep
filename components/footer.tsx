@@ -1,9 +1,12 @@
 import Link from 'next/link';
 import Image from 'next/image';
+import { getPopularTags } from '@/lib/api';
 import Container from './container';
 import { Twitter, Github } from 'lucide-react';
 
 const Footer = () => {
+    const popularTags = getPopularTags(3);
+
     return (
         <footer className="py-20 border-t border-gray-100 bg-white">
             <Container>
@@ -29,10 +32,14 @@ const Footer = () => {
                     <div>
                         <h4 className="font-bold text-gray-900 mb-6">Konten</h4>
                         <ul className="space-y-4 text-gray-500">
-                            <li><Link href="/" className="hover:text-primary-500 transition-colors">Artikel Terbaru</Link></li>
-                            <li><Link href="/" className="hover:text-primary-500 transition-colors">Tutorial</Link></li>
-                            <li><Link href="/" className="hover:text-primary-500 transition-colors">Wawancara</Link></li>
-                            <li><Link href="/" className="hover:text-primary-500 transition-colors">Studi Kasus</Link></li>
+                            <li><Link href="/articles" className="hover:text-primary-500 transition-colors">Artikel Terbaru</Link></li>
+                            {popularTags.map((tag) => (
+                                <li key={tag}>
+                                    <Link href={`/tags/${tag}`} className="hover:text-primary-500 transition-colors capitalize">
+                                        {tag.replace(/-/g, ' ')}
+                                    </Link>
+                                </li>
+                            ))}
                         </ul>
                     </div>
 

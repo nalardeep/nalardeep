@@ -8,7 +8,7 @@ export default function Articles() {
     const allPosts = getAllPosts();
 
     // Mock categories for the filter tabs
-    const categories = ["Latest", "Popular", "Tutorials", "Opinion", "Ethics"];
+    const categories = ["Latest"];
 
     return (
         <div className="bg-white min-h-screen pb-24">
