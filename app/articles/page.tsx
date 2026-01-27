@@ -30,8 +30,8 @@ export default function Articles() {
                             <button
                                 key={category}
                                 className={`pb-4 text-sm font-bold tracking-wide transition-colors relative ${index === 0
-                                        ? "text-gray-900"
-                                        : "text-gray-400 hover:text-gray-600"
+                                    ? "text-gray-900"
+                                    : "text-gray-400 hover:text-gray-600"
                                     }`}
                             >
                                 {category}
@@ -51,7 +51,7 @@ export default function Articles() {
                For now, we'll map the existing posts. 
                Since we only have a few, I'll duplicate them to fill the grid for the visual 
             */}
-                        {[...allPosts, ...allPosts, ...allPosts].slice(0, 6).map((post, index) => (
+                        {[...allPosts].slice(0, 9).map((post, index) => (
                             <PostPreview key={`${post.slug}-${index}`} post={post} />
                         ))}
                     </div>
