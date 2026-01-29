@@ -1,0 +1,91 @@
+---
+title: "Apa itu Model Context Protocol?"
+excerpt: "Apa itu Model Context Protocol?"
+coverImage: '/assets/blog/apa-itu-model-context-protocol/apa_itu_model_context_protocol.webp'
+date: "2026-01-29"
+author:
+  name: "Arsan"
+  picture: "https://ui-avatars.com/api/?name=Arsan+Akbar&background=0D8ABC&color=fff"
+tags: ["MCP"]
+---
+
+# Apa itu Model Context Protocol?
+
+Halo sobat Nalar, kalian pasti sering atau setiap hari menggunakan yang namanya chatgpt, gemini atau claude AI. Namun tentu saja penggunaan AI tools seperti chatgpt, gemini atau claude AI membutuhkan koneksi internet, langganan API atau terkadang kita juga dibatasi oleh kuota yang diberikan oleh penyedia layanan AI tersebut. Nah untuk itu hadirlah beberapa software yang memungkinkan kita untuk menjalankan LLM secara lokal di laptop kita sendiri. Berikut ini beberapa cara yang bisa sobat Nalar lakukan untuk menjalankan LLM secara lokal di laptop sobat Nalar sendiri dan tentu saja tanpa internet, tanpa batasan.
+
+
+## Kenapa Harus Menjalankan LLM Secara Lokal?
+Berikut ini beberapa manfaat yang bisa sobat Nalar dapatkan dengan menjalankan LLM secara lokal:
+
+### 1. **Privasi Terjamin**
+Data dan percakapan kamu tidak akan dikirim ke server pihak ketiga. Semua proses terjadi di laptop kamu sendiri.
+
+### 2. **Gratis dan Tanpa Batas**
+Tidak perlu berlangganan ChatGPT Plus atau layanan berbayar lainnya. Sekali setup, bisa digunakan selamanya tanpa biaya tambahan.
+
+### 3. **Bekerja Offline**
+Tidak perlu koneksi internet. Cocok untuk kamu yang sering bekerja di tempat dengan koneksi internet terbatas.
+
+### 4. **Kontrol Penuh**
+Kamu bisa memilih model yang sesuai dengan kebutuhan dan spesifikasi laptop kamu.
+
+## Persiapan yang Dibutuhkan
+
+Sebelum memulai, pastikan laptop kamu memenuhi spesifikasi minimal berikut:
+
+- **RAM**: Minimal 8GB (recommended 16GB)
+- **Storage**: Minimal 10GB ruang kosong
+- **Processor**: Intel Core i5 generasi ke-8 atau AMD Ryzen 5 (atau yang lebih baik)
+- **OS**: Windows 10/11, macOS, atau Linux
+
+## Tools yang Akan Digunakan
+
+Kita akan menggunakan beberapa tools open-source yang powerful:
+
+1. **LM Studio** - Platform untuk menjalankan LLM secara lokal
+2. **Model LLM yang ringan** - Seperti Llama 2 7B, Mistral 7B, atau Phi-2
+
+## Langkah 1: Install LM Studio
+
+1. Download installer LM Studio dari [lmstudio.ai](https://lmstudio.ai)
+2. Jalankan file installer yang sudah didownload
+3. Ikuti instruksi instalasi hingga selesai
+4. Jalankan LM Studio
+5. Tampilan Homepage LM Studio
+![Description of image](public/assets/blog/cara-menjalankan-llm-di-laptop-kentang/lmstudio_homepage.png "LM Studio Home page")
+
+## Langkah 2: Download Model LLM
+Setelah LM Studio terinstall, saatnya download model LLM. Pemilihan model LLM tergantung dari spesifikasi laptop yang dimiliki sobat Nalar, berikut rekomendasi model yang sesuai dengan spesifi laptop masing masing:
+
+
+### Rekomendasi Spesifikasi Laptop
+
+Berikut adalah panduan cepat untuk memilih model yang tepat berdasarkan kategori laptop kamu:
+
+*   **Low-End / Ultrabook** (RAM 8GB-16GB, Integrated Graphics): Fokus pada model 1B–3B parameter.
+*   **Mid-Range** (RAM 16GB, VRAM 6GB-8GB, cth: RTX 3060/4060): Ideal untuk model 7B–8B.
+*   **High-End** (RAM 32GB+, VRAM 12GB-16GB+, cth: RTX 4080/4090): Mampu menjalankan model 13B–30B+.
+*   **Apple Silicon** (Chip M1/M2/M3/M4 dengan 16GB+ Unified Memory): Sangat efisien untuk model 7B–14B (menggunakan Metal).
+
+Untuk mendownload model, sobat Nalar bisa langsung klik tombol Discover. Selanjutnya lakukan pencarian model yang sesuai dengan spesifikasi laptop sobat Nalar. Disini mimin Nalar menggunakan model llama-3.2-1b-instruct. Karena kebetulan laptop mimin Nalar juga tergolong tidak punya Dedicated GPU, jadi pakainya yang model ringan hiks hiks. Klik tombol download untuk mengunduh model sesuai dengan kebutuhan sobat nalar yah.
+![Description of image](public/assets/blog/cara-menjalankan-llm-di-laptop-kentang/download_model.png "Download Model")
+
+## Langkah 3: Menjalankan Model
+Setelah model selesai didownload, sobat Nalar bisa menjalankannya dengan cara masuk di menu chat. Lalu pilih 'Select a model to load' dan pilih model yang sudah sobat Nalar download sebelumnya.
+![Description of image](public/assets/blog/cara-menjalankan-llm-di-laptop-kentang/select_model.png "Select Model")
+Tunggu beberapa saat hingga model loading, kemudian sobat Nalar bisa langsung menggunakannya untuk percapakan.
+![Description of image](public/assets/blog/cara-menjalankan-llm-di-laptop-kentang/chat.png "Chat")
+
+## Kesimpulan
+Menjalankan LLM di lokal menggunakan LM Studio memungkinkan dengan beberapa syarat juga yah Sobat Nalar, diantaranya adalah spesifikasi laptop yang memadai dan tidak terlalu rendah. Terdapat juga beberapa benefit ketika sobat Nalar menggunakan LLM di lokal, diantaranya adalah:
+
+✅ Menghemat biaya langganan AI  
+✅ Menjaga privasi data  
+✅ Bekerja offline kapan saja  
+✅ Belajar dan bereksperimen dengan AI  
+
+---
+
+Selamat mencoba! Jika ada pertanyaan atau kendala, jangan ragu untuk bertanya di kolom komentar. Happy experimenting! 🚀
+
+**Tags**: #AI #LLM #Tutorial #Offline #LocalAI #Ollama #MachineLearning #TechTips
