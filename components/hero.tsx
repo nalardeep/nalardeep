@@ -111,10 +111,9 @@ const Hero = () => {
                         </h1>
 
                         <p className="text-lg text-gray-500 max-w-2xl mx-auto leading-relaxed">
-                            Discover high-quality resources to accelerate your development. Master LLMs and Generative AI with our step-by-step guides.
+                            Berita terbaru tentang ekosistem AI. Mulai dari implementasi MCP, otomatisasi n8n, hingga pengembangan chatbot cerdas.
                         </p>
                     </div>
-
                 </div>
             </Container>
         </section>
