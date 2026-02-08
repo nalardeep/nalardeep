@@ -29,14 +29,50 @@ Model AI lokal adalah model AI yang dijalankan secara lokal di komputer pengguna
 ### Diagram Arsitektur Sistem
 ![arsitektur sistem](/assets/blog/cara-membuat-chatbot-telegram-dengan-n8n-dan-model-lokal-LM-Studio-(tanpa-coding)/diagram-arsitektur-sistem-chatbot.webp "Arsitektur sistem")
 ### Alur Kerja Chatbot Telegram 
+Untuk alur kerja dari chatbot tersebut terdiri dari beberapa tahapan, yaitu:
+1. Menerima pesan dari Telegram
+2. Mengirim pesan ke n8n
+3. Mengirim pesan ke LM Studio
+4. Menerima respon dari LM Studio
+5. Mengirim respon ke Telegram
 
 ## Persiapan Tools dan Kebutuhan Sistem
 Berikut ini beberapa tools dan kebutuhan sistem yang dibutuhkan untuk membuat chatbot Telegram dengan n8n dan LM Studio:
 ### Kebutuhan Perangkat Keras/Hardware (CPU, GPU dan RAM)
+Untuk menjalankan n8n di local maupun di server. Terdapat beberapa panduan yang sobat nalar bisa ikuti. Panduan ini mimin dapatkan dari komunitas resmi n8n.
 
-### Software yang Dibutuhkan
+### Level 1 - Low traffic
+Sangat ideal untuk workflow low dengan spesifikasi seperti berikut.
+1. CPU: 2vCPUs
+2. Memory: 4-8 GB RAM
+3. Storage: 20-40 GB SSD
 
-### Instalasi n8n
+### Level 2 - Moderate traffic
+Sangat ideal untuk skala kecil ke menengah, untuk beberapa workflow yang dijalankan sekaligus.
+1. CPU: 4vCPUs
+2. Memory: 8-16 GB RAM
+3. Storage: 40-80 GB SSD
+
+### Level 3 - High traffic/Production
+Sangat ideal untuk skala besar, dengan beberapa workflow yang dijalankan sekaligus. Spesifikasi ini sangat cocok untuk production dengan performa, kinerja dan kemampuan yang sangat baik.
+1. CPU: 8+vCPUs
+2. Memory: 16-32 GB RAM
+3. Storage: 80-160 GB SSD
+
+sumber: [n8n community](https://community.n8n.io/t/is-my-pc-good-enough-for-running-n8n/82424/5)
+
+### Komponen yang Dibutuhkan
+Berikut ini beberapa software dan tools yang perlu sobat nalar siapkan yah,
+1. Telegram
+2. n8n
+3. LM Studio
+4. Ngrok
+5. Docker
+### Instalasi n8n di docker
+Untuk instalassi n8n di docker, sobat nalar bisa mengikuti panduan dari website resmi n8n di sini [instalasi n8n di docker](https://docs.n8n.io/hosting/installation/docker/) atau sobat nalar bisa mengikuti tutorial dari mimin yang super easy dan mudah dipahami nih.
+1. Install docker desktop terlebih dahulu
+
+2. tes
 ### Instalasi LM Studio
 
 ## Cara Membuat Bot Telegram 
