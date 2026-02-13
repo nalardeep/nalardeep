@@ -75,8 +75,21 @@ Untuk instalassi n8n di docker, sobat nalar bisa mengikuti panduan dari website 
 ![docker volumes](/assets/blog/cara-membuat-chatbot-telegram-dengan-n8n-dan-model-lokal-LM-Studio-(tanpa-coding)/docker-volume-display.webp "docker volumes")
 3. Selanjutnya masuk di menu images, lalu pilih **Search images to run**. Lalu cari **n8n** dan klik **pull**
 ![docker images](/assets/blog/cara-membuat-chatbot-telegram-dengan-n8n-dan-model-lokal-LM-Studio-(tanpa-coding)/docker-image-n8n.webp "docker images n8n")
-4. Setelah images n8n berhasil di download, klik run untuk menjalankannya.
+4. Setelah images n8n berhasil di download, klik run untuk menjalankannya. Selanjut sobat nalar akan mengisi aturan untuk containernya. Silahkan ikuti cara dibawah ini.
+![container settings](/assets/blog/cara-membuat-chatbot-telegram-dengan-n8n-dan-model-lokal-LM-Studio-(tanpa-coding)/container-settings.webp "container settings")
+- Untuk container name isikan nama untuk containernya, misalnya n8n_1
+- Untuk bagian port bisa mengisi angka 0 untuk random, atau angka empat digit seperti 9999
+- Untuk bagian volumes, tepatnya pada Host path dan container path. Silahkan isi n8n_data (sesuai dengan volumes tadi) dan /home/node/.n8n untuk path atau lokasi dari containernya.
+- Klik run.
+5. Selanjutnya masuk dibagian containers, lalu klik run containers yang telah dibuat tadi.
+6. Masukkan atau klik link (ctrl + klik) di bagian port untuk membuka n8n di browser.
+7. Berikut tampilan n8n ketika dijalankan di browser. Sobat nalar sisa melakukan login atau membuat akun di n8n.
+![n8n docker](/assets/blog/cara-membuat-chatbot-telegram-dengan-n8n-dan-model-lokal-LM-Studio-(tanpa-coding)/n8n-docker.webp "n8n docker")
+
 ### Instalasi LM Studio
+Setelah menginstall n8n di docker, sobat nalar juga memerlukan LM Studio agar bisa menggunakan model LLM lokal untuk chatbot n8n. Untuk instalasi LM Studio dan cara download LLM di lokal sudah mimin sediakan yah artikelnya di link bawah ini.
+[instalasi LM Studio dan download model LLM lokal](https://www.nalardeep.com/posts/cara-menjalankan-llm-di-laptop-kentang)
+
 
 ## Cara Membuat Bot Telegram 
 ### Membuat Bot Token di BotFather
