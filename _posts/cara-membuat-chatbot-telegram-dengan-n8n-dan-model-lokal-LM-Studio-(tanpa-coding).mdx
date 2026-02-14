@@ -68,6 +68,7 @@ Berikut ini beberapa software dan tools yang perlu sobat nalar siapkan yah,
 3. LM Studio
 4. Ngrok
 5. Docker
+
 ### Instalasi n8n di docker
 Untuk instalassi n8n di docker, sobat nalar bisa mengikuti panduan dari website resmi n8n di sini [instalasi n8n di docker](https://docs.n8n.io/hosting/installation/docker/) atau sobat nalar bisa mengikuti tutorial dari mimin yang super easy dan mudah dipahami nih.
 1. Install docker desktop terlebih dahulu.
@@ -90,9 +91,23 @@ Untuk instalassi n8n di docker, sobat nalar bisa mengikuti panduan dari website 
 Setelah menginstall n8n di docker, sobat nalar juga memerlukan LM Studio agar bisa menggunakan model LLM lokal untuk chatbot n8n. Untuk instalasi LM Studio dan cara download LLM di lokal sudah mimin sediakan yah artikelnya di link bawah ini.
 [instalasi LM Studio dan download model LLM lokal](https://www.nalardeep.com/posts/cara-menjalankan-llm-di-laptop-kentang)
 
-
 ## Cara Membuat Bot Telegram 
+Setelah menginstall n8n dan LM Studio serta model di lokal, sobat nalar juga harus membuat bot telegram. Bot telegram ini bisa di dapatkan secara gratis melalui telegram. Berikut cara-caranya.
+
 ### Membuat Bot Token di BotFather
+Untuk membuat bot telegram, sobat nalar bisa mencari BotFather di telegram. Kemudian ketikkan perintah /start, /newbot dan masukkan juga nama serta username bot. Maka ketika bot telegram berhasil dibuat, akan API Token seperti dibawah ini.
+
+```
+Done! Congratulations on your new bot. You will find it at t.me/s_cetring_dg_saga_bot. You can now add a description, about section and profile picture for your bot, see /help for a list of commands. By the way, when you've finished creating your cool bot, ping our Bot Support if you want a better username for it. Just make sure the bot is fully operational before you do this.
+
+Use this token to access the HTTP API:
+YOUR API KEY
+Keep your token secure and store it safely, it can be used by anyone to control your bot.
+
+For a description of the Bot API, see this page: https://core.telegram.org/bots/api
+```
+Jangan lupa untuk menyimpan API Key tersebut, API nantinya akan dipakai untuk menghubungkan telegram bot dengan n8n.
+
 ### Konfigurasi Webhook Telegram
 ### Pengujian Bot Telegram
 
