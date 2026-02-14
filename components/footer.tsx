@@ -24,7 +24,7 @@ const Footer = () => {
                             />
                         </Link>
                         <p className="text-gray-500 leading-relaxed">
-                            NalarDeep adalah jembatan antara baris kode dan kecerdasan buatan. Kami menyajikan wawasan teknologi masa depan, tutorial praktis, dan eksperimen AI untuk developer modern Indonesia.
+                            NalarDeep adalah platform hasil dokumentasi eksperimen AI dan belajar AI (MCP, otomatisasi n8n, pengembangan chatbot, RAG, LLM dan banyak lagi). Kami menyajikan tutorial bedasarkan eksperimen dan evaluasi yang telah dilakukan. 
                         </p>
                     </div>
 
