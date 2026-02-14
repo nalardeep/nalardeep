@@ -13,7 +13,7 @@ Previously, you needed to create an API route (`pages/api/...`) and `fetch` it f
 ## The New Way
 With Server Actions, you define a function with `"use server"` and call it directly.
 
-```tsx
+```tsx 
 async function createPost(formData: FormData) {
   'use server'
   await db.post.create({ data: ... })
