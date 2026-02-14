@@ -13,20 +13,20 @@ const Hero = () => {
     // Feature Highlights for Carousel
     const highlights = [
         {
-            type: "article",
-            title: "Deep-Dive AI Tutorials",
-            desc: "Master LLMs and Generative AI with our step-by-step guides.",
+            type: "Artikel",
+            title: "Tutorial AI",
+            desc: "Tutorial LLMs, chatbot, N8N, LM Studio, MCP dan masih banyak lagi",
             icon: <BookOpen className="w-6 h-6 text-blue-500" />,
-            action: "Read Articles",
+            action: "Baca Artikel",
             href: "/articles",
             bg: "bg-blue-50 border-blue-100",
             text: "text-blue-700",
             image: "/assets/blog/cara-menjalankan-llm-di-laptop-kentang/cara-menjalankan-llm-di-laptop-kentang.webp"
         },
         {
-            type: "future",
-            title: "Tools & Courses (Coming Soon)",
-            desc: "Interactive AI tools and comprehensive courses are on the way.",
+            type: "Tools",
+            title: "Tahap Pengembangan",
+            desc: "Tahap Pengambangan.",
             icon: <Rocket className="w-6 h-6 text-purple-500" />,
             action: "Stay Tuned",
             href: "#",
@@ -104,10 +104,10 @@ const Hero = () => {
                     <div className="text-center">
                         <div className="inline-flex items-center gap-2 bg-white border border-gray-200 px-3 py-1 rounded-full text-xs font-bold text-gray-600 mb-6 shadow-sm">
                             <Sparkles className="w-3.5 h-3.5 fill-yellow-400 text-yellow-500" />
-                            <span className="font-semibold">Your Hub for AI Excellence</span>
+                            <span className="font-semibold">Semoga bermanfaat</span>
                         </div>
                         <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-gray-900 tracking-tight mb-6">
-                            Explore <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-600 to-sky-500">Deep-Dive</span> AI Articles
+                            Eksplorasi, <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-600 to-sky-500">Eksperimen</span> dan Evaluasi
                         </h1>
 
                         <p className="text-lg text-gray-500 max-w-2xl mx-auto leading-relaxed">
