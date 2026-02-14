@@ -108,27 +108,71 @@ For a description of the Bot API, see this page: https://core.telegram.org/bots/
 ```
 Jangan lupa untuk menyimpan API Key tersebut, API nantinya akan dipakai untuk menghubungkan telegram bot dengan n8n.
 
-### Konfigurasi Webhook Telegram
 ### Pengujian Bot Telegram
-
-## Konfigurasi LM Studio sebagai Local AI API 
-### Menjalankan Model LLM di LM Studio
-### Mengaktifkan Local Server (API Mode)
-### Contoh Endpoint API LM Studio
+Lakukan pengecekan apakah bot telegram sudah muncul atau belum dengan memasukkan username bot yang telah dibuat tadi. Jika sudah muncul, maka bot telegram sudah bisa digunakan.
+![bot telegram](/assets/blog/cara-membuat-chatbot-telegram-dengan-n8n-dan-model-lokal-LM-Studio-(tanpa-coding)/bot-telegram.webp "bot telegram")
 
 ## Workflow n8n untuk Chatbot Telegram
+Berikut ini workflow atau tahapan dari chatbot telegram menggunakan n8n. Secara garis besar alurnya dimulai dari bot telegram yang akan menangkap pesan jika ada pesan yang masuk di bot telegram. Setelah pesan ditangkap, maka pesan tersebut akan dikirimkan atau diteruskan ke LLM. Disini kita menggunakan LM Studio sebagai model Lokal untuk menghasilkan balasan chat untuk chatbot telegram tersebut. Setelah pesan diteruskan ke LLM kemudian menghasilkan balasan, maka pesan tersebut kemudian akan di teruskan kembali ke bot telegram. Kira kira secara garis besar alurnya seperti itu.
 ![workflow n8n](/assets/blog/cara-membuat-chatbot-telegram-dengan-n8n-dan-model-lokal-LM-Studio-(tanpa-coding)/workflow-n8n.webp "Workflow n8n")
-### Membuat Workflow Baru di n8n
-### Node Telegram Trigger
-### Node HTTP Request ke LM Studio
-### Node Response ke Telegram
-### Contoh JSON Prompt ke Model AI
 
-## Pengujian dan Evaluasi Sistem
-### Pengujian Fungsional Chatbot
-### Uji Respons Waktu (Latency)
-### Uji Kualitas Jawaban AI
-### Perbandingan dengan Chatbot Berbasis API Cloud
+### Membuat Workflow Baru di n8n
+Silahkan jalankan n8n di docker menggunakan cara diatas, setelah login atau membuat akun maka sobat nalar bisa membuat workflow baru.
+
+### Node Telegram Trigger
+Untuk langkah awal, masuk ke tab nodes di sebelah kanan. Selanjutnya cari node telegram, kemudian ketikkan on message.
+![node telegram](/assets/blog/cara-membuat-chatbot-telegram-dengan-n8n-dan-model-lokal-LM-Studio-(tanpa-coding)/node-telegram-on-message.webp "node telegram")
+Tugas node ini adalah untuk menangkap pesan dari bot telegram yang nantinya akan diteruskan ke model LLM.
+
+### Masukkan API Key bot telegram di n8n
+Langkah selanjutnya adalah memasukkan API Key dari bot telegram ke n8n. Klik dua kali pada node telegram trigger diatas, kemudian dibagian webhook URLs klik logo pena. Silahkan masukkan API Key di kolom Access Token dan klik save.
+![access token](/assets/blog/cara-membuat-chatbot-telegram-dengan-n8n-dan-model-lokal-LM-Studio-(tanpa-coding)/access-token.webp "acccess token")
+
+### Webhook menggunakan Ngrok
+Untuk menghubungkan telegram dengan n8n lokal, maka kita membutuhkan langkah tambahan yaitu menggunakan ngrok sebagai webhook agar pesan dapat di teruskan dari telegram ke LLM lokal. Silahkan login atau membuat akun ngrok di web browser. Setelah membuat akun, terdapat beberapa langkah tambahan untuk menghubungkan telegram dengan n8n.
+1. Koneksikan akun ngrok untuk mendapatkan endpoint online. Install ngrok menggunakan Microsoft Store Installer. Jalankan ngrok, kemudian masukkan authtoken ke dalam program ngrok untuk menghubungkan akun ngrok.
+![koneksi ngrok](/assets/blog/cara-membuat-chatbot-telegram-dengan-n8n-dan-model-lokal-LM-Studio-(tanpa-coding)/koneksi-ngrok.webp "koneksi ngrok")
+2. Langkah selanjutnya adalah memasukkan port n8n didalam program ngrok. Masukkan perintah **ngrok.exe http 9999**. Angka 9999 merupakan port yang digunakan ketika membuat container n8n di docker tadi. Maka akan muncul pesan-pesan seperti ini.
+![link webhook](/assets/blog/cara-membuat-chatbot-telegram-dengan-n8n-dan-model-lokal-LM-Studio-(tanpa-coding)/link-webhook.webp "link webhook")
+3. Close n8n yang berjalan tadi kemudian masukkan link forwarding diatas pada browser. Login ulang pada n8n dan lakukan pemeriksaan apakah telegram sudah terhubung dengan n8n. Masuk kembali ke telegram on message trigger tadi kemudian klik Execute step. Kirim pesan ke Telegem bot yang telah dibuat, jika informasi mengenai akun sudah muncul di node telegram maka bot telegram berhasil terhubung dengan n8n.
+![n8n telegram webhook](/assets/blog/cara-membuat-chatbot-telegram-dengan-n8n-dan-model-lokal-LM-Studio-(tanpa-coding)/n8n-telegram.webp "n8n telegram webhook")
+4. Selanjutnya tambahkan node AI Agent, hubungkan node telegram trigger dengan AI Agent.
+![AI Agent](/assets/blog/cara-membuat-chatbot-telegram-dengan-n8n-dan-model-lokal-LM-Studio-(tanpa-coding)/ai-agent.webp "AI Agent")
+Masuk ke node AI Agent, kemudian dibagian Source for Prompt (User Message) ubah ke Define below. Kemudian pada Prompt (User Message) ubah ke mode Expression, kemudian isi seperti ini:
+```
+Respond to this as a helpful assistant with emojis:  {{ $json.message.text }}
+```
+5. Tambahkan node Open AI Chat model dibagian node Model. Masuk ke node tersebut lalu Matikan opsi untuk Use Responses API. Dibagian Credential to connect with, klik dropdown lalu pilih create new credential.
+![AI Chat Model](/assets/blog/cara-membuat-chatbot-telegram-dengan-n8n-dan-model-lokal-LM-Studio-(tanpa-coding)/ai-chat-model.webp "AI Chat Model")
+Isi bagian API Key menggunakan link yang dihasilkan oleh ngrok tadi. Untuk bagian Base URL isi dengan **http://host.docker.internal:9999/v1**. Untuk angka **9999** samakan dengan port yang digunakan pada model LLM di LM Studio. Jangan lupa menjalankan model terlebih dahulu di LM Studio.
+![LM Studio](/assets/blog/cara-membuat-chatbot-telegram-dengan-n8n-dan-model-lokal-LM-Studio-(tanpa-coding)/lm-studio.webp "LM Studio")
+Kemudian pada node Open AI Chat Model dibagian Model, jangan lupa untuk memilih model yang sesuai atau model yang sama di LM Studio
+6. Tambahkan node Simple Memory di bagian node Memory. Simple Memory ini digunakan untuk merekan percakapan sebelumnya. Misalnya Context Window Length yang digunakan adalah 5 maka model akan merekam 5 pasang data percakapan untuk digunakan sebagai context tambahan di model LLM. Masuk ke node tersebut lalu dibagian Session ID ubah ke Define below. Dibagian Key, tambahkan perintah:
+```
+chat_history
+```
+
+7. Tambahkan node Simple Vectore Store dibagian node Tool. Node ini berfungsi sebagai tempat penyimpanan data context LLM. Jadi nantinya chatbot telegram akan menjawab pertanyaan pengguna berdasarkan data yang tersimpan di node ini. Masuk ke Node tersebut lalu isi dibagian description berupa data data yang akan digunakan untuk menjawab pertanyaan user.
+![Simple Vectore Store](/assets/blog/cara-membuat-chatbot-telegram-dengan-n8n-dan-model-lokal-LM-Studio-(tanpa-coding)/simple-vector-store.webp "Simple Vectore Store")
+8. Kemudian di bagian node embedding tambahkan node Embeddings Google Gemini. Node ini berfungsi mengubah data data pada simple vector store kedalam bentuk matrix numeric menggunakan layanan embedding google gemini. Masuk ke node tersebut lalu dibagian Credential to connect with, klik icon pena. Masukkan API Key yang didapatkan dari google AI Studio.
+9. Langkah terakhir yaitu menambahkan node telegram send message untuk mengirimkan pesan ke bot telegram.
+![Node Telegram Send Message](/assets/blog/cara-membuat-chatbot-telegram-dengan-n8n-dan-model-lokal-LM-Studio-(tanpa-coding)/send-message.webp "Node Telegram Send Message")
+- Dibagian Chat ID isi 
+```
+{{ $('Telegram Trigger').item.json.message.chat.id }}
+```
+- Dibagian Text isi
+```
+{{ $json.output }}
+``` 
+10. Coba jalankan workflow n8n dengan perintah Execute Workflow
+11. Kirim pesan di bot telegram
+![Bot Telegram berhasil](/assets/blog/cara-membuat-chatbot-telegram-dengan-n8n-dan-model-lokal-LM-Studio-(tanpa-coding)/bot-telegram-success.webp "Bot telegram")
+Jika muncul balasan pesan seperti diatas maka bot telegram sudah berhasil terhubung dengan n8n.
+12. Untuk memperbaiki balasan chatbot maka perlu dilakukan Konfigurasi tambahan. Masuk ke node telegram send message kemudian dibagian Additional Fields tambahkan Add Field lalu pilih Append n8n Attribution kemudian matikan togglenya.
+![Node telegram](/assets/blog/cara-membuat-chatbot-telegram-dengan-n8n-dan-model-lokal-LM-Studio-(tanpa-coding)/node-telegram-send-message-toggle.webp "Node telegram")
+Berikut contoh chatbot yang mimin buat nih.
+![Telegram chatbot](/assets/blog/cara-membuat-chatbot-telegram-dengan-n8n-dan-model-lokal-LM-Studio-(tanpa-coding)/telegram-chat.webp "Telegram chatbot")
 
 ## Keunggulan dan Keterbatasan sistem
 Berikut ini keunggulan dan keterbatasan dari sistem chatbot Telegram dengan n8n dan LM Studio:
@@ -152,15 +196,10 @@ Chatbot customer service dapat digunakan untuk membantu pelanggan dalam mengakse
 Chatbot asisten pribadi offline dapat digunakan untuk membantu pengguna dalam mengakses informasi pribadi, seperti jadwal, kontak, dan informasi lainnya. Chatbot ini juga dapat digunakan untuk membantu pengguna dalam menjawab pertanyaan pribadi.
 
 ## Kesimpulan 
-### Ringkasan Hasil Implementasi
-### Rekomendasi Pengembangan Selanjutnya
-
-## FAQ
-### Apakah n8n gratis?
-### Apakah LM Studio bisa tanpa GPU?
-### Model LLM terbaik untuk chatbot lokal?
-### Apakah chatbot bisa dijalankan di server lokal kampus atau kantor?
-
+Chatbot telegram menggunakan n8n ini menawarkan banyak fitur menggiurkan namun sobat nalar juga perlu memperhatikan beberapa hal.
+1. Respon chatbot sangat bergantung dengan data context yang dimasukkan dan model LLM yang digunakan.
+2. Model LLM yang dipilih perlu penyesuaian dengan spek laptop atau komputer. Model LLM semakin powerfull maka membutuhkan RAM dan GPU yang lebih baik juga. 
+3. Agar chatbot tersebut dapat berjalan terus maka n8n perlu di deploy di server. Tutorial diatas hanya bentuk implementasi n8n di lokal menggunakan docker. Jika ingin chatbot dapat berjalan 24 jam maka perlu dilakukan deploy di server. 
 ---
 
 Jika ada pertanyaan atau kendala, jangan ragu untuk menghubungi kami yah. Happy experimenting! 🚀
