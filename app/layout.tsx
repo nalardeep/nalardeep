@@ -17,7 +17,7 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL("https://nalardeep.com"),
   title: "NalarDeep",
-  description: "Wawasan Teknologi & AI untuk Developer Indonesia.",
+  description: "Berita terbaru tentang ekosistem AI. Mulai dari implementasi MCP, otomatisasi n8n, hingga pengembangan chatbot cerdas untuk mengakselerasi proyek Anda.",
   openGraph: {
     siteName: "NalarDeep",
     type: "website",
@@ -30,6 +30,18 @@ export const metadata: Metadata = {
   alternates: {
     canonical: './',
   },
+};
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "NalarDeep",
+  "url": "https://nalardeep.com",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": "https://nalardeep.com/search?q={search_term_string}",
+    "query-input": "required name=search_term_string"
+  }
 };
 
 export default function RootLayout({
@@ -47,6 +59,10 @@ export default function RootLayout({
           {children}
         </main>
         <Footer />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
       </body>
     </html>
   );
