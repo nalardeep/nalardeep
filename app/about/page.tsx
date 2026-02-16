@@ -16,7 +16,7 @@ export default function About() {
                         About NalarDeep
                     </h1>
                     <p className="text-xl text-primary-600 leading-relaxed max-w-2xl">
-                        NalarDeep adalah platform yang menyediakan informasi tentang AI dan teknologi terkini. Kami berkomitmen untuk membuat AI terbuka dan transparan untuk semua orang.
+                        NalarDeep adalah platform dokumentasi tutorial-tutorial AI dan teknologi terkini. Artikel yang dipaparkan telah melalui proses eksperimen, pengujian dan evaluasi untuk memastikan artikel yang berkualitas dan tetap relevan.
                     </p>
                 </div>
 
@@ -35,9 +35,9 @@ export default function About() {
 
                         <h2 className="text-3xl font-bold text-gray-900 mt-12 mb-4">Misi Kami</h2>
                         <ul className="space-y-4 list-disc pl-5 marker:text-primary-500">
-                            <li><strong>Demokratisasi Pengetahuan:</strong> Edukasi teknologi gratis dan berkualitas tinggi untuk semua orang.</li>
-                            <li><strong>Fokus Praktis:</strong> Mengutamakan penerapan dunia nyata di atas teori abstrak.</li>
-                            <li><strong>Utamakan Komunitas:</strong> Belajar menjadi lebih baik saat kita melakukannya bersama-sama.</li>
+                            <li><strong>Eksplorasi:</strong> Melakukan eksplorasi mendalam untuk menemukan pengetahuan baru.</li>
+                            <li><strong>Eksperimen:</strong> Bereksperimen untuk menemukan solusi terbaik.</li>
+                            <li><strong>Evaluasi:</strong>Mengevaluasi kembali solusi agar tetap relevan dan menjawab permasalahan yang ada.</li>
                         </ul>
                     </div>
 
