@@ -24,13 +24,13 @@ export default function About() {
                 <div className="grid grid-cols-1 md:grid-cols-12 gap-12">
                     <div className="md:col-span-8 space-y-8 text-lg text-gray-600 leading-relaxed">
                         <p>
-                            Kami percaya bahwa teknologi seharusnya mempermudah, bukan mempersulit. Itulah mengapa NalarDeep hadir dengan dua misi utama yaitu, Mengedukasi dan Memberdayakan.
+                            NalarDeep merupakan website dokumentasi tutorial yang dibangun pada tahun 2025. 
                         </p>
                         <p>
-                            Sebagai blog teknologi, kami menyajikan analisis mendalam tentang Artificial Intelligence. Namun, kami tidak berhenti pada teori.
+                            Kami berkomitmen untuk menyediakan konten berkualitas tinggi yang didasarkan pada eksperimen dan evaluasi yang mendalam. Setiap artikel yang kami publikasikan telah melalui proses yang ketat untuk memastikan bahwa informasi yang kami sampaikan akurat, relevan, dan bermanfaat bagi pembaca.
                         </p>
                         <p>
-                            NalarDeep juga merupakan platform utilitas gratis. Kami menyediakan berbagai tools berbasis AI dan developer utilities yang dirancang untuk mempercepat workflow Anda tanpa biaya berlangganan, tanpa batasan tersembunyi.
+                            Dengan pendekatan yang berfokus pada eksplorasi, eksperimen, dan evaluasi, kami bertujuan untuk memberikan panduan yang tidak hanya informatif tetapi juga praktis. Kami percaya bahwa dengan terus mengevaluasi dan memperbarui konten kami, kami dapat memastikan bahwa pembaca selalu mendapatkan informasi terbaru dan terbaik untuk membantu mereka dalam perjalanan belajar mereka.
                         </p>
 
                         <h2 className="text-3xl font-bold text-gray-900 mt-12 mb-4">Misi Kami</h2>
