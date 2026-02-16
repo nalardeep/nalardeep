@@ -14,10 +14,10 @@ export default function Contact() {
                 {/* Header */}
                 <div className="py-16 md:py-24 max-w-4xl">
                     <h1 className="text-5xl md:text-6xl font-bold text-gray-900 tracking-tight mb-6">
-                        Get in Touch
+                        Hubungi Kami
                     </h1>
                     <p className="text-xl text-primary-600 leading-relaxed max-w-2xl">
-                        Have a question, suggestion, or just want to say hi? We'd love to hear from you.
+                        Jika Anda memiliki pertanyaan atau saran, maka jangan ragu untuk menghubungi kami. 
                     </p>
                 </div>
 
@@ -31,7 +31,7 @@ export default function Contact() {
                                     type="text"
                                     id="name"
                                     className="w-full px-4 py-3 rounded-lg bg-gray-50 border border-gray-200 focus:border-primary-500 focus:ring-2 focus:ring-primary-500/20 outline-none transition-all"
-                                    placeholder="John Doe"
+                                    placeholder="Your Name"
                                 />
                             </div>
                             <div>
@@ -40,7 +40,7 @@ export default function Contact() {
                                     type="email"
                                     id="email"
                                     className="w-full px-4 py-3 rounded-lg bg-gray-50 border border-gray-200 focus:border-primary-500 focus:ring-2 focus:ring-primary-500/20 outline-none transition-all"
-                                    placeholder="john@example.com"
+                                    placeholder="Your Email"
                                 />
                             </div>
                             <div>
@@ -56,7 +56,7 @@ export default function Contact() {
                                 href="mailto:arsan05062003@gmail.com"
                                 className="inline-block text-center bg-primary-500 hover:bg-primary-600 text-white font-bold py-3 px-8 rounded-full transition-colors"
                             >
-                                Send Message
+                                Kirim Pesan
                             </a>
                         </form>
                     </div>
@@ -64,7 +64,7 @@ export default function Contact() {
                     {/* Contact Info */}
                     <div className="space-y-12">
                         <div>
-                            <h3 className="text-2xl font-bold text-gray-900 mb-6">Contact Information</h3>
+                            <h3 className="text-2xl font-bold text-gray-900 mb-6">Informasi Kontak</h3>
                             <div className="space-y-6">
                                 <div className="flex items-start gap-4">
                                     <div className="w-10 h-10 bg-primary-50 rounded-full flex items-center justify-center text-primary-500 shrink-0">
@@ -97,9 +97,9 @@ export default function Contact() {
                         </div>
 
                         <div className="bg-gray-900 text-white p-8 rounded-2xl">
-                            <h3 className="font-bold text-xl mb-4">Join our team?</h3>
-                            <p className="text-gray-400 mb-6">Cooming Soon.</p>
-                            <a href="#" className="text-white border-b border-primary-500 pb-1 hover:text-primary-500 transition-colors">View Openings &rarr;</a>
+                            <h3 className="font-bold text-xl mb-4">Bergabung dengan kami?</h3>
+                            <p className="text-gray-400 mb-6">Segera hadir.</p>
+                            <a href="#" className="text-white border-b border-primary-500 pb-1 hover:text-primary-500 transition-colors">Lihat Pekerjaan &rarr;</a>
                         </div>
                     </div>
                 </div>
