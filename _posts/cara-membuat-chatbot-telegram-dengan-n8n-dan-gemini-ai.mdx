@@ -1,0 +1,105 @@
+---
+title: "Tutorial Lengkap Membuat Chatbot Telegram dengan n8n dan Gemini AI Tanpa Coding"
+excerpt: "Panduan lengkap membuat chatbot Telegram dengan n8n dan model Gemini AI"
+coverImage: '/assets/blog/cara-membuat-chatbot-telegram-dengan-n8n-dan-gemini-ai/cara-membuat-chatbot-telegram-dengan-n8n-dan-gemini-ai.webp'
+date: "2026-02-16"
+author:
+  name: "Arsan"
+  picture: "https://ui-avatars.com/api/?name=Arsan+Akbar&background=0D8ABC&color=fff"
+tags: ["chatbot", "n8n", "telegram", "google gemini"]
+---
+
+# Cara Membuat Chatbot Telegram Menggunakan n8n dengan Model Gemini AI
+Halo sobat nalar, kali ini mimin pengen membagikan tutorial atau cara membuat chabot telegram menggunakan n8n dan model gemini. Sebenarnya mimin sudah pernah membuat tutorial yang mirip, namun tutorial sebelumnya menggunakan model lokal dengan software LM Studio. Kedua cara yang mimin bagikan memiliki kelebihan dan kekurangannya masing-masing. Untuk chatbot yang menggunakan model lokal via LM Studio memungkinkan sobat nalar untuk menggunakan model dengan bebas dan gratis tanpa perlu batasan, tapi dibutuhkan juga spek yang tinggi untuk menjalankan model model tersebut. Semakin baik modelnya semakin tinggi juga spesifikasi RAM dan GPU yang dibutuhkan. 
+
+Sedangkan jika sobat nalar menggunakan model gemini atau API dari gemini AI maka sobat nalar tidak perlu mengkhawatirkan penggunaan RAM dan GPU karena model yang digunakan tinggal diakses melalui API. Namun model tersebut tentu saja berbayar, pembayaran sesuai dengan model dan token yang digunakan. Kedua metode tersebut memiliki kelebihan dan kekurangannya masing-masing. Namun kali ini mimin akan fokus membahas tutorial membuat chatbot telegram menggunakan n8n dan model Gemini AI. Jika sobat nalar penasaran dengan tuotrial atau cara membuat chatbot telegram menggunakan n8n dan model lokal, sobat nalar dapat mengaksesnya pada link dibawah ini.
+
+[chatbot telegram menggunakan n8n dan model lokal (LM Studio)](https://www.nalardeep.com/posts/cara-membuat-chatbot-telegram-dengan-n8n-dan-model-lokal-LM-Studio-(tanpa-coding)
+)
+
+## Persiapan Sebelum Membuat Chatbot
+Sebelum membangun chabot, terdapat beberapa langkah atau komponen yang mesti sobat nalar siapkan terlebih dahulu.
+
+### Melakukan setup n8n via docker desktop
+Untuk menggunakan n8n sebenarnya terdapat dua cara yang bisa digunakan. Pertama dengan layanan n8n cloud atau melalui penyedia server seperti hostinger dan sebagainya. Cara yang kedua dengan menggunakan docker yang dimana n8n tersebut akan berjalan di lokal. Untuk tutorial kali ini kita akan menggunakan cara yang kedua. Sobat nalar bisa mengikuti cara set up n8n tersebut melalui tutorial dibawah ini.
+
+[Tutorial set up n8n di docker desktop](https://www.nalardeep.com/posts/cara-membuat-chatbot-telegram-dengan-n8n-dan-model-lokal-LM-Studio-(tanpa-coding)#instalasi-n8n-di-docker)
+
+### Webhook menggunakan ngrok
+Untuk menghubungkan n8n dengan bot telegram, sobat nalar membutuhkan platform tambahan bernama ngrok. Untuk caranya sendiri dapat teman-teman liat melalui artikel dibawah ini.
+
+[Tutorial webhook menggunakan ngrok](https://www.nalardeep.com/posts/cara-membuat-chatbot-telegram-dengan-n8n-dan-model-lokal-LM-Studio-(tanpa-coding)#webhook-menggunakan-ngrok)
+
+### Membuat Bot Telegram di BotFather
+Selanjutnya setelah menginstall n8n di docker desktop dan melakukan set up webhook, sobat nalar juga membutuhkan bot telegram. Output setelah membuat bot telegram adalah berupa API Key yang nantinya akan digunakan di n8n untuk menghubungkan bot telegram dengan n8n. Sobat nalar bisa mengikuti caranya melalui link dibawah ini.
+
+[Tutorial membuat bot telegram menggunakan BotFather](https://www.nalardeep.com/posts/cara-membuat-chatbot-telegram-dengan-n8n-dan-model-lokal-LM-Studio-(tanpa-coding)#cara-membuat-bot-telegram)
+
+### Membuat API Key Gemini AI
+Selanjutnya sobat nalar hanya perlu mengenerate API Key Gemini. Untuk caranya sendiri teman-teman bisa mengikuti cara dibawah ini.
+1. Masuk ke Google AI Studio, tepatnya di fitur Get a Gemini API Key [Google AI Studio API Key](https://aistudio.google.com/app/api-keys?_gl=1*1k8ug77*_ga*MTE5MTQxNTgyNi4xNzcyMDk0MTU1*_ga_P1DBVKWT6V*czE3NzIwOTQxNTQkbzEkZzEkdDE3NzIwOTQyMjckajYwJGwwJGgxNDM0MDc3MTUy)
+2. Jika belum login maka silahkan melakukan login terlebih dahulu menggunakan akun google.
+3. Selanjutnya buat atau generate API Key dengan mengklik **Create API Key**.
+4. Simpan atau copy API Key yang berhasil di generate. API tersebut nantinya akan digunakan di model gemini pada chatbot n8n.
+
+## Workflow Chatbot Telegram di n8n
+Setelah semua komponen sudah siap, langsung saja kita mulai praktiknya. Jalankan n8n melalui docker desktop dan daftar jika tidak punya akun atau login jika sudah punya akun.
+
+### Workflow n8n
+Pertama-tama klik create workflow, maka sobat nalar akan disediakan canvas kosong yang akan digunakan untuk membuat workflow chabot n8n. Kira-kira gambaran workflow yang akan digunakan nantinya seperti pada gambar dibawah ini.
+
+![workflow lengkap n8n](/assets/blog/cara-membuat-chatbot-telegram-dengan-n8n-dan-gemini-ai/n8n-workflow.webp "Workflow n8n")
+
+berikut ini komponen-komponen atau node-node yang sobat nalar butuhkan.
+1. Node Telegram On message (Triggers)
+2. Node AI Agent
+3. Node Google Gemini Chat Model
+4. Node Simple Memory
+5. Node Simple Vector Store
+6. Node Embeddings Google Gemini
+7. Node Telegram Send a text message (Message Actions)
+
+### Set up setiap node
+Sebelum melakukan set up atau konfigurasi untuk setiap node, sambungkan semua node komponen terlebih dahulu agar setiap komponen node dapat dihubungkan. Berikut set up setiap node untuk workflow chatbot telegram menggunakan n8n dan model gemini AI
+
+1. Untuk menghubungkan bot telegram maka sobat nalar perlu mengatur webhook agar telegram bot bisa terhubung dengan n8n. Pada node telegram on message (Triggers), klik Pada node telegram on message (Triggers) dan buat credential baru. 
+![webhook telegram](/assets/blog/cara-membuat-chatbot-telegram-dengan-n8n-dan-gemini-ai/webhook-telegram.webp "webhook telegram")
+Selanjutnya isi Access token dengan API Key yang didapatkan dari BotFather telegram, lalu klik save.
+![API Key](/assets/blog/cara-membuat-chatbot-telegram-dengan-n8n-dan-gemini-ai/api-key.webp "API Key")
+
+2. Selanjutnya pada node AI Agent, untuk **Source for Prompt (User Message)** ubah menjadi **define below**. Kemudian pada **Prompt (User Message)** ubah value menjadi Expression dan isi seperti ini.
+```
+{{ $json.message.text }}
+```
+Hasilnya akan menjadi seperti ini.
+![Set up AI Agent](/assets/blog/cara-membuat-chatbot-telegram-dengan-n8n-dan-gemini-ai/set-up-ai-agent.webp "Set up AI Agent")
+
+Pada bagian options, sobat nalar bisa menambahkan **System Message** agar AI Agent dapat bertindak atau menjawab pertanyaan pengguna sesuai dengan konteks.
+
+3. Pada node Google Gemini Chat Model, buat credential baru lalu masukkan API Key dari Google AI Studio. Untuk penggunaan model, sobat nalar bisa bereksperimen untuk menggunakan model gemini yang ada. Untuk model yang mimin gunakan sendiri ialah model gemini 2.5 flash lite.
+
+4. Pada node Simple Memory, ubah parameter Session ID menjadi Define below. Kemudian pada bagian Key ubah value menjadi Expression dan isi nilai parameter dengan perintah dibawah ini.
+```
+chat_history
+```
+Pada parameter Context Window Length bisa disesuaikan dengan kebutuhan. Parameter tersebut akan menyimpan pesan pengguna sesuai dengan jumlah Context. Jika 1 maka pesan yang akan disimpan sebanyak 1 pasang percakapan antara bot dan pengguna.
+
+5. Pada node Simple Vector Store, ubah value pada parameter Operation Mode menjadi Retrieve Documents (As Tool for AI Agent). Kemudian pada parameter Description, silahkan isi context tambahan untuk chatbot sobat nalar. Nantinya chatbot akan menjawab pertanyaan pengguna berdasarkan context yang dimasukkan di parameter ini.
+
+6. Pada node Embeddings Google Gemini, buat credential baru lalu masukkan API Key dari Google AI Studio.
+
+7. Pada node Telegram Send a text message (Message Actions), tambahkan kembali credential lalu isi API Key dari BotFather. Untuk parameter Resource pilih value Message dan untuk parameter Operation pilih Send Message. Pada parameter Chat ID, ubah value menjadi Expression terlebih dahulu lalu isi dengan perintah seperti ini.
+```
+{{ $('Telegram Trigger').first().json.message.from.id }}
+```
+Kemudian pada parameter Text, lakukan hal yang sama dengan mengubah value manjadi Expression terlebih dahulu. Isi value dengan perintah seperti ini.
+```
+{{ $json.output }}
+```
+langkah terakhir adalah dengan menambahkan sebuah atribut pada parameter Additional Fields. Klik Add Field lalu pilih Append n8n Attribution (matikan button). Tambahkan juga atribut Parse Mode
+dan pilih ubah nilai value manjadi HTML.
+
+8. Jalankan workflow kemudian coba kirim pesan di bot telegram, Kira kira hasilnya seperti ini.
+![Chatbot](/assets/blog/cara-membuat-chatbot-telegram-dengan-n8n-dan-gemini-ai/hasil-chatbot.webp "Chatbot")
+
+
