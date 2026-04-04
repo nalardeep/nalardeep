@@ -4,8 +4,16 @@ import { getAllPosts } from "@/lib/api";
 import Link from "next/link";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
-export default function Articles() {
+export default async function Articles({ searchParams }: { searchParams: Promise<{ page?: string }> }) {
+    const { page } = await searchParams;
     const allPosts = getAllPosts();
+    const postsPerPage = 9;
+    const totalPages = Math.ceil(allPosts.length / postsPerPage);
+    const currentPage = parseInt(page || "1", 10);
+    const clampedPage = Math.max(1, Math.min(currentPage, totalPages));
+
+    const startIndex = (clampedPage - 1) * postsPerPage;
+    const visiblePosts = allPosts.slice(startIndex, startIndex + postsPerPage);
 
     // Mock categories for the filter tabs
     const categories = ["Latest"];
@@ -44,14 +52,9 @@ export default function Articles() {
                 </div>
 
                 {/* Grid */}
-                {allPosts.length > 0 ? (
+                {visiblePosts.length > 0 ? (
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12 mb-20">
-                        {/* 
-               In a real app, we'd filter these. 
-               For now, we'll map the existing posts. 
-               Since we only have a few, I'll duplicate them to fill the grid for the visual 
-            */}
-                        {[...allPosts].slice(0, 9).map((post, index) => (
+                        {visiblePosts.map((post, index) => (
                             <PostPreview key={`${post.slug}-${index}`} post={post} />
                         ))}
                     </div>
@@ -60,29 +63,50 @@ export default function Articles() {
                 )}
 
                 {/* Pagination */}
-                <div className="flex items-center justify-center gap-2">
-                    <button className="w-10 h-10 flex items-center justify-center rounded-lg text-gray-400 hover:bg-gray-50 hover:text-gray-600 transition-colors">
-                        <ChevronLeft className="w-4 h-4" />
-                    </button>
-                    <button className="w-10 h-10 flex items-center justify-center rounded-lg bg-primary-500 text-white font-bold shadow-lg shadow-primary-500/20">
-                        1
-                    </button>
-                    <button className="w-10 h-10 flex items-center justify-center rounded-lg text-gray-500 font-medium hover:bg-gray-50 hover:text-gray-700 transition-colors">
-                        2
-                    </button>
-                    <button className="w-10 h-10 flex items-center justify-center rounded-lg text-gray-500 font-medium hover:bg-gray-50 hover:text-gray-700 transition-colors">
-                        3
-                    </button>
-                    <span className="text-gray-300 px-2">...</span>
-                    <button className="w-10 h-10 flex items-center justify-center rounded-lg text-gray-500 font-medium hover:bg-gray-50 hover:text-gray-700 transition-colors">
-                        12
-                    </button>
-                    <button className="w-10 h-10 flex items-center justify-center rounded-lg text-gray-400 hover:bg-gray-50 hover:text-gray-600 transition-colors">
-                        <ChevronRight className="w-4 h-4" />
-                    </button>
-                </div>
+                {totalPages > 1 && (
+                    <div className="flex items-center justify-center gap-2">
+                        {clampedPage > 1 ? (
+                            <Link
+                                href={`/articles?page=${clampedPage - 1}`}
+                                className="w-10 h-10 flex items-center justify-center rounded-lg text-gray-400 hover:bg-gray-50 hover:text-gray-600 transition-colors"
+                            >
+                                <ChevronLeft className="w-4 h-4" />
+                            </Link>
+                        ) : (
+                            <button disabled className="w-10 h-10 flex items-center justify-center rounded-lg text-gray-200 cursor-not-allowed">
+                                <ChevronLeft className="w-4 h-4" />
+                            </button>
+                        )}
 
+                        {Array.from({ length: totalPages }, (_, i) => i + 1).map((pageNum) => (
+                            <Link
+                                key={pageNum}
+                                href={`/articles?page=${pageNum}`}
+                                className={`w-10 h-10 flex items-center justify-center rounded-lg font-medium transition-colors ${pageNum === clampedPage
+                                    ? "bg-primary-500 text-white font-bold shadow-lg shadow-primary-500/20"
+                                    : "text-gray-500 hover:bg-gray-50 hover:text-gray-700"
+                                    }`}
+                            >
+                                {pageNum}
+                            </Link>
+                        ))}
+
+                        {clampedPage < totalPages ? (
+                            <Link
+                                href={`/articles?page=${clampedPage + 1}`}
+                                className="w-10 h-10 flex items-center justify-center rounded-lg text-gray-400 hover:bg-gray-50 hover:text-gray-600 transition-colors"
+                            >
+                                <ChevronRight className="w-4 h-4" />
+                            </Link>
+                        ) : (
+                            <button disabled className="w-10 h-10 flex items-center justify-center rounded-lg text-gray-200 cursor-not-allowed">
+                                <ChevronRight className="w-4 h-4" />
+                            </button>
+                        )}
+                    </div>
+                )}
             </Container>
         </div>
     );
 }
+
