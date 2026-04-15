@@ -24,16 +24,28 @@ const Hero = () => {
             image: "/assets/blog/cara-menjalankan-llm-di-laptop-kentang/cara-menjalankan-llm-di-laptop-kentang.webp"
         },
         {
-            type: "Tools",
-            title: "Tahap Pengembangan",
-            desc: "Tahap Pengambangan.",
-            icon: <Rocket className="w-6 h-6 text-purple-500" />,
-            action: "Stay Tuned",
-            href: "#",
-            bg: "bg-purple-50 border-purple-100",
-            text: "text-purple-700",
-            image: null
+            type: "Project",
+            title: "Prompt Labs",
+            desc: "Panduan open source komprehensif untuk menguasai teknik, template, dan orkestrasi Prompt Engineering AI.",
+            icon: <Sparkles className="w-6 h-6 text-amber-500" />,
+            action: "Kunjungi Prompt Labs",
+            href: "https://prompt-labs-nine.vercel.app/",
+            bg: "bg-amber-50 border-amber-100",
+            text: "text-amber-700",
+            image: "/assets/blog/thumb-caresoul/prompt-labs-mockup.png"
         }
+        // ,
+        // {
+        //     type: "Tools",
+        //     title: "Tahap Pengembangan",
+        //     desc: "Tahap Pengambangan.",
+        //     icon: <Rocket className="w-6 h-6 text-purple-500" />,
+        //     action: "Stay Tuned",
+        //     href: "#",
+        //     bg: "bg-purple-50 border-purple-100",
+        //     text: "text-purple-700",
+        //     image: null
+        // }
     ];
 
     return (
