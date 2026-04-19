@@ -99,3 +99,4 @@ To maintain consistency across all articles, please follow these formatting guid
     print("Hello World")
     ```
     ```
+6. **quote**: Use symbol >
