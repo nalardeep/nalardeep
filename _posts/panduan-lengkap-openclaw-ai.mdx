@@ -23,10 +23,28 @@ Akhir-akhir ini kita di suruguhkan mengenai berita tren teknologi yang begitu ce
 **Mengapa OpenClaw?** Berbeda dengan asisten berbasis SaaS yang menyimpan data Anda di server pihak ketiga, OpenClaw dapat dijalankan secara mandiri di perangkat pilihan. Baik itu laptop, homelab, maupun VPS. Set Up dan Settingan projek dapat di sesuaikan denga keinginan pribadi serta data pribadi aman dari pihak ketiga.
 
 ## Persiapan Sebelum Install (Prerequisites)
+Sebelum menginstall OpenClaw, terdapat dua komponen yang harus sobat nalar siapkan. Komponen komponen tersebut adalah sebagai berikut.
+1. Node.js - direkomendasikan versi 24
+2. API - LLM Provider seperti Anthropic, OpenAI, Google dan lain lain.
+
+Jika sudah menginstall Node.js, lakukan pengecekan versi Node.js dengan cara memasukkan perintah dibawah ini pada terminal.
+```
+node -v
+```
 
 ## Cara Set-up OpenClaw (Langkah demi Langkah)
-### Langkah 1: Kloning Repositori GitHub
-### Langkah 2: Konfigurasi Environment Variables (.env)
+### Langkah 1: Install OpenClaw
+Masuk ke Windows PowerShell kemudian masukkkan perintah dibawah ini.
+``` 
+iwr -useb https://openclaw.ai/install.ps1 | iex 
+```
+Perintah diatas akan menjalankan proses download OpenClaw tanpa harus mengunduh file secara manual, menyimpannya, lalu membukanya. Tunggu proses install hingga selesai. Setelah proses install OpenClaw selesai, maka akan muncul pesan seperti ini.
+
+![Install OpenClaw](/assets/blog/cara-setup-openclaw-ai-agent-di-pc-laptop/install-openclaw.webp "Install OpenClaw")
+
+### Langkah 2: install wsl
+**Mengapa harus menginstall wsl?**, sebenarnya OpenClaw tetap support untuk dijalankan di windows tanpa wsl. Namun OpenClaw sendiri menyarankan untuk menggunakan wsl, hal tersebut dikarenakan menggunakan wsl lebih stabil dan direkomendasikan untuk eksperiens yang lebih baik, terutama untuk penggunaan CLI, gateway, dan tools yang berjalan lebih kompatible dengan linux.
+ 
 ### Langkah 3: Menjalankan Server Lokal
 
 ## Kesimpulan
