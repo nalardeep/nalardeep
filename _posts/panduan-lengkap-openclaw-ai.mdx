@@ -33,18 +33,30 @@ node -v
 ```
 
 ## Cara Set-up OpenClaw (Langkah demi Langkah)
-### Langkah 1: Install OpenClaw
-Masuk ke Windows PowerShell kemudian masukkkan perintah dibawah ini.
+### Langkah 1: install wsl untuk OpenClaw
+**Mengapa harus menginstall wsl?**, sebenarnya OpenClaw tetap support untuk dijalankan di windows tanpa wsl. Namun OpenClaw sendiri menyarankan untuk menggunakan wsl, hal tersebut dikarenakan menggunakan wsl lebih stabil dan direkomendasikan untuk experience yang lebih baik, terutama untuk penggunaan CLI, gateway, dan tools yang berjalan lebih kompatible dengan linux. Jalankan perintah dibawah ini di teminal.
+
+```
+wsl --install
+```
+
+Setelah proses download selesai, sobat nalar akan diminta untuk memasukkan username akun dan password. Silahkan isi dan alangkah baiknya jika akun tersebut di simpan karena setiap menggunakan wsl maka anda akan diminta untuk login terlebih dahulu.
+
+![Download WSL](/assets/blog/cara-setup-openclaw-ai-agent-di-pc-laptop/Download-wsl.webp "Download WSL")
+
+### Langkah 2: Install OpenClaw di windows dan wsl
+Masukkkan perintah dibawah ini.
 ``` 
-iwr -useb https://openclaw.ai/install.ps1 | iex 
+curl -fsSL https://openclaw.ai/install.sh | bash
 ```
 Perintah diatas akan menjalankan proses download OpenClaw tanpa harus mengunduh file secara manual, menyimpannya, lalu membukanya. Tunggu proses install hingga selesai. Setelah proses install OpenClaw selesai, maka akan muncul pesan seperti ini.
 
-![Install OpenClaw](/assets/blog/cara-setup-openclaw-ai-agent-di-pc-laptop/install-openclaw.webp "Install OpenClaw")
+![Install OpenClaw](/assets/blog/cara-setup-openclaw-ai-agent-di-pc-laptop/install-openclaw-wsl.webp "Install OpenClaw")
 
-### Langkah 2: install wsl
-**Mengapa harus menginstall wsl?**, sebenarnya OpenClaw tetap support untuk dijalankan di windows tanpa wsl. Namun OpenClaw sendiri menyarankan untuk menggunakan wsl, hal tersebut dikarenakan menggunakan wsl lebih stabil dan direkomendasikan untuk eksperiens yang lebih baik, terutama untuk penggunaan CLI, gateway, dan tools yang berjalan lebih kompatible dengan linux.
- 
+Selanjutnya akan muncul pertanyaan seperti ini dan pilih yes.
+
+![security openclaw](/assets/blog/cara-setup-openclaw-ai-agent-di-pc-laptop/security-openclaw.webp "security openclaw")
+
 ### Langkah 3: Menjalankan Server Lokal
 
 ## Kesimpulan
