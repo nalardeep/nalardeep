@@ -12,9 +12,14 @@ export function getPostSlugs() {
     return fs.readdirSync(postsDirectory);
 }
 
-export function getPostBySlug(slug: string): Post {
+export function getPostBySlug(slug: string): Post | null {
     const realSlug = slug.replace(/\.mdx$/, '');
     const fullPath = join(postsDirectory, `${realSlug}.mdx`);
+    
+    if (!fs.existsSync(fullPath)) {
+        return null;
+    }
+
     const fileContents = fs.readFileSync(fullPath, 'utf8');
     const { data, content } = matter(fileContents);
 
@@ -50,6 +55,7 @@ export function getAllPosts(): Post[] {
     const posts = slugs
         .filter((slug) => slug.endsWith('.mdx'))
         .map((slug) => getPostBySlug(slug))
+        .filter((post): post is Post => post !== null)
         // Sort posts by date in descending order
         .sort((post1, post2) => (post1.date > post2.date ? -1 : 1));
     return posts;
