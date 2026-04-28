@@ -24,10 +24,10 @@ export default async function Articles({ searchParams }: { searchParams: Promise
                 {/* Header Section */}
                 <div className="py-16 md:py-24 max-w-4xl">
                     <h1 className="text-5xl md:text-6xl font-bold text-gray-900 tracking-tight mb-6">
-                        Explore AI Insights
+                        Daftar Artikel
                     </h1>
                     <p className="text-xl text-primary-600 leading-relaxed max-w-2xl">
-                        Deep dives into machine learning, generative AI, and the future of tech. Stay updated with the latest breakthroughs and tutorials.
+                        Artikel yang dibuat selalu di update untuk mempertahankan kualitas artikel. Kami berkomitmen untuk memberikan informasi yang akurat, relevan, dan bermanfaat bagi pembaca kami. 
                     </p>
                 </div>
 

@@ -20,7 +20,7 @@ export default function Home() {
           <div className="flex items-end justify-between mb-12">
             <div>
               <h2 className="text-4xl font-bold text-gray-900 mb-4">Artikel Terbaru</h2>
-              <p className="text-lg text-gray-500">Wawasan terkini seputar perkembangan AI.</p>
+              <p className="text-lg text-gray-500">List Artikel Terbaru.</p>
             </div>
             <Link href="/articles" className="hidden md:flex items-center gap-2 text-primary-500 font-bold hover:text-primary-600 transition-colors">
               Lihat semua <ArrowRight className="w-4 h-4" />
