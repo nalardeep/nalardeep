@@ -11,35 +11,6 @@ const Header = () => {
 
     return (
         <header className="py-5 border-b border-gray-100 bg-white/80 backdrop-blur-md sticky top-0 z-50">
-            <script
-                type="application/ld+json"
-                dangerouslySetInnerHTML={{
-                    __html: JSON.stringify({
-                        "@context": "https://schema.org",
-                        "@type": "ItemList",
-                        "itemListElement": [
-                            {
-                                "@type": "SiteNavigationElement",
-                                "position": 1,
-                                "name": "Artikel",
-                                "url": "https://nalardeep.com/articles"
-                            },
-                            {
-                                "@type": "SiteNavigationElement",
-                                "position": 2,
-                                "name": "Kontak",
-                                "url": "https://nalardeep.com/contact"
-                            },
-                            {
-                                "@type": "SiteNavigationElement",
-                                "position": 3,
-                                "name": "Tentang",
-                                "url": "https://nalardeep.com/about"
-                            }
-                        ]
-                    })
-                }}
-            />
             <Container>
                 <div className="flex items-center justify-between h-12">
                     {/* Logo */}

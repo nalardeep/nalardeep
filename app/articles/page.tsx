@@ -3,6 +3,18 @@ import PostPreview from "@/components/post-preview";
 import { getAllPosts } from "@/lib/api";
 import Link from "next/link";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import BreadcrumbSchema from "@/components/breadcrumb-schema";
+import { Metadata } from "next";
+
+const BASE_URL = "https://nalardeep.com";
+
+export const metadata: Metadata = {
+    title: "Daftar Artikel | NalarDeep",
+    description: "Kumpulan artikel terbaru seputar AI, otomatisasi n8n, MCP, LLM, dan ekosistem kecerdasan buatan lainnya.",
+    alternates: {
+        canonical: "/articles",
+    },
+};
 
 export default async function Articles({ searchParams }: { searchParams: Promise<{ page?: string }> }) {
     const { page } = await searchParams;
@@ -20,6 +32,13 @@ export default async function Articles({ searchParams }: { searchParams: Promise
 
     return (
         <div className="bg-white min-h-screen pb-24">
+            {/* Breadcrumb Structured Data: Home > Artikel */}
+            <BreadcrumbSchema
+                items={[
+                    { name: 'Beranda', url: BASE_URL },
+                    { name: 'Artikel', url: `${BASE_URL}/articles` },
+                ]}
+            />
             <Container>
                 {/* Header Section */}
                 <div className="py-16 md:py-24 max-w-4xl">
