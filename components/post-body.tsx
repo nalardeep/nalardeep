@@ -1,3 +1,4 @@
+import React from 'react';
 import { MDXRemote } from 'next-mdx-remote/rsc';
 import rehypeSlug from 'rehype-slug';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
@@ -29,13 +30,43 @@ const components = {
     ),
     pre: ({ children }: any) => {
         const text = extractText(children);
+        // Pass a prop to the child (usually the <code> tag) to indicate it's inside a <pre>
+        const childrenWithProps = React.Children.map(children, (child) => {
+            if (React.isValidElement(child)) {
+                return React.cloneElement(child as any, { isCodeBlock: true });
+            }
+            return child;
+        });
+
         return (
             <div className="relative group">
                 <CopyButton text={text} />
                 <pre>
-                    {children}
+                    {childrenWithProps}
                 </pre>
             </div>
+        );
+    },
+    strong: ({ children }: any) => (
+        <strong className="px-2 py-0.5 bg-slate-100 text-slate-900 rounded-md border border-slate-300 font-mono font-bold text-[0.85em] shadow-sm mx-0.5">
+            {children}
+        </strong>
+    ),
+    b: ({ children }: any) => (
+        <b className="px-2 py-0.5 bg-slate-100 text-slate-900 rounded-md border border-slate-300 font-mono font-bold text-[0.85em] shadow-sm mx-0.5">
+            {children}
+        </b>
+    ),
+    code: ({ children, className, isCodeBlock, ...props }: any) => {
+        // If it's inside a <pre> tag or has a language class, it's a code block
+        if (isCodeBlock || className) {
+            return <code className={className} {...props}>{children}</code>;
+        }
+        // Inline code styling
+        return (
+            <code className="px-2 py-0.5 bg-slate-100 text-slate-900 rounded-md border border-slate-300 font-mono text-[0.85em] shadow-sm mx-0.5" {...props}>
+                {children}
+            </code>
         );
     },
     img: (props: any) => {
