@@ -51,8 +51,7 @@ const jsonLd = [
     "url": "https://nalardeep.com",
     "logo": "https://nalardeep.com/logo.png",
     "sameAs": [
-      "https://twitter.com/nalardeep",
-      "https://github.com/nalardeep"
+      "https://github.com/minggo-commits"
     ]
   }
 ];

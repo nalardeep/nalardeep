@@ -7,6 +7,13 @@ import LogoStrip from "@/components/logo-strip";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "NalarDeep - Portal Ekosistem AI",
+  description: "Eksplorasi tutorial AI terlengkap, mulai dari implementasi MCP, otomatisasi n8n, hingga pengembangan chatbot cerdas dan RAG untuk mengakselerasi proyek Anda.",
+};
+
 export default function Home() {
   const allPosts = getAllPosts();
 
@@ -35,7 +42,7 @@ export default function Home() {
             </div>
           )}
           <div className="mt-12 md:hidden flex justify-center">
-            <Link href="/" className="flex items-center gap-2 text-primary-500 font-bold hover:text-primary-600 transition-colors">
+            <Link href="/articles" className="flex items-center gap-2 text-primary-500 font-bold hover:text-primary-600 transition-colors">
               Lihat semua <ArrowRight className="w-4 h-4" />
             </Link>
           </div>
