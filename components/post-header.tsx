@@ -2,6 +2,7 @@ import { format, parseISO } from 'date-fns';
 import ShareButtons from './share-buttons';
 import { Author } from '@/types';
 import Link from 'next/link';
+import Image from 'next/image';
 
 type Props = {
     title: string;
@@ -60,10 +61,13 @@ const PostHeader = ({ title, date, coverImage, readingTime, slug, author, tags }
             {coverImage && (
                 <div className="max-w-5xl mx-auto mb-12 sm:-mx-5 md:mx-auto">
                     <div className="relative aspect-[2/1] w-full overflow-hidden sm:rounded-2xl shadow-sm bg-gray-100">
-                        <img
+                        <Image
                             src={coverImage}
                             alt={`Cover Image for ${title}`}
+                            fill
                             className="absolute inset-0 w-full h-full object-cover hover:scale-105 transition-transform duration-700"
+                            sizes="(max-width: 1024px) 100vw, 1024px"
+                            priority
                         />
                     </div>
                 </div>
