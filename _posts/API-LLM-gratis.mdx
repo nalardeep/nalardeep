@@ -129,7 +129,7 @@ Jika pengguna melakukan pembelian minimal 10 kredit, maka batas penggunaan model
 ![nama api openrouter](/assets/blog/API-LLM-gratis/nama-api-openrouter.webp "memberi nama api di openrouter")
 
 #### Cara menggunakan API Key openrouter via API, Client SDKs, dan Agent SDK
-Untuk menggunakan API openrouter terdapat beberapa cara yang bisa dilakukan. Berdasarkan panduan dari website dokumentasi open OpenRouter, terdapat 3 cara yang bisa dilakukan. Cara yang pertama adalah dengan menggunakan API. Cara ini merupakan cara yang paling simpel untuk menggunakan API Key openrouter. Jadi cara kerjanya ialah mengirim permintaan HTTP standar ke API Endpoint **/api/v1/chat/completions**, cara ini kompatibel untuk berbagai jenis bahasa atau framework. Untuk cara lengkapnya adalah sebagai berikut.
+Untuk menggunakan API openrouter terdapat beberapa cara yang bisa dilakukan. Berdasarkan panduan dari website dokumentasi open OpenRouter, terdapat 3 cara yang bisa dilakukan. Cara yang pertama adalah dengan menggunakan API. Cara ini merupakan cara yang paling simpel untuk menggunakan API Key openrouter. Jadi cara kerjanya ialah mengirim permintaan HTTP standar ke API Endpoint **/api/v1/chat/completions**, cara ini kompatibel untuk berbagai jenis bahasa atau framework. Berikut **cara menggunakan API Key openrouter via API**.
 
 1. Buka visual studio code kemudian buat folder baru.
 2. Karena disini saya menggunakan bahasa pemrograman python, maka alangkah baiknya membuat virtual env terlebih dahulu. Caranya bisa teman teman ikuti diatas. 
@@ -164,6 +164,41 @@ print(response.json())
 6. Jika sudah muncul pesan respon json di terminal seperti gambar dibawah ini, maka kamu sudah berhasil mengakses model menggunakan API Key dari openrouter.
 ![mengakses api openrouter menggunakan openrouter API](/assets/blog/API-LLM-gratis/akses-api.webp "hasil respon json di terminal visual studio code")
 
+Setelah berhasil menggunakan API Key openrouter dengan cara mengakses API Endpointnya, selanjutnya kita akan menggunakan cara yang kedua yaitu menggunakan Client SDKs. Metode ini akan membungkus API openrouter dengan keamanan yang sangat baik, bedanya dengan metode sebelumnya disini kita harus menginstall SDK tambahan sesuai dengan bahasa pemrograman yang akan digunakan. Disini saya akan tetap menggunakan bahasa pemrograman python. Berikut langkah-langkah untuk **Cara menggunakan API Key openrouter via Client SDKs**.
+1. Terapkan cara yang sama sebelumnya, menggunakan visual studio code, lakukan set up folder dan virtual environment.
+2. Install SDK tambahan, untuk python sendiri menggunakan metode pip dengan kode seperti dibawah ini. Silahkan masukkan 
+```python
+pip install openrouter
+```
+Silahkan masukkan perintah tersebut di terminal visual studio code.
+
+3. Selanjutnya pada file main.py, tambahkan code seperti ini.
+```pyhton
+from openrouter import OpenRouter
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
+
+with OpenRouter(
+    api_key=os.getenv("OPENROUTER_API_KEY")
+) as client:
+    response = client.chat.send(
+        model="openrouter/free",
+        messages=[
+            {"role": "user", "content": "apa itu LLM?"}
+        ]
+    )
+
+    print(response.choices[0].message.content)
+```
+4. Jangan lupa membuat file **.env**, buat variabel bernama **OPENROUTER_API_KEY=Paste API Key kamu di sini**.
+5. Coba jalankan file main.py diterminal dengan perintah **python main.py**
+6. Dan boom maka akan muncul pesan hasil generate model.
+![hasil generate model dengan SDK OpenRouter](/assets/blog/API-LLM-gratis/hasil-generate-model-sdk.webp "Hasil generate model menggunakan SDK OpenRouter Python")
+
+Untuk metode Agent SDK mungkin akan mimin jelaskan di artikel yang lain dikarenakan metode dan set upnya sendiri cukup ribet.
+
 
 ### 3. Groq Cloud
 Kalau Anda butuh kecepatan kilat, **Groq** adalah jawabannya. Mereka menggunakan hardware LPU (*Language Processing Unit*) yang membuat respons LLM terasa instan.
@@ -191,13 +226,21 @@ Jika sobat nalar sudah menggunakan ekosistem Cloudflare, *Workers AI* adalah pil
 
 ## Perbandingan Kuota API LLM Gratis (Ringkasan)
 
+Berikut adalah tabel perbandingan singkat untuk membantu sobat nalar memilih provider yang paling sesuai dengan kebutuhan proyek:
+
 | Provider | Model Unggulan | Limit Gratis (Est.) | Keunggulan Utama |
 | :--- | :--- | :--- | :--- |
-| **Google Gemini** | Gemini 1.5 Flash | 15 RPM / 1M TPM | Context Window Luas |
-| **Groq Cloud** | Llama 3 70B | Berdasarkan Rate Limit | Kecepatan Ekstrim |
-| **OpenRouter** | Llama 3, Phi-3 | Tergantung Model | Agregator (Satu API) |
-| **Hugging Face** | Mistral, Gemma | Rate Limited | Varietas Model |
-| **Cloudflare** | Llama 3 | Daily Quota | Edge Computing |
+| **Google Gemini** | Gemini 3 Flash | 15 RPM / 500 RPD | Context Window 1M+ Token |
+| **Groq Cloud** | Llama 3.3 / 4.0 | 30 RPM / 1440 RPD | Kecepatan LPU (Instan) |
+| **OpenRouter** | Multi (`:free`) | 50 - 1000 Req/Day | Agregator Model Terlengkap |
+| **Cerebras** | Llama 3.3, Qwen | 1M Token / Hari | Throughput 2000+ T/s |
+| **SambaNova** | Llama 3.1 405B | 100 Req / Jam | Akses Model Raksasa (405B) |
+| **DeepSeek** | DeepSeek-V3 / R1 | Free Credits / Tier | Penalaran (Reasoning) Kuat |
+| **GitHub Models** | GPT-4o, Claude 3.5 | 50-100 Req / Hari | Ekosistem Developer GitHub |
+| **Mistral AI** | Mistral Large 2 | Experiment Tier | Kualitas Model High-End |
+| **Hugging Face** | Mistral, Gemma 2 | Rate Limited | Ribuan Model Open Source |
+| **Cloudflare** | Llama 3.x | Daily Quota | Infrastruktur Edge Tercepat |
+
 
 ---
 
