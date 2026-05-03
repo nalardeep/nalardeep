@@ -3,9 +3,17 @@ import rehypeSlug from 'rehype-slug';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import remarkGfm from 'remark-gfm';
 import Image from 'next/image';
+import { CopyButton } from './copy-button';
 
 type Props = {
     content: string;
+};
+
+const extractText = (node: any): string => {
+    if (typeof node === 'string') return node;
+    if (Array.isArray(node)) return node.map(extractText).join('');
+    if (node.props && node.props.children) return extractText(node.props.children);
+    return '';
 };
 
 const components = {
@@ -19,6 +27,17 @@ const components = {
             {children}
         </h3>
     ),
+    pre: ({ children }: any) => {
+        const text = extractText(children);
+        return (
+            <div className="relative group">
+                <CopyButton text={text} />
+                <pre>
+                    {children}
+                </pre>
+            </div>
+        );
+    },
     img: (props: any) => {
         // Helper to clean the source path
         const getCleanSrc = (src: string) => {
