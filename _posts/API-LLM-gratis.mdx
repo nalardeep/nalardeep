@@ -1,17 +1,21 @@
 ---
-title: "10+ API LLM Gratis Terbaik 2026: Panduan Developer & Cara Pakainya"
-excerpt: "Mencari API LLM gratis untuk proyek Anda? Simak daftar provider AI gratis terbaik seperti Google Gemini, Groq, dan Hugging Face lengkap dengan kuota dan cara pakainya."
+title: "10+ API LLM Gratis Terbaik 2026 (Tanpa Kartu Kredit & Siap Pakai)"
+excerpt: "Cari API LLM gratis tanpa kartu kredit? Ini daftar terbaik 2026 lengkap dengan kuota, perbandingan, dan contoh cara pakai untuk developer."
 coverImage: '/assets/blog/API-LLM-gratis/thumbnail.webp'
 date: "2026-04-23"
 author:
   name: "Arsan"
   picture: "https://ui-avatars.com/api/?name=Arsan+Akbar&background=0D8ABC&color=fff"
-tags: ["LLM","API Key","Free API Key", "Artificial Intelligence", "Developer Tools"]
+tags: ["LLM","API Key","Free API Key","Artificial Intelligence","Developer Tools"]
 ---
 
-Dunia *Artificial Intelligence* (AI) berkembang sangat pesat. Bagi developer, mencoba berbagai *Large Language Model* (LLM) adalah langkah penting sebelum memutuskan untuk berlangganan layanan berbayar. Beruntungnya, di tahun 2026 ini, banyak provider yang menawarkan **API LLM gratis** dengan kuota yang cukup besar.
+# 10+ API LLM Gratis Terbaik 2026 (Tanpa Kartu Kredit)
 
-Dalam artikel ini, kita akan membedah daftar provider LLM API gratis terbaik yang bisa Anda gunakan tanpa perlu memasukkan kartu kredit di awal.
+Dalam beberapa tahun terakhir penggunaan AI telah mencapai puncaknya. Lebih dari 1 miliar orang di seluruh dunia diperkirakan menggunakan AI untuk keperluan atau tugas sehari-hari mereka. Perusahaan-perusahaan besar seperti google, antropic, openAI, hingga microsoft berlomba lomba untuk menghasilkan AI yang powerfull dan dapat digunakan oleh semua orang. Namun dibalik kecanggihan AI, sebenarnya terdapat kebutuhan sumber daya untuk server yang sangat besar. Maka jangan heran jika sekarang perusahan-perusahaan tersebut mematok harga yang sepadan untuk biaya penggunaan AI mereka. 
+
+Sebetulnya penggunaan AI pada dasarnya dikarenakan adanya kebutuhan. Jika sobat nalar memang sangat-sangat membutuhkan AI maka untuk mengeluarkan biaya-biaya tersebut sudah termasuk dalam investasi. Karena nantinya AI tersebut akan membantu kita dalam menyelesaikan pekerjaan. Terus gimana nih Min jika saya pengennya eksperimen dan coba coba aja. Masa harus berlangganan AI yang mahal-mahal. Sebetulnya tidak juga, jika teman teman ingin belajar atau mencoba AI sebenarnya terdapat beberapa opsi tanpa harus mengeluarkan uang untuk berlangganan AI tersebut.
+
+Dalam artikel ini mimin akan menjelaskan beberapa API LLM yang bisa sobat nalar gunakan untuk belajar dan eksperimen sebelum beralih ke penggunaan langganan. Jadi nantinya kamu bakalan dapat gambaran gimana sih penggunaan AI tersebut. Berikut API LLM gratis yang bisa digunakan. 
 
 ## Mengapa Menggunakan API LLM Gratis?
 Sebelum masuk ke daftar, ada beberapa alasan mengapa sobat nalar harus memanfaatkan *free tier* ini.
@@ -24,25 +28,150 @@ Sebelum masuk ke daftar, ada beberapa alasan mengapa sobat nalar harus memanfaat
 ## Daftar Provider API LLM Gratis Terbaik 2026
 
 ### 1. Google AI Studio (Gemini API)
-Google saat ini memimpin dalam hal kemurahan hati kuota gratis. Lewat Google AI Studio, sobat nalar bisa mengakses model-model canggih mereka.
-- **Model** -  Gemini 1.5 Flash, Gemini 1.5 Pro.
-- **Kelebihan** - *Context window* hingga 1 juta token.
-- **Kuota** - mencakup 15-50 RPM.
-- **Cocok Untuk** - Analisis dokumen panjang dan pengembangan MVP produk.
+Salah satu produk google adalah gemini AI. Gemini AI merupakan Large Language Model (LLM) buatan google. Gemini AI bisa di akses secara gratis untuk penggunaan generate teks, gambar dan bahkan video. Kerennya teman teman juga bisa menggunakan model-model dari gemini dengan hanya menggunakan API Key tersebut. Nantinya dengan API Key tersebut, kamu bisa mempercepat tugas tugas seperti analisis dokumen, asisten ngoding dan masih banyak lagi. API Key gemini sendiri bisa didapatkan melalui platform atau website google ai studio. Berikut langkah langkahnya.
 
-### 2. Groq Cloud
+#### Langkah-langkah mendaftar API Key gemini gratis melalui google ai studio
+1. Buka website [Google Ai Studio](https://aistudio.google.com/)
+2. Cari menu **Get an API key**, kemudian klik start.
+![Get API key](/assets/blog/API-LLM-gratis/get-api-key.webp "Get API key")
+3. Kemudian di menu API Keys, klik Create API Key.
+![Create API key](/assets/blog/API-LLM-gratis/create-api-key.webp "Create API key")
+4. Selanjutnya isi nama key dan projek yang akan digunakan, Kemudian klik Create Key. 
+![Name key](/assets/blog/API-LLM-gratis/name-key.webp "Name key")
+5. Jika berhasil maka akan muncul API Key details yang berisi informasi mengenai API Key yang telah dibuat sebelumnya. Copy API Key kemudian simpan untuk kita gunakan nantinya.
+
+#### Cara menggunakan API Key gemini menggunakan pyhton di lokal
+1. Buka visual studio code terlebih dahulu.
+2. Buat atau tentukan folder yang akan digunakan untuk menjalankan api tersebut.
+3. Selanjutnya klik **ctrl + `** untuk membuka terminal visual studio code.
+4. Kita akan membuat virtual environment menggunakan bahasa pemrograman python. Adapun perintah yang digunakan adalah sebagai berikut.
+```
+python -m venv venv
+```
+5. Untuk menjalankan virtual environment tersebut, ketikkan perintah dibawah ini.
+```
+venv\Scripts\activate
+```
+6. Selanjutnya buat file python bernama main.py
+![Buat file python baru](/assets/blog/API-LLM-gratis/main-py.webp "Buat file python")
+7. Kembali ke terminal visual studio code, ketikkan perintah dibawah ini untuk menginstall library SDK google untuk mengkases API Key gemini.
+```
+pip install google-genai python-dotenv
+```
+8. Selanjutnya buat file baru dengan nama **.env**, buka file .env tersebut lalu isi dengan code dibawah ini.
+```
+GEMINI_API_KEY=your_api_key_di_sini
+```
+Langsung saja salin API Key yang didapat dari Google AI Studio tadi lalu tempelkan atau paste di **GEMINI_API_KEY**
+
+9. Pada file main.py, masukkan codingan dibawah ini.
+```pyhton
+import os
+from dotenv import load_dotenv
+from google import genai
+
+# Load env
+load_dotenv()
+
+# API Key
+api_key = os.getenv("GEMINI_API_KEY")
+
+# Inisialisasi client
+client = genai.Client(api_key=api_key)
+
+# Prompt
+prompt = "Jelaskan apa itu AI dalam 2 kalimat"
+
+# Generate response
+response = client.models.generate_content(
+    model="gemini-2.5-flash",
+    contents=prompt
+)
+
+# Output
+print(response.text)
+```
+
+10. Selanjutnya pada terminal visual studio code, ketikkan perintah **python main.py**. Maka akan muncul pesan yang digenerate oleh LLM.
+![hasil generate model](/assets/blog/API-LLM-gratis/hasil-generate-model.webp "Hasil generate model gemini")
+
+Jika sudah muncul pesan hasil generate di terminal maka selamat anda telah berhasil menggunakan API Key gemini dari google AI Studio untuk digunakan di lokal menggunakan visual studio code.
+
+#### Informasi mengenai rate limit dari API Key gemini free tier  
+**Note:** Untuk rate limit sendiri bisa teman teman liat langsung dari google ai studio di tab Rate limit.
+
+| Model | RPM | TPM | RPD |
+|------|-----|-----|-----|
+| Gemini 2.5 Flash | 5 RPM | 250K TPM | 20 RPD |
+| Gemini 3 Flash | 5 RPM | 250K TPM | 20 RPD |
+| Gemini 3.1 Flash Lite | 15 RPM | 250K TPM | 500 RPD |
+| Gemini 2.5 Flash Lite | 10 RPM | 250K TPM | 20 RPD |
+
+**Penjelasan:** 
+1. RPM (Requests Per Minute) adalah jumlah request (permintaan) yang bisa kamu kirim ke API dalam 1 menit.
+2. TPM (Tokens Per Minute) adalah jumlah token (teks) yang bisa diproses dalam 1 menit.
+3. RPD (Requests Per Day) adalah  jumlah request yang bisa kamu kirim dalam 1 hari.
+
+### 2. OpenRouter
+OpenRouter adalah sebuah platform yang memungkinkan kamu untuk mengakses berbagai jenis model pada satu API. Melalui platform tersebut, kamu bisa mengakses model model seperti GPT, Claude, Llama dll. Kedengarannya simpel bukan, yap dengan fitur ini kamu tinggal mengatur penggunaan model tanpa berganti-ganti API lagi.
+
+Layanan gratis dari OpenRouter dirancang untuk eksperimen kepada pengguna baru yang ingin mencoba berbagai model AI tanpa harus langsung membayar. Saat pertama kali mendaftar, pengguna akan mendapatkan kuota gratis dalam jumlah terbatas. Selain itu, OpenRouter menyediakan beberapa model gratis yang bisa digunakan, namun perlu diperhatikan bahwa model-model ini memiliki batas penggunaan yang cukup rendah, yaitu sekitar 50 request per hari. Karena keterbatasan tersebut, model gratis ini lebih cocok untuk belajar, eksperimen, atau pengujian. Bukan untuk kebutuhan produksi atau aplikasi skala besar.
+
+Jika pengguna melakukan pembelian minimal 10 kredit, maka batas penggunaan model gratis akan meningkat secara signifikan hingga sekitar 1000 request per hari. Hal ini tentu memberikan ruang yang lebih luas untuk eksplorasi dan pengembangan. Untuk mempermudah penggunaan, OpenRouter juga menyediakan fitur Free Models Router (openrouter/free), yaitu sistem yang secara otomatis memilih model gratis terbaik untuk setiap permintaan. Dengan fitur ini, pengguna tidak perlu repot menentukan model secara manual, sehingga proses penggunaan menjadi lebih praktis dan efisien, terutama bagi pemula.
+
+#### Langkah-langkah mendaftar API Key openrouter
+1. Buka website [OpenRouter](https://openrouter.ai/)
+2. Klik Get API Key
+![openrouter](/assets/blog/API-LLM-gratis/openrouter-web.webp "website openrouter")
+3. Buat API pada menu Create
+![buat api openrouter](/assets/blog/API-LLM-gratis/buat-api-openrouter.webp "buat api di openrouter")
+4. Selanjutnya isi nama api key dan waktu kadaluarsa api.
+![nama api openrouter](/assets/blog/API-LLM-gratis/nama-api-openrouter.webp "memberi nama api di openrouter")
+
+#### Cara menggunakan API Key openrouter via API, Client SDKs, dan Agent SDK
+Untuk menggunakan API openrouter terdapat beberapa cara yang bisa dilakukan. Berdasarkan panduan dari website dokumentasi open OpenRouter, terdapat 3 cara yang bisa dilakukan. Cara yang pertama adalah dengan menggunakan API. Cara ini merupakan cara yang paling simpel untuk menggunakan API Key openrouter. Jadi cara kerjanya ialah mengirim permintaan HTTP standar ke API Endpoint **/api/v1/chat/completions**, cara ini kompatibel untuk berbagai jenis bahasa atau framework. Untuk cara lengkapnya adalah sebagai berikut.
+
+1. Buka visual studio code kemudian buat folder baru.
+2. Karena disini saya menggunakan bahasa pemrograman python, maka alangkah baiknya membuat virtual env terlebih dahulu. Caranya bisa teman teman ikuti diatas. 
+3. Setelah membuat dan mengaktifkan virtual environment, masukkan kode dibawah ini di main.py.
+```pyhton
+import requests
+
+url = "https://openrouter.ai/api/v1/chat/completions"
+
+headers = {
+    "Authorization": "Bearer <API KEY HERE>",  
+    "Content-Type": "application/json",
+}
+
+payload = {
+    "model": "openrouter/free",  
+    "messages": [
+        {
+            "role": "user",
+            "content": "What is the meaning of life?"
+        }
+    ]
+}
+
+response = requests.post(url, headers=headers, json=payload)
+
+print(response.json())
+```
+
+4. Jangan lupa memasukkan API Key di code, sebenarnya bisa juga menggunakan .env dan lebih aman. Namun terdapat beberapa penyesuaian code untuk menggunakan metode tersebut.
+5. Buka terminal visual studio code kemudian jalankan perintah python main.py
+6. Jika sudah muncul pesan respon json di terminal seperti gambar dibawah ini, maka kamu sudah berhasil mengakses model menggunakan API Key dari openrouter.
+![mengakses api openrouter menggunakan openrouter API](/assets/blog/API-LLM-gratis/akses-api.webp "hasil respon json di terminal visual studio code")
+
+
+### 3. Groq Cloud
 Kalau Anda butuh kecepatan kilat, **Groq** adalah jawabannya. Mereka menggunakan hardware LPU (*Language Processing Unit*) yang membuat respons LLM terasa instan.
 - **Model** - Llama 3 (8B & 70B), Mixtral 8x7B, Gemma.
 - **Kelebihan** - Kecepatan *inference* tercepat di pasar saat ini (bisa mencapai 300-800 token per detik).
 - **Kuota** - Memiliki limit *rate* harian yang cukup untuk *testing*.
 - **Cocok Untuk** - *Real-time chatbot* dan aplikasi yang butuh latensi rendah.
 
-### 3. OpenRouter
-OpenRouter adalah agregator API. Mereka menyediakan satu antarmuka untuk mengakses puluhan model dari berbagai provider.
-- **Model** - Berbagai model open-source (Llama, Phi-3, Mistral, dll).
-- **Kelebihan** - Banyak model yang statusnya benar-benar **$0/free**.
-- **Kuota** - Tergantung pada model spesifik yang dipilih.
-- **Cocok Untuk** - Developer yang ingin gonta ganti model hanya dengan mengubah satu baris kode.
 
 ### 4. Hugging Face (Serverless Inference)
 Hugging Face bukan hanya tempat menyimpan model, tapi mereka juga menyediakan API untuk menjalankan model-model tersebut.
