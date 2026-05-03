@@ -1,11 +1,20 @@
+import React from 'react';
 import { MDXRemote } from 'next-mdx-remote/rsc';
 import rehypeSlug from 'rehype-slug';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import remarkGfm from 'remark-gfm';
 import Image from 'next/image';
+import { CopyButton } from './copy-button';
 
 type Props = {
     content: string;
+};
+
+const extractText = (node: any): string => {
+    if (typeof node === 'string') return node;
+    if (Array.isArray(node)) return node.map(extractText).join('');
+    if (node.props && node.props.children) return extractText(node.props.children);
+    return '';
 };
 
 const components = {
@@ -19,6 +28,47 @@ const components = {
             {children}
         </h3>
     ),
+    pre: ({ children }: any) => {
+        const text = extractText(children);
+        // Pass a prop to the child (usually the <code> tag) to indicate it's inside a <pre>
+        const childrenWithProps = React.Children.map(children, (child) => {
+            if (React.isValidElement(child)) {
+                return React.cloneElement(child as any, { isCodeBlock: true });
+            }
+            return child;
+        });
+
+        return (
+            <div className="relative group">
+                <CopyButton text={text} />
+                <pre className="max-h-[450px] overflow-auto">
+                    {childrenWithProps}
+                </pre>
+            </div>
+        );
+    },
+    strong: ({ children }: any) => (
+        <strong className="px-2 py-0.5 bg-slate-100 text-slate-900 rounded-md border border-slate-300 font-mono font-bold text-[0.85em] shadow-sm mx-0.5">
+            {children}
+        </strong>
+    ),
+    b: ({ children }: any) => (
+        <b className="px-2 py-0.5 bg-slate-100 text-slate-900 rounded-md border border-slate-300 font-mono font-bold text-[0.85em] shadow-sm mx-0.5">
+            {children}
+        </b>
+    ),
+    code: ({ children, className, isCodeBlock, ...props }: any) => {
+        // If it's inside a <pre> tag or has a language class, it's a code block
+        if (isCodeBlock || className) {
+            return <code className={className} {...props}>{children}</code>;
+        }
+        // Inline code styling
+        return (
+            <code className="px-2 py-0.5 bg-slate-100 text-slate-900 rounded-md border border-slate-300 font-mono text-[0.85em] shadow-sm mx-0.5" {...props}>
+                {children}
+            </code>
+        );
+    },
     img: (props: any) => {
         // Helper to clean the source path
         const getCleanSrc = (src: string) => {

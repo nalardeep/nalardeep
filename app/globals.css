@@ -32,7 +32,7 @@
        Actually, I will comment out dark mode for now to ensure "white" theme is dominant, 
        or implement a very clean dark green/black if needed. 
        Let's force light mode for the "clean white" look, or mostly light.
-    */
+     */
     --background: #f8fafc;
     /* slightly off-white instead of black */
     --foreground: #171717;
@@ -54,4 +54,27 @@ h4,
 h5,
 h6 {
   color: var(--color-primary-900);
+}
+
+/* Custom Scrollbar for Code Blocks */
+pre::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+pre::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+pre::-webkit-scrollbar-thumb {
+  background: #e2e8f0;
+  border-radius: 10px;
+  border: 2px solid transparent;
+  background-clip: content-box;
+}
+
+pre::-webkit-scrollbar-thumb:hover {
+  background: #cbd5e1;
+  border: 2px solid transparent;
+  background-clip: content-box;
 }

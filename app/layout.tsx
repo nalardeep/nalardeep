@@ -32,17 +32,29 @@ export const metadata: Metadata = {
   },
 };
 
-const jsonLd = {
-  "@context": "https://schema.org",
-  "@type": "WebSite",
-  "name": "NalarDeep",
-  "url": "https://nalardeep.com",
-  "potentialAction": {
-    "@type": "SearchAction",
-    "target": "https://nalardeep.com/search?q={search_term_string}",
-    "query-input": "required name=search_term_string"
+const jsonLd = [
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "NalarDeep",
+    "url": "https://nalardeep.com",
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "https://nalardeep.com/search?q={search_term_string}",
+      "query-input": "required name=search_term_string"
+    }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "NalarDeep",
+    "url": "https://nalardeep.com",
+    "logo": "https://nalardeep.com/logo.png",
+    "sameAs": [
+      "https://github.com/minggo-commits"
+    ]
   }
-};
+];
 
 export default function RootLayout({
   children,

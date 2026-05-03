@@ -42,20 +42,59 @@ export default async function Post({ params }: { params: Promise<{ slug: string 
                     <script
                         type="application/ld+json"
                         dangerouslySetInnerHTML={{
-                            __html: JSON.stringify({
-                                '@context': 'https://schema.org',
-                                '@type': 'BlogPosting',
-                                headline: post.title,
-                                datePublished: post.date,
-                                dateModified: post.date,
-                                description: post.excerpt,
-                                image: post.coverImage ? [post.coverImage] : [],
-                                url: `https://nalardeep.com/posts/${post.slug}`,
-                                author: {
-                                    '@type': 'Person',
-                                    name: post.author.name,
+                            __html: JSON.stringify([
+                                {
+                                    '@context': 'https://schema.org',
+                                    '@type': 'BlogPosting',
+                                    headline: post.title,
+                                    datePublished: post.date,
+                                    dateModified: post.date,
+                                    description: post.excerpt,
+                                    image: post.coverImage ? [post.coverImage] : [],
+                                    url: `https://nalardeep.com/posts/${post.slug}`,
+                                    mainEntityOfPage: {
+                                        '@type': 'WebPage',
+                                        '@id': `https://nalardeep.com/posts/${post.slug}`,
+                                    },
+                                    author: {
+                                        '@type': 'Person',
+                                        name: post.author.name,
+                                        image: post.author.picture,
+                                    },
+                                    publisher: {
+                                        '@type': 'Organization',
+                                        name: 'NalarDeep',
+                                        logo: {
+                                            '@type': 'ImageObject',
+                                            url: 'https://nalardeep.com/logo.png',
+                                        },
+                                    },
                                 },
-                            }),
+                                {
+                                    '@context': 'https://schema.org',
+                                    '@type': 'BreadcrumbList',
+                                    itemListElement: [
+                                        {
+                                            '@type': 'ListItem',
+                                            position: 1,
+                                            name: 'Beranda',
+                                            item: 'https://nalardeep.com',
+                                        },
+                                        {
+                                            '@type': 'ListItem',
+                                            position: 2,
+                                            name: 'Artikel',
+                                            item: 'https://nalardeep.com/articles',
+                                        },
+                                        {
+                                            '@type': 'ListItem',
+                                            position: 3,
+                                            name: post.title,
+                                            item: `https://nalardeep.com/posts/${post.slug}`,
+                                        },
+                                    ],
+                                },
+                            ]),
                         }}
                     />
                 </div>
