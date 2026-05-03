@@ -41,7 +41,7 @@ const components = {
         return (
             <div className="relative group">
                 <CopyButton text={text} />
-                <pre>
+                <pre className="max-h-[450px] overflow-auto">
                     {childrenWithProps}
                 </pre>
             </div>
