@@ -37,7 +37,7 @@ export default function About() {
                         <ul className="space-y-4 list-disc pl-5 marker:text-primary-500">
                             <li><strong>Eksplorasi:</strong> Melakukan eksplorasi mendalam untuk menemukan pengetahuan baru.</li>
                             <li><strong>Eksperimen:</strong> Bereksperimen untuk menemukan solusi terbaik.</li>
-                            <li><strong>Evaluasi:</strong>Mengevaluasi kembali solusi agar tetap relevan dan menjawab permasalahan yang ada.</li>
+                            <li><strong>Evaluasi:</strong> Mengevaluasi kembali solusi agar tetap relevan dan menjawab permasalahan yang ada.</li>
                         </ul>
                     </div>
 
