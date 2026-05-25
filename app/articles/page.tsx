@@ -31,7 +31,9 @@ export default async function Articles({ searchParams }: { searchParams: Promise
     const categories = ["Latest"];
 
     return (
-        <div className="bg-white min-h-screen pb-24">
+        <div className="bg-white min-h-screen pb-24 relative">
+            <div className="absolute inset-0 z-0 bg-dots opacity-[0.05] pointer-events-none"></div>
+            <div className="relative z-10">
             {/* Breadcrumb Structured Data: Home > Artikel */}
             <BreadcrumbSchema
                 items={[
@@ -41,13 +43,41 @@ export default async function Articles({ searchParams }: { searchParams: Promise
             />
             <Container>
                 {/* Header Section */}
-                <div className="py-16 md:py-24 max-w-4xl">
-                    <h1 className="text-5xl md:text-6xl font-bold text-gray-900 tracking-tight mb-6">
-                        Daftar Artikel
-                    </h1>
-                    <p className="text-xl text-primary-600 leading-relaxed max-w-2xl">
-                        Artikel yang dibuat selalu di update untuk mempertahankan kualitas artikel. Kami berkomitmen untuk memberikan informasi yang akurat, relevan, dan bermanfaat bagi pembaca kami. 
-                    </p>
+                <div className="py-16 md:py-24 flex flex-col md:flex-row md:items-center md:justify-between gap-12">
+                    {/* Left: Text */}
+                    <div className="max-w-xl">
+                        <h1 className="text-5xl md:text-6xl font-bold text-black tracking-tight mb-6">
+                            Daftar Artikel
+                        </h1>
+                        <p className="text-xl text-primary-600 leading-relaxed">
+                            Artikel yang dibuat selalu di update untuk mempertahankan kualitas artikel. Kami berkomitmen untuk memberikan informasi yang akurat, relevan, dan bermanfaat bagi pembaca kami.
+                        </p>
+                    </div>
+
+                    {/* Right: Memphis Decoration */}
+                    <div className="hidden md:block relative w-80 h-64 shrink-0 select-none pointer-events-none">
+                        {/* Big yellow square */}
+                        <div className="absolute top-0 right-8 w-28 h-28 bg-yellow-300 border-3 border-gray-900 shadow-[6px_6px_0px_0px_#171717] rotate-6"></div>
+                        {/* Emerald circle */}
+                        <div className="absolute top-6 right-44 w-16 h-16 bg-emerald-400 border-3 border-gray-900 shadow-[4px_4px_0px_0px_#171717] rounded-full"></div>
+                        {/* Sky blue rectangle */}
+                        <div className="absolute bottom-8 right-12 w-36 h-16 bg-sky-300 border-3 border-gray-900 shadow-[5px_5px_0px_0px_#171717] -rotate-3"></div>
+                        {/* Orange small square */}
+                        <div className="absolute bottom-20 right-48 w-12 h-12 bg-orange-300 border-3 border-gray-900 shadow-[3px_3px_0px_0px_#171717] rotate-12"></div>
+                        {/* Violet triangle via clip-path */}
+                        <div className="absolute top-28 right-24 w-14 h-14 bg-violet-300 border-3 border-gray-900 shadow-[3px_3px_0px_0px_#171717] rotate-45"></div>
+                        {/* Dots accent */}
+                        <div className="absolute top-2 left-0 w-20 h-20 bg-dots opacity-20"></div>
+                        {/* Zigzag SVG */}
+                        <svg className="absolute bottom-0 left-2 w-24 h-10" viewBox="0 0 96 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <polyline points="0,20 12,4 24,20 36,4 48,20 60,4 72,20 84,4 96,20" stroke="#171717" strokeWidth="3" strokeLinejoin="round" fill="none"/>
+                        </svg>
+                        {/* Cross / plus sign */}
+                        <svg className="absolute top-2 right-0 w-10 h-10" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <line x1="20" y1="4" x2="20" y2="36" stroke="#171717" strokeWidth="4" strokeLinecap="round"/>
+                            <line x1="4" y1="20" x2="36" y2="20" stroke="#171717" strokeWidth="4" strokeLinecap="round"/>
+                        </svg>
+                    </div>
                 </div>
 
                 {/* Filters */}
@@ -87,12 +117,12 @@ export default async function Articles({ searchParams }: { searchParams: Promise
                         {clampedPage > 1 ? (
                             <Link
                                 href={`/articles?page=${clampedPage - 1}`}
-                                className="w-10 h-10 flex items-center justify-center rounded-lg text-gray-400 hover:bg-gray-50 hover:text-gray-600 transition-colors"
+                                className="w-10 h-10 flex items-center justify-center bg-white text-gray-900 memphis-border hover:memphis-shadow hover:-translate-y-1 transition-all"
                             >
                                 <ChevronLeft className="w-4 h-4" />
                             </Link>
                         ) : (
-                            <button disabled className="w-10 h-10 flex items-center justify-center rounded-lg text-gray-200 cursor-not-allowed">
+                            <button disabled className="w-10 h-10 flex items-center justify-center bg-gray-100 text-gray-400 memphis-border cursor-not-allowed">
                                 <ChevronLeft className="w-4 h-4" />
                             </button>
                         )}
@@ -101,9 +131,9 @@ export default async function Articles({ searchParams }: { searchParams: Promise
                             <Link
                                 key={pageNum}
                                 href={`/articles?page=${pageNum}`}
-                                className={`w-10 h-10 flex items-center justify-center rounded-lg font-medium transition-colors ${pageNum === clampedPage
-                                    ? "bg-primary-500 text-white font-bold shadow-lg shadow-primary-500/20"
-                                    : "text-gray-500 hover:bg-gray-50 hover:text-gray-700"
+                                className={`w-10 h-10 flex items-center justify-center font-medium transition-all ${pageNum === clampedPage
+                                    ? "bg-yellow-300 text-gray-900 font-bold memphis-border memphis-shadow"
+                                    : "bg-white text-gray-900 memphis-border hover:memphis-shadow hover:-translate-y-1"
                                     }`}
                             >
                                 {pageNum}
@@ -113,18 +143,19 @@ export default async function Articles({ searchParams }: { searchParams: Promise
                         {clampedPage < totalPages ? (
                             <Link
                                 href={`/articles?page=${clampedPage + 1}`}
-                                className="w-10 h-10 flex items-center justify-center rounded-lg text-gray-400 hover:bg-gray-50 hover:text-gray-600 transition-colors"
+                                className="w-10 h-10 flex items-center justify-center bg-white text-gray-900 memphis-border hover:memphis-shadow hover:-translate-y-1 transition-all"
                             >
                                 <ChevronRight className="w-4 h-4" />
                             </Link>
                         ) : (
-                            <button disabled className="w-10 h-10 flex items-center justify-center rounded-lg text-gray-200 cursor-not-allowed">
+                            <button disabled className="w-10 h-10 flex items-center justify-center bg-gray-100 text-gray-400 memphis-border cursor-not-allowed">
                                 <ChevronRight className="w-4 h-4" />
                             </button>
                         )}
                     </div>
                 )}
             </Container>
+            </div>
         </div>
     );
 }

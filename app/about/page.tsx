@@ -8,7 +8,9 @@ export const metadata: Metadata = {
 
 export default function About() {
     return (
-        <div className="bg-white min-h-screen pb-24">
+        <div className="bg-white min-h-screen pb-24 relative">
+            <div className="absolute inset-0 z-0 bg-dots opacity-[0.05] pointer-events-none"></div>
+            <div className="relative z-10">
             <Container>
                 {/* Header */}
                 <div className="py-16 md:py-24 max-w-4xl">
@@ -43,26 +45,27 @@ export default function About() {
 
                     {/* Sidebar / Stats */}
                     <div className="md:col-span-4">
-                        <div className="bg-gray-50 p-8 rounded-2xl border border-gray-100">
+                        <div className="bg-yellow-300 p-8 memphis-border memphis-shadow-hover">
                             <h3 className="font-bold text-gray-900 mb-6">Quick Stats</h3>
                             <div className="space-y-6">
                                 <div>
-                                    <div className="text-3xl font-bold text-primary-500">50+</div>
-                                    <div className="text-sm text-gray-500 font-medium">Detailed Tutorials</div>
+                                    <div className="text-3xl font-bold text-gray-900">50+</div>
+                                    <div className="text-sm text-gray-900 font-bold">Detailed Tutorials</div>
                                 </div>
                                 <div>
-                                    <div className="text-3xl font-bold text-primary-500">10k+</div>
-                                    <div className="text-sm text-gray-500 font-medium">Monthly Readers</div>
+                                    <div className="text-3xl font-bold text-gray-900">10k+</div>
+                                    <div className="text-sm text-gray-900 font-bold">Monthly Readers</div>
                                 </div>
                                 <div>
-                                    <div className="text-3xl font-bold text-primary-500">100%</div>
-                                    <div className="text-sm text-gray-500 font-medium">Open Source</div>
+                                    <div className="text-3xl font-bold text-gray-900">100%</div>
+                                    <div className="text-sm text-gray-900 font-bold">Open Source</div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </Container>
+            </div>
         </div>
     );
 }
