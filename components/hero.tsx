@@ -146,7 +146,7 @@ const Hero = () => {
                         </h1>
 
                         <p className="text-lg text-gray-500 max-w-2xl mx-auto leading-relaxed">
-                            Berita terbaru tentang AI. Mulai dari implementasi MCP, otomatisasi n8n, pengembangan chatbot, RAG, LLM dan banyak lagi.
+                            Artikel terbaru tentang AI. Mulai dari implementasi MCP, otomatisasi n8n, pengembangan chatbot, RAG, LLM dan banyak lagi.
                         </p>
                     </div>
                 </div>
