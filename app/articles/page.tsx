@@ -49,7 +49,7 @@ export default async function Articles({ searchParams }: { searchParams: Promise
                         <h1 className="text-5xl md:text-6xl font-bold text-black tracking-tight mb-6">
                             Daftar Artikel
                         </h1>
-                        <p className="text-xl text-primary-600 leading-relaxed">
+                        <p className="text-xl text-black leading-relaxed">
                             Artikel yang dibuat selalu di update untuk mempertahankan kualitas artikel. Kami berkomitmen untuk memberikan informasi yang akurat, relevan, dan bermanfaat bagi pembaca kami.
                         </p>
                     </div>

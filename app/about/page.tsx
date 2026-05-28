@@ -17,7 +17,7 @@ export default function About() {
                     <h1 className="text-5xl md:text-6xl font-bold text-gray-900 tracking-tight mb-6">
                         About NalarDeep
                     </h1>
-                    <p className="text-xl text-primary-600 leading-relaxed max-w-2xl">
+                    <p className="text-xl text-black leading-relaxed max-w-2xl">
                         NalarDeep adalah platform dokumentasi tutorial-tutorial AI dan teknologi terkini. Artikel yang dipaparkan telah melalui proses eksperimen, pengujian dan evaluasi untuk memastikan artikel yang berkualitas dan tetap relevan.
                     </p>
                 </div>
