@@ -8,7 +8,7 @@ const Footer = () => {
     const popularTags = getPopularTags(3);
 
     return (
-        <footer className="py-20 border-t border-gray-100 bg-white">
+        <footer className="py-20 border-t-4 border-gray-900 bg-white relative z-10">
             <Container>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
                     {/* Brand Column */}
@@ -59,7 +59,7 @@ const Footer = () => {
                     <div>
                         <h4 className="font-bold text-gray-900 mb-6">Ikuti Kami</h4>
                         <div className="flex items-center gap-4">
-                            <Link href="https://github.com/minggo-commits" aria-label="Visit our Github profile" className="w-10 h-10 bg-gray-50 rounded-full flex items-center justify-center text-gray-500 hover:bg-gray-100 hover:text-primary-500 transition-all">
+                            <Link href="https://github.com/minggo-commits" aria-label="Visit our Github profile" className="w-10 h-10 bg-white flex items-center justify-center text-gray-900 memphis-border memphis-shadow hover:memphis-shadow-hover transition-all hover:-translate-y-1">
                                 <Github className="w-5 h-5" />
                             </Link>
                         </div>

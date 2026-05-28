@@ -45,7 +45,7 @@ const PostHeader = ({ title, date, coverImage, readingTime, slug, author, tags }
                             <Link
                                 key={tag}
                                 href={`/tags/${tag.toLowerCase().replace(/\s+/g, '-')}`}
-                                className="bg-gray-100 hover:bg-gray-200 text-gray-700 text-sm font-medium px-3 py-1 rounded-full transition-colors"
+                                className="bg-yellow-300 hover:bg-yellow-400 text-gray-900 text-sm font-bold px-3 py-1 memphis-border memphis-shadow hover:memphis-shadow-hover hover:-translate-y-1 transition-all"
                             >
                                 #{tag}
                             </Link>
@@ -59,8 +59,8 @@ const PostHeader = ({ title, date, coverImage, readingTime, slug, author, tags }
             </div>
 
             {coverImage && (
-                <div className="max-w-5xl mx-auto mb-12 sm:-mx-5 md:mx-auto">
-                    <div className="relative aspect-[2/1] w-full overflow-hidden sm:rounded-2xl shadow-sm bg-gray-100">
+                <div className="max-w-3xl mx-auto mb-12 sm:-mx-5 md:mx-auto">
+                    <div className="relative aspect-video w-full overflow-hidden bg-gray-100 memphis-border memphis-shadow-hover mt-8">
                         <Image
                             src={coverImage}
                             alt={`Cover Image for ${title}`}
