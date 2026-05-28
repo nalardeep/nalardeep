@@ -1,10 +1,13 @@
 import { getAllPosts } from '@/lib/api';
 import { Post } from '@/types';
 import Container from '@/components/container';
+import BreadcrumbSchema from '@/components/breadcrumb-schema';
 import Link from 'next/link';
 import Image from 'next/image';
 import { BookOpen, Clock, ArrowRight } from 'lucide-react';
 import type { Metadata } from 'next';
+
+const BASE_URL = 'https://nalardeep.com';
 
 export const metadata: Metadata = {
     title: 'Courses - NalarDeep',
@@ -90,6 +93,13 @@ export default function CoursesPage() {
         <div className="bg-white min-h-screen pb-24 relative">
             <div className="absolute inset-0 z-0 bg-dots opacity-[0.05] pointer-events-none"></div>
             <div className="relative z-10">
+                {/* Breadcrumb Structured Data: Home > Courses */}
+                <BreadcrumbSchema
+                    items={[
+                        { name: 'Beranda', url: BASE_URL },
+                        { name: 'Courses', url: `${BASE_URL}/courses` },
+                    ]}
+                />
                 <Container>
                     {/* Header */}
                     <div className="py-16 md:py-24 flex flex-col md:flex-row md:items-center md:justify-between gap-12">

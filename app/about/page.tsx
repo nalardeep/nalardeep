@@ -1,5 +1,8 @@
 import Container from "@/components/container";
+import BreadcrumbSchema from "@/components/breadcrumb-schema";
 import { Metadata } from 'next';
+
+const BASE_URL = "https://nalardeep.com";
 
 export const metadata: Metadata = {
     title: 'About Us | NalarDeep',
@@ -11,6 +14,13 @@ export default function About() {
         <div className="bg-white min-h-screen pb-24 relative">
             <div className="absolute inset-0 z-0 bg-dots opacity-[0.05] pointer-events-none"></div>
             <div className="relative z-10">
+            {/* Breadcrumb Structured Data: Home > About */}
+            <BreadcrumbSchema
+                items={[
+                    { name: 'Beranda', url: BASE_URL },
+                    { name: 'About', url: `${BASE_URL}/about` },
+                ]}
+            />
             <Container>
                 {/* Header */}
                 <div className="py-16 md:py-24 max-w-4xl">

@@ -1,6 +1,9 @@
 import Container from "@/components/container";
+import BreadcrumbSchema from "@/components/breadcrumb-schema";
 import { Metadata } from 'next';
 import { Mail, MapPin, Phone } from "lucide-react";
+
+const BASE_URL = "https://nalardeep.com";
 
 export const metadata: Metadata = {
     title: 'Contact Us | NalarDeep',
@@ -12,6 +15,13 @@ export default function Contact() {
         <div className="bg-white min-h-screen pb-24 relative">
             <div className="absolute inset-0 z-0 bg-dots opacity-[0.05] pointer-events-none"></div>
             <div className="relative z-10">
+            {/* Breadcrumb Structured Data: Home > Contact */}
+            <BreadcrumbSchema
+                items={[
+                    { name: 'Beranda', url: BASE_URL },
+                    { name: 'Contact', url: `${BASE_URL}/contact` },
+                ]}
+            />
             <Container>
                 {/* Header */}
                 <div className="py-16 md:py-24 max-w-4xl">

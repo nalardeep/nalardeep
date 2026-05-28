@@ -1,9 +1,12 @@
 import Container from "@/components/container";
+import BreadcrumbSchema from "@/components/breadcrumb-schema";
 import { getAllPosts, getPostsByTag } from "@/lib/api";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { ArrowLeft, BookOpen, Clock, ArrowRight } from "lucide-react";
 import type { Metadata } from "next";
+
+const BASE_URL = "https://nalardeep.com";
 
 // Course category metadata (same as courses page)
 const courseCategories: Record<string, { label: string; description: string; color: string; icon: string }> = {
@@ -84,6 +87,14 @@ export default async function TagPage({ params }: { params: Promise<{ tag: strin
         <div className="bg-white min-h-screen pb-24 relative">
             <div className="absolute inset-0 z-0 bg-dots opacity-[0.05] pointer-events-none"></div>
             <div className="relative z-10">
+                {/* Breadcrumb Structured Data: Home > Courses > [Course] */}
+                <BreadcrumbSchema
+                    items={[
+                        { name: 'Beranda', url: BASE_URL },
+                        { name: 'Courses', url: `${BASE_URL}/courses` },
+                        { name: label, url: `${BASE_URL}/tags/${tag}` },
+                    ]}
+                />
                 <Container>
                     <div className="py-16 md:py-24 max-w-3xl">
 
