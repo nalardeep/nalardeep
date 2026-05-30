@@ -28,7 +28,7 @@ export default function Contact() {
                     <h1 className="text-5xl md:text-6xl font-bold text-gray-900 tracking-tight mb-6">
                         Hubungi Kami
                     </h1>
-                    <p className="text-xl text-primary-600 leading-relaxed max-w-2xl">
+                    <p className="text-xl text-black leading-relaxed max-w-2xl">
                         Jika Anda memiliki pertanyaan atau saran, maka jangan ragu untuk menghubungi kami. 
                     </p>
                 </div>
