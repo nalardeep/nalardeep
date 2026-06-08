@@ -1,0 +1,65 @@
+---
+title: "Cara Install n8n Self-Hosted di Docker Desktop untuk Otomatisasi Workflow & AI Gratis"
+excerpt: "Panduan lengkap cara install n8n self-hosted menggunakan Docker Desktop untuk otomatisasi workflow dan integrasi AI lokal secara gratis."
+coverImage: '/assets/blog/cara-install-n8n-docker/thumbnail.webp'
+date: "2026-06-08"
+author:
+  name: "Arsan"
+  picture: "https://ui-avatars.com/api/?name=Arsan+Akbar&background=0D8ABC&color=fff"
+tags: ["n8n", "docker", "otomatisasi"]
+---
+
+# Cara Install n8n Self-Hosted di Docker
+
+Menjalankan n8n secara *self-hosted* merupakan pilihan terbaik untuk Sobat Nalar yang ingin membangun sistem otomatisasi alur kerja (*workflow automation*) secara mandiri tanpa batasan eksekusi cloud. Menggunakan Docker Desktop di Windows/macOS adalah cara termudah dan tercepat untuk memulainya.
+
+## Langkah-Langkah Instalasi n8n dengan Docker Desktop
+
+Untuk menginstall n8n melalui Docker Desktop, terdapat beberapa tahapan mudah yang mesti Sobat Nalar lakukan. Berikut panduan lengkapnya:
+
+### Download dan Install Docker Desktop
+1. Silakan kunjungi website resmi Docker: [Download Docker](https://www.docker.com/)
+2. Unduh installer **Docker Desktop** sesuai dengan sistem operasi laptop atau komputer yang Anda gunakan (Windows, macOS, atau Linux).
+3. Jalankan file installer tersebut dan ikuti proses instalasi sampai selesai.
+4. Lakukan restart komputer jika diminta oleh sistem.
+
+### Konfigurasi dan Jalankan Container n8n
+1. Buka aplikasi **Docker Desktop**, lalu masuk ke menu **Volumes** di bilah navigasi kiri. Klik tombol **Create** di kanan atas untuk membuat volume penyimpanan baru. Isi nama volume dengan **n8n_data** agar data alur kerja Anda tidak hilang saat container di-restart.
+![docker volumes](/assets/blog/cara-membuat-chatbot-telegram-dengan-n8n-dan-model-lokal-LM-Studio-(tanpa-coding)/docker-volume-display.webp "docker volumes")
+
+2. Selanjutnya, pindah ke menu **Images** dan klik **Search images to run** di bagian atas (atau cari melalui kolom pencarian hub). Ketik **n8n**, pilih image resmi dari n8n (n8nio/n8n), lalu klik **Pull** untuk mengunduhnya.
+![docker images](/assets/blog/cara-membuat-chatbot-telegram-dengan-n8n-dan-model-lokal-LM-Studio-(tanpa-coding)/docker-image-n8n.webp "docker images n8n")
+
+3. Setelah proses unduh image selesai, klik tombol **Run** pada image n8n tersebut. Docker Desktop akan menampilkan jendela pengaturan container. Konfigurasikan pengaturannya sebagai berikut:
+![container settings](/assets/blog/cara-membuat-chatbot-telegram-dengan-n8n-dan-model-lokal-LM-Studio-(tanpa-coding)/container-settings.webp "container settings")
+- **Container Name**: Isi dengan nama container Anda, misalnya **n8n-lokal**.
+- **Ports**: Isi kolom port lokal dengan port yang diinginkan, misalnya **5678** (port default n8n), agar n8n dapat diakses melalui port statis tersebut.
+- **Volumes**: Petakan Host path ke volume yang telah kita buat sebelumnya yaitu **n8n_data**, dan isi Container path dengan **/home/node/.n8n** (direktori data n8n di dalam container).
+- Klik **Run**.
+
+4. Tunggu beberapa saat hingga status container berubah menjadi hijau (Running).
+5. Buka peramban (browser) Anda, lalu akses alamat http://localhost:5678 (atau port lain yang Anda tentukan sebelumnya).
+6. Halaman registrasi n8n akan terbuka. Anda cukup membuat akun lokal (nama, email, password) untuk mulai menggunakan n8n secara gratis.
+![n8n docker](/assets/blog/cara-membuat-chatbot-telegram-dengan-n8n-dan-model-lokal-LM-Studio-(tanpa-coding)/n8n-docker.webp "n8n docker")
+
+## Kesimpulan
+
+Menginstall n8n secara *self-hosted* menggunakan Docker Desktop sangat praktis untuk kebutuhan otomatisasi alur kerja dan integrasi AI tanpa biaya berlangganan bulanan. Dengan konfigurasi volume yang tepat, seluruh data skenario otomatisasi Anda akan tersimpan dengan aman secara lokal di perangkat Anda.
+
+## FAQ
+
+### 1. Apakah n8n self-hosted ini sepenuhnya gratis?
+Ya, versi self-hosted (Community Edition) dapat Anda gunakan secara gratis tanpa batasan jumlah alur kerja (*workflows*) maupun eksekusi per bulan untuk kebutuhan personal dan komersial skala kecil.
+
+### 2. Mengapa saya perlu membuat Volume di Docker Desktop?
+Volume (seperti n8n_data) berfungsi untuk menyimpan data konfigurasi, kredensial akun, serta database alur kerja n8n secara persisten di harddisk lokal komputer Anda. Tanpa volume, data Anda akan langsung terhapus saat container dihentikan atau di update.
+
+### 3. Bagaimana cara memperbarui (update) n8n ke versi terbaru?
+Anda hanya perlu menghentikan container lama, mengunduh (pull) image n8n versi terbaru dari Docker Desktop, lalu menjalankan container baru dengan menghubungkannya ke volume n8n_data yang sama.
+
+### 4. Bisakah n8n lokal ini diakses dari luar jaringan?
+Secara default, instalasi lokal ini hanya bisa diakses dari komputer Anda sendiri (localhost). Untuk mengaksesnya secara publik, Anda membutuhkan tools tambahan seperti Cloudflare Tunnels, ngrok, atau konfigurasi reverse proxy dengan IP publik.
+Agar n8n dapat diakses dari luar jaringan, Sobat nalar dapat mengikuti cara dibawah ini dengan menggunakan tools tambahan seperti ngrok.
+
+[Webhook menggunakan ngrok](https://www.nalardeep.com/posts/chatbot-telegram-n8n-lm-studio-lokal#webhook-menggunakan-ngrok)
+
