@@ -224,47 +224,35 @@ Jika sobat nalar sudah menggunakan ekosistem Cloudflare, *Workers AI* adalah pil
 
 ---
 
-## Perbandingan Kuota API LLM Gratis (Ringkasan)
-
-Berikut adalah tabel perbandingan singkat untuk membantu sobat nalar memilih provider yang paling sesuai dengan kebutuhan proyek:
-
-| Provider | Model Unggulan | Limit Gratis (Est.) | Keunggulan Utama |
-| :--- | :--- | :--- | :--- |
-| **Google Gemini** | Gemini 3 Flash | 15 RPM / 500 RPD | Context Window 1M+ Token |
-| **Groq Cloud** | Llama 3.3 / 4.0 | 30 RPM / 1440 RPD | Kecepatan LPU (Instan) |
-| **OpenRouter** | Multi (`:free`) | 50 - 1000 Req/Day | Agregator Model Terlengkap |
-| **Cerebras** | Llama 3.3, Qwen | 1M Token / Hari | Throughput 2000+ T/s |
-| **SambaNova** | Llama 3.1 405B | 100 Req / Jam | Akses Model Raksasa (405B) |
-| **DeepSeek** | DeepSeek-V3 / R1 | Free Credits / Tier | Penalaran (Reasoning) Kuat |
-| **GitHub Models** | GPT-4o, Claude 3.5 | 50-100 Req / Hari | Ekosistem Developer GitHub |
-| **Mistral AI** | Mistral Large 2 | Experiment Tier | Kualitas Model High-End |
-| **Hugging Face** | Mistral, Gemma 2 | Rate Limited | Ribuan Model Open Source |
-| **Cloudflare** | Llama 3.x | Daily Quota | Infrastruktur Edge Tercepat |
-
-
----
-
 ## Tips Mengelola Rate Limit
 Karena statusnya gratis, Anda pasti akan terkena *Rate Limit* (pembatasan jumlah request). Berikut tipsnya.
 - **Implementasikan Retry Logic** - Gunakan pustaka seperti `tenacity` di Python untuk mencoba kembali request jika gagal.
 - **Caching** - Simpan jawaban untuk pertanyaan yang sering diajukan agar tidak membuang kuota API.
-- **Gunakan Multiple Provider** - Jika kuota di Groq habis, pindahkan *fallback* ke Gemini.
+- **Gunakan Multiple Provider** - Jika kuota di Groq habis, pindah ke Gemini.
 
-## FAQ: Pertanyaan Seputar API LLM Gratis
+## FAQ
 
-**1. Apakah API LLM gratis aman digunakan?**
-Secara umum aman jika berasal dari provider ternama (Google, Cloudflare).
+### 1. Apakah API LLM gratis aman digunakan?
+Secara umum sangat aman jika menggunakan provider resmi dan terpercaya seperti Google AI Studio, Groq Cloud, atau Cloudflare. Namun, jika berniat mengerjakan proyek dengan data sensitif atau membutuhkan privasi ekstra, sobat nalar bisa mempertimbangkan menggunakan model AI lokal yang berjalan secara offline. Silakan baca panduan lengkap kami tentang [Cara Menjalankan LLM di Laptop Kentang secara Offline](/posts/cara-menjalankan-llm-laptop-kentang-offline) untuk informasi selengkapnya.
 
-**2. Apakah saya perlu kartu kredit untuk mendaftar?**
-Provider seperti Google AI Studio dan Groq saat ini tidak mewajibkan kartu kredit untuk mengakses *free tier* mereka.
+### 2. Apakah saya perlu kartu kredit untuk mendaftar?
+Tidak. Sebagian besar provider gratis yang kami rekomendasikan di atas (seperti Google AI Studio, Groq, dan OpenRouter) tidak mewajibkan untuk memasukkan informasi kartu kredit saat mendaftar atau menggunakan kuota gratis mereka.
 
-**3. Apa LLM API gratis terbaik untuk pemula?**
-**Google Gemini** adalah yang paling mudah karena dokumentasinya lengkap dan sistem *key management*-nya sangat sederhana lewat Google AI Studio.
+### 3. Apa API LLM gratis terbaik untuk pemula?
+**Google Gemini** (melalui Google AI Studio) adalah pilihan terbaik karena dokumentasinya yang sangat lengkap, SDK yang mudah digunakan untuk berbagai bahasa pemrograman, serta proses pembuatan API key yang sangat sederhana.
+
+### 4. Bagaimana cara mengintegrasikan API LLM gratis ini dengan alur kerja otomatisasi?
+Sobat nalar bisa mengintegrasikan API LLM gratis ini (seperti Gemini atau Groq) dengan platform otomatisasi alur kerja (*workflow automation*). Salah satu platform terpopuler dan gratis yang bisa digunakan adalah n8n. Untuk mengenal dasarnya, silakan pelajari [Apa Itu n8n? Panduan Lengkap Workflow Automation untuk Pemula](/posts/apa-itu-n8n). Setelah itu, bisa langsung mengikuti panduan praktis [Cara Install n8n Self-Hosted di Docker Desktop](/posts/cara-install-n8n-docker) untuk memulainya di komputer lokal.
+
+### 5. Apa perbedaan antara rate limit RPM, TPM, dan RPD?
+* **RPM (Requests Per Minute):** Batas jumlah panggilan API yang dapat Anda lakukan dalam satu menit.
+* **TPM (Tokens Per Minute):** Batas jumlah kata/token yang diproses (input + output) dalam satu menit.
+* **RPD (Requests Per Day):** Batas total panggilan API yang diizinkan dalam satu hari penuh.
 
 ---
 
 ## Kesimpulan
-Memulai proyek berbasis AI di tahun 2026 tidak harus mahal. Dengan memanfaatkan **API LLM gratis** dari provider seperti Google, Groq, dan OpenRouter, Anda bisa membangun aplikasi canggih tanpa modal besar.
+Memulai proyek berbasis AI di tahun 2026 tidak harus mahal. Dengan memanfaatkan **API LLM gratis** dari provider seperti Google, Groq, dan OpenRouter, kamu bisa membangun aplikasi canggih tanpa modal besar.
 
 **Tags**: #LLM #FreeAPI #DevTips #ArtificialIntelligence #APIKey
 
