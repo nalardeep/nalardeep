@@ -103,7 +103,7 @@ Ya, tools seperti Unsloth, Axolotl, dan LLaMA Factory bersifat open source dan g
 Untuk pemula, tools dengan UI dan tanpa banyak konfigurasi teknis seperti Unsloth lebih mudah digunakan. Sedangkan Axolotl dan LLaMA Factory lebih cocok jika kamu sudah mulai memahami konsep training dan ingin eksplorasi lebih dalam.
 
 ### Apakah bisa melakukan fine tuning tanpa GPU?
-Secara teknis bisa, tetapi sangat tidak direkomendasikan karena prosesnya akan sangat lambat. Alternatifnya, kamu bisa menggunakan Google Colab, Kaggle, atau layanan cloud lainnya untuk mendapatkan akses GPU.
+Secara teknis bisa, tetapi sangat tidak direkomendasikan karena prosesnya akan sangat lambat. Alternatifnya, kamu bisa menggunakan Google Colab, Kaggle, atau layanan cloud lainnya untuk mendapatkan akses GPU. Setelah proses training selesai, kamu bisa mengekspor model ke format GGUF untuk dijalankan secara offline di laptop menggunakan [LM Studio](/posts/cara-menjalankan-llm-laptop-kentang-offline).
 
 ### Apa perbedaan LoRA dan QLoRA?
 LoRA (Low Rank Adaptation) adalah teknik fine tuning yang lebih hemat resource dengan menambahkan parameter kecil ke model utama. Sedangkan QLoRA adalah versi yang lebih efisien lagi karena menggabungkan quantization, sehingga bisa dijalankan pada GPU dengan memori terbatas.
