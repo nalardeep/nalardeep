@@ -76,12 +76,12 @@ const components = {
         );
     },
     strong: ({ children }: any) => (
-        <strong className="px-1.5 py-0.5 bg-yellow-300 text-gray-900 border-2 border-gray-900 shadow-[2px_2px_0px_0px_#171717] font-bold mx-0.5">
+        <strong className="font-bold">
             {children}
         </strong>
     ),
     b: ({ children }: any) => (
-        <b className="px-1.5 py-0.5 bg-yellow-300 text-gray-900 border-2 border-gray-900 shadow-[2px_2px_0px_0px_#171717] font-bold mx-0.5">
+        <b className="font-bold">
             {children}
         </b>
     ),
