@@ -1,0 +1,92 @@
+---
+title: "Cara Hosting n8n menggunakan VPS di Platform DigitalOcean"
+excerpt: "Tutorial tentang bagaimana cara menghosting n8n melalui VPS di DigitalOcean"
+coverImage: '/assets/blog/cara-hosting-n8n-di-VPS/thumbnail.webp'
+date: "2026-06-24"
+author:
+  name: "Arsan"
+  picture: "https://ui-avatars.com/api/?name=Arsan+Akbar&background=0D8ABC&color=fff"
+tags: ["DigitalOcean", "n8n", "hosting", "VPS", "server", "Self-Hosted"]
+---
+
+# Cara Hosting n8n Menggunakan VPS di DigitalOcean
+
+Hosting n8n secara mandiri (*self-hosted*) menggunakan VPS di DigitalOcean adalah pilihan populer bagi developer yang menginginkan fleksibilitas dan kendali penuh atas alur kerja otomatisasi mereka tanpa batasan kuota eksekusi Cloud.
+
+Berikut adalah panduan lengkap langkah demi langkah untuk melakukan *setup* n8n di VPS DigitalOcean.
+
+> **Tips Hemat:** Sebelum mulai, jika teman-teman ingin mencoba VPS DigitalOcean secara gratis, silakan ikuti panduan **[Cara Mendapatkan Kredit DigitalOcean Gratis](/posts/kredit-digital-ocean-gratis)** untuk mengklaim saldo kredit gratis hingga $200 (aktif selama 60 hari).
+
+---
+
+## Langkah 1: Memilih Template n8n di Marketplace DigitalOcean
+
+1. Lakukan pencarian di Google dengan kata kunci **n8n DigitalOcean**.
+2. Selanjutnya di halaman marketplace DigitalOcean, klik **Create n8n Droplet**.
+
+![n8n droplet](/assets/blog/cara-hosting-n8n-di-VPS/n8n-droplet.webp "n8n droplet")
+
+3. Maka akan muncul halaman mengenai spesifikasi VPS yang akan dipakai untuk n8n tersebut. Di sini mimin pakai rekomendasi dari DigitalOcean saja, yang di mana total penggunaan kredit sekitar $32 untuk perbulannya. Teman-teman juga bisa melakukan kustomisasi OS dan *images*-nya. Bagi yang ingin menghemat biaya sewa bulanan ini, teman-teman bisa memanfaatkan program **[Kredit DigitalOcean Gratis](/posts/kredit-digital-ocean-gratis)**.
+
+![Create droplet](/assets/blog/cara-hosting-n8n-di-VPS/create-droplet.webp "n8n droplet")
+
+---
+
+## Langkah 2: Membuat dan Menambahkan SSH Key
+
+Sebelum membuat droplet tersebut, kita perlu menentukan SSH Key yang akan digunakan.
+
+1. Klik **Select an SSH Key**.
+2. Kemudian pilih **Add an SSH Key**.
+3. Selanjutnya perlu dilakukan pembuatan SSH Key (jika belum ada SSH Key), buka **PowerShell**.
+4. Jalankan perintah berikut di PowerShell:
+   ```powershell
+   ssh-keygen
+   ```
+5. Selanjutnya teman-teman akan diminta untuk memasukkan nama file dan lokasi SSH Key-nya. Klik saja **Enter** untuk menggunakan lokasi default.  
+6. Isikan juga bagian password SSH Key.
+7. Setelah SSH Key berhasil dibuat, jalankan perintah berikut di PowerShell untuk menyalin Key yang telah dibuat tadi:
+   ```powershell
+   Get-Content ~/.ssh/id_ed25519.pub | Set-Clipboard
+   ```
+8. Tempel (*paste*) SSH Key tersebut di halaman DigitalOcean tadi pada kolom **SSH Key content** dan jangan lupa untuk memberikan nama pada SSH Key tersebut.
+9. Klik **Add SSH Key** untuk menyelesaikan *setup* SSH Key.
+10. Jika berhasil maka akan muncul pesan bahwa SSH Key berhasil dibuat, langsung saja centang SSH Key yang telah dibuat tadi.
+
+![SSH Key](/assets/blog/cara-hosting-n8n-di-VPS/ssh-key.webp "ssh key")
+
+---
+
+## Langkah 3: Membuat Droplet
+
+1. *Jreng jreng*, setelah *setup* SSH Key dilakukan maka teman-teman sudah bisa membuat droplet tersebut.
+2. Klik **Create Droplet**, tunggu proses pembuatan droplet tersebut. Jika sudah aktif maka akan muncul pesan **active** pada droplet tersebut.
+
+---
+
+## Langkah 4: Menghubungkan Domain pada n8n (Penyesuaian DNS)
+
+Selanjutnya teman-teman perlu menghubungkan domain pada n8n melalui penyesuaian DNS. Pada manajemen DNS tempat domain berada, buat Record baru dan lakukan penyesuaian dengan informasi-informasi berikut ini:
+
+| Parameter | Value | Keterangan |
+| :--- | :--- | :--- |
+| **Domain / Host** | n8n | Subdomain yang akan digunakan |
+| **Record type** | A | Tipe DNS record |
+| **IP atau Hostname** | *IP Public IPv4 pada droplet* | Alamat IP VPS Anda |
+| **TTL** | *Default* | Biarkan default / otomatis |
+
+---
+
+## Langkah 5: Konfigurasi n8n via Web Console
+
+1. Untuk menjalankan droplet tersebut, langsung saja **klik Web Console**.
+2. Teman-teman akan diarahkan untuk melakukan beberapa tahapan konfigurasi:
+   * **Subdomain** (default): n8n
+   * **Domain name** (e.g., yourdomain.com): Sesuaikan dengan domain yang dimiliki masing-masing
+   * **Email address for Let's Encrypt** (required): Masukkan email aktif Anda
+   * **Would you like to configure a timezone?** (y/N, default: Europe/Berlin): N
+3. Tunggu proses instalasi n8n selesai, jika sudah selesai maka link n8n akan muncul otomatis.
+4. Akses link tersebut untuk masuk ke n8n.
+
+*Happy eksperimen guys.*
+
