@@ -32,9 +32,7 @@ const Header = () => {
                             <li>
                                 <Link href="/articles" className="hover:text-primary-500 transition-colors">Artikel</Link>
                             </li>
-                            <li>
-                                <Link href="/courses" className="hover:text-primary-500 transition-colors">Course</Link>
-                            </li>
+
                             <li>
                                 <Link href="/contact" className="hover:text-primary-500 transition-colors">Kontak</Link>
                             </li>
@@ -62,7 +60,7 @@ const Header = () => {
                 {isOpen && (
                     <div className="md:hidden absolute top-full left-0 w-full bg-white border-b-3 border-gray-900 shadow-lg py-4 px-4 flex flex-col items-center gap-4">
                         <Link href="/articles" className="text-gray-600 hover:text-primary-500 font-medium py-2 block" onClick={() => setIsOpen(false)}>Artikel</Link>
-                        <Link href="/courses" className="text-gray-600 hover:text-primary-500 font-medium py-2 block" onClick={() => setIsOpen(false)}>Course</Link>
+
                         <Link href="/contact" className="text-gray-600 hover:text-primary-500 font-medium py-2 block" onClick={() => setIsOpen(false)}>Kontak</Link>
                         <Link href="/about" className="text-gray-600 hover:text-primary-500 font-medium py-2 block" onClick={() => setIsOpen(false)}>Tentang</Link>
                     </div>
