@@ -13,7 +13,8 @@
   --color-primary-800: #065f46;
   --color-primary-900: #064e3b;
 
-  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-heading: var(--font-heading), ui-sans-serif, system-ui, sans-serif;
   --font-mono: var(--font-geist-mono), ui-monospace, SFMono-Regular, monospace;
 }
 
@@ -32,7 +33,7 @@
        Actually, I will comment out dark mode for now to ensure "white" theme is dominant, 
        or implement a very clean dark green/black if needed. 
        Let's force light mode for the "clean white" look, or mostly light.
-    */
+     */
     --background: #f8fafc;
     /* slightly off-white instead of black */
     --foreground: #171717;
@@ -53,5 +54,46 @@ h3,
 h4,
 h5,
 h6 {
-  color: var(--color-primary-900);
+  color: #171717; /* High contrast black for memphis instead of green */
+  font-family: var(--font-heading);
+}
+
+/* Custom Scrollbar for Code Blocks */
+pre::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+pre::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+pre::-webkit-scrollbar-thumb {
+  background: #e2e8f0;
+  border-radius: 10px;
+  border: 2px solid transparent;
+  background-clip: content-box;
+}
+
+pre::-webkit-scrollbar-thumb:hover {
+  background: #cbd5e1;
+  border: 2px solid transparent;
+  background-clip: content-box;
+}
+
+@utility memphis-border {
+  border: 3px solid #171717;
+}
+
+@utility memphis-shadow {
+  box-shadow: 6px 6px 0px 0px #171717;
+}
+
+@utility memphis-shadow-hover {
+  box-shadow: 8px 8px 0px 0px #171717;
+}
+
+@utility bg-dots {
+  background-image: radial-gradient(#171717 1.5px, transparent 1.5px);
+  background-size: 24px 24px;
 }

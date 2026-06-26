@@ -1,11 +1,16 @@
 import type { Metadata } from "next";
-import { Inter, Geist_Mono } from "next/font/google";
+import { Space_Grotesk, Outfit, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/header";
 import Footer from "@/components/footer";
 
-const inter = Inter({
-  variable: "--font-inter",
+const spaceGrotesk = Space_Grotesk({
+  variable: "--font-heading",
+  subsets: ["latin"],
+});
+
+const outfit = Outfit({
+  variable: "--font-sans",
   subsets: ["latin"],
 });
 
@@ -32,17 +37,29 @@ export const metadata: Metadata = {
   },
 };
 
-const jsonLd = {
-  "@context": "https://schema.org",
-  "@type": "WebSite",
-  "name": "NalarDeep",
-  "url": "https://nalardeep.com",
-  "potentialAction": {
-    "@type": "SearchAction",
-    "target": "https://nalardeep.com/search?q={search_term_string}",
-    "query-input": "required name=search_term_string"
+const jsonLd = [
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "NalarDeep",
+    "url": "https://nalardeep.com",
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "https://nalardeep.com/search?q={search_term_string}",
+      "query-input": "required name=search_term_string"
+    }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "NalarDeep",
+    "url": "https://nalardeep.com",
+    "logo": "https://nalardeep.com/logo.png",
+    "sameAs": [
+      "https://github.com/minggo-commits"
+    ]
   }
-};
+];
 
 export default function RootLayout({
   children,
@@ -52,7 +69,7 @@ export default function RootLayout({
   return (
     <html lang="id" suppressHydrationWarning>
       <body
-        className={`${inter.variable} ${geistMono.variable} antialiased flex flex-col min-h-screen`}
+        className={`${outfit.variable} ${spaceGrotesk.variable} ${geistMono.variable} font-sans antialiased flex flex-col min-h-screen`}
       >
         <Header />
         <main className="flex-grow">

@@ -11,7 +11,7 @@ const PostPreview = ({ post }: Props) => {
     return (
         <div className='group flex flex-col h-full'>
             {/* Image Placeholder */}
-            <div className="relative overflow-hidden rounded-2xl mb-6 aspect-[16/9] bg-gray-100">
+            <div className="relative overflow-hidden mb-6 aspect-[16/9] bg-gray-100 memphis-border memphis-shadow-hover transition-all">
                 <Image
                     src={post.coverImage || "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?auto=format&fit=crop&w=800&q=80"}
                     alt={post.title}
@@ -20,7 +20,7 @@ const PostPreview = ({ post }: Props) => {
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                 />
                 <div className="absolute top-4 left-4 z-10">
-                    <span className="bg-white/90 backdrop-blur-sm px-3 py-1 rounded-md text-xs font-bold uppercase tracking-wider text-gray-800 shadow-sm">
+                    <span className="bg-yellow-300 px-3 py-1 text-xs font-bold uppercase tracking-wider text-gray-900 memphis-border">
                         Article
                     </span>
                 </div>

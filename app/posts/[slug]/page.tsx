@@ -4,8 +4,11 @@ import PostBody from "@/components/post-body";
 import PostHeader from "@/components/post-header";
 import TableOfContents from "@/components/table-of-contents";
 import RelatedPosts from "@/components/related-posts";
+import BreadcrumbSchema from "@/components/breadcrumb-schema";
 import { notFound } from "next/navigation";
 import { Metadata } from "next";
+
+const BASE_URL = "https://nalardeep.com";
 
 export default async function Post({ params }: { params: Promise<{ slug: string }> }) {
     const { slug } = await params;
@@ -16,8 +19,51 @@ export default async function Post({ params }: { params: Promise<{ slug: string 
         return notFound();
     }
 
+    const blogPostingSchema = {
+        '@context': 'https://schema.org',
+        '@type': 'BlogPosting',
+        headline: post.title,
+        datePublished: post.date,
+        dateModified: post.date,
+        description: post.excerpt,
+        image: post.coverImage ? [post.coverImage] : [],
+        url: `${BASE_URL}/posts/${post.slug}`,
+        mainEntityOfPage: {
+            '@type': 'WebPage',
+            '@id': `${BASE_URL}/posts/${post.slug}`,
+        },
+        author: {
+            '@type': 'Person',
+            name: post.author.name,
+            image: post.author.picture,
+        },
+        publisher: {
+            '@type': 'Organization',
+            name: 'NalarDeep',
+            logo: {
+                '@type': 'ImageObject',
+                url: `${BASE_URL}/logo.png`,
+            },
+        },
+    };
+
     return (
         <Container>
+            {/* BlogPosting Structured Data */}
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(blogPostingSchema) }}
+            />
+
+            {/* Breadcrumb Structured Data: Home > Artikel > [Judul] */}
+            <BreadcrumbSchema
+                items={[
+                    { name: 'Beranda', url: BASE_URL },
+                    { name: 'Artikel', url: `${BASE_URL}/articles` },
+                    { name: post.title, url: `${BASE_URL}/posts/${post.slug}` },
+                ]}
+            />
+
             <article className="mb-32">
                 <PostHeader
                     title={post.title}
@@ -39,27 +85,7 @@ export default async function Post({ params }: { params: Promise<{ slug: string 
                     <aside className="hidden xl:block w-[250px] shrink-0">
                         <TableOfContents />
                     </aside>
-                    <script
-                        type="application/ld+json"
-                        dangerouslySetInnerHTML={{
-                            __html: JSON.stringify({
-                                '@context': 'https://schema.org',
-                                '@type': 'BlogPosting',
-                                headline: post.title,
-                                datePublished: post.date,
-                                dateModified: post.date,
-                                description: post.excerpt,
-                                image: post.coverImage ? [post.coverImage] : [],
-                                url: `https://nalardeep.com/posts/${post.slug}`,
-                                author: {
-                                    '@type': 'Person',
-                                    name: post.author.name,
-                                },
-                            }),
-                        }}
-                    />
                 </div>
-
             </article>
         </Container>
     );
@@ -86,7 +112,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
             description,
             type: 'article',
             publishedTime: post.date,
-            url: `https://nalardeep.com/posts/${slug}`,
+            url: `${BASE_URL}/posts/${slug}`,
             images: images,
         },
         twitter: {

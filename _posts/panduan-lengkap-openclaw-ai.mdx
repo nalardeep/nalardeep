@@ -1,0 +1,122 @@
+---
+title: "Panduan Lengkap OpenClaw AI: Apa Itu dan Cara Set-up Lengkap"
+excerpt: "Pelajari apa itu OpenClaw AI, fitur unggulannya, dan tutorial langkah demi langkah cara set-up OpenClaw untuk asisten AI otonom kamu."
+coverImage: '/assets/blog/cara-setup-openclaw-ai-agent-di-pc-laptop/thumbnail.webp'
+date: "2026-04-24"
+author:
+  name: "Arsan"
+  picture: "https://ui-avatars.com/api/?name=Arsan+Akbar&background=0D8ABC&color=fff"
+tags: ["OpenClaw"]
+---
+
+
+# Panduan Lengkap OpenClaw AI: Apa Itu dan Cara Set-up Lengkap
+
+## Apa Itu OpenClaw AI?
+Akhir-akhir ini kita di suruguhkan mengenai berita tren teknologi yang begitu cepat. Salah satu teknologi yang sedang banyak atau ramai di bahas adalah OpenClaw. OpenClaw sendiri awalnya adalah sebuah projek weekend yang dikerjakan oleh Peter Steinberger, projek tersebut bernama Whatsapp Relay yang kini berganti nama menjadi OpenClaw. Sebenarnya projek tersebut telah beberapa kali berganti nama, beberapa nama yang digunakan diantaranya adalah Clawd, Moltbot dan kemudian menjadi OpenClaw yang dipakai sampai sekarang. Tapi apa sih itu OpenClaw?, berdasarkan website resmi dari projek OpenClaw pada openclaw.ai. 
+
+> OpenClaw adalah platform agent open source yang bisa berjalan di mesin, OpenClaw dapat diakses dan digunakan dari beberapa aplikasi seperti Whatsapp, Telegram, Discord, Slack, Teams. Jadi pengguna bisa mengakses OpenClaw Agent dari berbagai aplikasi layaknya asisten pribadi yang siap melayani pengguna selama 24 jam.
+
+**Motto OpenClaw adalah Asisten Anda, Mesin Anda, dan Aturan Anda.**
+
+## Keunggulan Utama OpenClaw
+**Mengapa OpenClaw?** Berbeda dengan asisten berbasis SaaS yang menyimpan data Anda di server pihak ketiga, OpenClaw dapat dijalankan secara mandiri di perangkat pilihan. Baik itu laptop, homelab, maupun VPS. Set Up dan Settingan projek dapat di sesuaikan denga keinginan pribadi serta data pribadi aman dari pihak ketiga.
+
+## Persiapan Sebelum Install (Prerequisites)
+Sebelum menginstall OpenClaw, terdapat dua komponen yang harus sobat nalar siapkan. Komponen komponen tersebut adalah sebagai berikut.
+
+### Set up Node.js untuk menjalankan OpenClaw
+Node.js, Direkomendasikan versi 24 dan untuk penginstalan node js, sobat nalar langsung saja masuk di website resmi [node js](https://nodejs.org/en). Download node js sesuai dengan spesifikasi laptop. 
+
+
+Jika sudah menginstall Node.js, lakukan pengecekan versi Node.js dengan cara memasukkan perintah dibawah ini pada terminal.
+```
+node -v
+```
+
+
+### Set up API Key Openrouter untuk menjalankan OpenClaw
+Untuk menggunakan OpenClaw, kita membutuhkan LLM. Terdapat dua cara yang bisa digunakan yaitu dengan menjalankan LLM secara lokal (kamu bisa membaca [Tutorial Ollama untuk Menjalankan LLM Lokal](/posts/tutorial-ollama-jalankan-llm-offline-laptop)) atau menggunakan API Key untuk mengakses LLM cloud (baca juga rekomendasi [API LLM Gratis Terbaik](/posts/API-LLM-gratis)). Di sini admin menggunakan metode kedua dan untuk API Key yang digunakan berasal dari openrouter.ai. **Kenapa menggunakan openrouter?**, openrouter menyediakan berbagai model gratis yang bisa diakses melalui API Key. 
+
+Dengan mengakses LLM menggunakan API Key, laptop atau PC dapat digunakan untuk mengakses model tanpa takut terkendala dengan spesifikasi perangkat. Namun perlu di perhatikan meskipun teman-teman dapat mengakses model dengan gratis, tetap terdapat batasan atau limit untuk penggunaan model-model tersebut. Setidaknya API Key tersebut dapat digunakan untuk eksperimen sebelum teman-teman langganan API Key. Selain menyediakan model model gratis, openrouter juga menyediakan langganan API Key untuk berbagai model. Jadi teman-teman tidak perlu khawatir jika merasa penggunaan gratis kurang, langsung saja langganan di webnya [openrouter.ai](https://openrouter.ai/)
+
+1. Langsung saja masuk di website [openrouter.ai](https://openrouter.ai/).
+2. Buat akun atau login terlebih dahulu untuk mengakses model model yang diinginkan.
+3. Buat API Key dengan mengklik tombol **Create**, isi bagian Name misalnya openclaw kemudian pilih create.
+![Cara set up API Key Openrouter](/assets/blog/cara-setup-openclaw-ai-agent-di-pc-laptop/api-key.webp "Cara set up API Key openrouter")
+
+Jangan lupa untuk menyimpan API Key tersebut di notepad untuk memudahkan proses penginputan API Key di openclaw.
+
+## Cara Set-up OpenClaw (Langkah demi Langkah)
+### Langkah 1: install wsl untuk OpenClaw
+**Mengapa harus menginstall wsl?**, sebenarnya OpenClaw tetap support untuk dijalankan di windows tanpa wsl. Namun OpenClaw sendiri menyarankan untuk menggunakan wsl, hal tersebut dikarenakan menggunakan wsl lebih stabil dan direkomendasikan untuk experience yang lebih baik, terutama untuk penggunaan CLI, gateway, dan tools yang berjalan lebih kompatible dengan linux. Jalankan perintah dibawah ini di teminal.
+
+```
+wsl --install
+```
+
+Setelah proses download selesai, sobat nalar akan diminta untuk memasukkan username akun dan password. Silahkan isi dan alangkah baiknya jika akun tersebut di simpan karena setiap menggunakan wsl maka anda akan diminta untuk login terlebih dahulu.
+
+![Download WSL](/assets/blog/cara-setup-openclaw-ai-agent-di-pc-laptop/download-wsl.webp "Download WSL")
+
+### Langkah 2: Install OpenClaw di windows dan wsl
+Masukkkan perintah dibawah ini.
+``` 
+curl -fsSL https://openclaw.ai/install.sh | bash
+```
+Perintah diatas akan menjalankan proses download OpenClaw tanpa harus mengunduh file secara manual, menyimpannya, lalu membukanya. Tunggu proses install hingga selesai. Setelah proses install OpenClaw selesai, maka akan muncul pesan seperti ini.
+
+![Install OpenClaw](/assets/blog/cara-setup-openclaw-ai-agent-di-pc-laptop/install-openclaw-wsl.webp "Install OpenClaw")
+
+### Langkah 3: Konfigurasi OpenClaw di windows dan wsl
+
+Selanjutnya akan muncul pertanyaan seperti ini dan pilih yes.
+
+![security openclaw](/assets/blog/cara-setup-openclaw-ai-agent-di-pc-laptop/security-openclaw.webp "security openclaw")
+
+Lalu terdapat pilihan Set up mode, di sini admin menggunakan metode QuickStart dimana Konfigurasinya tidak terlalu ribet. Sangat cocok untuk Konfigurasi dasar namun jika ingin Konfigurasi yang detail, teman-teman bisa memilih yang manual.
+
+![Set up mode di openclaw](/assets/blog/cara-setup-openclaw-ai-agent-di-pc-laptop/set-up-mode.webp "Set up mode di openclaw")
+
+Langkah selanjutnya adalah memilih provider untuk penyedia LLM yang akan digunakan. Sebelumnya kita telah membuat API Key di openrouter, maka provider yang akan digunakan adalah openrouter. Silahkan pilih openrouter di daftar provider tersebut kemudian klik enter.
+
+![Set up provider di openclaw](/assets/blog/cara-setup-openclaw-ai-agent-di-pc-laptop/set-up-provider.webp "Set up provider di openclaw")
+
+Seteleh memilih provider, teman-teman diarahkan untuk memasukkan API Key yang digunakan. Silahkan copy API Key yang telah dibuat di website openrouter kemudian paste di terminal openclaw.
+
+![Set up API Key di openclaw](/assets/blog/cara-setup-openclaw-ai-agent-di-pc-laptop/set-up-api-key.webp "Set up api key di openclaw")
+
+Selanjutnya memilih model yang akan digunakan di openclaw. Setelah memasukkan API Key dari openrouter, openclaw akan menampilkan list dari model-model yang bisa digunakan. Untuk eksperimen, disini admin menggunakan model step 3.5 flash. Mencari dan menggunakan model tersebut dapat dilakukan dengan mengetikkan kalimat step maka model tersebut akan muncul.
+
+![Set up model di openclaw](/assets/blog/cara-setup-openclaw-ai-agent-di-pc-laptop/set-up-model.webp "Set up model di openclaw")
+
+Untuk Konfigurasi seperti channel, search provider, Konfigurasi skill, API Key untuk goplaces, API Key notion, API Key Open ai untuk openai-whisper-api, hooks dan lain lain admin skip atau tidak di Konfigurasi terlebih dahulu. Setelah muncul pesan seperti ini, maka openclaw sudah bisa diakses dengan perintah **openclaw dashboard** lalu copy dan pastekan Dashboard URL di browser.
+
+![Konfigurasi dasar OpenClaw Berhasil](/assets/blog/cara-setup-openclaw-ai-agent-di-pc-laptop/openclaw-install.webp "Konfigurasi dasar OpenClaw Berhasil")
+
+### Langkah 4: Dashboard OpenClaw
+Setelah melakukan Konfigurasi Konfigurasi dasar seperti set up provider, API Key, dan model, cobalah untuk mengakses dashboard openclaw dan kirim pesan **/new** di chat openclaw.
+
+![dashboard openclaw](/assets/blog/cara-setup-openclaw-ai-agent-di-pc-laptop/dashboard-openclaw.webp "dashboard openclaw")
+
+Jika muncul pesan seperti diatas maka openclaw sudah berhasil di set up. 
+
+## Kesimpulan
+Secara keseluruhan, **OpenClaw AI** adalah asisten AI yang fleksibel dan aman untuk digunakan. Dengan mengikuti panduan lengkap **cara set-up OpenClaw** di atas, mulai dari Instalasi WSL, konfigurasi Node.js, hingga integrasi model LLM melalui OpenRouter, maka sobat nalar bisa memiliki asisten pribadi yang serba bisa dan dapat digunakan kapanpun dan dimanapun saat dibutuhkan. 
+
+Fleksibilitas dalam konfigurasi, pilihan model LLM gratis maupun berbayar, serta privasi data yang terjaga menjadikan agent AI ini sangat powerfull dan fleksibel untuk digunakan.
+
+## FAQ
+
+### Apakah OpenClaw gratis digunakan?
+Ya, **OpenClaw adalah projek open source** sehingga sobat nalar bisa mengunduh dan menggunakannya secara gratis. Namun, untuk menjalankan model LLM pada agent AI ini, sobat nalar membutuhkan API Key dari OpenRouter. Kabar baiknya, OpenRouter menyediakan banyak pilihan model AI gratis yang sangat cocok dipakai untuk eksperimen sebelum teman teman berlangganan model untuk kebutuhan yang lebih berat.
+
+### Bisakah OpenClaw dihubungkan ke WhatsApp?
+100% bisaa, di website dokumentasi [OpenClaw AI](https://docs.openclaw.ai/channels/whatsapp) telah dijelaskan langkah langkah untuk menghubungkan whatsapp dengan openclaw. Jadi nantinya pengguna bisa mengakses openclaw melalui whatsapp. Untuk menggunakan fitur tersebut sobat nalar bisa mengaksesnya melalui fitur channel di openclaw.
+
+### Apakah openclaw aman untuk digunakan (privasi data)?
+Ya, Openclaw sangat aman digunakan jika langkah-langkah set up dan konfigurasi yang dilakukan sudah benar. Menurut salah satu pengguna reddit dengan username *absurd_heisht* pada salah satu postingannya yang kurang lebih isinya seperti dibawah ini.
+>  Openclaw untuk kelebihannya sendiri mampu menjalankan beberapa tugas yang berat seperti scrolling di website untuk tujuan tertentu, membaca pesan dan disini open claw benar-benar bertindak layaknya manusia atau pengguna. Disatu sisi openclaw dikhawatirkan juga dapat disalahgunakan oleh orang lain dengan menginjeksi atau menyuntikkan perintah-perintah yang berbahay dan merugikan.
+
+Namun permasalahan tersebut sejatinya dapat diatasi jika konfigurasi yang dilakukan untuk openclaw sudah benar. Untuk pembahasan lengkap mengenai keamanan openclaw akan kita bahas di artikel yang lain yah.
+

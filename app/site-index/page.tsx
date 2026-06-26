@@ -1,7 +1,10 @@
 import Container from "@/components/container";
+import BreadcrumbSchema from "@/components/breadcrumb-schema";
 import { getAllPosts } from "@/lib/api";
 import Link from "next/link";
 import { Metadata } from "next";
+
+const BASE_URL = "https://nalardeep.com";
 
 export const metadata: Metadata = {
     title: "Site Index | KodeMinggo",
@@ -33,6 +36,13 @@ export default function SiteIndexPage() {
 
     return (
         <div className="bg-white min-h-screen py-16 md:py-24">
+            {/* Breadcrumb Structured Data: Home > Site Index */}
+            <BreadcrumbSchema
+                items={[
+                    { name: 'Beranda', url: BASE_URL },
+                    { name: 'Site Index', url: `${BASE_URL}/site-index` },
+                ]}
+            />
             <Container>
                 <div className="max-w-3xl mx-auto">
                     <h1 className="text-4xl font-bold text-gray-900 mb-8">Site Index</h1>

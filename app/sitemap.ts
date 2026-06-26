@@ -15,6 +15,21 @@ export default function sitemap(): MetadataRoute.Sitemap {
         priority: 0.7,
     }));
 
+    // Generate URLs for tags
+    const tags = new Set<string>();
+    posts.forEach(post => {
+        post.tags?.forEach(tag => {
+            tags.add(tag.toLowerCase().replace(/\s+/g, '-'));
+        });
+    });
+
+    const tagUrls = Array.from(tags).map((tag) => ({
+        url: `${baseUrl}/tags/${tag}`,
+        lastModified: new Date(),
+        changeFrequency: 'weekly' as const,
+        priority: 0.6,
+    }));
+
     return [
         {
             url: baseUrl,
@@ -28,6 +43,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
             changeFrequency: 'daily',
             priority: 0.8,
         },
+
         {
             url: `${baseUrl}/about`,
             lastModified: new Date(),
@@ -58,6 +74,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
             changeFrequency: 'yearly',
             priority: 0.3,
         },
+        {
+            url: `${baseUrl}/site-index`,
+            lastModified: new Date(),
+            changeFrequency: 'weekly',
+            priority: 0.5,
+        },
         ...postUrls,
+        ...tagUrls,
     ];
 }

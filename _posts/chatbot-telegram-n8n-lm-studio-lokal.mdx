@@ -1,20 +1,20 @@
 ---
 title: "Cara Membuat Chatbot Telegram dengan n8n & LM Studio (AI Lokal Tanpa Coding)"
 excerpt: "Panduan step-by-step membuat chatbot Telegram menggunakan n8n dan LM Studio sebagai AI lokal tanpa coding. Cocok untuk self-hosted AI bot, automation workflow, dan penelitian AI offline di PC atau server lokal."
-coverImage: '/assets/blog/cara-membuat-chatbot-telegram-dengan-n8n-dan-model-lokal-LM-Studio-(tanpa-coding)/cara-membuat-chatbot-telegram-dengan-n8n-dan-model-lokal-LM-Studio-(tanpa-coding).webp'
+coverImage: '/assets/blog/cara-membuat-chatbot-telegram-dengan-n8n-dan-model-lokal-LM-Studio-(tanpa-coding)/thumbnail.webp'
 date: "2026-02-15"
 author:
   name: "Arsan"
   picture: "https://ui-avatars.com/api/?name=Arsan+Akbar&background=0D8ABC&color=fff"
-tags: ["chatbot", "n8n", "LM-Studio", "telegram"]
+tags: ["n8n", "LM Studio","LLM"]
 ---
 
-# Cara Membuat Chatbot Telegram dengan n8n dan Model Lokal LM Studio (Step by Step)
+# Membuat Chatbot Telegram AI Lokal dengan n8n dan LM Studio
 
 ## Pendahuluan
 
 ### Apa itu Chatbot Telegram?
-Chatbot telegram adalah program komputer yang dirancang untuk berinteraksi dengan pengguna melalui aplikasi pesan Telegram. Chatbot ini dapat digunakan untuk berbagai keperluan, seperti memberikan informasi, menjawab pertanyaan, atau melakukan tugas-tugas tertentu.
+Chatbot telegram adalah program komputer yang dirancang untuk berinteraksi dengan pengguna melalui aplikasi pesan Telegram. Chatbot ini dapat digunakan untuk berbagai keperluan, seperti memberikan informasi, menjawab pertanyaan, atau melakukan tugas-tugas tertentu. Jika Anda mencari opsi yang lebih ringan menggunakan cloud API gratis (tanpa perlu hardware tinggi), Anda juga bisa mengikuti [Tutorial Chatbot Telegram dengan n8n dan Gemini AI](/posts/tutorial-chatbot-telegram-n8n-gemini-ai).
 
 ### Apa itu n8n dan Kegunaannya?
 n8n adalah platform otomatisasi workflow visual yang memungkinkan pengguna untuk menghubungkan berbagai aplikasi dan layanan tanpa perlu menulis kode. n8n dapat digunakan untuk mengotomatisasi tugas-tugas repetitif, seperti mengirim email, mengupdate database, atau memproses data.
@@ -38,28 +38,13 @@ Untuk alur kerja dari chatbot tersebut terdiri dari beberapa tahapan, yaitu:
 
 ## Persiapan Tools dan Kebutuhan Sistem
 Berikut ini beberapa tools dan kebutuhan sistem yang dibutuhkan untuk membuat chatbot Telegram dengan n8n dan LM Studio:
-### Kebutuhan Perangkat Keras/Hardware (CPU, GPU dan RAM)
-Untuk menjalankan n8n di local maupun di server. Terdapat beberapa panduan yang sobat nalar bisa ikuti. Panduan ini mimin dapatkan dari komunitas resmi n8n.
+### Kebutuhan Perangkat Keras (Hardware)
+| Spek | Low Traffic | Moderate | High Traffic |
+| :--- | :--- | :--- | :--- |
+| **CPU** | 2vCPUs | 4vCPUs | 8+vCPUs |
+| **RAM** | 4-8 GB | 8-16 GB | 16-32 GB |
+| **SSD** | 20-40 GB | 40-80 GB | 80-160 GB |
 
-### Level 1 - Low traffic
-Sangat ideal untuk workflow low dengan spesifikasi seperti berikut.
-1. CPU: 2vCPUs
-2. Memory: 4-8 GB RAM
-3. Storage: 20-40 GB SSD
-
-### Level 2 - Moderate traffic
-Sangat ideal untuk skala kecil ke menengah, untuk beberapa workflow yang dijalankan sekaligus.
-1. CPU: 4vCPUs
-2. Memory: 8-16 GB RAM
-3. Storage: 40-80 GB SSD
-
-### Level 3 - High traffic/Production
-Sangat ideal untuk skala besar, dengan beberapa workflow yang dijalankan sekaligus. Spesifikasi ini sangat cocok untuk production dengan performa, kinerja dan kemampuan yang sangat baik.
-1. CPU: 8+vCPUs
-2. Memory: 16-32 GB RAM
-3. Storage: 80-160 GB SSD
-
-sumber: [n8n community](https://community.n8n.io/t/is-my-pc-good-enough-for-running-n8n/82424/5)
 
 ### Komponen yang Dibutuhkan
 Berikut ini beberapa software dan tools yang perlu sobat nalar siapkan yah,
@@ -89,7 +74,7 @@ Untuk instalasi n8n di docker, sobat nalar bisa mengikuti panduan dari website r
 
 ### Instalasi LM Studio
 Setelah menginstall n8n di docker, sobat nalar juga memerlukan LM Studio agar bisa menggunakan model LLM lokal untuk chatbot n8n. Untuk instalasi LM Studio dan cara download LLM di lokal sudah mimin sediakan yah artikelnya di link bawah ini.
-[instalasi LM Studio dan download model LLM lokal](https://www.nalardeep.com/posts/cara-menjalankan-llm-di-laptop-kentang)
+[instalasi LM Studio dan download model LLM lokal](/posts/cara-menjalankan-llm-laptop-kentang-offline)
 
 ## Cara Membuat Bot Telegram 
 Setelah menginstall n8n dan LM Studio serta model di lokal, sobat nalar juga harus membuat bot telegram. Bot telegram ini bisa di dapatkan secara gratis melalui telegram. Berikut cara-caranya.
