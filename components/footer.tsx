@@ -8,7 +8,7 @@ const Footer = () => {
     const popularTags = getPopularTags(3);
 
     return (
-        <footer className="py-20 border-t-4 border-gray-900 bg-white relative z-10">
+        <footer className="py-20 border-t border-slate-100 bg-white relative z-10">
             <Container>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
                     {/* Brand Column */}
@@ -17,25 +17,25 @@ const Footer = () => {
                             <Image
                                 src="/logo.png"
                                 alt="NalarDeep Logo"
-                                width={240}
-                                height={64}
-                                className="h-16 w-auto object-contain"
+                                width={200}
+                                height={54}
+                                className="h-12 w-auto object-contain"
                                 unoptimized
                             />
                         </Link>
-                        <p className="text-gray-500 leading-relaxed">
-                            NalarDeep adalah platform hasil dokumentasi eksperimen AI dan belajar AI (MCP, otomatisasi n8n, pengembangan chatbot, RAG, LLM dan banyak lagi). Kami menyajikan tutorial bedasarkan eksperimen dan evaluasi yang telah dilakukan. 
+                        <p className="text-slate-500 text-sm leading-relaxed">
+                            NalarDeep adalah platform hasil dokumentasi eksperimen AI dan belajar AI (MCP, otomatisasi n8n, pengembangan chatbot, RAG, LLM dan banyak lagi). Kami menyajikan tutorial berdasarkan eksperimen dan evaluasi yang telah dilakukan. 
                         </p>
                     </div>
 
                     {/* Content Column */}
                     <div>
-                        <h4 className="font-bold text-gray-900 mb-6">Konten</h4>
-                        <ul className="space-y-4 text-gray-500">
-                            <li><Link href="/articles" className="hover:text-primary-500 transition-colors">Artikel Terbaru</Link></li>
+                        <h4 className="font-bold text-slate-900 text-sm uppercase tracking-wider mb-6">Konten</h4>
+                        <ul className="space-y-4 text-sm text-slate-500">
+                            <li><Link href="/articles" className="hover:text-emerald-500 transition-colors">Artikel Terbaru</Link></li>
                             {popularTags.map((tag) => (
                                 <li key={tag}>
-                                    <Link href={`/tags/${tag}`} className="hover:text-primary-500 transition-colors capitalize">
+                                    <Link href={`/tags/${tag}`} className="hover:text-emerald-500 transition-colors capitalize">
                                         {tag.replace(/-/g, ' ')}
                                     </Link>
                                 </li>
@@ -45,21 +45,21 @@ const Footer = () => {
 
                     {/* Company Column */}
                     <div>
-                        <h4 className="font-bold text-gray-900 mb-6">Perusahaan</h4>
-                        <ul className="space-y-4 text-gray-500">
-                            <li><Link href="/about" className="hover:text-primary-500 transition-colors">Tentang Kami</Link></li>
-                            <li><Link href="/privacy" className="hover:text-primary-500 transition-colors">Kebijakan Privasi</Link></li>
-                            <li><Link href="/terms" className="hover:text-primary-500 transition-colors">Syarat & Ketentuan</Link></li>
-                            <li><Link href="/cookies" className="hover:text-primary-500 transition-colors">Kebijakan Cookie</Link></li>
-                            <li><Link href="/contact" className="hover:text-primary-500 transition-colors">Kontak</Link></li>
+                        <h4 className="font-bold text-slate-900 text-sm uppercase tracking-wider mb-6">Perusahaan</h4>
+                        <ul className="space-y-4 text-sm text-slate-500">
+                            <li><Link href="/about" className="hover:text-emerald-500 transition-colors">Tentang Kami</Link></li>
+                            <li><Link href="/privacy" className="hover:text-emerald-500 transition-colors">Kebijakan Privasi</Link></li>
+                            <li><Link href="/terms" className="hover:text-emerald-500 transition-colors">Syarat & Ketentuan</Link></li>
+                            <li><Link href="/cookies" className="hover:text-emerald-500 transition-colors">Kebijakan Cookie</Link></li>
+                            <li><Link href="/contact" className="hover:text-emerald-500 transition-colors">Kontak</Link></li>
                         </ul>
                     </div>
 
                     {/* Connect Column */}
                     <div>
-                        <h4 className="font-bold text-gray-900 mb-6">Ikuti Kami</h4>
+                        <h4 className="font-bold text-slate-900 text-sm uppercase tracking-wider mb-6">Ikuti Kami</h4>
                         <div className="flex items-center gap-4">
-                            <Link href="https://github.com/minggo-commits" aria-label="Visit our Github profile" className="w-10 h-10 bg-white flex items-center justify-center text-gray-900 memphis-border memphis-shadow hover:memphis-shadow-hover transition-all hover:-translate-y-1">
+                            <Link href="https://github.com/minggo-commits" aria-label="Visit our Github profile" className="w-10 h-10 bg-white border border-slate-100 rounded-lg flex items-center justify-center text-slate-700 hover:text-emerald-500 hover:border-emerald-200 shadow-glow-sm hover:shadow-glow-md transition-all duration-300">
                                 <Github className="w-5 h-5" />
                             </Link>
                         </div>

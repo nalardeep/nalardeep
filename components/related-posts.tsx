@@ -11,35 +11,35 @@ export default function RelatedPosts({ posts }: RelatedPostsProps) {
     if (posts.length === 0) return null;
 
     return (
-        <section className="border-t-3 border-gray-900 py-16 mt-16 bg-white -mx-5 sm:-mx-8 px-5 sm:px-8 relative">
-            <div className="absolute inset-0 bg-dots opacity-[0.03] pointer-events-none"></div>
+        <section className="border-t border-slate-100 py-16 mt-16 bg-slate-50/30 -mx-5 sm:-mx-8 px-5 sm:px-8 relative">
+            <div className="absolute inset-0 bg-dots opacity-[0.015] pointer-events-none"></div>
             <div className="max-w-4xl mx-auto relative z-10">
                 <div className="flex items-center justify-between mb-8">
-                    <h2 className="text-2xl font-bold text-black bg-emerald-400 px-4 py-1.5 border-2 border-gray-900 shadow-[4px_4px_0px_0px_#171717]">Read Next</h2>
+                    <h2 className="text-2xl font-bold text-slate-900 tracking-tight">Baca Artikel Lainnya</h2>
                     <Link
                         href="/articles"
-                        className="text-gray-900 font-bold hover:-translate-y-1 transition-all flex items-center gap-2 text-sm bg-yellow-300 px-4 py-2 memphis-border memphis-shadow hover:memphis-shadow-hover"
+                        className="flex items-center gap-2 bg-white border border-slate-100 text-slate-800 px-4 py-2 rounded-lg shadow-glow-sm hover:shadow-glow-md hover:border-emerald-200 hover:-translate-y-0.5 transition-all text-xs font-semibold"
                     >
-                        View all articles <ArrowRight className="w-4 h-4" />
+                        Semua Artikel <ArrowRight className="w-3.5 h-3.5 text-emerald-500" />
                     </Link>
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                     {posts.map((post) => (
                         <Link key={post.slug} href={`/posts/${post.slug}`} className="group block h-full">
-                            <div className="flex flex-col h-full bg-white memphis-border memphis-shadow group-hover:memphis-shadow-hover group-hover:-translate-y-1 transition-all p-5">
-                                <div className="mb-4">
-                                    <span className="text-xs font-bold uppercase tracking-wider text-gray-900 bg-yellow-300 px-2 py-1 border-2 border-gray-900">
+                            <div className="flex flex-col h-full bg-white border border-slate-100 rounded-xl p-5 shadow-glow-sm group-hover:shadow-glow-md group-hover:border-emerald-200 group-hover:-translate-y-0.5 transition-all duration-300">
+                                <div className="mb-3">
+                                    <span className="text-[10px] font-bold uppercase tracking-wider text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded-full">
                                         Article
                                     </span>
                                 </div>
-                                <h3 className="text-lg font-bold text-black group-hover:text-emerald-600 transition-colors mb-2 line-clamp-2">
+                                <h3 className="text-base font-bold text-slate-900 group-hover:text-emerald-500 transition-colors mb-2 line-clamp-2 tracking-tight">
                                     {post.title}
                                 </h3>
-                                <p className="text-sm text-gray-500 line-clamp-2 mb-4 flex-1">
+                                <p className="text-xs text-slate-500 line-clamp-2 mb-4 flex-1 leading-relaxed">
                                     {post.excerpt}
                                 </p>
-                                <div className="flex items-center gap-2 text-xs text-gray-900 font-bold">
+                                <div className="flex items-center gap-2 text-[10px] text-slate-400 font-medium">
                                     <time dateTime={post.date}>{format(parseISO(post.date), 'MMM d, yyyy')}</time>
                                     <span>•</span>
                                     <span>{post.readingTime}</span>

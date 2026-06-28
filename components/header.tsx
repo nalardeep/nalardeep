@@ -13,7 +13,6 @@ const Header = () => {
 
     const navLinks = [
         { name: 'Artikel', path: '/articles' },
-        { name: 'Jasa', path: '/services' },
         { name: 'Kontak', path: '/contact' },
         { name: 'Tentang', path: '/about' },
     ];
@@ -26,7 +25,7 @@ const Header = () => {
     };
 
     return (
-        <header className="py-5 border-b-4 border-gray-900 bg-white sticky top-0 z-50">
+        <header className="py-4 border-b border-slate-100 bg-white/80 backdrop-blur-md sticky top-0 z-50">
             <Container>
                 <div className="flex items-center justify-between h-12">
                     {/* Logo */}
@@ -36,7 +35,7 @@ const Header = () => {
                             alt="NalarDeep Logo"
                             width={240}
                             height={64}
-                            className="h-16 w-auto object-contain"
+                            className="h-12 w-auto object-contain"
                             priority
                             unoptimized
                         />
@@ -44,17 +43,17 @@ const Header = () => {
 
                     {/* Centered Nav (Desktop) */}
                     <nav className="hidden md:block">
-                        <ul className="flex items-center gap-6 text-sm">
+                        <ul className="flex items-center gap-4 text-sm">
                             {navLinks.map((link) => {
                                 const active = isActive(link.path);
                                 return (
                                     <li key={link.path}>
                                         <Link 
                                             href={link.path} 
-                                            className={`px-3 py-1.5 transition-all duration-200 block ${
+                                            className={`px-3.5 py-2 rounded-lg transition-all duration-300 block font-medium text-sm ${
                                                 active
-                                                    ? "bg-yellow-300 text-gray-900 font-bold memphis-border memphis-shadow -translate-y-0.5"
-                                                    : "text-gray-600 hover:text-primary-500 hover:-translate-y-0.5 hover:font-bold"
+                                                    ? "bg-emerald-50 text-emerald-600 font-semibold shadow-glow-sm border border-emerald-100/50"
+                                                    : "text-slate-600 hover:text-emerald-500 hover:bg-slate-50/50"
                                             }`}
                                         >
                                             {link.name}
@@ -69,34 +68,34 @@ const Header = () => {
                     <div className="flex items-center gap-4">
                         <Link
                             href="/services"
-                            className="hidden md:inline-block bg-emerald-400 text-gray-900 font-bold px-4 py-2 text-xs uppercase tracking-wider memphis-border memphis-shadow hover:memphis-shadow-hover hover:-translate-y-0.5 transition-all duration-200 select-none cursor-pointer"
+                            className="hidden md:inline-block bg-gradient-to-r from-emerald-500 to-teal-500 text-white font-semibold px-4.5 py-2.5 text-xs uppercase tracking-wider rounded-lg shadow-glow-sm hover:shadow-glow-md hover:scale-[1.02] active:scale-[0.98] transition-all duration-200 select-none cursor-pointer"
                         >
                             Eksplorasi Jasa
                         </Link>
 
                         <button
-                            className="md:hidden p-2 text-gray-600 cursor-pointer"
+                            className="md:hidden p-2 text-slate-600 hover:bg-slate-50 rounded-lg cursor-pointer transition-colors"
                             onClick={() => setIsOpen(!isOpen)}
                             aria-label="Toggle navigation menu"
                         >
-                            {isOpen ? <X /> : <Menu />}
+                            {isOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
                         </button>
                     </div>
                 </div>
 
                 {/* Mobile Menu */}
                 {isOpen && (
-                    <div className="md:hidden absolute top-full left-0 w-full bg-white border-b-3 border-gray-900 shadow-lg py-6 px-4 flex flex-col items-center gap-4 z-50">
+                    <div className="md:hidden absolute top-full left-0 w-full bg-white border-b border-slate-100 shadow-xl py-6 px-4 flex flex-col items-center gap-4 z-50 animate-in fade-in slide-in-from-top-4 duration-300">
                         {navLinks.map((link) => {
                             const active = isActive(link.path);
                             return (
                                 <Link
                                     key={link.path}
                                     href={link.path}
-                                    className={`w-full text-center py-2.5 text-base font-bold uppercase tracking-wider border-2 transition-all ${
+                                    className={`w-full text-center py-2.5 text-sm font-semibold uppercase tracking-wider rounded-lg transition-all ${
                                         active
-                                            ? "bg-yellow-300 text-gray-900 border-gray-900 shadow-[3px_3px_0px_0px_#171717]"
-                                            : "text-gray-600 border-transparent hover:border-gray-900 hover:text-gray-900"
+                                            ? "bg-emerald-50 text-emerald-600 border border-emerald-100/50 shadow-glow-sm"
+                                            : "text-slate-600 border border-transparent hover:bg-slate-50"
                                     }`}
                                     onClick={() => setIsOpen(false)}
                                 >
@@ -107,7 +106,7 @@ const Header = () => {
                         {/* Mobile CTA */}
                         <Link
                             href="/services"
-                            className="w-full text-center py-3 mt-2 bg-emerald-400 text-gray-900 font-bold uppercase tracking-wider text-xs border-3 border-gray-900 shadow-[4px_4px_0px_0px_#171717] hover:shadow-[5px_5px_0px_0px_#171717] active:translate-y-0.5 transition-all"
+                            className="w-full text-center py-3 mt-2 bg-gradient-to-r from-emerald-500 to-teal-500 text-white font-semibold uppercase tracking-wider text-xs rounded-lg shadow-glow-sm hover:shadow-glow-md transition-all"
                             onClick={() => setIsOpen(false)}
                         >
                             Layanan Jasa AI

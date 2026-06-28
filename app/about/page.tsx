@@ -55,20 +55,20 @@ export default function About() {
 
                     {/* Sidebar / Stats */}
                     <div className="md:col-span-4">
-                        <div className="bg-yellow-300 p-8 memphis-border memphis-shadow-hover">
-                            <h3 className="font-bold text-gray-900 mb-6">Quick Stats</h3>
+                        <div className="bg-white p-8 border border-slate-100 rounded-2xl shadow-glow-sm hover:shadow-glow-md hover:border-emerald-200 transition-all duration-300">
+                            <h3 className="font-bold text-slate-900 mb-6 tracking-tight">Quick Stats</h3>
                             <div className="space-y-6">
-                                <div>
-                                    <div className="text-3xl font-bold text-gray-900">50+</div>
-                                    <div className="text-sm text-gray-900 font-bold">Detailed Tutorials</div>
+                                <div className="border-l-3 border-emerald-500 pl-4">
+                                    <div className="text-3xl font-extrabold text-emerald-600">50+</div>
+                                    <div className="text-xs text-slate-500 font-semibold uppercase tracking-wider mt-0.5">Detailed Tutorials</div>
                                 </div>
-                                <div>
-                                    <div className="text-3xl font-bold text-gray-900">10k+</div>
-                                    <div className="text-sm text-gray-900 font-bold">Monthly Readers</div>
+                                <div className="border-l-3 border-emerald-500 pl-4">
+                                    <div className="text-3xl font-extrabold text-emerald-600">10k+</div>
+                                    <div className="text-xs text-slate-500 font-semibold uppercase tracking-wider mt-0.5">Monthly Readers</div>
                                 </div>
-                                <div>
-                                    <div className="text-3xl font-bold text-gray-900">100%</div>
-                                    <div className="text-sm text-gray-900 font-bold">Open Source</div>
+                                <div className="border-l-3 border-emerald-500 pl-4">
+                                    <div className="text-3xl font-extrabold text-emerald-600">100%</div>
+                                    <div className="text-xs text-slate-500 font-semibold uppercase tracking-wider mt-0.5">Open Source</div>
                                 </div>
                             </div>
                         </div>

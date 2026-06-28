@@ -45,16 +45,19 @@ export default async function Articles({ searchParams }: { searchParams: Promise
                 <div className="py-16 md:py-24 flex flex-col md:flex-row md:items-center md:justify-between gap-12">
                     {/* Left: Text */}
                     <div className="max-w-xl">
-                        <h1 className="text-5xl md:text-6xl font-bold text-black tracking-tight mb-6">
+                        <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-emerald-50 text-emerald-600 border border-emerald-100/50 rounded-full font-semibold text-xs uppercase tracking-wider mb-6 shadow-glow-sm">
+                            <span>📚</span> Semua Artikel
+                        </div>
+                        <h1 className="text-5xl md:text-6xl font-bold text-slate-900 tracking-tight mb-6">
                             Daftar Artikel
                         </h1>
-                        <p className="text-xl text-black leading-relaxed">
+                        <p className="text-lg text-slate-500 leading-relaxed">
                             Artikel yang dibuat selalu di update untuk mempertahankan kualitas artikel. Kami berkomitmen untuk memberikan informasi yang akurat, relevan, dan bermanfaat bagi pembaca kami.
                         </p>
                     </div>
 
-                    {/* Right: Memphis Decoration */}
-                    <div className="hidden md:block relative w-80 h-64 shrink-0 select-none pointer-events-none">
+                    {/* Right: Decorative Shapes */}
+                    <div className="relative hidden md:block w-64 h-64 flex-shrink-0">
                         {/* Big yellow square */}
                         <div className="absolute top-0 right-8 w-28 h-28 bg-yellow-300 border-3 border-gray-900 shadow-[6px_6px_0px_0px_#171717] rotate-6"></div>
                         {/* Emerald circle */}
@@ -99,12 +102,12 @@ export default async function Articles({ searchParams }: { searchParams: Promise
                         {clampedPage > 1 ? (
                             <Link
                                 href={`/articles?page=${clampedPage - 1}`}
-                                className="w-10 h-10 flex items-center justify-center bg-white text-gray-900 memphis-border hover:memphis-shadow hover:-translate-y-1 transition-all"
+                                className="w-10 h-10 flex items-center justify-center bg-white text-slate-500 border border-slate-200 rounded-xl hover:border-emerald-300 hover:text-emerald-500 hover:shadow-glow-sm transition-all"
                             >
                                 <ChevronLeft className="w-4 h-4" />
                             </Link>
                         ) : (
-                            <button disabled className="w-10 h-10 flex items-center justify-center bg-gray-100 text-gray-400 memphis-border cursor-not-allowed">
+                            <button disabled className="w-10 h-10 flex items-center justify-center bg-slate-50 text-slate-300 border border-slate-100 rounded-xl cursor-not-allowed">
                                 <ChevronLeft className="w-4 h-4" />
                             </button>
                         )}
@@ -113,10 +116,11 @@ export default async function Articles({ searchParams }: { searchParams: Promise
                             <Link
                                 key={pageNum}
                                 href={`/articles?page=${pageNum}`}
-                                className={`w-10 h-10 flex items-center justify-center font-medium transition-all ${pageNum === clampedPage
-                                    ? "bg-yellow-300 text-gray-900 font-bold memphis-border memphis-shadow"
-                                    : "bg-white text-gray-900 memphis-border hover:memphis-shadow hover:-translate-y-1"
-                                    }`}
+                                className={`w-10 h-10 flex items-center justify-center text-sm font-semibold rounded-xl transition-all ${
+                                    pageNum === clampedPage
+                                        ? "bg-emerald-500 text-white shadow-glow-sm border border-emerald-400"
+                                        : "bg-white text-slate-600 border border-slate-200 hover:border-emerald-300 hover:text-emerald-500 hover:shadow-glow-sm"
+                                }`}
                             >
                                 {pageNum}
                             </Link>
@@ -125,12 +129,12 @@ export default async function Articles({ searchParams }: { searchParams: Promise
                         {clampedPage < totalPages ? (
                             <Link
                                 href={`/articles?page=${clampedPage + 1}`}
-                                className="w-10 h-10 flex items-center justify-center bg-white text-gray-900 memphis-border hover:memphis-shadow hover:-translate-y-1 transition-all"
+                                className="w-10 h-10 flex items-center justify-center bg-white text-slate-500 border border-slate-200 rounded-xl hover:border-emerald-300 hover:text-emerald-500 hover:shadow-glow-sm transition-all"
                             >
                                 <ChevronRight className="w-4 h-4" />
                             </Link>
                         ) : (
-                            <button disabled className="w-10 h-10 flex items-center justify-center bg-gray-100 text-gray-400 memphis-border cursor-not-allowed">
+                            <button disabled className="w-10 h-10 flex items-center justify-center bg-slate-50 text-slate-300 border border-slate-100 rounded-xl cursor-not-allowed">
                                 <ChevronRight className="w-4 h-4" />
                             </button>
                         )}

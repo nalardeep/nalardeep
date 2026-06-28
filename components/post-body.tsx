@@ -25,33 +25,33 @@ const isToc = (id: string) => {
 
 const components = {
     h1: ({ children, id }: any) => {
-        if (isToc(id)) return <h1 id={id} className="scroll-mt-24 text-3xl font-bold mt-10 mb-6 text-black [&>a]:text-black">{children}</h1>;
+        if (isToc(id)) return <h1 id={id} className="scroll-mt-24 text-3xl font-extrabold mt-12 mb-6 text-slate-900 tracking-tight">{children}</h1>;
         return (
-            <h1 id={id} className="scroll-mt-24 text-3xl font-bold mt-10 mb-6 bg-emerald-400 text-black [&>a]:text-black px-4 py-2 border-2 border-gray-900 shadow-[4px_4px_0px_0px_#171717] w-fit">
+            <h1 id={id} className="scroll-mt-24 text-3xl font-extrabold mt-12 mb-6 text-slate-900 tracking-tight border-l-4 border-emerald-500 pl-4 py-1">
                 {children}
             </h1>
         );
     },
     h2: ({ children, id }: any) => {
-        if (isToc(id)) return <h2 id={id} className="scroll-mt-24 text-2xl font-bold mt-8 mb-4 text-black [&>a]:text-black">{children}</h2>;
+        if (isToc(id)) return <h2 id={id} className="scroll-mt-24 text-2xl font-bold mt-10 mb-4 text-slate-900 tracking-tight">{children}</h2>;
         return (
-            <h2 id={id} className="scroll-mt-24 text-2xl font-bold mt-8 mb-4 bg-emerald-400 text-black [&>a]:text-black px-3 py-1.5 border-2 border-gray-900 shadow-[4px_4px_0px_0px_#171717] w-fit">
+            <h2 id={id} className="scroll-mt-24 text-2xl font-bold mt-10 mb-4 text-slate-900 tracking-tight border-l-4 border-emerald-500 pl-3.5 py-0.5">
                 {children}
             </h2>
         );
     },
     h3: ({ children, id }: any) => {
-        if (isToc(id)) return <h3 id={id} className="scroll-mt-24 text-xl font-bold mt-6 mb-3 text-black [&>a]:text-black">{children}</h3>;
+        if (isToc(id)) return <h3 id={id} className="scroll-mt-24 text-xl font-bold mt-8 mb-3 text-slate-900 tracking-tight">{children}</h3>;
         return (
-            <h3 id={id} className="scroll-mt-24 text-xl font-bold mt-6 mb-3 bg-emerald-400 text-black [&>a]:text-black px-2.5 py-1 border-2 border-gray-900 shadow-[3px_3px_0px_0px_#171717] w-fit">
+            <h3 id={id} className="scroll-mt-24 text-xl font-bold mt-8 mb-3 text-slate-900 tracking-tight border-l-3 border-emerald-400 pl-3 py-0.5">
                 {children}
             </h3>
         );
     },
     h4: ({ children, id }: any) => {
-        if (isToc(id)) return <h4 id={id} className="scroll-mt-24 text-lg font-bold mt-4 mb-2 text-black [&>a]:text-black">{children}</h4>;
+        if (isToc(id)) return <h4 id={id} className="scroll-mt-24 text-lg font-bold mt-6 mb-2 text-slate-900 tracking-tight">{children}</h4>;
         return (
-            <h4 id={id} className="scroll-mt-24 text-lg font-bold mt-4 mb-2 bg-emerald-400 text-black [&>a]:text-black px-2 py-0.5 border-2 border-gray-900 shadow-[2px_2px_0px_0px_#171717] w-fit">
+            <h4 id={id} className="scroll-mt-24 text-lg font-bold mt-6 mb-2 text-slate-900 tracking-tight border-l-2 border-slate-300 pl-2.5">
                 {children}
             </h4>
         );
@@ -67,21 +67,21 @@ const components = {
         });
 
         return (
-            <div className="relative group">
+            <div className="relative group my-6 border border-slate-100 rounded-xl overflow-hidden shadow-glow-sm hover:border-emerald-500/35 hover:shadow-glow-md transition-all duration-300">
                 <CopyButton text={text} />
-                <pre className="max-h-[450px] overflow-auto">
+                <pre className="max-h-[450px] overflow-auto p-4 bg-[#0B0F19] text-[#e2e8f0] font-mono text-sm leading-relaxed">
                     {childrenWithProps}
                 </pre>
             </div>
         );
     },
     strong: ({ children }: any) => (
-        <strong className="font-bold">
+        <strong className="font-bold text-slate-900">
             {children}
         </strong>
     ),
     b: ({ children }: any) => (
-        <b className="font-bold">
+        <b className="font-bold text-slate-900">
             {children}
         </b>
     ),
@@ -92,7 +92,7 @@ const components = {
         }
         // Inline code styling
         return (
-            <code className="px-1.5 py-0.5 bg-white text-gray-900 border-2 border-gray-900 shadow-[2px_2px_0px_0px_#171717] font-mono text-[0.85em] mx-0.5" {...props}>
+            <code className="px-1.5 py-0.5 bg-emerald-50/50 text-emerald-700 border border-emerald-100/50 rounded font-mono text-[0.85em] mx-0.5" {...props}>
                 {children}
             </code>
         );
@@ -111,16 +111,16 @@ const components = {
         };
 
         return (
-            <span className="relative block w-full h-auto my-8">
+            <span className="relative block w-full h-auto my-8 border border-slate-100 rounded-2xl overflow-hidden shadow-glow-sm">
                 <Image
                     src={getCleanSrc(props.src)}
                     alt={props.alt || 'Article image'}
                     width={800}
                     height={500}
-                    className="rounded-lg object-cover w-full h-auto"
+                    className="object-cover w-full h-auto"
                 />
                 {props.title && (
-                    <span className="block text-center text-gray-500 text-sm mt-2">{props.title}</span>
+                    <span className="block text-center text-slate-500 text-sm mt-2">{props.title}</span>
                 )}
             </span>
         );
@@ -130,7 +130,7 @@ const components = {
 const PostBody = ({ content }: Props) => {
     return (
         <div className="max-w-2xl mx-auto">
-            <div className="prose prose-lg prose-green max-w-none prose-a:no-underline">
+            <div className="prose prose-slate prose-emerald max-w-none prose-a:no-underline prose-a:text-emerald-600 hover:prose-a:text-emerald-500 transition-colors prose-headings:text-slate-900">
                 <MDXRemote
                     source={content}
                     components={components}
