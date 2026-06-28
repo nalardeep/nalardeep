@@ -33,6 +33,20 @@ const PostPreview = ({ post }: Props) => {
                     </Link>
                 </h3>
                 <p className="text-gray-600 mb-4 line-clamp-2 leading-relaxed">{post.excerpt}</p>
+                
+                {post.tags && post.tags.length > 0 && (
+                    <div className="flex flex-wrap gap-1.5 mb-4">
+                        {post.tags.slice(0, 3).map((tag) => (
+                            <Link
+                                key={tag}
+                                href={`/tags/${tag.toLowerCase().replace(/\s+/g, '-')}`}
+                                className="bg-yellow-200 hover:bg-yellow-300 text-gray-800 text-[10px] font-extrabold px-2 py-0.5 border border-gray-900 shadow-[2px_2px_0px_0px_#171717] transition-all"
+                            >
+                                #{tag}
+                            </Link>
+                        ))}
+                    </div>
+                )}
             </div>
 
             <div className="flex items-center gap-3 mt-4 text-sm font-medium text-gray-500">

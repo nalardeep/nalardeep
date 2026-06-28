@@ -1,10 +1,11 @@
 import Container from "@/components/container";
 import PostPreview from "@/components/post-preview";
-import { getAllPosts, getPostsByTag } from "@/lib/api";
+import { getAllPosts, getPostsByTag, getAllTagsWithCounts } from "@/lib/api";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 import BreadcrumbSchema from "@/components/breadcrumb-schema";
+import CategoryFilter from "@/components/category-filter";
 import type { Metadata } from "next";
 
 const BASE_URL = "https://nalardeep.com";
@@ -21,6 +22,7 @@ export async function generateMetadata({ params }: { params: Promise<{ tag: stri
 export default async function TagPage({ params }: { params: Promise<{ tag: string }> }) {
     const { tag } = await params;
     const posts = getPostsByTag(tag);
+    const tags = getAllTagsWithCounts();
 
     if (posts.length === 0) {
         return notFound();
@@ -48,12 +50,14 @@ export default async function TagPage({ params }: { params: Promise<{ tag: strin
                             </Link>
                         </div>
                         <h1 className="text-4xl md:text-5xl font-bold text-black tracking-tight mb-6">
-                            Tag: <span className="text-primary-500">{label}</span>
+                            Kategori: <span className="text-primary-500">{label}</span>
                         </h1>
                         <p className="text-xl text-black leading-relaxed max-w-2xl">
-                            Menampilkan {posts.length} artikel dengan tag "{label}".
+                            Menampilkan {posts.length} artikel dengan kategori "{label}".
                         </p>
                     </div>
+
+                    <CategoryFilter tags={tags} currentTag={tag} />
 
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12">
                         {posts.map((post) => (

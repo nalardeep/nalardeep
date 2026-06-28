@@ -1,9 +1,10 @@
 import Container from "@/components/container";
 import PostPreview from "@/components/post-preview";
-import { getAllPosts } from "@/lib/api";
+import { getAllPosts, getAllTagsWithCounts } from "@/lib/api";
 import Link from "next/link";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import BreadcrumbSchema from "@/components/breadcrumb-schema";
+import CategoryFilter from "@/components/category-filter";
 import { Metadata } from "next";
 
 const BASE_URL = "https://nalardeep.com";
@@ -19,6 +20,7 @@ export const metadata: Metadata = {
 export default async function Articles({ searchParams }: { searchParams: Promise<{ page?: string }> }) {
     const { page } = await searchParams;
     const allPosts = getAllPosts();
+    const tags = getAllTagsWithCounts();
     const postsPerPage = 9;
     const totalPages = Math.ceil(allPosts.length / postsPerPage);
     const currentPage = parseInt(page || "1", 10);
@@ -26,9 +28,6 @@ export default async function Articles({ searchParams }: { searchParams: Promise
 
     const startIndex = (clampedPage - 1) * postsPerPage;
     const visiblePosts = allPosts.slice(startIndex, startIndex + postsPerPage);
-
-    // Mock categories for the filter tabs
-    const categories = ["Latest"];
 
     return (
         <div className="bg-white min-h-screen pb-24 relative">
@@ -81,24 +80,7 @@ export default async function Articles({ searchParams }: { searchParams: Promise
                 </div>
 
                 {/* Filters */}
-                <div className="border-b border-gray-100 mb-12 overflow-x-auto">
-                    <div className="flex items-center gap-8 min-w-max">
-                        {categories.map((category, index) => (
-                            <button
-                                key={category}
-                                className={`pb-4 text-sm font-bold tracking-wide transition-colors relative ${index === 0
-                                    ? "text-gray-900"
-                                    : "text-gray-400 hover:text-gray-600"
-                                    }`}
-                            >
-                                {category}
-                                {index === 0 && (
-                                    <span className="absolute bottom-0 left-0 w-full h-0.5 bg-primary-500"></span>
-                                )}
-                            </button>
-                        ))}
-                    </div>
-                </div>
+                <CategoryFilter tags={tags} />
 
                 {/* Grid */}
                 {visiblePosts.length > 0 ? (
