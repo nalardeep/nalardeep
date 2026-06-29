@@ -8,7 +8,7 @@ const BASE_URL = "https://nalardeep.com";
 
 export const metadata: Metadata = {
     title: "Layanan Jasa Otomatisasi n8n & Integrasi AI | NalarDeep",
-    description: "Layanan profesional otomatisasi alur kerja (workflow) dengan n8n & Make, custom server MCP, chatbot cerdas, dan sistem RAG lokal kustom untuk akselerasi operasional bisnis Anda.",
+    description: "Layanan profesional otomatisasi alur kerja (workflow) dengan n8n, custom landing page, chatbot dan private RAG",
     alternates: {
         canonical: "/services",
     },
@@ -16,8 +16,8 @@ export const metadata: Metadata = {
 
 const services = [
     {
-        title: "Otomatisasi Workflow (n8n & Make)",
-        description: "Hubungkan ratusan aplikasi operasional harian Anda ke dalam alur kerja (workflow) otomatis tanpa batas eksekusi. Hemat waktu dan biaya operasional tim hingga 80%.",
+        title: "Otomatisasi Workflow (n8n)",
+        description: "Hubungkan ratusan aplikasi operasional harian Anda ke dalam alur kerja (workflow) otomatis. Hemat waktu dan biaya operasional tim hingga 80%.",
         icon: Workflow,
         iconBg: "bg-emerald-300",
         features: [
@@ -28,26 +28,26 @@ const services = [
         color: "bg-emerald-50"
     },
     {
-        title: "Kustom Server Model Context Protocol (MCP)",
-        description: "Perluas kemampuan asisten AI (seperti Claude Desktop) untuk berinteraksi langsung dengan database internal, sistem file lokal, hingga API custom perusahaan Anda secara aman.",
-        icon: Cpu,
-        iconBg: "bg-yellow-300",
-        features: [
-            "Custom MCP Server berbasis Python & Node.js",
-            "Akses aman ke SQLite/PostgreSQL lokal",
-            "Otorisasi file sistem kustom untuk agen AI"
-        ],
-        color: "bg-yellow-50"
-    },
-    {
         title: "Chatbot Cerdas (WhatsApp & Telegram)",
-        description: "Bangun bot otomatisasi customer service yang didukung kecerdasan buatan (Gemini/ChatGPT/LLM Lokal) untuk melayani customer 24 jam dengan nada bicara yang profesional.",
+        description: "Bangun bot otomatisasi customer service yang didukung kecerdasan buatan (Gemini/ChatGPT/LLM Lokal) untuk melayani customer 24 jam.",
         icon: MessageSquare,
         iconBg: "bg-sky-300",
         features: [
             "Integrasi WhatsApp Business Cloud API Resmi",
-            "Koneksi AI Agen dengan n8n sebagai otak bot",
-            "Sistem auto-routing ke customer service manusia"
+            "Koneksi AI Agen dengan n8n",
+            "Sistem auto-routing ke customer service"
+        ],
+        color: "bg-sky-50"
+    },
+    {
+        title: "Custom Landing Page & Web App",
+        description: "Buat landing page dan web app dengan desain modern, responsif, dan terintegrasi dengan sistem otomatisasi n8n.",
+        icon: MessageSquare,
+        iconBg: "bg-sky-300",
+        features: [
+            "Desain modern dan responsif",
+            "Integrasi dengan sistem otomatisasi n8n",
+            "Optimisasi SEO & performa web"
         ],
         color: "bg-sky-50"
     },
@@ -91,7 +91,7 @@ export default function Services() {
                             Layanan Jasa <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 to-teal-500 text-glow">Profesional AI</span> & Automation
                         </h1>
                         <p className="text-lg text-slate-600 leading-relaxed max-w-2xl">
-                            Kami membantu perusahaan dan startup mengintegrasikan agen cerdas AI, melatih LLM lokal, serta mengotomatisasi alur kerja operasional menggunakan n8n secara terukur dan hemat biaya.
+                            Kami membantu perusahaan dan startup mengintegrasikan agen cerdas AI, LLM lokal, serta mengotomatisasi alur kerja operasional menggunakan n8n secara terukur dan hemat biaya.
                         </p>
                     </div>
 
@@ -142,7 +142,7 @@ export default function Services() {
                     </div>
 
                     {/* CTA Banner */}
-                    <div className="relative bg-gradient-to-r from-emerald-500 to-teal-600 p-8 md:p-12 border border-emerald-400 rounded-2xl shadow-glow-md overflow-hidden">
+                    {/* <div className="relative bg-gradient-to-r from-emerald-500 to-teal-600 p-8 md:p-12 border border-emerald-400 rounded-2xl shadow-glow-md overflow-hidden">
                         <div className="absolute top-4 left-1/2 w-20 h-20 bg-dots opacity-[0.03] pointer-events-none"></div>
 
                         <div className="relative z-10 max-w-3xl flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
@@ -163,7 +163,7 @@ export default function Services() {
                                 <ArrowRight className="w-4 h-4 text-emerald-500 group-hover:translate-x-0.5 transition-transform" />
                             </Link>
                         </div>
-                    </div>
+                    </div> */}
                 </Container>
             </div>
         </div>
