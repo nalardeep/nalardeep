@@ -87,3 +87,34 @@ export function getPopularTags(limit: number = 3): string[] {
         .slice(0, limit)
         .map(([tag]) => tag);
 }
+
+export interface TagWithCount {
+    name: string;
+    slug: string;
+    count: number;
+}
+
+export function getAllTagsWithCounts(): TagWithCount[] {
+    const allPosts = getAllPosts();
+    const tagsMap: Record<string, { name: string; count: number }> = {};
+
+    allPosts.forEach((post) => {
+        post.tags?.forEach((tag) => {
+            const normalizedTag = tag.toLowerCase().replace(/\s+/g, '-');
+            if (tagsMap[normalizedTag]) {
+                tagsMap[normalizedTag].count += 1;
+            } else {
+                tagsMap[normalizedTag] = { name: tag, count: 1 };
+            }
+        });
+    });
+
+    return Object.entries(tagsMap)
+        .map(([slug, data]) => ({
+            slug,
+            name: data.name,
+            count: data.count,
+        }))
+        .sort((a, b) => b.count - a.count);
+}
+

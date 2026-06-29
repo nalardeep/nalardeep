@@ -5,12 +5,27 @@ import Image from 'next/image';
 import Container from './container';
 import { useState } from 'react';
 import { Menu, X } from 'lucide-react';
+import { usePathname } from 'next/navigation';
 
 const Header = () => {
     const [isOpen, setIsOpen] = useState(false);
+    const pathname = usePathname();
+
+    const navLinks = [
+        { name: 'Artikel', path: '/articles' },
+        { name: 'Kontak', path: '/contact' },
+        { name: 'Tentang', path: '/about' },
+    ];
+
+    const isActive = (path: string) => {
+        if (path === '/articles') {
+            return pathname === '/articles' || pathname.startsWith('/posts/') || pathname.startsWith('/tags/');
+        }
+        return pathname === path;
+    };
 
     return (
-        <header className="py-5 border-b-4 border-gray-900 bg-white sticky top-0 z-50">
+        <header className="py-4 border-b border-slate-100 bg-white/80 backdrop-blur-md sticky top-0 z-50">
             <Container>
                 <div className="flex items-center justify-between h-12">
                     {/* Logo */}
@@ -20,7 +35,7 @@ const Header = () => {
                             alt="NalarDeep Logo"
                             width={240}
                             height={64}
-                            className="h-16 w-auto object-contain"
+                            className="h-12 w-auto object-contain"
                             priority
                             unoptimized
                         />
@@ -28,41 +43,74 @@ const Header = () => {
 
                     {/* Centered Nav (Desktop) */}
                     <nav className="hidden md:block">
-                        <ul className="flex items-center gap-8 text-sm font-medium text-gray-600">
-                            <li>
-                                <Link href="/articles" className="hover:text-primary-500 transition-colors">Artikel</Link>
-                            </li>
-
-                            <li>
-                                <Link href="/contact" className="hover:text-primary-500 transition-colors">Kontak</Link>
-                            </li>
-                            <li>
-                                <Link href="/about" className="hover:text-primary-500 transition-colors">Tentang</Link>
-                            </li>
+                        <ul className="flex items-center gap-4 text-sm">
+                            {navLinks.map((link) => {
+                                const active = isActive(link.path);
+                                return (
+                                    <li key={link.path}>
+                                        <Link 
+                                            href={link.path} 
+                                            className={`px-3.5 py-2 rounded-lg transition-all duration-300 block font-medium text-sm ${
+                                                active
+                                                    ? "bg-emerald-50 text-emerald-600 font-semibold shadow-glow-sm border border-emerald-100/50"
+                                                    : "text-slate-600 hover:text-emerald-500 hover:bg-slate-50/50"
+                                            }`}
+                                        >
+                                            {link.name}
+                                        </Link>
+                                    </li>
+                                );
+                            })}
                         </ul>
                     </nav>
 
                     {/* CTA Button & Mobile Toggle */}
                     <div className="flex items-center gap-4">
-
+                        <Link
+                            href="/services"
+                            className="hidden md:inline-block bg-gradient-to-r from-emerald-500 to-teal-500 text-white font-semibold px-4.5 py-2.5 text-xs uppercase tracking-wider rounded-lg shadow-glow-sm hover:shadow-glow-md hover:scale-[1.02] active:scale-[0.98] transition-all duration-200 select-none cursor-pointer"
+                        >
+                            Eksplorasi Jasa
+                        </Link>
 
                         <button
-                            className="md:hidden p-2 text-gray-600"
+                            className="md:hidden p-2 text-slate-600 hover:bg-slate-50 rounded-lg cursor-pointer transition-colors"
                             onClick={() => setIsOpen(!isOpen)}
                             aria-label="Toggle navigation menu"
                         >
-                            {isOpen ? <X /> : <Menu />}
+                            {isOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
                         </button>
                     </div>
                 </div>
 
                 {/* Mobile Menu */}
                 {isOpen && (
-                    <div className="md:hidden absolute top-full left-0 w-full bg-white border-b-3 border-gray-900 shadow-lg py-4 px-4 flex flex-col items-center gap-4">
-                        <Link href="/articles" className="text-gray-600 hover:text-primary-500 font-medium py-2 block" onClick={() => setIsOpen(false)}>Artikel</Link>
-
-                        <Link href="/contact" className="text-gray-600 hover:text-primary-500 font-medium py-2 block" onClick={() => setIsOpen(false)}>Kontak</Link>
-                        <Link href="/about" className="text-gray-600 hover:text-primary-500 font-medium py-2 block" onClick={() => setIsOpen(false)}>Tentang</Link>
+                    <div className="md:hidden absolute top-full left-0 w-full bg-white border-b border-slate-100 shadow-xl py-6 px-4 flex flex-col items-center gap-4 z-50 animate-in fade-in slide-in-from-top-4 duration-300">
+                        {navLinks.map((link) => {
+                            const active = isActive(link.path);
+                            return (
+                                <Link
+                                    key={link.path}
+                                    href={link.path}
+                                    className={`w-full text-center py-2.5 text-sm font-semibold uppercase tracking-wider rounded-lg transition-all ${
+                                        active
+                                            ? "bg-emerald-50 text-emerald-600 border border-emerald-100/50 shadow-glow-sm"
+                                            : "text-slate-600 border border-transparent hover:bg-slate-50"
+                                    }`}
+                                    onClick={() => setIsOpen(false)}
+                                >
+                                    {link.name}
+                                </Link>
+                            );
+                        })}
+                        {/* Mobile CTA */}
+                        <Link
+                            href="/services"
+                            className="w-full text-center py-3 mt-2 bg-gradient-to-r from-emerald-500 to-teal-500 text-white font-semibold uppercase tracking-wider text-xs rounded-lg shadow-glow-sm hover:shadow-glow-md transition-all"
+                            onClick={() => setIsOpen(false)}
+                        >
+                            Layanan Jasa AI
+                        </Link>
                     </div>
                 )}
             </Container>
