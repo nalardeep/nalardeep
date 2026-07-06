@@ -1,0 +1,273 @@
+---
+title: "Cara Membuat Chatbot RAG dengan Gemini API: Tutorial Lengkap Python untuk Pemula"
+excerpt: "Panduan lengkap membuat Chatbot RAG (Retrieval-Augmented Generation) menggunakan Gemini API dan Python. Cocok untuk pemula yang ingin belajar AI chatbot dengan knowledge base sendiri."
+coverImage: '/assets/blog/tutorial-chatbot-rag/thumbnail.webp'
+date: "2026-07-05"
+author:
+  name: "Arsan"
+  picture: "https://ui-avatars.com/api/?name=Arsan+Akbar&background=0D8ABC&color=fff"
+tags: ["RAG","chatbot","Gemini API","Python","AI","machine learning","tutorial"]
+---
+
+# Cara Membuat Chatbot RAG dengan Gemini API: Tutorial Lengkap Python untuk Pemula
+
+Pada artikel ini kami akan membagikan cara membuat chatbot RAG (Retrieval-Augmented Generation) sederhana menggunakan Python dan API Gemini. Knowledge base atau sumber pengetahuan yang kamu miliki nantinya akan diproses menggunakan bantuan API Key dari Gemini. Hasilnya, chatbot kamu bisa menjawab pertanyaan berdasarkan dokumen yang kamu berikan sendiri.
+
+## Apa Itu RAG dan Bagaimana Cara Kerjanya?
+
+RAG adalah singkatan dari **Retrieval-Augmented Generation**, yaitu teknik yang menggabungkan pencarian informasi (retrieval) dengan kemampuan menghasilkan teks (generation) dari model AI. Cara kerjanya sederhana: sistem akan mencari informasi relevan dari dokumen yang kamu miliki, lalu memberikan informasi tersebut ke model AI sebagai konteks untuk menjawab pertanyaan.
+
+Dengan RAG, chatbot tidak hanya mengandalkan pengetahuan bawaan model, tetapi juga bisa menjawab berdasarkan data spesifik yang kamu sediakan. Ini sangat berguna untuk membuat asisten AI yang paham dengan produk, dokumen internal perusahaan, atau materi belajar tertentu.
+
+## Persiapan Awal Sebelum Memulai
+
+### Tools dan Software yang Dibutuhkan
+
+Sebelum memulai tutorial, pastikan kamu sudah menyiapkan beberapa hal berikut:
+
+1. **Python** versi 3.9 atau lebih baru sudah terinstall di komputer
+2. **Visual Studio Code** atau IDE Python lainnya
+3. **Koneksi internet** untuk mengakses API Gemini
+4. **Akun Google** untuk mendapatkan API Key Gemini
+
+### Pengetahuan Dasar yang Disarankan
+
+Tutorial ini cocok untuk pemula, namun akan lebih mudah dipahami jika kamu sudah mengenal dasar-dasar Python seperti variabel, fungsi, dan cara menjalankan script Python. Jika kamu baru pertama kali menggunakan API AI, tidak perlu khawatir karena setiap langkah akan dijelaskan secara detail.
+
+## Langkah 1 - Install Library Python yang Diperlukan
+
+Langkah pertama adalah menyiapkan environment Python dan menginstall library-library yang dibutuhkan.
+
+1. Buat folder projek terlebih dahulu di komputer kamu.
+
+2. Buka folder tersebut melalui IDE Coding seperti Visual Studio Code.
+
+3. Pada terminal Visual Studio Code, ketikkan perintah berikut untuk membuat virtual environment:
+
+```bash
+python -m venv venv
+```
+
+Perintah tersebut digunakan untuk membuat **virtual environment** pada bahasa pemrograman Python. Dengan membuat virtual environment, kamu tidak perlu khawatir mengenai masalah versi pada library yang akan diinstall nantinya. Virtual environment mengisolasi dependency projek ini dari projek Python lain di komputer kamu.
+
+4. Untuk mengaktifkan virtual environment yang telah dibuat, masukkan perintah:
+
+```bash
+venv\Scripts\activate
+```
+
+Setelah berhasil, kamu akan melihat tulisan `(venv)` di awal terminal, menandakan virtual environment sedang aktif.
+
+5. Install library dengan perintah berikut:
+
+```bash
+pip install google-generativeai
+pip install google.genai
+pip install python-dotenv
+pip install numpy
+```
+
+Berikut penjelasan masing-masing library:
+
+- **google-generativeai dan google.genai**: Library resmi dari Google untuk berkomunikasi dengan model AI Gemini melalui API. Library ini menyediakan fungsi untuk mengirim prompt dan menerima respons dari model Gemini.
+- **python-dotenv**: Library yang digunakan untuk membaca file `.env` (file untuk menyimpan API Key dan konfigurasi rahasia lainnya). Dengan library ini, kode kamu tidak perlu menyimpan API Key secara hardcoded.
+- **numpy**: Library komputasi numerik yang berguna untuk pengolahan data dan vektor. Meskipun tidak digunakan secara langsung di tutorial ini, numpy sering diperlukan sebagai dependency library lain atau untuk pengembangan RAG yang lebih kompleks.
+
+## Langkah 2 - Buat dan Dapatkan API Key Gemini
+
+Sebelum bisa menggunakan API Gemini, kamu perlu mendaftar dan mendapatkan API Key secara gratis dari Google.
+
+### Mendaftar ke Google AI Studio
+
+1. Buka browser dan kunjungi **Google AI Studio** di `https://aistudio.google.com/`
+
+2. Login menggunakan akun Google yang kamu miliki.
+
+### Membuat API Key Baru
+
+3. Setelah login, klik tombol **Get API Key** di menu sebelah kiri.
+
+4. Klik tombol **Create API Key** untuk membuat kunci API baru.
+
+5. Copy API Key yang muncul. Simpan sementara di notepad atau catatan pribadi kamu.
+
+> **Catatan**: Google memberikan kuota gratis untuk API Gemini yang cukup untuk pengembangan dan eksperimen. Pastikan kamu tidak membagikan API Key kepada siapapun.
+
+## Langkah 3 - Simpan API Key ke File .env
+
+Menyimpan API Key langsung di dalam kode program adalah praktik yang kurang aman. Cara yang benar adalah menyimpannya di file environment terpisah.
+
+1. Pada folder project di Visual Studio Code, buat file baru dengan nama **.env**
+
+2. Isi file tersebut dengan informasi berikut:
+
+```env
+GEMINI_API_KEY=ISI_API_KEY_ANDA
+```
+
+Ganti `ISI_API_KEY_ANDA` dengan API Key yang sudah kamu copy sebelumnya.
+
+3. Pastikan file `.env` ini masuk ke dalam `.gitignore` jika kamu menggunakan Git, agar API Key tidak terekspos ke repositori publik.
+
+## Langkah 4 - Uji Coba Koneksi ke Gemini API
+
+Sebelum membuat chatbot RAG, ada baiknya kita menguji koneksi ke API Gemini terlebih dahulu.
+
+1. Buat file baru bernama **app.py**
+
+2. Isi dengan kode berikut:
+
+```python
+import os
+from dotenv import load_dotenv
+import google.generativeai as genai
+
+load_dotenv()
+
+genai.configure(
+    api_key=os.getenv("GEMINI_API_KEY")
+)
+
+model = genai.GenerativeModel("gemini-2.5-flash")
+
+response = model.generate_content(
+    "Halo"
+)
+
+print(response.text)
+```
+
+3. Coba jalankan di terminal Visual Studio Code dengan perintah:
+
+```bash
+python app.py
+```
+
+4. Jika berhasil, maka akan muncul pesan di terminal seperti: **"Halo! Ada yang bisa saya bantu?"**
+
+Jika muncul error, periksa kembali:
+- API Key sudah benar dan aktif
+- Koneksi internet berfungsi dengan baik
+- Library sudah terinstall dengan benar
+
+## Langkah 5 - Siapkan File Knowledge Base
+
+Knowledge base adalah dokumen yang akan menjadi sumber pengetahuan chatbot RAG kamu.
+
+1. Buat file baru bernama **materi.txt**, kemudian isi file tersebut dengan informasi. Contohnya seperti ini:
+
+```text
+Transfer Learning adalah teknik pembelajaran mesin
+yang menggunakan model yang telah dilatih sebelumnya.
+
+Model yang sudah pernah belajar akan digunakan
+untuk menyelesaikan tugas baru.
+
+Transfer Learning dapat menghemat waktu pelatihan.
+```
+
+2. File tersebut nantinya akan digunakan sebagai **knowledge base**. kamu bisa memodifikasi isi file tersebut sesuai dengan topik atau materi yang ingin kamu ajarkan ke chatbot. Semakin lengkap informasinya, semakin baik jawaban yang bisa diberikan chatbot.
+
+kamu juga bisa menggunakan format lain seperti file CSV, JSON, atau PDF untuk knowledge base yang lebih kompleks. Untuk tutorial ini, kita gunakan file teks sederhana agar mudah dipahami.
+
+## Langkah 6 - Buat Program Chatbot RAG
+
+Sekarang kita akan membuat program utama yang menggabungkan semua komponen: membaca knowledge base, menghubungkan ke Gemini API, dan memberikan jawaban berdasarkan konteks.
+
+### Kode Program Lengkap
+
+1. Update kembali file **app.py** dengan kode berikut:
+
+```python
+import os
+from dotenv import load_dotenv
+from google import genai
+
+load_dotenv()
+
+client = genai.Client(api_key=os.getenv("GEMINI_API_KEY"))
+
+def load_knowledge():
+    with open("materi.txt", "r", encoding="utf-8") as f:
+        return f.read()
+
+
+def ask_chatbot(content):
+    knowledge = load_knowledge()
+
+    prompt = f"""
+kamu adalah chatbot yang hanya boleh menjawab berdasarkan materi berikut.
+
+=========================
+MATERI
+=========================
+{knowledge}
+
+=========================
+PERTANYAAN
+=========================
+{content}
+
+Jika jawabannya tidak ada di materi,
+katakan dengan sopan bahwa informasi tersebut tidak ditemukan.
+"""
+
+    response = client.models.generate_content(
+    model="gemini-2.5-flash",
+    contents=prompt)
+
+    return response.text
+
+question = input("Masukkan pertanyaan kamu: ")
+answer = ask_chatbot(question)
+print(answer)
+```
+
+### Penjelasan Kode Program
+
+Berikut cara kerja program di atas:
+
+- **load_knowledge()**: Fungsi untuk membaca file `materi.txt` dan mengembalikan isinya sebagai string.
+- **ask_chatbot()**: Fungsi utama yang menerima pertanyaan, membuat prompt dengan menyertakan knowledge base sebagai konteks, lalu mengirimkannya ke Gemini API.
+- **Prompt**: Struktur prompt sangat penting dalam RAG. Perhatikan bahwa kita menyusun prompt dengan bagian MATERI (knowledge base), PERTANYAAN, dan instruksi khusus untuk model.
+- **Instruksi batasan**: Kita memberi tahu model untuk hanya menjawab berdasarkan materi, dan jika tidak ditemukan, menjawab dengan sopan. Ini mencegah model memberikan informasi di luar konteks.
+
+### Menjalankan Chatbot RAG
+
+2. Jalankan kembali program dengan perintah:
+
+```bash
+python app.py
+```
+
+3. Program akan meminta kamu memasukkan pertanyaan. Coba tanyakan sesuatu yang ada di dalam file `materi.txt`, misalnya:
+
+```
+Masukkan pertanyaan kamu: Apa itu Transfer Learning?
+```
+
+Maka chatbot akan menjawab berdasarkan materi yang ada di file teks.
+
+4. Coba juga tanyakan sesuatu yang **tidak ada** di dalam materi:
+
+```
+Masukkan pertanyaan kamu: Siapa presiden Indonesia?
+```
+
+Chatbot akan menjawab dengan sopan bahwa informasi tersebut tidak ditemukan, sesuai instruksi yang kita berikan.
+
+## Kesimpulan
+
+Selamat! kamu telah berhasil membuat chatbot RAG sederhana menggunakan Python dan Gemini API. Dengan teknik ini, kamu bisa membuat chatbot yang menjawab pertanyaan berdasarkan dokumen spesifik yang kamu miliki.
+
+### Apa Langkah Selanjutnya?
+
+Setelah menguasai dasar RAG ini, kamu bisa mengembangkannya lebih lanjut:
+
+- **Integrasikan ke platform chatting** seperti Telegram. Baca tutorial kami tentang [Cara Membuat Chatbot Telegram dengan n8n & Gemini AI](/posts/tutorial-chatbot-telegram-n8n-gemini-ai) untuk membuat chatbot yang bisa diakses banyak orang.
+- **Gunakan model AI lokal** jika ingin privasi lebih terjaga. Pelajari [Cara Menjalankan LLM di Laptop Tanpa Internet menggunakan Ollama](/posts/tutorial-ollama-jalankan-llm-offline-laptop) untuk alternatif offline.
+- **Optimasi prompt** agar hasil lebih akurat. Simak [Panduan Prompt Engineering - Teknik Optimasi Prompt AI Terbaik](/posts/prompting-engineering-technique) untuk meningkatkan kualitas jawaban chatbot kamu.
+- **Coba API LLM gratis lainnya** seperti GLM. Baca [API LLM Gratis Model GLM 5.2 Via Cloudflare](/posts/api-llm-gratis-glm) untuk alternatif selain Gemini.
+- **Jalankan LLM di laptop spek rendah** dengan [Cara Menjalankan LLM di Windows Tanpa Internet Menggunakan LM Studio](/posts/cara-menjalankan-llm-laptop-kentang-offline).
+
+Dengan RAG, kamu bisa membangun berbagai aplikasi AI yang lebih cerdas dan kontekstual. Selamat mencoba!
