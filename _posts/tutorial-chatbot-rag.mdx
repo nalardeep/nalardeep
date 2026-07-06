@@ -1,5 +1,5 @@
 ---
-title: "Cara Membuat Chatbot RAG dengan Gemini API: Tutorial Lengkap Python untuk Pemula"
+title: "Cara Membuat Chatbot RAG dengan Gemini API & Python: Tutorial Lengkap Knowledge Base AI untuk Pemula"
 excerpt: "Panduan lengkap membuat Chatbot RAG (Retrieval-Augmented Generation) menggunakan Gemini API dan Python. Cocok untuk pemula yang ingin belajar AI chatbot dengan knowledge base sendiri."
 coverImage: '/assets/blog/tutorial-chatbot-rag/thumbnail.webp'
 date: "2026-07-05"
@@ -255,6 +255,20 @@ Masukkan pertanyaan kamu: Siapa presiden Indonesia?
 ```
 
 Chatbot akan menjawab dengan sopan bahwa informasi tersebut tidak ditemukan, sesuai instruksi yang kita berikan.
+
+## FAQ Seputar Chatbot RAG
+
+### Apa itu RAG (Retrieval-Augmented Generation)?
+RAG adalah teknik yang menggabungkan pencarian informasi (retrieval) dengan kemampuan generate teks AI. Chatbot RAG mencari data relevan dari knowledge base terlebih dahulu sebelum menjawab, sehingga jawaban lebih akurat dan sesuai konteks.
+
+### Apa bedanya RAG dengan fine-tuning?
+RAG memberikan konteks ke AI saat query tanpa mengubah model — cocok untuk data yang sering berubah. Fine-tuning melatih ulang model dengan dataset spesifik — cocok untuk mengubah perilaku atau gaya model. Untuk tools fine-tuning, baca [Tools Fine-Tuning LLM](/posts/tools-fine-tuning-llm).
+
+### Bisakah RAG menggunakan model AI lokal?
+Tentu. Kamu bisa mengganti Gemini API dengan model lokal via Ollama atau LM Studio. Proses retrievel-nya tetap sama, hanya sumber LLM-nya yang diganti. Pelajari [Cara Menjalankan LLM dengan Ollama](/posts/tutorial-ollama-jalankan-llm-offline-laptop) untuk setup model lokal.
+
+### Apa format knowledge base yang didukung?
+Teks (.txt), PDF, CSV, DOCX, dan markdown. Pada tutorial ini kita menggunakan teks biasa. Untuk dokumen yang lebih kompleks, kamu bisa menambahkan library seperti PyPDF2 atau python-docx untuk parsing.
 
 ## Kesimpulan
 
