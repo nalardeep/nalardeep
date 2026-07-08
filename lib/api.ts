@@ -1,22 +1,42 @@
 import fs from 'fs';
-import { join } from 'path';
+import { join, basename } from 'path';
 import matter from 'gray-matter';
 import { Post } from '@/types';
 
 const postsDirectory = join(process.cwd(), '_posts');
 
-export function getPostSlugs() {
-    if (!fs.existsSync(postsDirectory)) {
-        return [];
+/** Recursively get all .mdx files from subdirectories */
+function getAllMdxFiles(dir: string): string[] {
+    if (!fs.existsSync(dir)) return [];
+    const entries = fs.readdirSync(dir, { withFileTypes: true });
+    const files: string[] = [];
+    for (const entry of entries) {
+        const fullPath = join(dir, entry.name);
+        if (entry.isDirectory()) {
+            files.push(...getAllMdxFiles(fullPath));
+        } else if (entry.isFile() && entry.name.endsWith('.mdx')) {
+            files.push(fullPath);
+        }
     }
-    return fs.readdirSync(postsDirectory);
+    return files;
+}
+
+/** Find a post file by slug across subdirectories */
+function findPostFile(slug: string): string | null {
+    const files = getAllMdxFiles(postsDirectory);
+    const match = files.find(f => basename(f, '.mdx') === slug);
+    return match || null;
+}
+
+export function getPostSlugs() {
+    return getAllMdxFiles(postsDirectory).map(f => basename(f));
 }
 
 export function getPostBySlug(slug: string): Post | null {
     const realSlug = slug.replace(/\.mdx$/, '');
-    const fullPath = join(postsDirectory, `${realSlug}.mdx`);
+    const fullPath = findPostFile(realSlug);
     
-    if (!fs.existsSync(fullPath)) {
+    if (!fullPath) {
         return null;
     }
 
