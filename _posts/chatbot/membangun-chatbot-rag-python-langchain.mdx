@@ -1,0 +1,739 @@
+---
+title: "Membangun Chatbot RAG dari Nol dengan Python dan LangChain"
+excerpt: "Tutorial langkah demi langkah membangun chatbot RAG sederhana menggunakan Python, LangChain, ChromaDB, dan Digital Ocean Inference. Cocok untuk pemula yang ingin memahami Retrieval-Augmented Generation."
+coverImage: '/assets/blog/membangun-chatbot-rag-python-langchain/thumbnail.webp'
+date: "2026-07-09"
+author:
+  name: "Arsan"
+  picture: "https://ui-avatars.com/api/?name=Arsan+Akbar&background=0D8ABC&color=fff"
+tags: ["chatbot", "rag", "Naive RAG", "LangChain", "ChromaDB", "Vector Database", "Embedding", "LLM", "python"]
+---
+
+Pernah ingin membuat chatbot yang bisa menjawab pertanyaan berdasarkan dokumen internal perusahaan atau catatan pribadi? Mungkin kamu sudah mencoba ChatGPT, tapi hasilnya kurang akurat karena model tidak memiliki akses ke data spesifik yang kamu miliki.
+
+Retrieval-Augmented Generation atau RAG adalah pendekatan yang memecahkan masalah ini. Alih-alih hanya mengandalkan pengetahuan bawaan model, RAG memberikan konteks dari dokumen sebelum model menghasilkan jawaban.
+
+Di tutorial ini, kita akan membangun Naive RAG. Versi paling sederhana dari RAG, menggunakan Python, LangChain, ChromaDB, dan Digital Ocean API Key model.
+
+---
+
+## Yang Perlu Disiapkan
+
+Sebelum mulai coding, pastikan beberapa hal berikut sudah siap:
+
+- Python 3.10 atau 3.11 terinstal di komputer.
+- Akun Digital Ocean dengan Model Access Key (untuk mengakses LLM).
+- Koneksi internet untuk mendownload library dan model embedding.
+
+### Teknologi yang Akan Kita Gunakan
+
+| Komponen | Fungsinya |
+|----------|-----------|
+| LangChain | Framework untuk merangkai komponen LLM |
+| ChromaDB | Vector database lokal untuk menyimpan dan mencari dokumen |
+| Sentence-Transformers | Model embedding yang berjalan offline |
+| Digital Ocean Inference | API untuk mengakses DeepSeek V4 Flash |
+| HuggingFace Embeddings | Mengubah teks jadi vektor numeric |
+
+Model embedding `all-MiniLM-L6-v2` bekerja seratus persen offline setelah diunduh sekali. Hanya LLM yang membutuhkan koneksi internet.
+
+---
+
+## Langkah 1 — Setup Proyek
+
+Buat folder baru untuk proyek ini.
+
+```bash
+mkdir chatbot-rag
+cd chatbot-rag
+```
+
+Buat virtual environment untuk mengisolasi library proyek.
+
+```bash
+python -m venv venv
+```
+
+Aktifkan virtual environment.
+
+Di Windows PowerShell:
+
+```powershell
+.\venv\Scripts\Activate.ps1
+```
+
+Di Mac atau Linux:
+
+```bash
+source venv/bin/activate
+```
+
+Setelah aktif, akan muncul tulisan `(venv)` di awal baris terminal.
+
+Buat file `requirements.txt` dan tulis daftar library berikut:
+
+```txt
+langchain
+langchain-community
+langchain-chroma
+langchain-huggingface
+langchain-text-splitters
+chromadb
+sentence-transformers
+openai
+python-dotenv
+requests
+beautifulsoup4
+pandas
+openpyxl
+```
+
+Instal semuanya dengan satu perintah:
+
+```bash
+pip install -r requirements.txt
+```
+
+Proses ini akan mengunduh semua library yang dibutuhkan. Tunggu hingga selesai.
+
+Buat struktur folder untuk menyimpan dokumen:
+
+```bash
+mkdir -p data/documents
+```
+
+---
+
+## Langkah 2 — Buat File Konfigurasi .env
+
+File `.env` menyimpan konfigurasi rahasia seperti API key. File ini tidak boleh di-upload ke GitHub.
+
+Buat file `.env` di folder proyek:
+
+```env
+DO_API_KEY=sk-do-model-access-key-anda-disini
+DO_BASE_URL=https://inference.do-ai.run/v1
+DO_MODEL=deepseek-v4-flash
+EMBEDDING_MODEL=all-MiniLM-L6-v2
+CHROMA_DB_PATH=./chroma_db
+```
+
+Cara mendapat Model Access Key dari Digital Ocean:
+
+1. Login ke Digital Ocean Cloud Console.
+2. Buka menu AI Platform, lalu pilih Model Access Keys.
+3. Klik Create API Key.
+4. Copy key-nya dan tempel ke `DO_API_KEY`.
+
+---
+
+## Langkah 3 — Buat config.py
+
+Buat file `config.py`. File ini akan menjadi pusat konfigurasi yang menyediakan akses ke LLM, model embedding, dan ChromaDB.
+
+```python
+import os
+from dotenv import load_dotenv
+from langchain_openai import ChatOpenAI
+from langchain_huggingface import HuggingFaceEmbeddings
+from langchain_chroma import Chroma
+
+load_dotenv()
+
+DO_API_KEY = os.getenv("DO_API_KEY")
+DO_BASE_URL = os.getenv("DO_BASE_URL")
+DO_MODEL = os.getenv("DO_MODEL")
+EMBEDDING_MODEL = os.getenv("EMBEDDING_MODEL")
+CHROMA_DB_PATH = os.getenv("CHROMA_DB_PATH")
+COLLECTION_NAME = "rag_collection"
+HF_TOKEN = os.getenv("HF_TOKEN")
+
+```
+
+`load_dotenv()` membaca file `.env` dan memasukkan nilainya ke environment variable. tujuh variabel setelahnya menyimpan konfigurasi dengan nilai default sebagai fallback.
+
+Sekarang buat fungsi untuk mendapatkan objek LLM:
+
+```python
+def get_llm():
+    return ChatOpenAI(
+        api_key=DO_API_KEY,
+        base_url=DO_BASE_URL,
+        model=DO_MODEL,
+        temperature=0.3,
+        max_tokens=1024,
+    )
+```
+
+`ChatOpenAI` sebenarnya kompatibel dengan API apa pun yang mengikuti format OpenAI. Dengan mengganti `base_url` ke endpoint Digital Ocean, kita bisa menggunakan DeepSeek V4 Flash tanpa berlangganan OpenAI.
+
+Parameter `temperature` mengatur kreativitas jawaban. 0.3 memberikan keseimbangan antara konsistensi dan variasi.
+
+Selanjutnya fungsi untuk embedding:
+
+```python
+def get_embeddings():
+    return HuggingFaceEmbeddings(model_name=EMBEDDING_MODEL)
+```
+
+Fungsi ini mengembalikan model embedding yang berjalan lokal. Model `all-MiniLM-L6-v2` akan diunduh saat pertama kali digunakan, setelah itu bisa dipakai offline.
+
+Fungsi untuk koneksi ke ChromaDB:
+
+```python
+def get_vector_store():
+    embeddings = get_embeddings()
+    return Chroma(
+        collection_name=COLLECTION_NAME,
+        embedding_function=embeddings,
+        persist_directory=CHROMA_DB_PATH,
+    )
+```
+
+Terakhir, fungsi validasi:
+
+```python
+def validate_config():
+    if not DO_API_KEY or DO_API_KEY == "sk-do-your-key-here":
+        raise ValueError("DO_API_KEY belum diatur di file .env")
+    print(f"  Model: {DO_MODEL}")
+    print(f"  Base URL: {DO_BASE_URL}")
+    print(f"  Embedding: {EMBEDDING_MODEL}")
+    print(f"  ChromaDB: {CHROMA_DB_PATH}")
+```
+
+Fungsi ini memeriksa apakah API key sudah diisi. Jika tidak, program akan berhenti dengan pesan error yang jelas.
+
+---
+
+## Langkah 4 — Buat ingest.py
+
+File ini bertugas membaca dokumen, memotongnya jadi chunk, lalu menyimpannya ke ChromaDB. Mulai dengan bagian import:
+
+```python
+import os
+import glob
+import pandas as pd
+from urllib.parse import urlparse
+from dotenv import load_dotenv
+
+load_dotenv()
+
+from langchain_community.document_loaders import (
+    TextLoader,
+    WebBaseLoader,
+    CSVLoader,
+)
+from langchain_text_splitters import RecursiveCharacterTextSplitter
+from langchain_core.documents import Document
+
+from config import get_embeddings, CHROMA_DB_PATH, COLLECTION_NAME
+from langchain_chroma import Chroma
+
+DATA_DIR = "data/documents"
+URLS_FILE = "data/urls.txt"
+```
+
+Perhatikan `load_dotenv()` dipanggil sebelum import dari `config.py`. Urutan ini penting agar variabel lingkungan sudah terisi saat `config.py` dijalankan.
+
+### Loader untuk File Teks
+
+```python
+def load_text_files():
+    docs = []
+    files = glob.glob(os.path.join(DATA_DIR, "*.txt"))
+    for fp in files:
+        try:
+            loader = TextLoader(fp, encoding="utf-8")
+            docs.extend(loader.load())
+            print(f"  [OK] {fp}")
+        except Exception as e:
+            print(f"  [SKIP] {fp} — {e}")
+    return docs
+```
+
+Fungsi ini mencari semua file `.txt` di folder `data/documents/`. `TextLoader` membaca file dan mengubahnya menjadi objek `Document` standar LangChain. Parameter `encoding="utf-8"` penting untuk dokumen berbahasa Indonesia.
+
+### Loader untuk CSV
+
+```python
+def load_csv_files():
+    docs = []
+    files = glob.glob(os.path.join(DATA_DIR, "*.csv"))
+    for fp in files:
+        try:
+            loader = CSVLoader(fp)
+            docs.extend(loader.load())
+            print(f"  [OK] {fp}")
+        except Exception as e:
+            print(f"  [SKIP] {fp} — {e}")
+    return docs
+```
+
+Setiap baris di file CSV akan menjadi satu dokumen terpisah.
+
+### Loader untuk Excel
+
+```python
+def load_excel_files():
+    docs = []
+    files = glob.glob(os.path.join(DATA_DIR, "*.xlsx")) + glob.glob(
+        os.path.join(DATA_DIR, "*.xls")
+    )
+    for fp in files:
+        try:
+            df = pd.read_excel(fp, dtype=str)
+            for _, row in df.iterrows():
+                content = "\n".join(
+                    f"{col}: {val}"
+                    for col, val in row.items()
+                    if pd.notna(val)
+                )
+                if content.strip():
+                    docs.append(
+                        Document(
+                            page_content=content, metadata={"source": fp}
+                        )
+                    )
+            print(f"  [OK] {fp}")
+        except Exception as e:
+            print(f"  [SKIP] {fp} — {e}")
+    return docs
+```
+
+Tidak ada loader bawaan LangChain untuk Excel, jadi kita gunakan pandas. Setiap baris dibaca dan kolomnya digabung menjadi format `NamaKolom: Nilai`.
+
+### Loader untuk URL
+
+```python
+def load_urls():
+    docs = []
+    if not os.path.exists(URLS_FILE):
+        return docs
+    urls = []
+    with open(URLS_FILE, "r", encoding="utf-8") as f:
+        for line in f:
+            line = line.strip()
+            if line and not line.startswith("#"):
+                parsed = urlparse(line)
+                if parsed.scheme in ("http", "https"):
+                    urls.append(line)
+    if urls:
+        try:
+            loader = WebBaseLoader(urls)
+            docs.extend(loader.load())
+            print(f"  [OK] {len(urls)} URL(s) loaded")
+        except Exception as e:
+            print(f"  [SKIP] URL loading — {e}")
+    return docs
+```
+
+Fungsi ini membaca daftar URL dari `data/urls.txt`. Baris yang diawali `#` dianggap komentar dan dilewati. `WebBaseLoader` mengunjungi setiap URL, mengambil konten HTML, dan mengekstrak teksnya.
+
+### Fungsi Utama ingest
+
+```python
+def ingest():
+    print("=== INGEST: Memuat dokumen ===\n")
+
+    all_docs = []
+    all_docs.extend(load_text_files())
+    all_docs.extend(load_csv_files())
+    all_docs.extend(load_excel_files())
+    all_docs.extend(load_urls())
+
+    if not all_docs:
+        print("\nTidak ada dokumen ditemukan.")
+        print(f"Letakkan file di {DATA_DIR}/ atau isi {URLS_FILE}")
+        return
+
+    print(f"\nTotal dokumen: {len(all_docs)}")
+
+    splitter = RecursiveCharacterTextSplitter(
+        chunk_size=500,
+        chunk_overlap=50,
+        separators=["\n\n", "\n", ". ", " ", ""],
+    )
+    chunks = splitter.split_documents(all_docs)
+    print(f"Total chunk setelah split: {len(chunks)}")
+
+    print("\n=== Membuat embedding & menyimpan ke ChromaDB ===")
+    embeddings = get_embeddings()
+    vector_store = Chroma.from_documents(
+        documents=chunks,
+        embedding=embeddings,
+        persist_directory=CHROMA_DB_PATH,
+        collection_name=COLLECTION_NAME,
+    )
+    print(f"\nSelesai! {len(chunks)} chunk tersimpan di {CHROMA_DB_PATH}/")
+
+
+if __name__ == "__main__":
+    ingest()
+```
+
+Penjelasan alurnya:
+
+1. Kumpulkan dokumen dari semua sumber.
+2. Jika tidak ada dokumen, tampilkan pesan dan berhenti.
+3. Potong dokumen menjadi chunk berukuran 500 karakter dengan overlap 50 karakter.
+4. Ubah setiap chunk menjadi vektor menggunakan model embedding.
+5. Simpan vektor ke ChromaDB.
+
+`RecursiveCharacterTextSplitter` bekerja secara cerdas. Ia mencoba memotong di batas paragraf terlebih dahulu. Jika chunk masih terlalu panjang, ia turun ke batas baris, lalu kalimat, lalu kata, dan terakhir karakter.
+
+Overlap 50 karakter berfungsi seperti jembatan. Informasi di akhir chunk A akan muncul lagi di awal chunk B, sehingga tidak ada konteks yang terputus di sambungan.
+
+---
+
+## Langkah 5 — Siapkan Data Contoh
+
+Sebelum menjalankan ingest, kita perlu data. Buat file `data/documents/informasi.txt`:
+
+```txt
+- RAG Sederhana (Naive RAG): Jenis paling dasar. AI langsung mengambil teks dari dokumen Anda dan memberikannya kepada model bahasa untuk menjawab pertanyaan. Sangat cocok untuk tanya-jawab umum atau FAQ.
+
+- RAG Canggih (Advanced RAG): Memiliki fitur tambahan seperti query rewriting dan reranking.
+
+- RAG Modular: RAG yang dipecah menjadi beberapa bagian, cocok untuk perusahaan besar.
+
+- RAG Agentik (Agentic RAG): AI bisa memutuskan sendiri apakah perlu mencari data lagi sebelum menjawab.
+
+- RAG Grafik (GraphRAG): Menggunakan knowledge graph untuk melihat hubungan antar informasi, cocok untuk bidang medis atau hukum.
+```
+
+Buat juga `data/documents/informasi_perusahaan.txt`:
+
+```txt
+PT Teknologi Maju Bersama adalah perusahaan teknologi yang berdiri pada tahun 2020 di Jakarta. Perusahaan ini bergerak di bidang pengembangan perangkat lunak, kecerdasan buatan, dan konsultasi IT.
+
+Visi perusahaan: Menjadi perusahaan teknologi terdepan di Indonesia pada tahun 2030.
+
+Misi perusahaan:
+1. Mengembangkan solusi teknologi yang inovatif dan terjangkau
+2. Memberikan layanan konsultasi IT terbaik untuk klien
+3. Menciptakan lingkungan kerja yang mendukung kreativitas karyawan
+
+Kantor pusat berlokasi di Jalan Sudirman No. 123, Jakarta Selatan. Saat ini perusahaan memiliki 250 karyawan dan telah melayani lebih dari 500 klien di seluruh Indonesia.
+
+Produk unggulan perusahaan antara lain:
+- SiCerdas: platform chatbot AI untuk layanan pelanggan
+- SiAnalitik: platform analitik data untuk bisnis
+- SiAmankan: platform keamanan siber untuk perusahaan
+
+Pada tahun 2025, perusahaan berhasil meraih pendanaan Seri A sebesar 50 juta dolar dari beberapa investor terkemuka.
+```
+
+---
+
+## Langkah 6 — Jalankan Ingest
+
+Pastikan virtual environment aktif, lalu jalankan:
+
+```bash
+python ingest.py
+```
+
+Saat pertama kali dijalankan, model embedding `all-MiniLM-L6-v2` akan diunduh terlebih dahulu. Ukurannya sekitar 80MB, tergantung kecepatan internet.
+
+Setelah selesai, akan muncul output seperti:
+
+```
+=== INGEST: Memuat dokumen ===
+
+  [OK] data/documents\informasi.txt
+  [OK] data/documents\informasi_perusahaan.txt
+
+Total dokumen: 2
+
+Total chunk setelah split: 8
+
+=== Membuat embedding & menyimpan ke ChromaDB ===
+
+Selesai! 8 chunk tersimpan di ./chroma_db/
+```
+
+Dua file teks telah dipecah menjadi delapan chunk dan disimpan ke ChromaDB. Folder `chroma_db/` akan muncul secara otomatis.
+
+---
+
+## Langkah 7 — Buat retriever.py
+
+Sekarang kita buat komponen pencari dokumen. File ini akan mencari chunk yang paling relevan dengan pertanyaan user.
+
+```python
+from config import get_vector_store
+
+
+class Retriever:
+    def __init__(self):
+        self.vector_store = get_vector_store()
+
+    def retrieve(self, query: str, k: int = 4):
+        try:
+            docs = self.vector_store.similarity_search(query, k=k)
+            return docs
+        except Exception as e:
+            print(f"[ERROR] Retrieval gagal: {e}")
+            return []
+
+    def check_data_exists(self):
+        try:
+            count = self.vector_store._collection.count()
+            return count > 0
+        except Exception:
+            return False
+```
+
+Begini cara kerja metode `retrieve()`:
+
+1. Pertanyaan user diubah menjadi vektor menggunakan model embedding yang **sama persis** dengan yang digunakan saat ingest.
+2. ChromaDB menghitung jarak antara vektor pertanyaan dengan semua vektor chunk yang tersimpan. Semakin kecil jaraknya, semakin mirip maknanya.
+3. Semua chunk diurutkan berdasarkan jarak, dari yang terdekat.
+4. Sebanyak `k` chunk dengan jarak terpendek dikembalikan.
+
+Metode `check_data_exists()` berguna untuk memastikan ada data di ChromaDB sebelum chatbot dijalankan.
+
+---
+
+## Langkah 8 — Buat generator.py
+
+File ini bertugas menggabungkan konteks dari retriever dengan pertanyaan user, lalu mengirimnya ke LLM untuk mendapatkan jawaban.
+
+```python
+from config import get_llm
+from langchain_core.prompts import PromptTemplate
+
+PROMPT_TEMPLATE = """Anda adalah asisten AI yang menjawab pertanyaan berdasarkan konteks yang diberikan.
+
+Konteks:
+{context}
+
+Pertanyaan: {question}
+
+Jawablah pertanyaan berdasarkan konteks di atas. Jika konteks tidak mengandung informasi yang cukup,
+katakan "Saya tidak menemukan informasi yang cukup dari dokumen yang tersedia."
+"""
+
+
+class Generator:
+    def __init__(self):
+        self.llm = get_llm()
+        self.prompt = PromptTemplate.from_template(PROMPT_TEMPLATE)
+        self.chain = self.prompt | self.llm
+
+    def generate(self, question: str, context_chunks: list) -> str:
+        context = "\n\n---\n\n".join(
+            doc.page_content for doc in context_chunks
+        )
+        response = self.chain.invoke(
+            {"context": context, "question": question}
+        )
+        return response.content
+```
+
+Template prompt di atas berisi tiga bagian: peran AI, konteks dari dokumen, dan pertanyaan user. Bagian terpenting adalah instruksi terakhir — jika konteks tidak cukup, AI diminta untuk mengaku tidak tahu. Ini adalah teknik kunci untuk mengurangi halusinasi.
+
+Di metode `generate()`:
+
+1. Semua chunk digabung jadi satu teks, dipisahkan dengan `---`.
+2. `PromptTemplate` mengganti placeholder `{context}` dan `{question}` dengan nilai yang sebenarnya.
+3. Operator `|` menghubungkan prompt ke LLM. Ini disebut LCEL atau LangChain Expression Language.
+4. LLM menghasilkan jawaban berdasarkan konteks yang diberikan.
+
+---
+
+## Langkah 9 — Buat app.py
+
+Inilah program utama yang menyatukan semua komponen.
+
+```python
+from config import validate_config
+from retriever import Retriever
+from generator import Generator
+
+
+def main():
+    print("=== Naive RAG Chatbot ===\n")
+
+    try:
+        validate_config()
+    except ValueError as e:
+        print(f"[ERROR] {e}")
+        print("1. Copy .env.example menjadi .env")
+        print("2. Isi DO_API_KEY dengan Model Access Key Anda")
+        print("3. Jalankan ulang")
+        return
+
+    print("\nMenyiapkan retriever...")
+    retriever = Retriever()
+
+    if not retriever.check_data_exists():
+        print(
+            "[ERROR] ChromaDB kosong! "
+            "Jalankan 'python ingest.py' dulu."
+        )
+        return
+
+    print("Menyiapkan generator...")
+    generator = Generator()
+
+    print("\n" + "=" * 50)
+    print("Siap! Ketik pertanyaan atau 'exit' untuk keluar.")
+    print("=" * 50 + "\n")
+
+    while True:
+        try:
+            question = input(">>> ")
+        except (EOFError, KeyboardInterrupt):
+            print("\nSampai jumpa!")
+            break
+
+        if question.strip().lower() in ("exit", "quit", "q"):
+            print("\nSampai jumpa!")
+            break
+
+        if not question.strip():
+            continue
+
+        print("\n[1/2] Mencari dokumen relevan...")
+        chunks = retriever.retrieve(question, k=4)
+
+        if not chunks:
+            print(
+                "[jawaban] Tidak ada dokumen "
+                "relevan ditemukan.\n"
+            )
+            continue
+
+        print(f"  -> {len(chunks)} chunk ditemukan")
+
+        print("[2/2] Menghasilkan jawaban...")
+        answer = generator.generate(question, chunks)
+
+        print(f"\n[Jawaban]: {answer}\n")
+
+
+if __name__ == "__main__":
+    main()
+```
+
+Program bekerja dalam tiga tahap:
+
+**Tahap 1 — Validasi**: Memeriksa apakah `.env` sudah diisi. Jika tidak, program menampilkan petunjuk dan berhenti.
+
+**Tahap 2 — Persiapan**: Retriever dan generator diinisialisasi. Jika ChromaDB kosong, program menyuruh user menjalankan `ingest.py` terlebih dahulu.
+
+**Tahap 3 — Loop percakapan**: Program terus menerima input sampai user mengetik `exit`. Setiap pertanyaan diproses dengan alur: cari dokumen relevan → hasilkan jawaban → tampilkan.
+
+Blok `if __name__ == "__main__"` memastikan `main()` hanya berjalan saat file ini dieksekusi langsung, bukan saat diimport dari file lain.
+
+---
+
+## Langkah 10 — Jalankan Chatbot
+
+Semua file sudah siap. Sekarang jalankan chatbot:
+
+```bash
+python app.py
+```
+
+Jika berhasil, akan tampil:
+
+```
+=== Naive RAG Chatbot ===
+
+  Model: deepseek-v4-flash
+  Base URL: https://inference.do-ai.run/v1
+  Embedding: all-MiniLM-L6-v2
+  ChromaDB: ./chroma_db
+
+Menyiapkan retriever...
+Menyiapkan generator...
+
+==================================================
+Siap! Ketik pertanyaan atau 'exit' untuk keluar.
+==================================================
+
+>>>
+```
+
+Coba tanyakan sesuatu tentang data yang sudah dimasukkan:
+
+```
+>>> Apa produk unggulan perusahaan?
+
+[1/2] Mencari dokumen relevan...
+  -> 4 chunk ditemukan
+[2/2] Menghasilkan jawaban...
+
+[Jawaban]: Berdasarkan dokumen yang tersedia, produk unggulan PT Teknologi Maju Bersama adalah:
+1. SiCerdas - platform chatbot AI untuk layanan pelanggan
+2. SiAnalitik - platform analitik data untuk bisnis
+3. SiAmankan - platform keamanan siber untuk perusahaan
+```
+
+Coba juga pertanyaan lain:
+
+```
+>>> Apa itu Naive RAG?
+
+[Jawaban]: Naive RAG adalah jenis RAG paling dasar di mana AI langsung mengambil teks dari dokumen dan memberikannya kepada model bahasa untuk menjawab pertanyaan. Cocok untuk tanya-jawab umum atau FAQ.
+```
+
+Untuk keluar, ketik `exit` atau tekan `Ctrl+C`.
+
+---
+
+## Eksperimen Lanjutan
+
+Setelah chatbot berjalan, ada beberapa hal yang bisa kamu coba:
+
+**Ganti parameter chunking.** Buka `ingest.py` dan ubah `chunk_size` dari 500 menjadi 300, lalu jalankan ulang `python ingest.py`. Bandingkan hasilnya — chunk yang lebih kecil biasanya memberikan presisi lebih tinggi tapi konteksnya berkurang.
+
+**Tambah jumlah chunk.** Di `app.py`, ganti `k=4` menjadi `k=6` atau `k=8`. Lebih banyak chunk berarti lebih banyak konteks untuk LLM, tapi juga meningkatkan konsumsi token.
+
+**Ubah temperature.** Di `config.py`, naikkan `temperature` menjadi 0.7 untuk jawaban yang lebih bervariasi, atau turunkan ke 0.1 untuk jawaban yang lebih konsisten.
+
+**Gunakan model lain.** Cek daftar model yang tersedia di Digital Ocean lewat endpoint `/v1/models`, lalu ganti `DO_MODEL` di `.env`.
+
+**Tambah dokumen baru.** Taruh file `.txt` atau `.csv` baru di `data/documents/`, lalu jalankan `python ingest.py` lagi untuk memperbarui database.
+
+---
+
+## Pertanyaan yang Sering Muncul
+
+### Apakah RAG Memerlukan Database?
+
+Ya, RAG membutuhkan vector database untuk menyimpan dan mencari vektor dari dokumen. Dalam proyek ini kita menggunakan ChromaDB yang bersifat embedded dan datanya disimpan sebagai file lokal.
+
+Tidak perlu menginstal server database terpisah. Cukup install library lewat pip, dan ChromaDB mengelola semuanya secara otomatis.
+
+### Apa Perbedaan RAG dan Fine-Tuning?
+
+RAG memberikan dokumen eksternal ke LLM saat inference. Kamu bisa mengganti dokumen kapan saja tanpa melatih ulang model. Biayanya lebih murah dan implementasinya lebih cepat.
+
+Fine-tuning melatih ulang model dengan data tambahan sehingga pengetahuannya berubah secara permanen. Cocok jika perlu mengubah gaya output model secara fundamental, tapi prosesnya lebih mahal dan lama.
+
+RAG dan fine-tuning tidak saling eksklusif. Banyak sistem produksi yang menggunakan keduanya.
+
+### Kenapa Jawaban Chatbot Kurang Akurat?
+
+Beberapa hal yang bisa diperiksa:
+
+- Apakah dokumen memang mengandung informasi yang ditanyakan?
+- Coba perbesar `k` di `app.py` agar lebih banyak chunk yang dikirim ke LLM.
+- Perkecil `chunk_size` di `ingest.py` untuk presisi yang lebih tinggi.
+- Pastikan `temperature` tidak terlalu tinggi agar jawaban tidak melenceng.
+
+---
+
+## Penutup
+
+Kita baru saja membangun chatbot RAG dari nol dalam sepuluh langkah. Sekitar 150 baris kode, dan chatbot sudah bisa membaca dokumen, mencari informasi yang relevan, dan menjawab pertanyaan.
+
+Yang menarik, arsitektur ini bisa dikembangkan ke berbagai arah. Mau bikin API biar bisa diakses dari web? Tinggal tambah FastAPI. Mau bikin advanced RAG dengan reranking? Tinggal tambah satu langkah di antara retriever dan generator.
+
+Kode lengkap proyek ini bisa kamu dapatkan dan langsung dijalankan. Coba ubah-ubah parameternya, tambah dokumen sendiri, dan lihat bagaimana pengaruhnya terhadap kualitas jawaban.
+
+Selamat mencoba.
