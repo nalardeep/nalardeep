@@ -5,6 +5,7 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 import BreadcrumbSchema from "@/components/breadcrumb-schema";
+import Breadcrumb from "@/components/breadcrumb";
 import CategoryFilter from "@/components/category-filter";
 import type { Metadata } from "next";
 
@@ -42,7 +43,16 @@ export default async function TagPage({ params }: { params: Promise<{ tag: strin
                     ]}
                 />
                 <Container>
-                    <div className="py-16 md:py-24 max-w-4xl">
+                    <div className="pt-4">
+                        <Breadcrumb
+                            items={[
+                                { name: 'Beranda', url: BASE_URL },
+                                { name: 'Artikel', url: `${BASE_URL}/articles` },
+                                { name: label, url: `${BASE_URL}/tags/${tag}` },
+                            ]}
+                        />
+                    </div>
+                    <div className="pt-6 md:pt-8 pb-16 md:pb-24 max-w-4xl">
                         <div className="mb-8">
                             <Link href="/articles" className="inline-flex items-center gap-2 text-sm font-bold text-gray-500 hover:text-gray-900 transition-colors group">
                                 <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />

@@ -5,6 +5,7 @@ import PostHeader from "@/components/post-header";
 import TableOfContents from "@/components/table-of-contents";
 import RelatedPosts from "@/components/related-posts";
 import BreadcrumbSchema from "@/components/breadcrumb-schema";
+import Breadcrumb from "@/components/breadcrumb";
 import { notFound } from "next/navigation";
 import { Metadata } from "next";
 

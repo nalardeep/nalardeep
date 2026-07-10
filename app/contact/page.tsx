@@ -1,5 +1,6 @@
 import Container from "@/components/container";
 import BreadcrumbSchema from "@/components/breadcrumb-schema";
+import Breadcrumb from "@/components/breadcrumb";
 import { Metadata } from 'next';
 import { Mail, MapPin, Phone } from "lucide-react";
 
@@ -23,8 +24,16 @@ export default function Contact() {
                 ]}
             />
             <Container>
+                <div className="pt-4">
+                    <Breadcrumb
+                        items={[
+                            { name: 'Beranda', url: BASE_URL },
+                            { name: 'Contact', url: `${BASE_URL}/contact` },
+                        ]}
+                    />
+                </div>
                 {/* Header */}
-                <div className="py-16 md:py-24 max-w-4xl">
+                <div className="pt-6 md:pt-8 pb-16 md:pb-24 max-w-4xl">
                     <h1 className="text-5xl md:text-6xl font-bold text-gray-900 tracking-tight mb-6">
                         Hubungi Kami
                     </h1>

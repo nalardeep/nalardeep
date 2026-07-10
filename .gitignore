@@ -43,3 +43,6 @@ next-env.d.ts
 # VS Code settings
 .vscode
 MULTILINGUAL_PLAN.md
+
+# internal tools
+/ai-news-agent

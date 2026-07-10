@@ -1,5 +1,6 @@
 import Container from "@/components/container";
 import BreadcrumbSchema from "@/components/breadcrumb-schema";
+import Breadcrumb from "@/components/breadcrumb";
 import { getAllPosts } from "@/lib/api";
 import Link from "next/link";
 import { Metadata } from "next";
@@ -44,6 +45,14 @@ export default function SiteIndexPage() {
                 ]}
             />
             <Container>
+                <div className="pt-4">
+                    <Breadcrumb
+                        items={[
+                            { name: 'Beranda', url: BASE_URL },
+                            { name: 'Site Index', url: `${BASE_URL}/site-index` },
+                        ]}
+                    />
+                </div>
                 <div className="max-w-3xl mx-auto">
                     <h1 className="text-4xl font-bold text-gray-900 mb-8">Site Index</h1>
 

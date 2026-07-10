@@ -4,6 +4,9 @@ import { getAllPosts } from '@/lib/api';
 import { Search, ArrowRight, Calendar, Clock, Tag } from 'lucide-react';
 import Fuse from 'fuse.js';
 import Container from '@/components/container';
+import Breadcrumb from '@/components/breadcrumb';
+
+const BASE_URL = 'https://nalardeep.com';
 
 export const metadata: Metadata = {
     title: 'Cari Artikel - NalarDeep',
@@ -16,7 +19,15 @@ export default async function SearchPage(props: { searchParams: Promise<{ q?: st
     if (!q || !q.trim()) {
         return (
             <Container>
-                <div className="max-w-2xl mx-auto py-16 text-center">
+                <div className="pt-4">
+                    <Breadcrumb
+                        items={[
+                            { name: 'Beranda', url: BASE_URL },
+                            { name: 'Cari Artikel', url: `${BASE_URL}/search` },
+                        ]}
+                    />
+                </div>
+                <div className="max-w-2xl mx-auto pt-8 pb-16 text-center">
                     <div className="w-16 h-16 bg-emerald-50 rounded-2xl flex items-center justify-center mx-auto mb-6">
                         <Search className="w-7 h-7 text-emerald-500" />
                     </div>
@@ -46,7 +57,15 @@ export default async function SearchPage(props: { searchParams: Promise<{ q?: st
 
     return (
         <Container>
-            <div className="max-w-2xl mx-auto py-12">
+            <div className="pt-4">
+                <Breadcrumb
+                    items={[
+                        { name: 'Beranda', url: BASE_URL },
+                        { name: 'Cari Artikel', url: `${BASE_URL}/search` },
+                    ]}
+                />
+            </div>
+            <div className="max-w-2xl mx-auto pt-2 pb-12">
                 <div className="mb-8">
                     <Link
                         href="/articles"
