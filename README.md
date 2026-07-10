@@ -1,20 +1,30 @@
-# KodeMinggo
+# NalarDeep
 
-A modern tech blog built with **Next.js 16**, **React 19**, and **Tailwind CSS 4**. Designed for showcasing AI and software engineering knowledge with a focus on performance and SEO.
+Blog teknologi AI dan software engineering modern, dibangun dengan **Next.js 16**, **React 19**, dan **Tailwind CSS 4**. Tersedia di [nalardeep.com](https://nalardeep.com).
 
 ## Quick Start
 
-1.  **Install dependencies**:
+1.  **Clone & install dependencies**:
     ```bash
     npm install
     ```
 
-2.  **Run locally**:
+2.  **Setup environment variables**:
+    Salin konfigurasi berikut ke `.env.local` (nilai `REPO_ID` dan `CATEGORY_ID` dapatkan dari [giscus.app](https://giscus.app) setelah mengaktifkan GitHub Discussions):
+    ```env
+    INDEXNOW_SECRET=your-random-secret
+    NEXT_PUBLIC_GISCUS_REPO=minggo-commits/PBP
+    NEXT_PUBLIC_GISCUS_REPO_ID=
+    NEXT_PUBLIC_GISCUS_CATEGORY=Announcements
+    NEXT_PUBLIC_GISCUS_CATEGORY_ID=
+    ```
+
+3.  **Run locally**:
     ```bash
     npm run dev
     ```
 
-3.  Open [http://localhost:3000](http://localhost:3000).
+4.  Open [http://localhost:3000](http://localhost:3000).
 
 ## Key Features
 
@@ -22,12 +32,14 @@ A modern tech blog built with **Next.js 16**, **React 19**, and **Tailwind CSS 4
 -   **SEO Ready**: Sitemap, JSON-LD, and Open Graph tags.
 -   **MDX Blog**: Write content in Markdown with React components.
 -   **Responsive**: Mobile-first design.
+-   **Diskusi**: Komentar terintegrasi via Giscus (GitHub Discussions).
 
 ## Tech Stack
 
 -   **Frontend**: Next.js 16, React 19, TypeScript
 -   **Styling**: Tailwind CSS 4, Lucide React
 -   **Content**: MDX, Gray Matter
+-   **Diskusi**: Giscus, GitHub Discussions
 
 
 
