@@ -4,6 +4,7 @@ import { getAllPosts, getAllTagsWithCounts } from "@/lib/api";
 import Link from "next/link";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import BreadcrumbSchema from "@/components/breadcrumb-schema";
+import Breadcrumb from "@/components/breadcrumb";
 import CategoryFilter from "@/components/category-filter";
 import { Metadata } from "next";
 
@@ -41,8 +42,16 @@ export default async function Articles({ searchParams }: { searchParams: Promise
                 ]}
             />
             <Container>
+                <div className="pt-4">
+                    <Breadcrumb
+                        items={[
+                        { name: 'Beranda', url: BASE_URL },
+                        { name: 'Artikel', url: `${BASE_URL}/articles` },
+                        ]}
+                    />
+                </div>
                 {/* Header Section */}
-                <div className="py-16 md:py-24 flex flex-col md:flex-row md:items-center md:justify-between gap-12">
+                <div className="pt-6 md:pt-8 pb-16 md:pb-24 flex flex-col md:flex-row md:items-center md:justify-between gap-12">
                     {/* Left: Text */}
                     <div className="max-w-xl">
                         <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-emerald-50 text-emerald-600 border border-emerald-100/50 rounded-full font-semibold text-xs uppercase tracking-wider mb-6 shadow-glow-sm">

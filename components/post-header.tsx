@@ -1,5 +1,6 @@
 import { format, parseISO } from 'date-fns';
 import ShareButtons from './share-buttons';
+import Breadcrumb from './breadcrumb';
 import { Author } from '@/types';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -18,11 +19,19 @@ const PostHeader = ({ title, date, coverImage, readingTime, slug, author, tags }
     return (
         <>
             <div className="max-w-4xl mx-auto text-center md:text-left">
-                <h1 className="text-4xl md:text-5xl font-bold tracking-tight leading-tight text-gray-900 mb-6">
+                <h1 className="text-4xl md:text-5xl font-bold tracking-tight leading-tight text-gray-900 mb-4">
                     {title}
                 </h1>
 
-                <div className="flex flex-wrap items-center gap-4 mb-6 text-sm md:text-base text-gray-500 font-medium justify-center md:justify-start">
+                <Breadcrumb
+                    items={[
+                        { name: 'Beranda', url: 'https://nalardeep.com' },
+                        { name: 'Artikel', url: 'https://nalardeep.com/articles' },
+                        { name: title, url: `https://nalardeep.com/posts/${slug}` },
+                    ]}
+                />
+
+                <div className="flex flex-wrap items-center gap-4 mt-6 mb-6 text-sm md:text-base text-gray-500 font-medium justify-center md:justify-start">
                     {author && (
                         <div className="flex items-center gap-2 mr-2">
                             <img

@@ -1,4 +1,5 @@
 import Container from "@/components/container";
+import Breadcrumb from "@/components/breadcrumb";
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
@@ -10,7 +11,15 @@ export default function Privacy() {
     return (
         <div className="bg-white min-h-screen pb-24">
             <Container>
-                <div className="py-16 md:py-24 max-w-4xl mx-auto">
+                <div className="pt-4">
+                    <Breadcrumb
+                        items={[
+                            { name: 'Beranda', url: 'https://nalardeep.com' },
+                            { name: 'Privacy Policy', url: 'https://nalardeep.com/privacy' },
+                        ]}
+                    />
+                </div>
+                <div className="pt-6 md:pt-8 pb-16 md:pb-24 max-w-4xl mx-auto">
                     <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-8">Privacy Policy</h1>
                     <div className="prose prose-lg text-gray-600">
                         <p>Last updated: {new Date().toLocaleDateString()}</p>

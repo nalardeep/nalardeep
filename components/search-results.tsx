@@ -14,7 +14,7 @@ export default function SearchResults({ results, query, onSelect }: SearchResult
     if (results.length === 0) {
         return (
             <div className="absolute top-full left-0 right-0 mt-2 bg-white rounded-xl shadow-xl border border-gray-100 p-4 z-50 animate-in fade-in slide-in-from-top-2">
-                <p className="text-gray-500 text-center text-sm py-2">No results found for "{query}"</p>
+                <p className="text-gray-500 text-center text-sm py-2">Tidak ditemukan untuk "{query}"</p>
             </div>
         );
     }
@@ -25,7 +25,7 @@ export default function SearchResults({ results, query, onSelect }: SearchResult
             className="absolute top-full left-0 right-0 mt-2 bg-white rounded-xl shadow-xl border border-gray-100 overflow-hidden z-50 animate-in fade-in slide-in-from-top-2 max-h-[60vh] overflow-y-auto text-left"
         >
             <div className="p-2">
-                <h3 className="text-xs font-bold text-gray-400 uppercase tracking-wider px-3 py-2">Suggested Articles</h3>
+                <h3 className="text-xs font-bold text-gray-400 uppercase tracking-wider px-3 py-2">Artikel Terkait</h3>
                 {results.map((post) => (
                     <Link
                         key={post.slug}
@@ -54,8 +54,8 @@ export default function SearchResults({ results, query, onSelect }: SearchResult
                 ))}
             </div>
             <div className="bg-gray-50 p-2 text-center border-t border-gray-100">
-                <Link href="/articles" className="text-xs font-medium text-primary-500 hover:text-primary-600">
-                    View all results &rarr;
+                <Link href={`/search?q=${encodeURIComponent(query)}`} className="text-xs font-medium text-primary-500 hover:text-primary-600">
+                    Lihat semua hasil &rarr;
                 </Link>
             </div>
         </div>

@@ -5,6 +5,9 @@ import PostHeader from "@/components/post-header";
 import TableOfContents from "@/components/table-of-contents";
 import RelatedPosts from "@/components/related-posts";
 import BreadcrumbSchema from "@/components/breadcrumb-schema";
+import Breadcrumb from "@/components/breadcrumb";
+import BackToTop from "@/components/back-to-top";
+import ReadingProgress from "@/components/reading-progress";
 import { notFound } from "next/navigation";
 import { Metadata } from "next";
 
@@ -49,6 +52,7 @@ export default async function Post({ params }: { params: Promise<{ slug: string 
 
     return (
         <Container>
+            <ReadingProgress />
             {/* BlogPosting Structured Data */}
             <script
                 type="application/ld+json"
@@ -87,6 +91,7 @@ export default async function Post({ params }: { params: Promise<{ slug: string 
                     </aside>
                 </div>
             </article>
+            <BackToTop />
         </Container>
     );
 }

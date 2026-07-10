@@ -6,6 +6,7 @@ import Container from './container';
 import { useState } from 'react';
 import { Menu, X } from 'lucide-react';
 import { usePathname } from 'next/navigation';
+import SearchBar from './search-bar';
 
 const Header = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -64,8 +65,11 @@ const Header = () => {
                         </ul>
                     </nav>
 
-                    {/* CTA Button & Mobile Toggle */}
-                    <div className="flex items-center gap-4">
+                    {/* Desktop Search + CTA Button & Mobile Toggle */}
+                    <div className="flex items-center gap-3">
+                        <div className="hidden md:block">
+                            <SearchBar />
+                        </div>
                         <Link
                             href="/services"
                             className="hidden md:inline-block bg-gradient-to-r from-emerald-500 to-teal-500 text-white font-semibold px-4.5 py-2.5 text-xs uppercase tracking-wider rounded-lg shadow-glow-sm hover:shadow-glow-md hover:scale-[1.02] active:scale-[0.98] transition-all duration-200 select-none cursor-pointer"
@@ -86,6 +90,9 @@ const Header = () => {
                 {/* Mobile Menu */}
                 {isOpen && (
                     <div className="md:hidden absolute top-full left-0 w-full bg-white border-b border-slate-100 shadow-xl py-6 px-4 flex flex-col items-center gap-4 z-50 animate-in fade-in slide-in-from-top-4 duration-300">
+                        <div className="w-full md:hidden">
+                            <SearchBar />
+                        </div>
                         {navLinks.map((link) => {
                             const active = isActive(link.path);
                             return (

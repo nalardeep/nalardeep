@@ -1,5 +1,6 @@
 import Container from "@/components/container";
 import BreadcrumbSchema from "@/components/breadcrumb-schema";
+import Breadcrumb from "@/components/breadcrumb";
 import Link from "next/link";
 import { Workflow, Cpu, MessageSquare, ShieldAlert, CheckCircle2, ArrowRight, Sparkles } from "lucide-react";
 import type { Metadata } from "next";
@@ -81,8 +82,16 @@ export default function Services() {
                 />
 
                 <Container>
+                    <div className="pt-4">
+                        <Breadcrumb
+                            items={[
+                                { name: 'Beranda', url: BASE_URL },
+                                { name: 'Layanan Jasa', url: `${BASE_URL}/services` },
+                            ]}
+                        />
+                    </div>
                     {/* Hero Section */}
-                    <div className="py-16 md:py-24 max-w-4xl relative">
+                    <div className="pt-6 md:pt-8 pb-16 md:pb-24 max-w-4xl relative">
                         <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-emerald-50 text-emerald-600 border border-emerald-100/50 rounded-full font-semibold text-xs uppercase tracking-wider mb-6 shadow-glow-sm">
                             <Sparkles className="w-3.5 h-3.5" />
                             Solusi AI & Otomatisasi
