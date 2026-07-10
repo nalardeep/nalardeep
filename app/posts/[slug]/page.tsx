@@ -8,6 +8,7 @@ import BreadcrumbSchema from "@/components/breadcrumb-schema";
 import Breadcrumb from "@/components/breadcrumb";
 import BackToTop from "@/components/back-to-top";
 import ReadingProgress from "@/components/reading-progress";
+import Comments from "@/components/comments";
 import { notFound } from "next/navigation";
 import { Metadata } from "next";
 
@@ -91,6 +92,7 @@ export default async function Post({ params }: { params: Promise<{ slug: string 
                     </aside>
                 </div>
             </article>
+            <Comments />
             <BackToTop />
         </Container>
     );
