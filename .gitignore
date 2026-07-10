@@ -46,3 +46,16 @@ MULTILINGUAL_PLAN.md
 
 # internal tools
 /ai-news-agent
+
+# internal documents (not for public)
+seo_analysis_and_article_recommendations.md
+GITHUB_INSTRUCTIONS.md
+
+# Windows
+Thumbs.db
+Desktop.ini
+
+# Editor swap files
+*.swp
+*.swo
+*~

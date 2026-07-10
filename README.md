@@ -1,10 +1,10 @@
-# KodeMinggo
+# NalarDeep
 
-A modern tech blog built with **Next.js 16**, **React 19**, and **Tailwind CSS 4**. Designed for showcasing AI and software engineering knowledge with a focus on performance and SEO.
+Blog seputar AI dan programming, dibangun dengan **Next.js 16**, **React 19**, dan **Tailwind CSS 4**. Tersedia di [nalardeep.com](https://nalardeep.com).
 
 ## Quick Start
 
-1.  **Install dependencies**:
+1.  **Clone & install dependencies**:
     ```bash
     npm install
     ```
@@ -22,12 +22,14 @@ A modern tech blog built with **Next.js 16**, **React 19**, and **Tailwind CSS 4
 -   **SEO Ready**: Sitemap, JSON-LD, and Open Graph tags.
 -   **MDX Blog**: Write content in Markdown with React components.
 -   **Responsive**: Mobile-first design.
+-   **Diskusi**: Komentar terintegrasi via Giscus (GitHub Discussions).
 
 ## Tech Stack
 
 -   **Frontend**: Next.js 16, React 19, TypeScript
 -   **Styling**: Tailwind CSS 4, Lucide React
 -   **Content**: MDX, Gray Matter
+-   **Diskusi**: Giscus, GitHub Discussions
 
 
 
