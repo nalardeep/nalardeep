@@ -19,9 +19,11 @@
     "lucide-react": "^0.561.0",
     "next": "^16.1.6",
     "next-mdx-remote": "^6.0.0",
+    "prismjs": "^1.30.0",
     "react": "19.2.1",
     "react-dom": "19.2.1",
     "rehype-autolink-headings": "^7.1.0",
+    "rehype-prism-plus": "^2.0.2",
     "rehype-slug": "^6.0.0",
     "remark-gfm": "^4.0.1",
     "tailwind-merge": "^3.4.0"
