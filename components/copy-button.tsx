@@ -23,13 +23,13 @@ export const CopyButton = ({ text }: CopyButtonProps) => {
     return (
         <button
             onClick={copy}
-            className="absolute right-4 top-4 p-2 rounded-lg bg-white/10 hover:bg-white/20 transition-all border border-white/10 opacity-0 group-hover:opacity-100 focus:opacity-100"
+            className="p-1 rounded-md bg-white/[0.06] hover:bg-white/[0.14] transition-all border border-white/[0.06] opacity-0 group-hover:opacity-100 focus:opacity-100"
             aria-label="Copy code"
         >
             {isCopied ? (
-                <Check className="w-4 h-4 text-green-400" />
+                <Check className="w-3 h-3 text-emerald-400" />
             ) : (
-                <Copy className="w-4 h-4 text-gray-400" />
+                <Copy className="w-3 h-3 text-slate-500" />
             )}
         </button>
     );

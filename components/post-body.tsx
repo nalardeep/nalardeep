@@ -3,6 +3,7 @@ import { MDXRemote } from 'next-mdx-remote/rsc';
 import rehypeSlug from 'rehype-slug';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import remarkGfm from 'remark-gfm';
+import rehypePrism from 'rehype-prism-plus';
 import Image from 'next/image';
 import { CopyButton } from './copy-button';
 
@@ -21,6 +22,67 @@ const isToc = (id: string) => {
     if (!id) return false;
     const lowerId = id.toLowerCase();
     return lowerId.includes('table-of-content') || lowerId.includes('daftar-isi') || lowerId === 'toc';
+};
+
+const languageMap: Record<string, string> = {
+    js: 'JavaScript',
+    javascript: 'JavaScript',
+    ts: 'TypeScript',
+    typescript: 'TypeScript',
+    py: 'Python',
+    python: 'Python',
+    rb: 'Ruby',
+    ruby: 'Ruby',
+    rs: 'Rust',
+    rust: 'Rust',
+    go: 'Go',
+    sh: 'Bash',
+    bash: 'Bash',
+    zsh: 'Zsh',
+    powershell: 'PowerShell',
+    ps: 'PowerShell',
+    json: 'JSON',
+    yaml: 'YAML',
+    yml: 'YAML',
+    xml: 'XML',
+    html: 'HTML',
+    css: 'CSS',
+    scss: 'SCSS',
+    sass: 'Sass',
+    md: 'Markdown',
+    markdown: 'Markdown',
+    sql: 'SQL',
+    docker: 'Docker',
+    dockerfile: 'Docker',
+    env: 'ENV',
+    txt: 'Text',
+    text: 'Text',
+    diff: 'Diff',
+    php: 'PHP',
+    java: 'Java',
+    kt: 'Kotlin',
+    kotlin: 'Kotlin',
+    swift: 'Swift',
+    c: 'C',
+    cpp: 'C++',
+    cs: 'C#',
+    csharp: 'C#',
+    dart: 'Dart',
+    lua: 'Lua',
+    graphql: 'GraphQL',
+    nginx: 'Nginx',
+    ini: 'INI',
+    toml: 'TOML',
+    makefile: 'Makefile',
+    make: 'Make',
+};
+
+const getLanguageName = (className?: string): string => {
+    if (!className) return '';
+    const match = className.match(/language-(\w+)/);
+    if (!match) return '';
+    const lang = match[1].toLowerCase();
+    return languageMap[lang] || lang.charAt(0).toUpperCase() + lang.slice(1);
 };
 
 const components = {
@@ -58,7 +120,12 @@ const components = {
     },
     pre: ({ children }: any) => {
         const text = extractText(children);
-        // Pass a prop to the child (usually the <code> tag) to indicate it's inside a <pre>
+        const childArray = React.Children.toArray(children);
+        const codeChild = childArray.find((child): child is React.ReactElement<{ className?: string }> =>
+            React.isValidElement(child)
+        );
+        const language = getLanguageName(codeChild?.props?.className);
+
         const childrenWithProps = React.Children.map(children, (child) => {
             if (React.isValidElement(child)) {
                 return React.cloneElement(child as any, { isCodeBlock: true });
@@ -67,9 +134,18 @@ const components = {
         });
 
         return (
-            <div className="relative group my-6 border border-slate-100 rounded-xl overflow-hidden shadow-glow-sm hover:border-emerald-500/35 hover:shadow-glow-md transition-all duration-300">
-                <CopyButton text={text} />
-                <pre className="max-h-[450px] overflow-auto p-4 bg-[#0B0F19] text-[#e2e8f0] font-mono text-sm leading-relaxed">
+            <div className="not-prose relative group my-6 border border-slate-100 rounded-xl overflow-hidden hover:border-emerald-500/40 transition-colors duration-300">
+                <div className="flex items-center justify-between px-4 py-1.5 bg-[#0B0F19] border-b border-white/[0.06]">
+                    {language ? (
+                        <span className="text-[11px] font-medium text-slate-500 uppercase tracking-wider select-none">
+                            {language}
+                        </span>
+                    ) : (
+                        <span />
+                    )}
+                    <CopyButton text={text} />
+                </div>
+                <pre className="max-h-[450px] overflow-auto p-4 bg-[#0B0F19] text-[#e2e8f0] font-mono text-sm leading-relaxed m-0">
                     {childrenWithProps}
                 </pre>
             </div>
@@ -139,7 +215,8 @@ const PostBody = ({ content }: Props) => {
                             remarkPlugins: [remarkGfm],
                             rehypePlugins: [
                                 rehypeSlug,
-                                [rehypeAutolinkHeadings, { behavior: 'wrap' }]
+                                [rehypeAutolinkHeadings, { behavior: 'wrap' }],
+                                [rehypePrism, { ignoreMissing: true, defaultLanguage: 'text' }],
                             ],
                         },
                     }}

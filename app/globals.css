@@ -109,6 +109,158 @@ pre::-webkit-scrollbar-thumb:hover {
   background-size: 20px 20px;
 }
 
+/* ───────── Prism Syntax Highlighting Theme (Dark · Emerald Accent) ───────── */
+pre[class*="language-"] {
+    background: transparent !important;
+    color: #e2e8f0;
+    text-shadow: none;
+    direction: ltr;
+    text-align: left;
+    white-space: pre;
+    word-spacing: normal;
+    word-break: normal;
+    tab-size: 2;
+    hyphens: none;
+}
+
+code[class*="language-"] {
+    background: transparent;
+    color: #e2e8f0;
+    text-shadow: none;
+    font-family: var(--font-mono);
+    direction: ltr;
+    text-align: left;
+    white-space: pre;
+    word-spacing: normal;
+    word-break: normal;
+    tab-size: 2;
+    hyphens: none;
+}
+
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata,
+.token.plain-text {
+    color: #64748b;
+    font-style: italic;
+}
+
+.token.punctuation {
+    color: #94a3b8;
+}
+
+.token.property,
+.token.tag,
+.token.boolean,
+.token.number,
+.token.constant,
+.token.symbol,
+.token.deleted {
+    color: #fbbf24;
+}
+
+.token.selector,
+.token.attr-name,
+.token.string,
+.token.char,
+.token.builtin,
+.token.inserted {
+    color: #86efac;
+}
+
+.token.operator,
+.token.entity,
+.token.url {
+    color: #94a3b8;
+}
+
+.token.atrule,
+.token.attr-value,
+.token.keyword {
+    color: #a78bfa;
+}
+
+.token.function,
+.token.maybe-class-name {
+    color: #60a5fa;
+}
+
+.token.regex,
+.token.important,
+.token.variable {
+    color: #fca5a5;
+}
+
+.token.important,
+.token.bold {
+    font-weight: bold;
+}
+.token.italic {
+    font-style: italic;
+}
+
+.token.entity {
+    cursor: help;
+}
+
+.token.namespace {
+    opacity: 0.7;
+}
+
+/* Line highlight (rehype-prism-plus) */
+.highlight-line {
+    background-color: rgba(16, 185, 129, 0.08);
+    border-left: 3px solid #10b981;
+    display: block;
+    margin: 0 -1rem;
+    padding: 0 1rem;
+}
+
+/* Line numbers (rehype-prism-plus) */
+pre.line-numbers {
+    counter-reset: linenumber;
+    padding-left: 3.8rem !important;
+    position: relative;
+}
+
+pre.line-numbers > code {
+    position: relative;
+    white-space: inherit;
+}
+
+.line-numbers .line-numbers-rows {
+    position: absolute;
+    pointer-events: none;
+    top: 0;
+    left: -3.8rem;
+    width: 3rem;
+    letter-spacing: -1px;
+    border-right: 1px solid rgba(148, 163, 184, 0.15);
+    user-select: none;
+}
+
+.line-numbers-rows > span {
+    display: block;
+    counter-increment: linenumber;
+    color: rgba(148, 163, 184, 0.4);
+    font-size: 0.75em;
+    text-align: right;
+    padding-right: 0.75rem;
+}
+
+.line-numbers-rows > span::before {
+    content: counter(linenumber);
+}
+
+/* Ensure inline code inside highlighted blocks inherits correctly */
+code[class*="language-"] .token {
+    background: transparent;
+}
+
+/* ───────── End Prism Theme ───────── */
+
+
 /* High Readability Prose Elements & Tables */
 .prose table {
   width: 100%;
