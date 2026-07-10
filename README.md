@@ -1,6 +1,6 @@
 # NalarDeep
 
-Blog teknologi AI dan software engineering modern, dibangun dengan **Next.js 16**, **React 19**, dan **Tailwind CSS 4**. Tersedia di [nalardeep.com](https://nalardeep.com).
+Blog seputar AI dan programming, dibangun dengan **Next.js 16**, **React 19**, dan **Tailwind CSS 4**. Tersedia di [nalardeep.com](https://nalardeep.com).
 
 ## Quick Start
 
@@ -9,22 +9,12 @@ Blog teknologi AI dan software engineering modern, dibangun dengan **Next.js 16*
     npm install
     ```
 
-2.  **Setup environment variables**:
-    Salin konfigurasi berikut ke `.env.local` (nilai `REPO_ID` dan `CATEGORY_ID` dapatkan dari [giscus.app](https://giscus.app) setelah mengaktifkan GitHub Discussions):
-    ```env
-    INDEXNOW_SECRET=your-random-secret
-    NEXT_PUBLIC_GISCUS_REPO=minggo-commits/PBP
-    NEXT_PUBLIC_GISCUS_REPO_ID=
-    NEXT_PUBLIC_GISCUS_CATEGORY=Announcements
-    NEXT_PUBLIC_GISCUS_CATEGORY_ID=
-    ```
-
-3.  **Run locally**:
+2.  **Run locally**:
     ```bash
     npm run dev
     ```
 
-4.  Open [http://localhost:3000](http://localhost:3000).
+3.  Open [http://localhost:3000](http://localhost:3000).
 
 ## Key Features
 
