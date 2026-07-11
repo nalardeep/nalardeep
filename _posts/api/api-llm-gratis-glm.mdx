@@ -11,14 +11,73 @@ tags: ["LLM","API Key","Free API Key","GLM 5.2", "Cloudflare","Cloudflare Worker
 
 # Cara Mendapatkan API LLM Gratis GLM 5.2 Via Cloudflare
 Pada artikel kali ini mimin cuman pengen membagikan cara untuk mendapatkan akses gratis model GLM 5.2 Via Cloudflare Workers AI. Sebelum itu terdapat beberapa hal yang mesti dipersiapkan seperti,
-1. Akun Cloudflare
-2. OpenCode
+1. Akun Cloudflare (lihat langkah pembuatan akun di bawah)
+2. OpenCode (lihat langkah instalasi di bawah)
 
 Akun Cloudflare digunakan untuk mendaftar API Key yang akan digunakan, sedangkan OpenCode merupakan tools coding yang akan digunakan untuk mencoba API Key tersebut. Setelah kedua persyaratan diatas sudah dipersiapkan maka langsung dieksekusi saja
 
+### Membuat Akun Cloudflare
+    > Kamu membutuhkan akun Cloudflare untuk mendapatkan API Key secara gratis.
+1. Buka browser dan kunjungi https://dash.cloudflare.com/sign-up
+2. Masukkan alamat email dan buat password, atau gunakan login via Google/Apple/GitHub
+3. Centang checkbox untuk verifikasi, lalu klik **Create Account**
+4. Buka email yang digunakan untuk mendaftar, lalu klik link verifikasi dari Cloudflare
+5. Akun Cloudflare sudah siap digunakan
+
+### Menginstall OpenCode
+
+#### Windows
+OpenCode bisa diinstall melalui beberapa metode di Windows:
+
+**Via winget (recommended):**
+```bash
+winget install -e --id SST.opencode
+```
+
+**Via scoop:**
+```bash
+scoop install opencode
+```
+
+**Via npm:**
+```bash
+npm i -g opencode-ai@latest
+```
+
+**Via WSL2 (pengalaman terbaik):**
+```bash
+# Install WSL2 terlebih dahulu
+wsl --install
+# Restart komputer, lalu jalankan:
+curl -fsSL https://opencode.ai/install | bash
+```
+
+#### macOS
+OpenCode bisa diinstall melalui beberapa metode di macOS:
+
+**Via Homebrew (recommended):**
+```bash
+brew install anomalyco/tap/opencode
+```
+
+**Via curl script:**
+```bash
+curl -fsSL https://opencode.ai/install | bash
+```
+
+**Via npm:**
+```bash
+npm i -g opencode-ai@latest
+```
+
+Setelah instalasi selesai, verifikasi dengan menjalankan:
+```bash
+opencode --version
+```
+
 ## Cara Mendapatkan Akses Gratis API LLM GLM 5.2 dengan Cloudflare
 ### Membuat API Key Cloudflare Workers AI
-    > Sebelum mengikuti langkah langkah dibawah ini, buat akun Cloudflare terlebih dahulu.
+    > Sebelum mengikuti langkah langkah dibawah ini, buat akun Cloudflare terlebih dahulu (lihat langkahnya di atas).
 1. Masuk ke Cloudflare
 2. Pada menu build, pilih AI lalu cari bagian Workers AI.
 3. Pilih Rest API
@@ -28,7 +87,7 @@ Akun Cloudflare digunakan untuk mendaftar API Key yang akan digunakan, sedangkan
 7. Copy API Token dan simpan 
 
 ### Menggunakan API Key Cloudflare di OpenCode
-    > Sebelum mengikuti langkah-langkah dibawah ini, download OpenCode terlebih dahulu
+    > Sebelum mengikuti langkah-langkah dibawah ini, install OpenCode terlebih dahulu (lihat langkahnya di atas).
 1. Buka terminal atau PowerShell
 2. Masukkan perintah Opencode
 3. Untuk menghubungkan API Key, masukkan perintah **/connect**
