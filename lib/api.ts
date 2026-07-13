@@ -83,12 +83,34 @@ export function getAllPosts(): Post[] {
 
 export function getRelatedPosts(currentSlug: string, count: number = 3): Post[] {
     const allPosts = getAllPosts();
-    const related = allPosts
+    const currentPost = getPostBySlug(currentSlug);
+
+    if (!currentPost || !currentPost.tags || currentPost.tags.length === 0) {
+        // Fallback: return latest posts if no tags
+        return allPosts
+            .filter((post) => post.slug !== currentSlug)
+            .slice(0, count);
+    }
+
+    const currentTags = currentPost.tags.map(t => t.toLowerCase());
+
+    // Score each post by number of matching tags
+    const scored = allPosts
         .filter((post) => post.slug !== currentSlug)
-        // Simple randomization for variety
-        .sort(() => 0.5 - Math.random())
-        .slice(0, count);
-    return related;
+        .map((post) => {
+            const postTags = (post.tags || []).map(t => t.toLowerCase());
+            const matchScore = currentTags.reduce((score, tag) => {
+                return score + (postTags.includes(tag) ? 1 : 0);
+            }, 0);
+            return { post, score: matchScore };
+        })
+        .sort((a, b) => {
+            // Sort by score (descending), then by date (descending) as tiebreaker
+            if (b.score !== a.score) return b.score - a.score;
+            return new Date(b.post.date).getTime() - new Date(a.post.date).getTime();
+        });
+
+    return scored.slice(0, count).map(({ post }) => post);
 }
 
 export function getPopularTags(limit: number = 3): string[] {

@@ -13,6 +13,8 @@ Pernah ingin membuat chatbot yang bisa menjawab pertanyaan berdasarkan dokumen i
 
 Retrieval-Augmented Generation atau RAG adalah pendekatan yang memecahkan masalah ini. Alih-alih hanya mengandalkan pengetahuan bawaan model, RAG memberikan konteks dari dokumen sebelum model menghasilkan jawaban.
 
+Jika kamu tertarik dengan konsep RAG secara lebih mendalam, baca juga artikel [Apa itu RAG dan Cara Kerjanya](/posts/tutorial-chatbot-rag) yang membahas arsitektur RAG dengan pendekatan berbeda menggunakan Gemini API.
+
 Di tutorial ini, kita akan membangun Naive RAG. Versi paling sederhana dari RAG, menggunakan Python, LangChain, ChromaDB, dan Digital Ocean API Key model.
 
 ---
@@ -22,7 +24,7 @@ Di tutorial ini, kita akan membangun Naive RAG. Versi paling sederhana dari RAG,
 Sebelum mulai coding, pastikan beberapa hal berikut sudah siap:
 
 - Python 3.10 atau 3.11 terinstal di komputer.
-- Akun Digital Ocean dengan Model Access Key (untuk mengakses LLM).
+- Akun Digital Ocean dengan Model Access Key (untuk mengakses LLM). Jika belum punya, kamu bisa coba alternatif [API LLM gratis dari GLM 5.2 via Cloudflare](/posts/api-llm-gratis-glm) untuk tahap prototyping.
 - Koneksi internet untuk mendownload library dan model embedding.
 
 ### Teknologi yang Akan Kita Gunakan
@@ -534,6 +536,8 @@ class Generator:
 
 Template prompt di atas berisi tiga bagian: peran AI, konteks dari dokumen, dan pertanyaan user. Bagian terpenting adalah instruksi terakhir — jika konteks tidak cukup, AI diminta untuk mengaku tidak tahu. Ini adalah teknik kunci untuk mengurangi halusinasi.
 
+Teknik penyusunan prompt seperti ini termasuk dalam [Prompt Engineering](/posts/prompting-engineering-technique) — keterampilan penting untuk mengoptimalkan output AI, mulai dari role prompting, few-shot, hingga output formatting.
+
 Di metode `generate()`:
 
 1. Semua chunk digabung jadi satu teks, dipisahkan dengan `---`.
@@ -713,7 +717,7 @@ Tidak perlu menginstal server database terpisah. Cukup install library lewat pip
 
 RAG memberikan dokumen eksternal ke LLM saat inference. Kamu bisa mengganti dokumen kapan saja tanpa melatih ulang model. Biayanya lebih murah dan implementasinya lebih cepat.
 
-Fine-tuning melatih ulang model dengan data tambahan sehingga pengetahuannya berubah secara permanen. Cocok jika perlu mengubah gaya output model secara fundamental, tapi prosesnya lebih mahal dan lama.
+Fine-tuning melatih ulang model dengan data tambahan sehingga pengetahuannya berubah secara permanen. Cocok jika perlu mengubah gaya output model secara fundamental, tapi prosesnya lebih mahal dan lama. Untuk tahu lebih lanjut tentang fine-tuning, baca artikel [Tools Fine-Tuning LLM Terbaik](/posts/tools-fine-tuning-llm) yang membahas Unsloth, Axolotl, dan Llama Factory.
 
 RAG dan fine-tuning tidak saling eksklusif. Banyak sistem produksi yang menggunakan keduanya.
 
@@ -733,6 +737,8 @@ Beberapa hal yang bisa diperiksa:
 Kita baru saja membangun chatbot RAG dari nol dalam sepuluh langkah. Sekitar 150 baris kode, dan chatbot sudah bisa membaca dokumen, mencari informasi yang relevan, dan menjawab pertanyaan.
 
 Yang menarik, arsitektur ini bisa dikembangkan ke berbagai arah. Mau bikin API biar bisa diakses dari web? Tinggal tambah FastAPI. Mau bikin advanced RAG dengan reranking? Tinggal tambah satu langkah di antara retriever dan generator.
+
+Kalau kamu tertarik mengintegrasikan chatbot RAG ini ke Telegram, baca tutorial [Membangun Chatbot Telegram dengan n8n dan LM Studio Lokal](/posts/chatbot-telegram-n8n-lm-studio-lokal) atau [Chatbot Telegram dengan n8n dan Gemini AI](/posts/tutorial-chatbot-telegram-n8n-gemini-ai).
 
 Kode lengkap proyek ini bisa kamu dapatkan dan langsung dijalankan. Coba ubah-ubah parameternya, tambah dokumen sendiri, dan lihat bagaimana pengaruhnya terhadap kualitas jawaban.
 

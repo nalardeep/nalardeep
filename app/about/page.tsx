@@ -6,8 +6,11 @@ import { Metadata } from 'next';
 const BASE_URL = "https://nalardeep.com";
 
 export const metadata: Metadata = {
-    title: 'About Us | NalarDeep',
-    description: 'Learn about our mission to democratize tech education.',
+    title: 'Tentang Kami',
+    description: 'NalarDeep adalah platform dokumentasi tutorial AI yang menyajikan artikel berdasarkan eksperimen dan evaluasi mendalam. Pelajari MCP, n8n, chatbot, RAG, LLM dan banyak lagi.',
+    alternates: {
+        canonical: '/about',
+    },
 };
 
 export default function About() {

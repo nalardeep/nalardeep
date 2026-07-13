@@ -8,8 +8,11 @@ import { Metadata } from "next";
 const BASE_URL = "https://nalardeep.com";
 
 export const metadata: Metadata = {
-    title: "Site Index | KodeMinggo",
-    description: "Overview of all pages and articles on KodeMinggo.",
+    title: "Site Index",
+    description: "Daftar lengkap semua halaman dan artikel yang tersedia di NalarDeep.",
+    alternates: {
+        canonical: '/site-index',
+    },
 };
 
 export default function SiteIndexPage() {

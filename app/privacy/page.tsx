@@ -3,8 +3,11 @@ import Breadcrumb from "@/components/breadcrumb";
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-    title: 'Privacy Policy | NalarDeep',
-    description: 'Privacy Policy for NalarDeep.',
+    title: 'Kebijakan Privasi',
+    description: 'Kebijakan privasi NalarDeep - bagaimana kami mengumpulkan, menggunakan, dan melindungi data pribadi Anda.',
+    alternates: {
+        canonical: '/privacy',
+    },
 };
 
 export default function Privacy() {

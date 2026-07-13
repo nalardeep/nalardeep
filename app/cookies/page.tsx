@@ -3,8 +3,11 @@ import Breadcrumb from "@/components/breadcrumb";
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-    title: 'Cookies Policy | NalarDeep',
-    description: 'Cookies Policy for NalarDeep.',
+    title: 'Kebijakan Cookie',
+    description: 'Kebijakan cookie NalarDeep - penjelasan tentang bagaimana kami menggunakan cookie di website.',
+    alternates: {
+        canonical: '/cookies',
+    },
 };
 
 export default function Cookies() {

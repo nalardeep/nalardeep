@@ -15,8 +15,11 @@ export async function generateMetadata({ params }: { params: Promise<{ tag: stri
     const { tag } = await params;
     const label = tag.charAt(0).toUpperCase() + tag.slice(1).replace(/-/g, ' ');
     return {
-        title: `${label} - Artikel | NalarDeep`,
+        title: `${label} - Artikel`,
         description: `Kumpulan artikel dan tutorial terbaru tentang ${label} di NalarDeep.`,
+        alternates: {
+            canonical: `/tags/${tag}`,
+        },
     };
 }
 

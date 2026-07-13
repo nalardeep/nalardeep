@@ -3,8 +3,11 @@ import Breadcrumb from "@/components/breadcrumb";
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-    title: 'Terms of Service | NalarDeep',
-    description: 'Terms of Service for NalarDeep.',
+    title: 'Syarat & Ketentuan',
+    description: 'Syarat dan ketentuan penggunaan layanan dan website NalarDeep.',
+    alternates: {
+        canonical: '/terms',
+    },
 };
 
 export default function Terms() {
