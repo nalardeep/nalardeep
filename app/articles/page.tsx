@@ -11,10 +11,14 @@ import { Metadata } from "next";
 const BASE_URL = "https://nalardeep.com";
 
 export const metadata: Metadata = {
-    title: "Daftar Artikel | NalarDeep",
+    title: "Daftar Artikel",
     description: "Kumpulan artikel terbaru seputar AI, otomatisasi n8n, MCP, LLM, dan ekosistem kecerdasan buatan lainnya.",
     alternates: {
         canonical: "/articles",
+    },
+    robots: {
+        index: true,
+        follow: true,
     },
 };
 

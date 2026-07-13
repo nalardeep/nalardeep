@@ -8,7 +8,7 @@ import type { Metadata } from "next";
 const BASE_URL = "https://nalardeep.com";
 
 export const metadata: Metadata = {
-    title: "Layanan Jasa Otomatisasi n8n & Integrasi AI | NalarDeep",
+    title: "Layanan Jasa Otomatisasi n8n & Integrasi AI",
     description: "Layanan profesional otomatisasi alur kerja (workflow) dengan n8n, custom landing page, chatbot dan private RAG",
     alternates: {
         canonical: "/services",

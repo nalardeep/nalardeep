@@ -9,8 +9,12 @@ import Breadcrumb from '@/components/breadcrumb';
 const BASE_URL = 'https://nalardeep.com';
 
 export const metadata: Metadata = {
-    title: 'Cari Artikel - NalarDeep',
+    title: 'Cari Artikel',
     description: 'Temukan artikel tutorial AI, LLM, n8n, chatbot, dan RAG di NalarDeep',
+    robots: {
+        index: false,
+        follow: true,
+    },
 };
 
 export default async function SearchPage(props: { searchParams: Promise<{ q?: string }> }) {

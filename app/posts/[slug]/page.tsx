@@ -106,16 +106,15 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
         return notFound();
     }
 
-    const title = `${post.title} | NalarDeep`;
     const description = post.excerpt;
     const ogImage = post.coverImage;
     const images = ogImage ? [ogImage] : [];
 
     return {
-        title,
+        title: post.title,
         description,
         openGraph: {
-            title,
+            title: post.title,
             description,
             type: 'article',
             publishedTime: post.date,
@@ -124,7 +123,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
         },
         twitter: {
             card: 'summary_large_image',
-            title,
+            title: post.title,
             description,
             images: images,
         },

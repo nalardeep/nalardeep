@@ -10,8 +10,14 @@ import { ArrowRight } from "lucide-react";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "NalarDeep - Portal Ekosistem AI",
   description: "Eksplorasi tutorial AI terlengkap, mulai dari implementasi MCP, otomatisasi n8n, hingga pengembangan chatbot cerdas dan RAG untuk mengakselerasi proyek Anda.",
+  alternates: {
+    canonical: '/',
+  },
+  openGraph: {
+    title: "NalarDeep - Portal Ekosistem AI",
+    description: "Eksplorasi tutorial AI terlengkap, mulai dari implementasi MCP, otomatisasi n8n, hingga pengembangan chatbot cerdas dan RAG untuk mengakselerasi proyek Anda.",
+  },
 };
 
 export default function Home() {

@@ -7,8 +7,11 @@ import { Mail, MapPin, Phone } from "lucide-react";
 const BASE_URL = "https://nalardeep.com";
 
 export const metadata: Metadata = {
-    title: 'Contact Us | NalarDeep',
-    description: 'Get in touch with the team.',
+    title: 'Hubungi Kami',
+    description: 'Hubungi tim NalarDeep untuk pertanyaan, saran, atau konsultasi jasa otomatisasi n8n, integrasi AI, chatbot, dan pengembangan web.',
+    alternates: {
+        canonical: '/contact',
+    },
 };
 
 export default function Contact() {
