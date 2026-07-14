@@ -52,6 +52,7 @@ seo_analysis_and_article_recommendations.md
 GITHUB_INSTRUCTIONS.md
 update_feature.txt
 
+
 # Windows
 Thumbs.db
 Desktop.ini
@@ -60,3 +61,5 @@ Desktop.ini
 *.swp
 *.swo
 *~
+
+content_reviewer_agent.md
