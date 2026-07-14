@@ -187,7 +187,7 @@ const components = {
         };
 
         return (
-            <span className="relative block w-full h-auto my-8 border border-slate-100 rounded-2xl overflow-hidden shadow-glow-sm">
+            <span className="relative block w-full h-auto my-8 border border-slate-100 rounded-2xl overflow-hidden shadow-sm">
                 <Image
                     src={getCleanSrc(props.src)}
                     alt={props.alt || 'Article image'}

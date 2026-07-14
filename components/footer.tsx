@@ -59,7 +59,7 @@ const Footer = () => {
                     <div>
                         <h4 className="font-bold text-slate-900 text-sm uppercase tracking-wider mb-6">Ikuti Kami</h4>
                         <div className="flex items-center gap-4">
-                            <Link href="https://github.com/minggo-commits/nalardeep" aria-label="Visit our Github profile" className="w-10 h-10 bg-white border border-slate-100 rounded-lg flex items-center justify-center text-slate-700 hover:text-emerald-500 hover:border-emerald-200 shadow-glow-sm hover:shadow-glow-md transition-all duration-300">
+                            <Link href="https://github.com/minggo-commits/nalardeep" aria-label="Visit our Github profile" className="w-10 h-10 bg-white border border-slate-100 rounded-lg flex items-center justify-center text-slate-700 hover:text-emerald-500 hover:border-emerald-200 shadow-sm hover:shadow-md transition-all duration-300">
                                 <Github className="w-5 h-5" />
                             </Link>
                         </div>

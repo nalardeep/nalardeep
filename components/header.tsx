@@ -26,7 +26,7 @@ const Header = () => {
     };
 
     return (
-        <header className="py-4 border-b border-slate-100 bg-white/80 backdrop-blur-md sticky top-0 z-50">
+        <header className="py-4 border-b border-slate-100 bg-white sticky top-0 z-50">
             <Container>
                 <div className="flex items-center justify-between h-12">
                     {/* Logo */}
@@ -53,8 +53,8 @@ const Header = () => {
                                             href={link.path} 
                                             className={`px-3.5 py-2 rounded-lg transition-all duration-300 block font-medium text-sm ${
                                                 active
-                                                    ? "bg-emerald-50 text-emerald-600 font-semibold shadow-glow-sm border border-emerald-100/50"
-                                                    : "text-slate-600 hover:text-emerald-500 hover:bg-slate-50/50"
+                                                    ? "bg-emerald-500  text-white font-semibold border border-emerald-100/50 "
+                                                    : " hover:text-emerald-500 transition-colors"
                                             }`}
                                         >
                                             {link.name}
@@ -72,13 +72,13 @@ const Header = () => {
                         </div>
                         <Link
                             href="/services"
-                            className="hidden md:inline-block bg-gradient-to-r from-emerald-500 to-teal-500 text-white font-semibold px-4.5 py-2.5 text-xs uppercase tracking-wider rounded-lg shadow-glow-sm hover:shadow-glow-md hover:scale-[1.02] active:scale-[0.98] transition-all duration-200 select-none cursor-pointer"
+                            className="hidden md:inline-block bg-emerald-500 text-white font-semibold px-4.5 py-2.5 text-xs uppercase tracking-wider rounded-lg select-none cursor-pointer"
                         >
                             Eksplorasi Jasa
                         </Link>
 
                         <button
-                            className="md:hidden p-2 text-slate-600 hover:bg-slate-50 rounded-lg cursor-pointer transition-colors"
+                            className="md:hidden p-2 text-slate-600 rounded-lg cursor-pointer"
                             onClick={() => setIsOpen(!isOpen)}
                             aria-label="Toggle navigation menu"
                         >
@@ -101,8 +101,8 @@ const Header = () => {
                                     href={link.path}
                                     className={`w-full text-center py-2.5 text-sm font-semibold uppercase tracking-wider rounded-lg transition-all ${
                                         active
-                                            ? "bg-emerald-50 text-emerald-600 border border-emerald-100/50 shadow-glow-sm"
-                                            : "text-slate-600 border border-transparent hover:bg-slate-50"
+                                            ? "bg-emerald-500 text-emerald-600 text-white border border-emerald-100/50"
+                                            : "text-slate-600 border border-transparent"
                                     }`}
                                     onClick={() => setIsOpen(false)}
                                 >
@@ -113,7 +113,7 @@ const Header = () => {
                         {/* Mobile CTA */}
                         <Link
                             href="/services"
-                            className="w-full text-center py-3 mt-2 bg-gradient-to-r from-emerald-500 to-teal-500 text-white font-semibold uppercase tracking-wider text-xs rounded-lg shadow-glow-sm hover:shadow-glow-md transition-all"
+                            className="w-full text-center py-3 mt-2 bg-emerald-500 text-white font-semibold uppercase tracking-wider text-xs rounded-lg"
                             onClick={() => setIsOpen(false)}
                         >
                             Layanan Jasa AI

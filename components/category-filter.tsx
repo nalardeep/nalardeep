@@ -33,7 +33,7 @@ export default function CategoryFilter({ tags, currentTag }: CategoryFilterProps
                     href="/articles"
                     className={`shrink-0 px-4.5 py-2 text-xs font-semibold uppercase tracking-wider rounded-full transition-all duration-200 ${
                         isAllActive
-                            ? "bg-emerald-50 text-emerald-600 border border-emerald-100/50 shadow-glow-sm"
+                            ? "bg-emerald-50 text-emerald-600 border border-emerald-100/50 shadow-sm"
                             : "bg-white text-slate-600 hover:text-emerald-500 border border-slate-100 hover:border-slate-200 hover:-translate-y-0.5"
                     }`}
                 >
@@ -49,7 +49,7 @@ export default function CategoryFilter({ tags, currentTag }: CategoryFilterProps
                             href={`/tags/${tag.slug}`}
                             className={`shrink-0 px-4.5 py-2 text-xs font-semibold uppercase tracking-wider rounded-full transition-all duration-200 ${
                                 isActive
-                                    ? "bg-emerald-50 text-emerald-600 border border-emerald-100/50 shadow-glow-sm"
+                                    ? "bg-emerald-50 text-emerald-600 border border-emerald-100/50 shadow-sm"
                                     : "bg-white text-slate-600 hover:text-emerald-500 border border-slate-100 hover:border-slate-200 hover:-translate-y-0.5"
                             }`}
                         >
@@ -65,7 +65,7 @@ export default function CategoryFilter({ tags, currentTag }: CategoryFilterProps
                             onClick={() => setIsOpen(true)}
                             className={`flex items-center gap-1.5 px-4.5 py-2 text-xs font-semibold uppercase tracking-wider rounded-full transition-all duration-200 cursor-pointer select-none ${
                                 isActiveInOthers
-                                    ? "bg-emerald-50 text-emerald-600 border border-emerald-100/50 shadow-glow-sm"
+                                    ? "bg-emerald-50 text-emerald-600 border border-emerald-100/50 shadow-sm"
                                     : "bg-white text-slate-600 hover:text-emerald-500 border border-slate-100 hover:border-slate-200 hover:-translate-y-0.5"
                             }`}
                         >
@@ -80,12 +80,12 @@ export default function CategoryFilter({ tags, currentTag }: CategoryFilterProps
                             <div className="fixed top-[92px] inset-x-0 bottom-0 z-40 flex items-center justify-center p-6 md:p-8">
                                 {/* Dark semi-transparent backdrop overlay below navbar */}
                                 <div 
-                                    className="absolute inset-0 bg-slate-900/40 backdrop-blur-sm cursor-default animate-fade-in" 
+                                    className="absolute inset-0 bg-slate-900/40 cursor-default animate-fade-in" 
                                     onClick={() => setIsOpen(false)}
                                 ></div>
                                 
                                 {/* Modal Content Box */}
-                                <div className="relative w-full max-w-md bg-white p-6 border border-slate-100 rounded-2xl shadow-glow-md z-10 max-h-full flex flex-col animate-zoom-in">
+                                <div className="relative w-full max-w-md bg-white p-6 border border-slate-100 rounded-2xl shadow-md z-10 max-h-full flex flex-col animate-zoom-in">
                                     {/* Modal Header */}
                                     <div className="flex items-center justify-between pb-4 border-b border-slate-100 mb-6">
                                         <h3 className="text-base font-bold text-slate-900 uppercase tracking-wider flex items-center gap-2">
@@ -113,8 +113,8 @@ export default function CategoryFilter({ tags, currentTag }: CategoryFilterProps
                                                         onClick={() => setIsOpen(false)}
                                                         className={`flex items-center justify-between p-3 text-xs font-semibold uppercase tracking-wide border rounded-xl transition-all ${
                                                             isActive
-                                                                ? "bg-emerald-50 text-emerald-600 border-emerald-100/50 shadow-glow-sm"
-                                                                : "bg-white text-slate-600 border-slate-100 hover:border-slate-200 hover:shadow-glow-sm"
+                                                                ? "bg-emerald-50 text-emerald-600 border-emerald-100/50 shadow-sm"
+                                                                : "bg-white text-slate-600 border-slate-100 hover:border-slate-200 hover:shadow-sm"
                                                         }`}
                                                     >
                                                         <span className="truncate flex items-center gap-1.5 mr-2">

@@ -9,7 +9,7 @@ type Props = {
 
 const PostPreview = ({ post }: Props) => {
     return (
-        <div className='group flex flex-col h-full bg-white border border-slate-100 rounded-2xl p-5 shadow-glow-sm hover:shadow-glow-md hover:border-emerald-200 transition-all duration-300'>
+        <div className='group flex flex-col h-full bg-white border border-slate-100 rounded-2xl p-5 shadow-sm hover:shadow-md hover:border-emerald-200 transition-all duration-300'>
             {/* Image Placeholder */}
             <div className="relative overflow-hidden mb-5 aspect-[16/9] bg-slate-50 rounded-xl">
                 <Image
@@ -20,7 +20,7 @@ const PostPreview = ({ post }: Props) => {
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                 />
                 <div className="absolute top-3 left-3 z-10">
-                    <span className="bg-emerald-500 text-white px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider shadow-glow-sm">
+                    <span className="bg-emerald-500 text-white px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider shadow-sm">
                         Article
                     </span>
                 </div>

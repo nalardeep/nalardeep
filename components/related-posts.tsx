@@ -18,7 +18,7 @@ export default function RelatedPosts({ posts }: RelatedPostsProps) {
                     <h2 className="text-2xl font-bold text-slate-900 tracking-tight">Baca Artikel Lainnya</h2>
                     <Link
                         href="/articles"
-                        className="flex items-center gap-2 bg-white border border-slate-100 text-slate-800 px-4 py-2 rounded-lg shadow-glow-sm hover:shadow-glow-md hover:border-emerald-200 hover:-translate-y-0.5 transition-all text-xs font-semibold"
+                        className="flex items-center gap-2 bg-white border border-slate-100 text-slate-800 px-4 py-2 rounded-lg shadow-sm hover:shadow-md hover:border-emerald-200 hover:-translate-y-0.5 transition-all text-xs font-semibold"
                     >
                         Semua Artikel <ArrowRight className="w-3.5 h-3.5 text-emerald-500" />
                     </Link>
@@ -27,7 +27,7 @@ export default function RelatedPosts({ posts }: RelatedPostsProps) {
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                     {posts.map((post) => (
                         <Link key={post.slug} href={`/posts/${post.slug}`} className="group block h-full">
-                            <div className="flex flex-col h-full bg-white border border-slate-100 rounded-xl p-5 shadow-glow-sm group-hover:shadow-glow-md group-hover:border-emerald-200 group-hover:-translate-y-0.5 transition-all duration-300">
+                            <div className="flex flex-col h-full bg-white border border-slate-100 rounded-xl p-5 shadow-sm group-hover:shadow-md group-hover:border-emerald-200 group-hover:-translate-y-0.5 transition-all duration-300">
                                 <div className="mb-3">
                                     <span className="text-[10px] font-bold uppercase tracking-wider text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded-full">
                                         Article

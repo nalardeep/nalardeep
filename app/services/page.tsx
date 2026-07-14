@@ -32,37 +32,37 @@ const services = [
         title: "Chatbot Cerdas (WhatsApp & Telegram)",
         description: "Bangun bot otomatisasi customer service yang didukung kecerdasan buatan (Gemini/ChatGPT/LLM Lokal) untuk melayani customer 24 jam.",
         icon: MessageSquare,
-        iconBg: "bg-sky-300",
+        iconBg: "bg-emerald-300",
         features: [
             "Integrasi WhatsApp Business Cloud API Resmi",
             "Koneksi AI Agen dengan n8n",
             "Sistem auto-routing ke customer service"
         ],
-        color: "bg-sky-50"
+        color: "bg-emerald-50"
     },
     {
         title: "Custom Landing Page & Web App",
         description: "Buat landing page dan web app dengan desain modern, responsif, dan terintegrasi dengan sistem otomatisasi n8n.",
         icon: MessageSquare,
-        iconBg: "bg-sky-300",
+        iconBg: "bg-emerald-300",
         features: [
             "Desain modern dan responsif",
             "Integrasi dengan sistem otomatisasi n8n",
             "Optimisasi SEO & performa web"
         ],
-        color: "bg-sky-50"
+        color: "bg-emerald-50"
     },
     {
         title: "Private RAG & AI Lokal (100% Offline)",
         description: "Gunakan model LLM tercanggih langsung di infrastruktur lokal Anda. Lakukan tanya jawab dengan berkas PDF, dokumen rahasia, & database tanpa takut kebocoran data.",
         icon: ShieldAlert,
-        iconBg: "bg-orange-300",
+        iconBg: "bg-emerald-300",
         features: [
             "Instalasi Ollama / Open WebUI di server lokal",
             "Retrieval-Augmented Generation (RAG) dokumen privat",
             "100% data tersimpan lokal, tanpa internet"
         ],
-        color: "bg-orange-50"
+        color: "bg-emerald-50"
     }
 ];
 
@@ -92,12 +92,12 @@ export default function Services() {
                     </div>
                     {/* Hero Section */}
                     <div className="pt-6 md:pt-8 pb-16 md:pb-24 max-w-4xl relative">
-                        <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-emerald-50 text-emerald-600 border border-emerald-100/50 rounded-full font-semibold text-xs uppercase tracking-wider mb-6 shadow-glow-sm">
+                        <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-emerald-50 text-emerald-600 border border-emerald-100/50 rounded-full font-semibold text-xs uppercase tracking-wider mb-6 shadow-sm">
                             <Sparkles className="w-3.5 h-3.5" />
                             Solusi AI & Otomatisasi
                         </div>
                         <h1 className="text-4xl md:text-6xl font-extrabold text-slate-900 tracking-tight mb-6 leading-tight">
-                            Layanan Jasa <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 to-teal-500 text-glow">Profesional AI</span> & Automation
+                            Layanan Jasa <span className="text-emerald-600">Profesional AI</span> & Automation
                         </h1>
                         <p className="text-lg text-slate-600 leading-relaxed max-w-2xl">
                             Kami membantu perusahaan dan startup mengintegrasikan agen cerdas AI, LLM lokal, serta mengotomatisasi alur kerja operasional menggunakan n8n secara terukur dan hemat biaya.
@@ -111,11 +111,11 @@ export default function Services() {
                             return (
                                 <div
                                     key={index}
-                                    className="p-8 bg-white border border-slate-100 rounded-2xl shadow-glow-sm hover:shadow-glow-md hover:border-emerald-200 hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between"
+                                    className="p-8 bg-white border border-slate-100 rounded-2xl shadow-sm hover:shadow-md hover:border-emerald-200 hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between"
                                 >
                                     <div>
                                         {/* Icon Container */}
-                                        <div className="w-12 h-12 rounded-xl bg-emerald-50 border border-emerald-100/50 shadow-glow-sm flex items-center justify-center mb-6 text-emerald-500">
+                                        <div className="w-12 h-12 rounded-xl bg-emerald-50 border border-emerald-100/50 shadow-sm flex items-center justify-center mb-6 text-emerald-500">
                                             <IconComponent className="w-6 h-6" />
                                         </div>
 
@@ -166,7 +166,7 @@ export default function Services() {
 
                             <Link
                                 href="/contact"
-                                className="shrink-0 bg-white hover:bg-emerald-50 text-emerald-800 font-semibold uppercase tracking-wider text-xs px-6 py-3.5 rounded-lg shadow-glow-sm hover:shadow-glow-md hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center gap-2 group cursor-pointer"
+                                className="shrink-0 bg-white hover:bg-emerald-50 text-emerald-800 font-semibold uppercase tracking-wider text-xs px-6 py-3.5 rounded-lg shadow-sm hover:shadow-md hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center gap-2 group cursor-pointer"
                             >
                                 Konsultasikan Sekarang
                                 <ArrowRight className="w-4 h-4 text-emerald-500 group-hover:translate-x-0.5 transition-transform" />

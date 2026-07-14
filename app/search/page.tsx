@@ -106,7 +106,7 @@ export default async function SearchPage(props: { searchParams: Promise<{ q?: st
                             <Link
                                 key={post.slug}
                                 href={`/posts/${post.slug}`}
-                                className="group block bg-white border border-slate-100 rounded-xl p-5 hover:border-emerald-500/30 hover:shadow-glow-sm transition-all duration-300"
+                                className="group block bg-white border border-slate-100 rounded-xl p-5 hover:border-emerald-500/30 hover:shadow-sm transition-all duration-300"
                             >
                                 <div className="flex items-start justify-between gap-4">
                                     <div className="flex-1 min-w-0">
