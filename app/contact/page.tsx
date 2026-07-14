@@ -54,7 +54,7 @@ export default function Contact() {
                                 <input
                                     type="text"
                                     id="name"
-                                    className="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl focus:border-emerald-500 focus:shadow-[0_0_12px_rgba(16,185,129,0.15)] focus:outline-none transition-all text-slate-800"
+                                    className="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl focus:border-emerald-500 focus:shadow-[0_0_8px_rgba(0,0,0,0.06)] focus:outline-none transition-all text-slate-800"
                                     placeholder="Your Name"
                                 />
                             </div>
@@ -63,7 +63,7 @@ export default function Contact() {
                                 <input
                                     type="email"
                                     id="email"
-                                    className="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl focus:border-emerald-500 focus:shadow-[0_0_12px_rgba(16,185,129,0.15)] focus:outline-none transition-all text-slate-800"
+                                    className="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl focus:border-emerald-500 focus:shadow-[0_0_8px_rgba(0,0,0,0.06)] focus:outline-none transition-all text-slate-800"
                                     placeholder="Your Email"
                                 />
                             </div>
@@ -72,13 +72,13 @@ export default function Contact() {
                                 <textarea
                                     id="message"
                                     rows={5}
-                                    className="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl focus:border-emerald-500 focus:shadow-[0_0_12px_rgba(16,185,129,0.15)] focus:outline-none transition-all resize-none text-slate-800"
+                                    className="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl focus:border-emerald-500 focus:shadow-[0_0_8px_rgba(0,0,0,0.06)] focus:outline-none transition-all resize-none text-slate-800"
                                     placeholder="Tell us what's on your mind..."
                                 ></textarea>
                             </div>
                             <a
                                 href="mailto:arsan05062003@gmail.com"
-                                className="inline-block text-center bg-gradient-to-r from-emerald-500 to-teal-500 text-white font-semibold py-3 px-8 rounded-xl shadow-glow-sm hover:shadow-glow-md hover:scale-[1.01] active:scale-[0.99] transition-all"
+                                className="inline-block text-center bg-emerald-500 text-white font-semibold py-3 px-8 rounded-xl shadow-sm hover:shadow-md hover:scale-[1.01] active:scale-[0.99] transition-all"
                             >
                                 Kirim Pesan
                             </a>
@@ -120,7 +120,7 @@ export default function Contact() {
                             </div>
                         </div>
  
-                        <div className="bg-gradient-to-r from-emerald-50 to-teal-50/50 border border-emerald-100 rounded-2xl p-8 shadow-glow-sm">
+                        <div className="bg-emerald-50 border border-emerald-100 rounded-2xl p-8 shadow-sm">
                             <h3 className="font-bold text-slate-900 text-lg mb-3 tracking-tight">Bergabung dengan kami?</h3>
                             <p className="text-slate-600 text-sm font-medium mb-6">Segera hadir.</p>
                             <a href="#" className="inline-flex items-center gap-1 text-emerald-600 font-bold border-b border-emerald-600 pb-0.5 hover:text-emerald-500 hover:border-emerald-500 transition-colors text-sm">Lihat Pekerjaan &rarr;</a>

@@ -67,7 +67,7 @@ export default function About() {
 
                     {/* Sidebar / Stats */}
                     <div className="md:col-span-4">
-                        <div className="bg-white p-8 border border-slate-100 rounded-2xl shadow-glow-sm hover:shadow-glow-md hover:border-emerald-200 transition-all duration-300">
+                        <div className="bg-white p-8 border border-slate-100 rounded-2xl shadow-sm hover:shadow-md hover:border-emerald-200 transition-all duration-300">
                             <h3 className="font-bold text-slate-900 mb-6 tracking-tight">Quick Stats</h3>
                             <div className="space-y-6">
                                 <div className="border-l-3 border-emerald-500 pl-4">

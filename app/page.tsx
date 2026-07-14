@@ -3,7 +3,7 @@ import PostPreview from "@/components/post-preview";
 import { getAllPosts } from "@/lib/api";
 
 import Hero from "@/components/hero";
-import LogoStrip from "@/components/logo-strip";
+// import LogoStrip from "@/components/logo-strip";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 
@@ -26,7 +26,7 @@ export default function Home() {
   return (
     <>
       <Hero />
-      <LogoStrip />
+      
 
       <div className="py-24 bg-white relative">
         {/* Memphis background element */}
@@ -37,7 +37,7 @@ export default function Home() {
               <h2 className="text-4xl font-bold text-slate-900 mb-4 tracking-tight">Artikel Terbaru</h2>
               <p className="text-base text-slate-500">Kumpulan konten edukasi dan dokumentasi eksperimen AI.</p>
             </div>
-            <Link href="/articles" className="hidden md:flex items-center gap-2 bg-white border border-slate-100 text-slate-800 px-5 py-2.5 rounded-lg shadow-glow-sm hover:shadow-glow-md hover:border-emerald-200 hover:-translate-y-0.5 transition-all text-sm font-semibold">
+            <Link href="/articles" className="hidden md:flex items-center gap-2 bg-white border border-slate-100 text-slate-800 px-5 py-2.5 rounded-lg shadow-sm hover:shadow-md hover:border-emerald-200 hover:-translate-y-0.5 transition-all text-sm font-semibold">
               Lihat semua <ArrowRight className="w-4 h-4 text-emerald-500" />
             </Link>
           </div>
@@ -50,7 +50,7 @@ export default function Home() {
             </div>
           )}
           <div className="mt-12 md:hidden flex justify-center relative z-10">
-            <Link href="/articles" className="flex items-center gap-2 bg-white border border-slate-100 text-slate-800 px-5 py-3 rounded-lg shadow-glow-sm hover:shadow-glow-md hover:border-emerald-200 transition-all text-sm font-semibold">
+            <Link href="/articles" className="flex items-center gap-2 bg-white border border-slate-100 text-slate-800 px-5 py-3 rounded-lg shadow-sm hover:shadow-md hover:border-emerald-200 transition-all text-sm font-semibold">
               Lihat semua <ArrowRight className="w-4 h-4 text-emerald-500" />
             </Link>
           </div>

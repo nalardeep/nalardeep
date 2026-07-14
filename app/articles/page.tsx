@@ -58,7 +58,7 @@ export default async function Articles({ searchParams }: { searchParams: Promise
                 <div className="pt-6 md:pt-8 pb-16 md:pb-24 flex flex-col md:flex-row md:items-center md:justify-between gap-12">
                     {/* Left: Text */}
                     <div className="max-w-xl">
-                        <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-emerald-50 text-emerald-600 border border-emerald-100/50 rounded-full font-semibold text-xs uppercase tracking-wider mb-6 shadow-glow-sm">
+                        <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-emerald-50 text-emerald-600 border border-emerald-100/50 rounded-full font-semibold text-xs uppercase tracking-wider mb-6 shadow-sm">
                             <span>📚</span> Semua Artikel
                         </div>
                         <h1 className="text-5xl md:text-6xl font-bold text-slate-900 tracking-tight mb-6">
@@ -71,16 +71,16 @@ export default async function Articles({ searchParams }: { searchParams: Promise
 
                     {/* Right: Decorative Shapes */}
                     <div className="relative hidden md:block w-64 h-64 flex-shrink-0">
-                        {/* Big yellow square */}
-                        <div className="absolute top-0 right-8 w-28 h-28 bg-yellow-300 border-3 border-gray-900 shadow-[6px_6px_0px_0px_#171717] rotate-6"></div>
+                        {/* Decorative shapes */}
+                        <div className="absolute top-0 right-8 w-28 h-28 bg-emerald-200 border-3 border-gray-900 shadow-[6px_6px_0px_0px_#171717] rotate-6"></div>
                         {/* Emerald circle */}
                         <div className="absolute top-6 right-44 w-16 h-16 bg-emerald-400 border-3 border-gray-900 shadow-[4px_4px_0px_0px_#171717] rounded-full"></div>
-                        {/* Sky blue rectangle */}
-                        <div className="absolute bottom-8 right-12 w-36 h-16 bg-sky-300 border-3 border-gray-900 shadow-[5px_5px_0px_0px_#171717] -rotate-3"></div>
-                        {/* Orange small square */}
-                        <div className="absolute bottom-20 right-48 w-12 h-12 bg-orange-300 border-3 border-gray-900 shadow-[3px_3px_0px_0px_#171717] rotate-12"></div>
-                        {/* Violet triangle via clip-path */}
-                        <div className="absolute top-28 right-24 w-14 h-14 bg-violet-300 border-3 border-gray-900 shadow-[3px_3px_0px_0px_#171717] rotate-45"></div>
+                        {/* Light emerald rectangle */}
+                        <div className="absolute bottom-8 right-12 w-36 h-16 bg-emerald-100 border-3 border-gray-900 shadow-[5px_5px_0px_0px_#171717] -rotate-3"></div>
+                        {/* Medium emerald square */}
+                        <div className="absolute bottom-20 right-48 w-12 h-12 bg-emerald-300 border-3 border-gray-900 shadow-[3px_3px_0px_0px_#171717] rotate-12"></div>
+                        {/* Dark emerald shape */}
+                        <div className="absolute top-28 right-24 w-14 h-14 bg-emerald-500 border-3 border-gray-900 shadow-[3px_3px_0px_0px_#171717] rotate-45"></div>
                         {/* Dots accent */}
                         <div className="absolute top-2 left-0 w-20 h-20 bg-dots opacity-20"></div>
                         {/* Zigzag SVG */}
@@ -115,7 +115,7 @@ export default async function Articles({ searchParams }: { searchParams: Promise
                         {clampedPage > 1 ? (
                             <Link
                                 href={`/articles?page=${clampedPage - 1}`}
-                                className="w-10 h-10 flex items-center justify-center bg-white text-slate-500 border border-slate-200 rounded-xl hover:border-emerald-300 hover:text-emerald-500 hover:shadow-glow-sm transition-all"
+                                className="w-10 h-10 flex items-center justify-center bg-white text-slate-500 border border-slate-200 rounded-xl hover:border-emerald-300 hover:text-emerald-500 hover:shadow-sm transition-all"
                             >
                                 <ChevronLeft className="w-4 h-4" />
                             </Link>
@@ -131,8 +131,8 @@ export default async function Articles({ searchParams }: { searchParams: Promise
                                 href={`/articles?page=${pageNum}`}
                                 className={`w-10 h-10 flex items-center justify-center text-sm font-semibold rounded-xl transition-all ${
                                     pageNum === clampedPage
-                                        ? "bg-emerald-500 text-white shadow-glow-sm border border-emerald-400"
-                                        : "bg-white text-slate-600 border border-slate-200 hover:border-emerald-300 hover:text-emerald-500 hover:shadow-glow-sm"
+                                        ? "bg-emerald-500 text-white shadow-sm border border-emerald-400"
+                                        : "bg-white text-slate-600 border border-slate-200 hover:border-emerald-300 hover:text-emerald-500 hover:shadow-sm"
                                 }`}
                             >
                                 {pageNum}
@@ -142,7 +142,7 @@ export default async function Articles({ searchParams }: { searchParams: Promise
                         {clampedPage < totalPages ? (
                             <Link
                                 href={`/articles?page=${clampedPage + 1}`}
-                                className="w-10 h-10 flex items-center justify-center bg-white text-slate-500 border border-slate-200 rounded-xl hover:border-emerald-300 hover:text-emerald-500 hover:shadow-glow-sm transition-all"
+                                className="w-10 h-10 flex items-center justify-center bg-white text-slate-500 border border-slate-200 rounded-xl hover:border-emerald-300 hover:text-emerald-500 hover:shadow-sm transition-all"
                             >
                                 <ChevronRight className="w-4 h-4" />
                             </Link>

@@ -35,7 +35,7 @@ const Hero = () => {
 
                     {/* Carousel Section (Top) */}
                     <div className="w-full mb-12 animate-in fade-in slide-in-from-top-4 duration-700">
-                        <div className="overflow-hidden bg-white border border-slate-100 rounded-2xl shadow-glow-sm" ref={emblaRef}>
+                        <div className="overflow-hidden bg-white border border-slate-100 rounded-2xl shadow-sm" ref={emblaRef}>
                             <div className="flex">
                                 {highlights.map((item, index) => (
                                     <div key={index} className="flex-[0_0_100%] min-w-0">
@@ -43,7 +43,7 @@ const Hero = () => {
 
                                             {/* Text Content */}
                                             <div className="flex flex-col items-start gap-4">
-                                                <div className="p-3 bg-white border border-slate-100 rounded-xl shadow-glow-sm w-fit text-emerald-500">
+                                                <div className="p-3 bg-white border border-slate-100 rounded-xl shadow-sm w-fit text-emerald-500">
                                                     {item.icon}
                                                 </div>
                                                 <div>
@@ -51,7 +51,7 @@ const Hero = () => {
                                                     <p className="text-slate-600 mb-8 text-base leading-relaxed">{item.desc}</p>
 
                                                     {item.href !== '#' ? (
-                                                        <Link href={item.href} className="inline-flex items-center gap-2 px-5 py-2.5 bg-white border border-slate-100 text-slate-800 font-semibold rounded-lg shadow-glow-sm hover:shadow-glow-md hover:border-emerald-200 hover:-translate-y-0.5 transition-all text-sm">
+                                                        <Link href={item.href} className="inline-flex items-center gap-2 px-5 py-2.5 bg-white border border-slate-100 text-slate-800 font-semibold rounded-lg shadow-sm hover:shadow-md hover:border-emerald-200 hover:-translate-y-0.5 transition-all text-sm">
                                                             {item.action} <span aria-hidden="true" className="text-emerald-500">→</span>
                                                         </Link>
                                                     ) : (
@@ -63,7 +63,7 @@ const Hero = () => {
                                             </div>
 
                                             {/* Image Content */}
-                                            <div className="relative aspect-[4/3] md:aspect-square lg:aspect-[4/3] overflow-hidden bg-slate-50 border border-slate-100 rounded-xl shadow-glow-sm">
+                                            <div className="relative aspect-[4/3] md:aspect-square lg:aspect-[4/3] overflow-hidden bg-slate-50 border border-slate-100 rounded-xl shadow-sm">
                                                 {item.image ? (
                                                     <Image
                                                         src={item.image}
@@ -89,12 +89,12 @@ const Hero = () => {
 
                     {/* Headline */}
                     <div className="text-center">
-                        <div className="inline-flex items-center gap-2 bg-emerald-50/80 border border-emerald-100/50 px-4 py-1.5 rounded-full text-xs font-semibold text-emerald-600 mb-6 shadow-glow-sm">
+                        <div className="inline-flex items-center gap-2 bg-emerald-50/80 border border-emerald-100/50 px-4 py-1.5 rounded-full text-xs font-semibold text-emerald-600 mb-6 shadow-sm">
                             <Sparkles className="w-3.5 h-3.5 fill-emerald-100 text-emerald-500" />
                             <span className="font-semibold">Semoga bermanfaat</span>
                         </div>
                         <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-slate-900 tracking-tight mb-6">
-                            Eksplorasi, <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 to-teal-500 text-glow">Eksperimen</span> dan Evaluasi
+                            Eksplorasi, <span className="text-emerald-600">Eksperimen</span> dan Evaluasi
                         </h1>
 
                         <p className="text-base text-slate-500 max-w-2xl mx-auto leading-relaxed">
