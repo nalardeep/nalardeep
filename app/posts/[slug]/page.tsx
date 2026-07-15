@@ -1,9 +1,10 @@
-import { getAllPosts, getPostBySlug, getRelatedPosts } from "@/lib/api";
+import { getAllPosts, getPostBySlug, getRelatedPosts, getAdjacentPosts } from "@/lib/api";
 import Container from "@/components/container";
 import PostBody from "@/components/post-body";
 import PostHeader from "@/components/post-header";
 import TableOfContents from "@/components/table-of-contents";
 import RelatedPosts from "@/components/related-posts";
+import AdjacentPosts from "@/components/adjacent-posts";
 import BreadcrumbSchema from "@/components/breadcrumb-schema";
 import Breadcrumb from "@/components/breadcrumb";
 import BackToTop from "@/components/back-to-top";
@@ -18,6 +19,7 @@ export default async function Post({ params }: { params: Promise<{ slug: string 
     const { slug } = await params;
     const post = getPostBySlug(slug);
     const relatedPosts = getRelatedPosts(slug);
+    const adjacentPosts = getAdjacentPosts(slug);
 
     if (!post) {
         return notFound();
@@ -83,6 +85,7 @@ export default async function Post({ params }: { params: Promise<{ slug: string 
                 <div className="flex flex-col xl:flex-row gap-12">
                     <div className="flex-1 min-w-0">
                         <PostBody content={post.content} />
+                        <AdjacentPosts posts={adjacentPosts} />
                         <RelatedPosts posts={relatedPosts} />
                     </div>
 
