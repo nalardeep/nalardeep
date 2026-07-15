@@ -1,7 +1,7 @@
 import fs from 'fs';
-import { join, basename } from 'path';
+import { join, basename, dirname } from 'path';
 import matter from 'gray-matter';
-import { Post } from '@/types';
+import { Post, AdjacentPosts, AdjacentPost } from '@/types';
 
 const postsDirectory = join(process.cwd(), '_posts');
 
@@ -21,11 +21,22 @@ function getAllMdxFiles(dir: string): string[] {
     return files;
 }
 
-/** Find a post file by slug across subdirectories */
-function findPostFile(slug: string): string | null {
+/** Find a post file by slug across subdirectories, returns file path and category */
+function findPostFile(slug: string): { fullPath: string; category: string } | null {
     const files = getAllMdxFiles(postsDirectory);
-    const match = files.find(f => basename(f, '.mdx') === slug);
-    return match || null;
+    for (const f of files) {
+        if (basename(f, '.mdx') === slug) {
+            const parentDir = basename(dirname(f));
+            return { fullPath: f, category: parentDir };
+        }
+    }
+    return null;
+}
+
+/** Extract category name (subdirectory name under _posts/) for a given slug */
+export function getPostCategory(slug: string): string | null {
+    const found = findPostFile(slug);
+    return found?.category || null;
 }
 
 export function getPostSlugs() {
@@ -34,13 +45,13 @@ export function getPostSlugs() {
 
 export function getPostBySlug(slug: string): Post | null {
     const realSlug = slug.replace(/\.mdx$/, '');
-    const fullPath = findPostFile(realSlug);
+    const found = findPostFile(realSlug);
     
-    if (!fullPath) {
+    if (!found) {
         return null;
     }
 
-    const fileContents = fs.readFileSync(fullPath, 'utf8');
+    const fileContents = fs.readFileSync(found.fullPath, 'utf8');
     const { data, content } = matter(fileContents);
 
     // Calculate reading time
@@ -81,36 +92,84 @@ export function getAllPosts(): Post[] {
     return posts;
 }
 
-export function getRelatedPosts(currentSlug: string, count: number = 3): Post[] {
+export function getRelatedPosts(currentSlug: string, count: number = 4): Post[] {
     const allPosts = getAllPosts();
     const currentPost = getPostBySlug(currentSlug);
 
-    if (!currentPost || !currentPost.tags || currentPost.tags.length === 0) {
-        // Fallback: return latest posts if no tags
-        return allPosts
-            .filter((post) => post.slug !== currentSlug)
-            .slice(0, count);
+    if (!currentPost) {
+        return allPosts.slice(0, count);
     }
 
-    const currentTags = currentPost.tags.map(t => t.toLowerCase());
+    const currentTags = (currentPost.tags || []).map(t => t.toLowerCase());
+    const currentCategory = getPostCategory(currentSlug);
 
-    // Score each post by number of matching tags
+    // Score each post by tag overlap + category match + title keyword overlap
     const scored = allPosts
         .filter((post) => post.slug !== currentSlug)
         .map((post) => {
             const postTags = (post.tags || []).map(t => t.toLowerCase());
-            const matchScore = currentTags.reduce((score, tag) => {
-                return score + (postTags.includes(tag) ? 1 : 0);
+            const postCategory = getPostCategory(post.slug);
+            
+            // Tag match score (weighted)
+            const tagScore = currentTags.reduce((score, tag) => {
+                return score + (postTags.includes(tag) ? 2 : 0);
             }, 0);
-            return { post, score: matchScore };
+            
+            // Category match bonus (same directory = strong relation)
+            const categoryScore = (currentCategory && postCategory && currentCategory === postCategory) ? 3 : 0;
+            
+            // Title keyword overlap score
+            const currentWords = new Set(currentPost.title.toLowerCase().split(/\s+/).filter(w => w.length > 3));
+            const postTitleWords = post.title.toLowerCase().split(/\s+/).filter(w => w.length > 3);
+            const titleOverlap = postTitleWords.filter(w => currentWords.has(w)).length;
+            const titleScore = Math.min(titleOverlap, 2); // cap at 2
+
+            return { post, score: tagScore + categoryScore + titleScore };
         })
         .sort((a, b) => {
-            // Sort by score (descending), then by date (descending) as tiebreaker
             if (b.score !== a.score) return b.score - a.score;
             return new Date(b.post.date).getTime() - new Date(a.post.date).getTime();
         });
 
     return scored.slice(0, count).map(({ post }) => post);
+}
+
+/** Get previous and next posts by date for navigation */
+export function getAdjacentPosts(slug: string): AdjacentPosts {
+    const allPosts = getAllPosts();
+    const currentIndex = allPosts.findIndex(p => p.slug === slug);
+
+    if (currentIndex === -1) {
+        return { prev: null, next: null };
+    }
+
+    const result: AdjacentPosts = { prev: null, next: null };
+
+    // Previous post (older, higher index)
+    if (currentIndex < allPosts.length - 1) {
+        const prev = allPosts[currentIndex + 1];
+        result.prev = {
+            slug: prev.slug,
+            title: prev.title,
+            date: prev.date,
+            readingTime: prev.readingTime,
+            coverImage: prev.coverImage,
+        };
+    }
+
+    // Next post (newer, lower index)
+    if (currentIndex > 0) {
+        const next = allPosts[currentIndex - 1];
+        result.next = {
+            slug: next.slug,
+            title: next.title,
+            date: next.date,
+            readingTime: next.readingTime,
+            coverImage: next.coverImage,
+        };
+    }
+
+    return result;
 }
 
 export function getPopularTags(limit: number = 3): string[] {

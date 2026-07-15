@@ -6,6 +6,7 @@ import remarkGfm from 'remark-gfm';
 import rehypePrism from 'rehype-prism-plus';
 import Image from 'next/image';
 import { CopyButton } from './copy-button';
+import BacaJuga from './baca-juga';
 
 type Props = {
     content: string;
@@ -173,6 +174,7 @@ const components = {
             </code>
         );
     },
+    BacaJuga,
     img: (props: any) => {
         // Helper to clean the source path
         const getCleanSrc = (src: string) => {

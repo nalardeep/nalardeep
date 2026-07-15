@@ -23,3 +23,16 @@ export type Frontmatter = {
     author: Author;
     tags?: string[];
 };
+
+export type AdjacentPost = {
+    slug: string;
+    title: string;
+    date: string;
+    readingTime: string;
+    coverImage?: string;
+};
+
+export type AdjacentPosts = {
+    prev: AdjacentPost | null;
+    next: AdjacentPost | null;
+};

@@ -97,13 +97,13 @@ Pada akhirnya, tidak ada satu tools yang cocok untuk semua skenario. Kunci utama
 Fine tuning adalah proses melatih ulang model AI yang sudah ada menggunakan dataset spesifik agar model tersebut lebih optimal untuk tugas tertentu, seperti chatbot, analisis sentimen, atau sistem rekomendasi.
 
 ### Apakah semua tools di artikel ini benar-benar gratis?
-Ya, tools seperti Unsloth, Axolotl, dan LLaMA Factory bersifat open source dan gratis digunakan. Namun, jika kamu menggunakan infrastruktur cloud (seperti GPU berbayar), tetap akan ada biaya dari sisi komputasi.
+Ya, tools seperti Unsloth, Axolotl, dan LLaMA Factory bersifat open source dan gratis digunakan. Namun, jika kamu menggunakan infrastruktur cloud (seperti GPU berbayar), tetap akan ada biaya dari sisi komputasi. Sebagai alternatif, kamu bisa memanfaatkan [API LLM gratis](/posts/API-LLM-gratis) untuk menguji hasil fine-tuning tanpa perlu menyewa GPU mahal.
 
 ### Tools mana yang paling cocok untuk pemula?
 Untuk pemula, tools dengan UI dan tanpa banyak konfigurasi teknis seperti Unsloth lebih mudah digunakan. Sedangkan Axolotl dan LLaMA Factory lebih cocok jika kamu sudah mulai memahami konsep training dan ingin eksplorasi lebih dalam.
 
 ### Apakah bisa melakukan fine tuning tanpa GPU?
-Secara teknis bisa, tetapi sangat tidak direkomendasikan karena prosesnya akan sangat lambat. Alternatifnya, kamu bisa menggunakan Google Colab, Kaggle, atau layanan cloud lainnya untuk mendapatkan akses GPU. Setelah proses training selesai, kamu bisa mengekspor model ke format GGUF untuk dijalankan secara offline di laptop menggunakan [LM Studio](/posts/cara-menjalankan-llm-laptop-kentang-offline).
+Secara teknis bisa, tetapi sangat tidak direkomendasikan karena prosesnya akan sangat lambat. Alternatifnya, kamu bisa menggunakan Google Colab, Kaggle, atau layanan cloud lainnya untuk mendapatkan akses GPU. Setelah proses training selesai, kamu bisa mengekspor model ke format GGUF untuk dijalankan secara offline di laptop menggunakan [LM Studio](/posts/cara-menjalankan-llm-laptop-kentang-offline) atau [Ollama](/posts/tutorial-ollama-jalankan-llm-offline-laptop).
 
 ### Apa perbedaan LoRA dan QLoRA?
 LoRA (Low Rank Adaptation) adalah teknik fine tuning yang lebih hemat resource dengan menambahkan parameter kecil ke model utama. Sedangkan QLoRA adalah versi yang lebih efisien lagi karena menggabungkan quantization, sehingga bisa dijalankan pada GPU dengan memori terbatas.
