@@ -27,10 +27,10 @@ export default function Home() {
         
         <Container>
           <div className="relative max-w-4xl mx-auto text-center z-10">
-            <div className="inline-flex items-center gap-2 bg-emerald-50/80 border border-emerald-100/50 px-4 py-1.5 rounded-full text-xs font-semibold text-emerald-600 mb-6 shadow-sm">
+            {/* <div className="inline-flex items-center gap-2 bg-emerald-50/80 border border-emerald-100/50 px-4 py-1.5 rounded-full text-xs font-semibold text-emerald-600 mb-6 shadow-sm">
               <Sparkles className="w-3.5 h-3.5 fill-emerald-100 text-emerald-500" />
               <span>Portal Ekosistem AI</span>
-            </div>
+            </div> */}
             
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-slate-900 tracking-tight mb-6">
               Eksplorasi, <span className="text-emerald-600">Eksperimen</span> dan Evaluasi
