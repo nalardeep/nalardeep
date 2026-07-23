@@ -28,7 +28,7 @@ const Header = () => {
     return (
         <header className="py-4 border-b border-slate-100 bg-white sticky top-0 z-50">
             <Container>
-                <div className="flex items-center justify-between h-12">
+                <div className="flex items-center justify-start h-12">
                     {/* Logo */}
                     <Link href="/" className="flex items-center gap-2 group">
                         <Image
@@ -66,7 +66,7 @@ const Header = () => {
                     </nav>
 
                     {/* Desktop Search + CTA Button & Mobile Toggle */}
-                    <div className="flex items-center gap-3">
+                    <div className="flex ml-auto gap-3">
                         <div className="hidden md:block">
                             <SearchBar />
                         </div>
