@@ -12,7 +12,7 @@ const BASE_URL = "https://nalardeep.com";
 
 export const metadata: Metadata = {
     title: "Daftar Artikel",
-    description: "Kumpulan artikel terbaru seputar AI, otomatisasi n8n, MCP, LLM, dan ekosistem kecerdasan buatan lainnya.",
+    description: "Kumpulan artikel terbaru seputar AI, programming, otomatisasi n8n, MCP, LLM, dan ekosistem kecerdasan buatan lainnya.",
     alternates: {
         canonical: "/articles",
     },
