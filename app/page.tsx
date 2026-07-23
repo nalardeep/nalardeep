@@ -37,7 +37,7 @@ export default function Home() {
             </h1>
             
             <p className="text-lg text-slate-500 max-w-2xl mx-auto leading-relaxed mb-10">
-              Artikel terbaru tentang AI. Mulai dari implementasi MCP, otomatisasi n8n, pengembangan chatbot, RAG, LLM dan banyak lagi.
+              Artikel terbaru tentang AI dan programming. Mulai dari python, implementasi MCP, otomatisasi n8n, pengembangan chatbot, RAG, LLM dan banyak lagi.
             </p>
             
             <div className="flex items-center justify-center gap-4">
