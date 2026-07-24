@@ -10,114 +10,140 @@ tags: ["LLM","API Key","Free API Key","GLM 5.2", "Cloudflare","Cloudflare Worker
 ---
 
 # Cara Mendapatkan API LLM Gratis GLM 5.2 Via Cloudflare
-Pada artikel kali ini mimin cuman pengen membagikan cara untuk mendapatkan akses gratis model GLM 5.2 Via Cloudflare Workers AI. Sebelum itu terdapat beberapa hal yang mesti dipersiapkan seperti,
-1. Akun Cloudflare (lihat langkah pembuatan akun di bawah)
-2. OpenCode (lihat langkah instalasi di bawah)
 
-Akun Cloudflare digunakan untuk mendaftar API Key yang akan digunakan, sedangkan OpenCode merupakan tools coding yang akan digunakan untuk mencoba API Key tersebut. Setelah kedua persyaratan diatas sudah dipersiapkan maka langsung dieksekusi saja
+Halo sobat nalar! Akhir-akhir ini mimin lagi semangat-semangatnya eksplorasi berbagai API LLM gratis yang bisa dipakai untuk ngoprek-ngoprek project. Nah, kali ini mimin nemu satu lagi yang sayang banget kalau dilewatkan — **GLM 5.2 dari Zhipu AI** yang bisa diakses gratis lewat Cloudflare Workers AI.
 
-### Membuat Akun Cloudflare
-    > Kamu membutuhkan akun Cloudflare untuk mendapatkan API Key secara gratis.
-1. Buka browser dan kunjungi https://dash.cloudflare.com/sign-up
-2. Masukkan alamat email dan buat password, atau gunakan login via Google/Apple/GitHub
-3. Centang checkbox untuk verifikasi, lalu klik **Create Account**
-4. Buka email yang digunakan untuk mendaftar, lalu klik link verifikasi dari Cloudflare
-5. Akun Cloudflare sudah siap digunakan
+GLM 5.2 ini model yang cukup mumpuni buat berbagai tugas NLP kayak generate teks, summarization, sampai code completion. Dan yang bikin mimin excited, bisa diakses tanpa perlu ngeluarin duit sama sekali.
 
-### Menginstall OpenCode
+Sebelum kita mulai, ada dua hal yang perlu disiapkan:
+1. **Akun Cloudflare** — buat dapetin API Key-nya. Tenang, gratis dan nggak perlu kartu kredit.
+2. **OpenCode** — tools coding yang akan kita pakai buat nyobain API Key-nya.
 
-#### Windows
-OpenCode bisa diinstall melalui beberapa metode di Windows:
+Kalau udah siap, langsung gas aja!
 
-**Via winget (recommended):**
+---
+
+## Tahap 1: Mendaftar Akun Cloudflare
+
+Buat yang belum punya akun Cloudflare, tenang aja. Prosesnya cuma beberapa menit:
+
+1. Buka browser dan kunjungi [https://dash.cloudflare.com/sign-up](https://dash.cloudflare.com/sign-up)
+2. Masukkan alamat email dan password, atau langsung login pake Google/Apple/GitHub kalau mau lebih cepet
+3. Centang checkbox verifikasi, lalu klik **Create Account**
+4. Cek email masuk, klik link verifikasi dari Cloudflare
+5. Selesai! Akun Cloudflare siap dipake.
+
+> **Catatan dari mimin:** Jangan lupa verifikasi emailnya ya, karena tanpa itu kita nggak bisa lanjut ke langkah berikutnya.
+
+---
+
+## Tahap 2: Install OpenCode
+
+OpenCode ini tools koding berbasis AI yang menurut mimin lumayan oke buat dicoba. Cara installnya beda-beda tergantung sistem operasi:
+
+### Windows
+
+Ada beberapa cara, pilih aja yang paling gampang buat kamu:
+
+**Pakai winget (mimin rekomendasiin ini):**
 ```bash
 winget install -e --id SST.opencode
 ```
 
-**Via scoop:**
+**Atau pakai scoop:**
 ```bash
 scoop install opencode
 ```
 
-**Via npm:**
+**Atau via npm:**
 ```bash
 npm i -g opencode-ai@latest
 ```
 
-**Via WSL2 (pengalaman terbaik):**
+**Atau kalau pake WSL2 (ini yang paling stabil katanya):**
 ```bash
-# Install WSL2 terlebih dahulu
+# Install WSL2 dulu
 wsl --install
-# Restart komputer, lalu jalankan:
+# Restart komputer, lalu:
 curl -fsSL https://opencode.ai/install | bash
 ```
 
-#### macOS
-OpenCode bisa diinstall melalui beberapa metode di macOS:
+### macOS
 
-**Via Homebrew (recommended):**
+**Pakai Homebrew (recommended):**
 ```bash
 brew install anomalyco/tap/opencode
 ```
 
-**Via curl script:**
+**Atau pake curl:**
 ```bash
 curl -fsSL https://opencode.ai/install | bash
 ```
 
-**Via npm:**
+**Atau via npm:**
 ```bash
 npm i -g opencode-ai@latest
 ```
 
-Setelah instalasi selesai, verifikasi dengan menjalankan:
+Setelah selesai, cek dulu apakah sudah terinstall dengan benar:
+
 ```bash
 opencode --version
 ```
 
-## Cara Mendapatkan Akses Gratis API LLM GLM 5.2 dengan Cloudflare
-### Membuat API Key Cloudflare Workers AI
-    > Sebelum mengikuti langkah langkah dibawah ini, buat akun Cloudflare terlebih dahulu (lihat langkahnya di atas).
-1. Masuk ke Cloudflare
-2. Pada menu build, pilih AI lalu cari bagian Workers AI.
-3. Pilih Rest API
-4. Kemudian Salin dan simpan Account ID terlebih dahulu.
-5. Selanjutnya Create a Workers AI API Token
-6. Isi nama Token dan Klik Create API Token
-7. Copy API Token dan simpan 
+Kalau muncul nomor versi, berarti udah siap dipake.
 
-### Menggunakan API Key Cloudflare di OpenCode
-    > Sebelum mengikuti langkah-langkah dibawah ini, install OpenCode terlebih dahulu (lihat langkahnya di atas).
+---
+
+## Tahap 3: Dapetin API Key Cloudflare Workers AI
+
+Nah, ini bagian intinya. Setelah akun Cloudflare siap, ikuti langkah-langkah ini:
+
+1. Login ke dashboard Cloudflare
+2. Di menu **Build**, pilih **AI** lalu cari bagian **Workers AI**
+3. Pilih **Rest API** — nanti kamu bakal liat **Account ID**. Salin dan simpan dulu, ya.
+4. Scroll dikit, cari **Create a Workers AI API Token**
+5. Isi nama Token-nya (misal: "GLM Testing"), lalu klik **Create API Token**
+6. Muncul deh API Token-nya. Langsung copy dan simpan di tempat aman.
+
+Mimin saranin, simpan dua informasi ini di file `.env` atau note pribadi — **Account ID** dan **API Token**. Jangan sampai hilang, soalnya kita bakal butuh dua-duanya.
+
+---
+
+## Tahap 4: Cobain API Key di OpenCode
+
+Sekarang waktunya eksekusi. Setelah OpenCode terinstall dan API Key udah siap, kita coba connect:
+
 1. Buka terminal atau PowerShell
-2. Masukkan perintah Opencode
-3. Untuk menghubungkan API Key, masukkan perintah **/connect**
-4. Cari Cloudflare Workers AI dan enter.
-5. Paste Account ID dan API Token.
-6. Happy Eksperimen
+2. Ketik `opencode` buat menjalankan programnya
+3. Begitu masuk, ketik perintah **/connect**
+4. Di daftar provider yang muncul, cari dan pilih **Cloudflare Workers AI**
+5. Masukkan **Account ID** dan **API Token** yang tadi udah disimpan
+6. Kalau berhasil, langsung bisa dipakai buat ngobrol-ngobrol sama model GLM 5.2
+
+Waktu mimin pertama kali nyobain, mimin langsung kaget — responsnya lumayan cepet buat model yang diakses gratis. Nggak kalah sama model-model berbayar yang pernah dicoba.
 
 ---
 
 ## Kesimpulan
 
-Dengan mengikuti langkah-langkah di atas, kamu sudah bisa mendapatkan akses gratis API LLM model GLM 5.2 melalui Cloudflare Workers AI. API key ini bisa langsung digunakan di OpenCode untuk berbagai keperluan eksperimen dan pengembangan.
+Gimana? Gampang banget kan caranya? Dengan mengikuti empat tahap di atas, kamu udah punya akses gratis ke model GLM 5.2 lewat Cloudflare Workers AI. API Key ini bisa langsung dipakai di OpenCode atau tools lain buat belajar, eksperimen, atau bikin prototipe project.
 
-## Keunggulan GLM 5.2 via Cloudflare Workers AI
+### Kenapa Milih GLM 5.2 via Cloudflare?
 
-GLM 5.2 adalah model bahasa besar dari Zhipu AI yang mendukung berbagai tugas NLP seperti generation, summarization, dan code completion. Dengan akses gratis melalui Cloudflare Workers AI, kamu bisa:
+Dari yang udah mimin coba, ada beberapa kelebihan yang menarik:
 
-- **Eksperimen tanpa biaya** — Tidak perlu kartu kredit, cukup akun Cloudflare gratis
-- **Integrasi mudah** — REST API standar yang kompatibel dengan berbagai tools
-- **Latensi rendah** — Infrastruktur Cloudflare global edge network
-- **Cocok untuk prototyping** — Ideal untuk menguji ide sebelum beralih ke production
+- **Gratis total** — nggak perlu kartu kredit, cukup akun Cloudflare doang
+- **Integrasinya gampang** — pake REST API standar yang kompatibel sama berbagai tools
+- **Latensi rendah** — karena jalan di edge network Cloudflare
+- **Cocok buat prototyping** — ideal buat nyoba-nyoba ide sebelum pindah ke production
 
-## Tips Mengoptimalkan Penggunaan API LLM Gratis
+### Tips dari Mimin
 
-1. **Simpan API Token dengan aman** — Jangan commit API key ke repository publik. Gunakan environment variable atau file `.env`
-2. **Gunakan dengan tools** — API key ini bisa langsung dipakai di OpenCode, atau kamu integrasikan dengan platform seperti n8n untuk membuat workflow automation
-3. **Pantau usage** — Cloudflare Workers AI memiliki batas pemakaian harian, pantau dashboard Cloudflare untuk menghindari kehabisan kuota di tengah eksperimen
+1. **Simpan API Token dengan aman** — jangan pernah commit API key ke repository publik. Mimin saranin pake environment variable atau file `.env` yang udah masuk `.gitignore`.
+2. **Kombinasikan dengan tools lain** — API key ini nggak cuma buat OpenCode. Bisa juga diintegrasikan ke n8n buat workflow automation.
+3. **Pantau pemakaian** — Cloudflare Workers AI punya batas harian. Mimin biasa cek dashboard Cloudflare biar nggak kaget pas lagi asyik-asyiknya eksperimen tiba-tiba kehabisan kuota.
 
----
+Kalau kamu mau cari opsi API LLM gratis lainnya, mampir ke [API LLM Gratis Terbaik 2026](/posts/API-LLM-gratis) buat lihat perbandingan lengkapnya. Atau kalau lebih suka jalanin model di lokal tanpa internet, cobain [Ollama](/posts/tutorial-ollama-jalankan-llm-offline-laptop) atau [LM Studio](/posts/cara-menjalankan-llm-laptop-kentang-offline) — cocok buat yang spesifikasi laptopnya mumpuni.
 
-Jika kamu ingin mencari opsi API LLM gratis lainnya, simak rekomendasi lengkap kami di artikel [API LLM Gratis Terbaik 2026](/posts/API-LLM-gratis). Sebagai alternatif, kamu juga bisa menjalankan LLM secara lokal tanpa internet menggunakan [Ollama](/posts/tutorial-ollama-jalankan-llm-offline-laptop) atau [LM Studio](/posts/cara-menjalankan-llm-laptop-kentang-offline) jika spesifikasi perangkat memadai.
-
-
+Selamat ngoprek! Ada kendala atau pertanyaan? Langsung tulis di komentar aja ya. 😊

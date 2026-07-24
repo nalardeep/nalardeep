@@ -9,110 +9,137 @@ author:
 tags: ["LLM", "Fine-tuning"]
 ---
 
-# Tools Fine-Tuning LLM (Open Source dan gratis)
+# Tools Fine-Tuning LLM Open Source dan Gratis 2026
 
-## Mengapa Memilih Tools yang Tepat untuk Fine-Tuning LLM Sangat Penting?
-Mengapa pemilihan tools fine tuning itu penting?, karena setiap tools yang digunakan memiliki fitur yang berbeda-beda. Tujuan dari dilakukannya fine-tuning agar LLM menjadi lebih baik atau LLM di latih untuk tugas-tugas tertentu (spesifik). Pemilihan tools untuk fine tuning sebenarnya didasarkan pada kebutuhan masing-masing dari pengguna. Setiap tools di desain dan dibuat berdasarkan kebutuhan pengguna. 
+Pernah kepikiran buat bikin model AI yang ngerti gaya bahasa kamu sendiri? Atau pengen ngajarin model biar jago di bidang tertentu -- misalnya jadi asisten customer service yang paham banget sama produk perusahaan?
 
-Pada artikel ini, mimin bukan membanding-bandingkan tools tetapi lebih ke arah memaparkan tools tersebut agar pembaca mendapat gambaran mengenai kapan tools tersebut cocok digunakan. Sehingga untuk penerapannya nanti tergantung case dari sobat nalar yah.
+Nah, di situlah **fine-tuning** berperan. Sederhananya, fine-tuning itu kayak ngasih "pelatihan tambahan" ke model AI yang udah pintar, biar dia makin ahli di bidang spesifik yang kita mau. Tapi masalahnya, tools buat fine-tuning itu banyak banget. Mimin dulu juga sempet bingung milihnya.
 
-## Library Fine Tuning LLM Open Source dan Gratis
-Nah berikut daftar dari library yang bisa sobat nalar gunakan untuk fine-tuning LLM dengan catatan daftar library dibawah ini sepenuhnya open source dan gratis.
+Makanya di artikel ini, mimin mau ngajakin ngobrol tentang tools-tools fine-tuning yang **open source dan gratis**. Bukan buat banding-bandingin mana yang paling bagus, tapi lebih ke ngasih gambaran -- kapan tools tertentu cocok dipake, dan buat kebutuhan apa. Soalnya, setiap tools punya kelebihan dan kekurangan masing-masing.
 
-### 1. Unsloth
-Unsloth merupakan framework open source untuk menjalankan dan melatih model. Dengan unsloth, pengguna dapat menjalankan dan melatih model di lokal. Proses fine tuning di lokal menggunakan tools Unsloth.ai yang bernama Unsloth Studio. 
+Sebelum lanjut, kalau kamu masih baru di dunia LLM, mungkin bisa mampir dulu ke [panduan API LLM gratis](/posts/API-LLM-gratis) buat cobain berbagai model tanpa biaya.
+
+---
+
+## 1. Unsloth -- Buat yang Pengen Fine-Tuning dengan UI
+
+Dari semua tools fine-tuning yang pernah mimin cobain, **Unsloth** ini paling ramah buat pemula. Unsloth Studio adalah platform open source buat melatih, menjalankan, dan mengekspor model LLM -- semuanya dari antarmuka visual.
+
+Yang bikin Unsloth menarik: kamu bisa melakukan proses training **tanpa perlu nulis kode**. Cocok banget buat kamu yang baru pertama kali nyobain fine-tuning dan masih gamang sama istilah-istilah teknis.
 
 ![unsloth](/assets/blog/library-fine-tuning-llm-terbaik/unsloth.webp "unsloth")
 
-Unsloth Studio merupakan tools open source untuk melatih, menjalankan dan mengekspor model di lokal. Selain itu, Unsloth Studio dilengkapi dengan UI dan navigasi yang sangat baik. Sangat cocok untuk pengguna yang ingin melakukan proses fine tuning model dengan UI dan tidak ribet.
+### Fitur Unggulan Unsloth
 
+Dari pengalaman mimin pake Unsloth Studio, beberapa fitur yang paling sering dipakai:
 
-Beberapa fitur dari unsloth Studio adalah sebagai berikut.
-1. Menjalankan model di lokal
-2. Mengeksekusi code dan tools
-3. Tidak memerlukan code untuk proses training
-4. Data resep (mengubah dokumen menjadi dataset)
-5. Observabilitas (Kendali penuh untuk sesi training model real-time)
-6. Ekspor dan save model
-7. Model arena (melakukan eksperimen dan pengujian dua model yang berbeda)
-8. Privacy first + Secure (memastikan data aman)
+1. **Menjalankan model di lokal** -- tinggal klik, model jalan
+2. **Training tanpa coding** -- beneran, semua pake UI
+3. **Data resep** -- bisa ubah dokumen jadi dataset training dengan gampang
+4. **Observabilitas real-time** -- bisa liat progress training langsung
+5. **Ekspor model** -- setelah selesai, tinggal export dan deploy
+6. **Model arena** -- bisa uji coba dua model beda secara bersamaan
+7. **Privacy first** -- data aman karena semua di lokal
 
+Unsloth juga nyediain template buat fine-tuning di **Google Colab** atau **Kaggle**. Buat kamu yang laptopnya nggak punya GPU kenceng, nggak usah khawatir -- bisa pake Colab gratis. Cuma perlu diingat, Colab juga punya batasan pemakaian, jadi jangan kaget kalau tiba-tiba disconnect pas lagi asyik training.
 
-Selain menyediakan panduan untuk melakukan fine tuning LLM di lokal, unsloth juga menyediakan panduan untuk melakukan fine tuning menggunakan Notebooks dan google colab. Dengan menggunakan google colab, sobat nalar tidak perlu khawatir akan kebutuhan spesifikasi RAM dan GPU untuk melakukan fine-tuning. Proses fine tuning di google colab sepenuhnya dilakukan di Cloud dan hanya mengandalkan internet. Tetapi perlu di perhatikan juga, ketika menggunakan google colab penggunaan sumber daya cloud juga perlu di perhatikan. Mengapa demikian?, platform seperti google colab menyediakan akses untuk melakukan komputasi dengan catatan terdapat limit atau batasan mengenai jumlah sumber daya yang bisa digunakan. Eits bukan cuman di google colab, kamu juga bisa melakukan fine tuning di kaggle. Langsung sat set loh, unlsoth sudah menyediakan templatenya. Jadi kita cuman perlu menyesuaikan dataset yang dimiliki.
+Tapi kalau laptop kamu udah spek dewa -- RAM gede, GPU kenceng -- langsung aja fine-tuning di lokal. Lebih stabil dan nggak ada batasan waktu.
 
-Namun jika sobat nalar mempunyai laptop atau PC dengan spesifikasi RAM dan GPU yang sangat baik, maka jangan ragu untuk melakukan fine tuning di lokal yah.
+Sumber: [Unsloth.ai](https://unsloth.ai)
 
-Sumber Unsloth.ai
+---
 
-### 2. Axolotl
+## 2. Axolotl -- Buat yang Butuh Performa Tinggi
 
-Axolotl adalah sebuah tools open source yang dirancang untuk mempercepat proses fine-tuning model AI tanpa mengorbankan performa maupun skalabilitas. Dibandingkan pendekatan tradisional yang sering kompleks dan memakan waktu, Axolotl hadir sebagai solusi praktis yang memungkinkan developer dan peneliti mengoptimalkan model dengan lebih efisien.
+Nah, kalau Unsloth buat pemula yang pengen instan, **Axolotl** ini lebih cocok buat kamu yang udah paham dikit soal training dan butuh performa tinggi.
+
+Axolotl adalah tools open source yang dirancang buat mempercepat proses fine-tuning tanpa nguras performa. Salah satu yang bikin mimin suka adalah dukungannya terhadap berbagai teknik fine-tuning modern kayak **LoRA, qLoRA, PEFT**, sampai **FSDP** dan **Multipack**.
 
 ![Axolotl AI](/assets/blog/library-fine-tuning-llm-terbaik/axolotl.webp "Axolotl AI")
 
-Salah satu keunggulan utamanya terletak pada kemudahan penggunaan. Axolotl menyediakan berbagai konfigurasi siap pakai berbasis YAML yang memungkinkan pengguna langsung menjalankan proses training tanpa perlu melakukan banyak penyesuaian teknis. Ini sangat membantu, terutama bagi developer yang ingin fokus pada eksperimen model tanpa harus direpotkan oleh setup infrastruktur yang rumit.
+### Kenapa Milih Axolotl?
 
-Selain itu, Axolotl didukung oleh komunitas yang aktif dan terus berkembang. Dengan ratusan kontributor dan ribuan pengguna aktif, pengguna dapat dengan mudah menemukan solusi, berdiskusi, atau belajar langsung dari pengalaman praktisi lain. Ekosistem ini membuat Axolotl tidak hanya sekadar tools, tetapi juga pusat kolaborasi dalam pengembangan AI open source.
+Dari riset dan obrolan sama temen-temen developer lain, beberapa kelebihan Axolotl yang sering disebut:
 
-Dari sisi teknologi, Axolotl mendukung berbagai teknik fine-tuning modern seperti LoRA, qLoRA, PEFT, hingga optimasi seperti FSDP dan Multipack. Integrasinya juga fleksibel dengan berbagai platform seperti RunPod, Modal, dan layanan cloud lainnya, sehingga memudahkan deployment dalam berbagai skenario, baik untuk riset maupun produksi.
+- **Konfigurasi YAML siap pakai** -- tinggal atur file YAML, langsung jalan. Nggak perlu setup ribet.
+- **Komunitas aktif** -- ratusan kontributor di GitHub, jadi kalau nemu error biasanya udah ada yang ngalamin dan solusinya udah dibahas.
+- **Kompatibel berbagai platform** -- bisa jalan di RunPod, Modal, Vast.ai, atau cloud lainnya.
+- **Efisiensi tinggi** -- katanya bisa 3-5x lebih cepet dari metode konvensional. Mimin sendiri belum ngetes langsung, tapi banyak review positif soal ini.
 
-Menariknya, Axolotl mampu memberikan peningkatan efisiensi yang signifikan. Bahkan dalam beberapa kasus dapat mempercepat proses training hingga 3–5 kali dibandingkan metode konvensional. Hal ini dimungkinkan karena adopsi teknologi terbaru yang terus diperbarui secara berkala oleh tim pengembangnya.
+Yang menarik, Axolotl mendukung konsep **Bring Your Own Data (BYOD)** -- jadi data kamu tetap aman di lokal, nggak perlu diunggah ke server pihak ketiga. Penting banget buat yang ngurusin data sensitif.
 
-Dari segi fleksibilitas, Axolotl dapat dijalankan di berbagai lingkungan, mulai dari lokal, cloud, hingga infrastruktur berbasis Docker dan Kubernetes. Ini menjadikannya pilihan yang ideal baik untuk individu maupun perusahaan skala besar yang membutuhkan kontrol penuh atas proses pengembangan AI mereka.
+Dari segi deployment, Axolotl bisa jalan di mana aja -- lokal, cloud, Docker, bahkan Kubernetes. Cocok buat individu maupun perusahaan yang butuh kontrol penuh atas proses training.
 
-Tidak hanya itu, Axolotl juga mengusung konsep Bring Your Own Data (BYOD), di mana pengguna dapat menggunakan data mereka sendiri tanpa harus mengunggahnya ke layanan pihak ketiga. Hal ini memberikan keuntungan besar dalam hal keamanan, privasi, serta kepatuhan terhadap regulasi data.
+Sumber: [Axolotl AI](https://axolotl.ai)
 
-Dengan kombinasi performa tinggi, fleksibilitas, dan komunitas yang solid, Axolotl telah digunakan oleh berbagai organisasi mulai dari perusahaan riset hingga platform Generative AI. Ini menjadikannya salah satu tools open source yang patut dipertimbangkan bagi siapa saja yang ingin mengembangkan dan mengoptimalkan model AI secara efisien.
+---
 
-sumber Axolotl AI
+## 3. LLaMA-Factory -- All-in-One Solution
 
-### 3. LLaMA-Factory
-LLaMA Factory merupakan platform open source yang dirancang untuk mempermudah proses training dan fine tuning large language models (LLM) secara efisien dan praktis. Salah satu daya tarik utamanya adalah kemudahan penggunaan, bahkan pengguna dapat melakukan fine tuning ratusan model pre trained secara lokal tanpa perlu menulis kode sama sekali. Ini menjadikannya solusi ideal, baik untuk pemula yang baru masuk ke dunia AI maupun developer berpengalaman yang ingin mempercepat workflow mereka.
+**LLaMA-Factory** ini kayak pisau Swiss Army-nya tools fine-tuning. Platform open source yang dirancang buat mempermudah proses training dan fine-tuning LLM. Yang bikin mimin tertarik, katanya pengguna bisa fine-tuning ratusan model pre-trained tanpa nulis kode sama sekali.
 
 ![LLaMA Factory](/assets/blog/library-fine-tuning-llm-terbaik/llama-factory.webp "LLaMA Factory")
 
-Dari sisi kompatibilitas, LLaMA Factory mendukung berbagai model populer seperti LLaMA, Mistral, Mixtral, Qwen, hingga Gemma dan ChatGLM. Dukungan yang luas ini memungkinkan pengguna untuk bereksperimen dengan berbagai arsitektur model tanpa harus berpindah tools, sehingga proses riset dan pengembangan menjadi jauh lebih efisien.
+### Yang Mimin Suka dari LLaMA-Factory
 
-Tidak hanya itu, platform ini juga menyediakan beragam metode training yang lengkap, mulai dari pre training, instruction fine tuning, hingga teknik lanjutan seperti PPO, DPO, dan reward model training. Dengan fleksibilitas ini, pengguna dapat menyesuaikan pendekatan training sesuai kebutuhan, baik untuk membangun chatbot, model instruksional, maupun sistem berbasis reinforcement learning.
+Pertama, **kompatibilitasnya luas**. Mendukung model-model populer kayak LLaMA, Mistral, Mixtral, Qwen, Gemma, sampai ChatGLM. Jadi kamu nggak perlu gonta-ganti tools setiap kali pengen cobain model baru.
 
-Dalam hal efisiensi komputasi, LLaMA Factory menawarkan berbagai opsi precision yang fleksibel, mulai dari 16-bit full parameter hingga teknik hemat resource seperti LoRA dan QLoRA dengan dukungan berbagai quantization method (seperti GPTQ dan AWQ). Hal ini memungkinkan proses training tetap berjalan optimal bahkan pada perangkat dengan keterbatasan GPU.
+Kedua, **metode training lengkap**. Mulai dari pre-training, instruction fine-tuning, sampe teknik lanjutan kayak PPO, DPO, dan reward model training. Buat yang serius di dunia AI, ini nilai plus banget.
 
-Platform ini juga dilengkapi dengan berbagai algoritma optimasi modern seperti LoRA+, DoRA, hingga LongLoRA yang dirancang untuk meningkatkan performa model tanpa meningkatkan biaya komputasi secara signifikan. Ditambah lagi, adanya akselerasi seperti FlashAttention 2 membuat proses training dan inferensi menjadi jauh lebih cepat dan efisien.
+Ketiga, **efisiensi komputasi**. LLaMA-Factory mendukung berbagai opsi precision -- dari 16-bit full parameter sampe teknik hemat resource kayak LoRA dan QLoRA dengan quantization method (GPTQ, AWQ, dll). Intinya, kamu bisa training model dengan spek laptop yang terbatas sekalipun.
 
-Untuk kebutuhan deployment dan inferensi, LLaMA Factory terintegrasi dengan engine populer seperti Transformers dan vLLM, sehingga model yang telah dilatih dapat langsung digunakan dalam berbagai aplikasi. Selain itu, monitoring eksperimen juga menjadi lebih mudah berkat integrasi dengan tools seperti TensorBoard, MLflow, hingga Weights & Biases.
+Ada juga algoritma optimasi modern kayak LoRA+, DoRA, LongLoRA, dan akselerasi FlashAttention 2 yang bikin proses training makin cepet.
 
-sumber llamafactory
+Untuk deployment, LLaMA-Factory terintegrasi sama Transformers dan vLLM. Jadi model yang udah dilatih bisa langsung dipake. Monitoring eksperimen juga gampang berkat integrasi sama TensorBoard, MLflow, sama Weights & Biases.
 
-## Kesimpulan
-Memilih tools untuk fine tuning LLM bukan soal mana yang paling **“canggih”**, tetapi mana yang paling relevan dengan kebutuhan dan kondisi yang dimiliki. Dalam praktiknya, setiap tools memiliki pendekatan yang berbeda-beda, ada yang fokus pada kemudahan penggunaan, ada yang unggul di performa, dan ada juga yang menekankan fleksibilitas serta kontrol penuh terhadap proses training.
+Sumber: [LLaMA-Factory](https://github.com/hiyouga/LLaMA-Factory)
 
-Jika sobat nalar menginginkan pengalaman yang sederhana dengan antarmuka visual, maka Unsloth bisa menjadi pilihan yang nyaman. Sementara itu, bagi kamu yang membutuhkan performa tinggi dengan konfigurasi fleksibel dan integrasi yang luas, Axolotl menawarkan pendekatan yang lebih “powerful” untuk skala eksperimen maupun produksi.
+---
 
-Di sisi lain, LLaMA Factory hadir sebagai solusi all-in-one yang menggabungkan kemudahan, fleksibilitas, dan dukungan berbagai model dalam satu platform. Tools ini sangat cocok bagi kamu yang ingin melakukan eksplorasi model secara cepat tanpa harus terjebak dalam kompleksitas teknis.
+## Mana yang Paling Cocok Buat Kamu?
 
-Pada akhirnya, tidak ada satu tools yang cocok untuk semua skenario. Kunci utamanya adalah memahami tujuan fine tuning. Apakah untuk riset, produk, eksperimen, atau sekadar belajar??. Dengan begitu, kamu bisa memilih tools yang tidak hanya efisien, tetapi juga mampu mempercepat proses iterasi dan menghasilkan model yang benar-benar sesuai kebutuhan.
+Setelah bahas satu-satu, mimin mau kasih kesimpulan simpel. Nggak ada tools yang paling "canggih" -- yang ada adalah tools yang paling **cocok dengan kebutuhan kamu**.
+
+| Kalau Kamu... | Pilihannya... |
+|--------------|--------------|
+| Pemula, pengen yang gampang dengan antarmuka visual | **Unsloth** |
+| Butuh performa tinggi, udah paham training, pengen fleksibel | **Axolotl** |
+| Mau all-in-one, kompatibel banyak model, nggak ribet | **LLaMA-Factory** |
+
+**Kunci utamanya** adalah paham dulu tujuan fine-tuning kamu. Buat riset? Produksi? Eksperimen? Atau sekadar belajar? Dari situ baru kamu bisa milih tools yang nggak cuma efisien, tapi juga cocok sama kemampuan dan infrastruktur yang kamu punya.
+
+---
 
 ## FAQ
+
 ### Apa itu fine tuning dalam LLM?
-Fine tuning adalah proses melatih ulang model AI yang sudah ada menggunakan dataset spesifik agar model tersebut lebih optimal untuk tugas tertentu, seperti chatbot, analisis sentimen, atau sistem rekomendasi.
 
-### Apakah semua tools di artikel ini benar-benar gratis?
-Ya, tools seperti Unsloth, Axolotl, dan LLaMA Factory bersifat open source dan gratis digunakan. Namun, jika kamu menggunakan infrastruktur cloud (seperti GPU berbayar), tetap akan ada biaya dari sisi komputasi. Sebagai alternatif, kamu bisa memanfaatkan [API LLM gratis](/posts/API-LLM-gratis) untuk menguji hasil fine-tuning tanpa perlu menyewa GPU mahal.
+Sederhananya, fine-tuning adalah proses "melatih ulang" model AI yang udah ada pake dataset spesifik. Ibaratnya kayak koki yang udah jago masak, terus kamu kasih resep-resep khusus dari restoran kamu biar dia makin jago masak menu-menu andalan restoran itu.
 
-### Tools mana yang paling cocok untuk pemula?
-Untuk pemula, tools dengan UI dan tanpa banyak konfigurasi teknis seperti Unsloth lebih mudah digunakan. Sedangkan Axolotl dan LLaMA Factory lebih cocok jika kamu sudah mulai memahami konsep training dan ingin eksplorasi lebih dalam.
+### Apakah tools di atas benar-benar gratis?
 
-### Apakah bisa melakukan fine tuning tanpa GPU?
-Secara teknis bisa, tetapi sangat tidak direkomendasikan karena prosesnya akan sangat lambat. Alternatifnya, kamu bisa menggunakan Google Colab, Kaggle, atau layanan cloud lainnya untuk mendapatkan akses GPU. Setelah proses training selesai, kamu bisa mengekspor model ke format GGUF untuk dijalankan secara offline di laptop menggunakan [LM Studio](/posts/cara-menjalankan-llm-laptop-kentang-offline) atau [Ollama](/posts/tutorial-ollama-jalankan-llm-offline-laptop).
+Iya, Unsloth, Axolotl, dan LLaMA-Factory semuanya open source dan gratis dipakai. Tapi kalau kamu pake infrastruktur cloud (GPU berbayar), ya tetep ada biaya komputasi. Alternatifnya, cobain [API LLM gratis](/posts/API-LLM-gratis) buat testing hasil fine-tuning.
 
-### Apa perbedaan LoRA dan QLoRA?
-LoRA (Low Rank Adaptation) adalah teknik fine tuning yang lebih hemat resource dengan menambahkan parameter kecil ke model utama. Sedangkan QLoRA adalah versi yang lebih efisien lagi karena menggabungkan quantization, sehingga bisa dijalankan pada GPU dengan memori terbatas.
+### Tools mana yang paling cocok buat pemula?
 
-### Apakah data harus di upload ke internet saat fine tuning?
-Tidak selalu. Beberapa tools seperti Axolotl mendukung konsep Bring Your Own Data, sehingga kamu bisa melakukan training secara lokal tanpa harus mengunggah data ke layanan pihak ketiga.
+Menurut mimin, **Unsloth** adalah pilihan paling aman buat pemula. Soalnya ada UI, nggak perlu nulis kode, dan dokumentasinya lumayan lengkap. Axolotl dan LLaMA-Factory lebih cocok kalau kamu udah mulai paham konsep training dan pengen eksplorasi lebih dalam.
 
-### Berapa lama proses fine tuning biasanya?
-Durasinya sangat bergantung pada ukuran model, jumlah data, dan spesifikasi hardware. Bisa mulai dari beberapa menit hingga berjam jam, bahkan berhari hari untuk model yang sangat besar.
+### Bisa fine-tuning tanpa GPU?
 
-### Apakah hasil fine tuning selalu lebih baik dari model asli?
-Tidak selalu. Hasilnya sangat bergantung pada kualitas dataset dan metode training yang digunakan. Jika dataset kurang relevan atau terlalu kecil, performa model justru bisa menurun.
+Secara teknis bisa, tapi **sangat tidak recommended**. Prosesnya bakal lambat banget. Alternatifnya, pake Google Colab, Kaggle, atau layanan cloud lain buat dapet akses GPU gratis. Setelah selesai, model bisa diekspor ke format GGUF buat dijalanin offline pake [LM Studio](/posts/cara-menjalankan-llm-laptop-kentang-offline) atau [Ollama](/posts/tutorial-ollama-jalankan-llm-offline-laptop).
+
+### LoRA vs QLoRA, apa bedanya?
+
+**LoRA** (Low Rank Adaptation) adalah teknik fine-tuning hemat resource dengan nambahin parameter kecil ke model utama. **QLoRA** lebih efisien lagi karena menggabungkan quantization, jadi bisa jalan di GPU dengan memori terbatas. Intinya, kalau GPU kamu pas-pasan, pake QLoRA.
+
+### Berapa lama proses fine-tuning?
+
+Tergantung ukuran model, jumlah data, dan spesifikasi hardware. Bisa dari beberapa menit sampe berhari-hari. Model kecil dengan dataset dikit bisa selesai dalam 15-30 menit, tapi model besar kayak Llama 70B bisa makan waktu berhari-hari.
+
+### Data harus diupload ke internet?
+
+Nggak selalu. Tools kayak Axolotl mendukung BYOD (Bring Your Own Data), jadi kamu bisa training secara lokal tanpa upload data ke pihak ketiga.
+
+---
+
+Kalau ada pertanyaan atau pengalaman seru pas nyobain tools-tools di atas, share di kolom komentar ya! Siapa tau bisa jadi referensi buat sobat nalar yang lain. Selamat fine-tuning! 🚀

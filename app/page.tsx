@@ -33,7 +33,7 @@ export default function Home() {
             </div> */}
             
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-slate-900 tracking-tight mb-6">
-              Eksplorasi, <span className="text-emerald-600">Eksperimen</span> dan Evaluasi
+              Nalar <span className="text-emerald-600">Deep</span>
             </h1>
             
             <p className="text-lg text-slate-500 max-w-2xl mx-auto leading-relaxed mb-10">

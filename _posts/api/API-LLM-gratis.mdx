@@ -200,27 +200,32 @@ with OpenRouter(
 Untuk metode Agent SDK mungkin akan mimin jelaskan di artikel yang lain dikarenakan metode dan set upnya sendiri cukup ribet.
 
 
-### 3. Groq Cloud
-Kalau Anda butuh kecepatan kilat, **Groq** adalah jawabannya. Mereka menggunakan hardware LPU (*Language Processing Unit*) yang membuat respons LLM terasa instan.
-- **Model** - Llama 3 (8B & 70B), Mixtral 8x7B, Gemma.
-- **Kelebihan** - Kecepatan *inference* tercepat di pasar saat ini (bisa mencapai 300-800 token per detik).
-- **Kuota** - Memiliki limit *rate* harian yang cukup untuk *testing*.
-- **Cocok Untuk** - *Real-time chatbot* dan aplikasi yang butuh latensi rendah.
+### 3. Groq Cloud — Buat yang Butuh Kecepatan
 
+Kalau soal kecepatan, **Groq** ini juaranya. Mereka punya hardware LPU (*Language Processing Unit*) sendiri yang bikin respons LLM terasa instan — mimin pernah nyobain dan beneran beda banget rasanya. Pas ngetes Llama 3 70B di Groq, response-nya keluar hampir secepat kita ngetik. Keren banget.
 
-### 4. Hugging Face (Serverless Inference)
-Hugging Face bukan hanya tempat menyimpan model, tapi mereka juga menyediakan API untuk menjalankan model-model tersebut.
-- **Model** - Ribuan model open source yang tersedia di hub mereka.
-- **Kelebihan** - Tidak butuh setup server sendiri.
-- **Kuota** - Gratis untuk model kecil hingga menengah dengan limit tertentu.
-- **Cocok Untuk** - Mencoba model-model spesifik atau model yang baru rilis di komunitas.
+- **Model** — Llama 3 (8B & 70B), Mixtral 8x7B, Gemma
+- **Kelebihan** — Kecepatan *inference* tercepat yang pernah mimin coba (bisa 300-800 token per detik)
+- **Kuota** — Ada limit harian, tapi cukup buat testing dan eksperimen
+- **Cocok untuk** — *Real-time chatbot* dan aplikasi yang butuh respons cepat
 
-### 5. Cloudflare Workers AI
-Jika sobat nalar sudah menggunakan ekosistem Cloudflare, *Workers AI* adalah pilihan yang sangat integratif.
-- **Model** - Llama 3, Mistral, Gemma.
-- **Kelebihan** - Berjalan di *edge network* Cloudflare.
-- **Kuota** - Tersedia kuota harian gratis untuk setiap akun.
-- **Cocok Untuk** - Aplikasi serverless yang ingin menambahkan fitur AI sederhana.
+### 4. Hugging Face Inference API — Pustaka Model Terlengkap
+
+Hugging Face tuh bukan cuma tempat nyimpen model, tapi mereka juga punya API buat jalanin model-model yang ada di hub mereka. Mimin suka banget sama provider ini soalnya bisa cobain model-model terbaru yang baru rilis di komunitas — tanpa perlu setup infrastruktur sendiri.
+
+- **Model** — Ribuan! Mulai dari yang kecil sampe yang besar
+- **Kelebihan** — Nggak perlu setup server, tinggal panggil API
+- **Kuota** — Gratis buat model kecil sampai menengah
+- **Cocok untuk** — Nyobain model baru atau model spesifik yang nggak ada di provider lain
+
+### 5. Cloudflare Workers AI — Buat yang Udah di Ekosistem Cloudflare
+
+Kalau sobat nalar udah pakai Cloudflare buat domain atau CDN, *Workers AI* ini pilihan yang nyaman banget. Integrasinya mulus dan bisa langsung dipake dari Workers yang udah ada. Mimin rekomen buat yang butuh fitur AI simpel di aplikasi serverless.
+
+- **Model** — Llama 3, Mistral, Gemma
+- **Kelebihan** — Jalan di *edge network* Cloudflare, latensi rendah
+- **Kuota** — Ada kuota harian gratis
+- **Cocok untuk** — Aplikasi serverless yang pengen nambahin fitur AI tanpa ribet
 
 ---
 
