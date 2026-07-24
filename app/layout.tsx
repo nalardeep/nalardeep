@@ -74,8 +74,9 @@ const jsonLd = {
     {
       "@type": "WebSite",
       "name": "NalarDeep",
+      "alternateName": ["Nalar Deep", "NalarDeep AI"],
       "url": "https://nalardeep.com",
-      "description": "Portal dokumentasi tutorial AI, MCP, otomatisasi n8n, pengembangan chatbot, RAG, dan LLM.",
+      "description": "Portal dokumentasi tutorial AI dan programming, MCP, otomatisasi n8n, pengembangan chatbot, RAG, dan LLM.",
       "inLanguage": "id-ID",
       "potentialAction": {
         "@type": "SearchAction",
@@ -88,7 +89,7 @@ const jsonLd = {
       "name": "NalarDeep",
       "url": "https://nalardeep.com",
       "logo": "https://nalardeep.com/logo.png",
-      "description": "Platform dokumentasi tutorial AI dan teknologi terkini. Menyajikan artikel berdasarkan eksperimen dan evaluasi yang telah dilakukan.",
+      "description": "Platform dokumentasi tutorial AI dan programming. Menyajikan artikel berdasarkan eksperimen dan evaluasi yang telah dilakukan.",
       "foundingDate": "2025",
       "address": {
         "@type": "PostalAddress",
