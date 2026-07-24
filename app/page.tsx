@@ -2,6 +2,7 @@ import Container from "@/components/container";
 import PostPreview from "@/components/post-preview";
 import { getAllPosts } from "@/lib/api";
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowRight, Sparkles, BookOpen } from "lucide-react";
 import { Metadata } from "next";
 
@@ -22,8 +23,20 @@ export default function Home() {
   return (
     <>
       {/* Hero Section - Clean & Minimal */}
-      <section className="relative pt-16 pb-20 md:pt-24 md:pb-28 bg-white overflow-hidden">
-        <div className="absolute inset-0 z-0 bg-dots opacity-[0.03] pointer-events-none"></div>
+      <section className="relative pt-16 pb-20 md:pt-24 md:pb-28 overflow-hidden">
+        {/* Background Image */}
+        <div className="absolute inset-0 z-0">
+          <Image
+            src="/background.webp"
+            alt=""
+            fill
+            className="object-cover"
+            sizes="100vw"
+            priority
+          />
+          <div className="absolute inset-0 bg-white/85"></div>
+        </div>
+        <div className="absolute inset-0 z-[1] bg-dots opacity-[0.03] pointer-events-none"></div>
         
         <Container>
           <div className="relative max-w-4xl mx-auto text-center z-10">
