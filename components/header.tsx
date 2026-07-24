@@ -14,13 +14,15 @@ const Header = () => {
 
     const navLinks = [
         { name: 'Artikel', path: '/articles' },
-        { name: 'Kontak', path: '/contact' },
+        { name: 'n8n', path: '/tags/n8n' },
+        { name: 'LLM', path: '/tags/llm' },
         { name: 'Tentang', path: '/about' },
+        { name: 'Kontak', path: '/contact' },
     ];
 
     const isActive = (path: string) => {
         if (path === '/articles') {
-            return pathname === '/articles' || pathname.startsWith('/posts/') || pathname.startsWith('/tags/');
+            return pathname === '/articles' || pathname.startsWith('/posts/');
         }
         return pathname === path;
     };
@@ -43,7 +45,7 @@ const Header = () => {
                     </Link>
 
                     {/* Centered Nav (Desktop) */}
-                    <nav className="hidden md:block">
+                    <nav className="hidden lg:block">
                         <ul className="flex items-center gap-4 text-sm">
                             {navLinks.map((link) => {
                                 const active = isActive(link.path);
@@ -67,18 +69,18 @@ const Header = () => {
 
                     {/* Desktop Search + CTA Button & Mobile Toggle */}
                     <div className="flex ml-auto gap-3">
-                        <div className="hidden md:block">
+                        <div className="hidden lg:block">
                             <SearchBar />
                         </div>
                         <Link
                             href="/services"
-                            className="hidden md:inline-block bg-emerald-500 text-white font-semibold px-4.5 py-2.5 text-xs uppercase tracking-wider rounded-lg select-none cursor-pointer"
+                            className="hidden lg:inline-block bg-emerald-500 text-white font-semibold px-4.5 py-2.5 text-xs uppercase tracking-wider rounded-lg select-none cursor-pointer"
                         >
                             Eksplorasi Jasa
                         </Link>
 
                         <button
-                            className="md:hidden p-2 text-slate-600 rounded-lg cursor-pointer"
+                            className="lg:hidden p-2 text-slate-600 rounded-lg cursor-pointer"
                             onClick={() => setIsOpen(!isOpen)}
                             aria-label="Toggle navigation menu"
                         >
@@ -89,8 +91,8 @@ const Header = () => {
 
                 {/* Mobile Menu */}
                 {isOpen && (
-                    <div className="md:hidden absolute top-full left-0 w-full bg-white border-b border-slate-100 shadow-xl py-6 px-4 flex flex-col items-center gap-4 z-50 animate-in fade-in slide-in-from-top-4 duration-300">
-                        <div className="w-full md:hidden">
+                    <div className="lg:hidden absolute top-full left-0 w-full bg-white border-b border-slate-100 shadow-xl py-6 px-4 flex flex-col items-center gap-4 z-50 animate-in fade-in slide-in-from-top-4 duration-300">
+                        <div className="w-full lg:hidden">
                             <SearchBar />
                         </div>
                         {navLinks.map((link) => {
