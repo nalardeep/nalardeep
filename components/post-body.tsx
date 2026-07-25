@@ -88,33 +88,33 @@ const getLanguageName = (className?: string): string => {
 
 const components = {
     h1: ({ children, id }: any) => {
-        if (isToc(id)) return <h1 id={id} className="scroll-mt-24 text-3xl font-extrabold mt-12 mb-6 text-slate-900 tracking-tight">{children}</h1>;
+        if (isToc(id)) return <h1 id={id} className="scroll-mt-24 text-3xl font-extrabold mt-12 mb-6 text-emerald-800 tracking-tight">{children}</h1>;
         return (
-            <h1 id={id} className="scroll-mt-24 text-3xl font-extrabold mt-12 mb-6 text-slate-900 tracking-tight border-l-4 border-emerald-500 pl-4 py-1">
+            <h1 id={id} className="scroll-mt-24 text-3xl font-extrabold mt-12 mb-6 text-emerald-800 tracking-tight">
                 {children}
             </h1>
         );
     },
     h2: ({ children, id }: any) => {
-        if (isToc(id)) return <h2 id={id} className="scroll-mt-24 text-2xl font-bold mt-10 mb-4 text-slate-900 tracking-tight">{children}</h2>;
+        if (isToc(id)) return <h2 id={id} className="scroll-mt-24 text-2xl font-bold mt-10 mb-4 text-emerald-800 tracking-tight">{children}</h2>;
         return (
-            <h2 id={id} className="scroll-mt-24 text-2xl font-bold mt-10 mb-4 text-slate-900 tracking-tight border-l-4 border-emerald-500 pl-3.5 py-0.5">
+            <h2 id={id} className="scroll-mt-24 text-2xl font-bold mt-10 mb-4 text-emerald-800 tracking-tight">
                 {children}
             </h2>
         );
     },
     h3: ({ children, id }: any) => {
-        if (isToc(id)) return <h3 id={id} className="scroll-mt-24 text-xl font-bold mt-8 mb-3 text-slate-900 tracking-tight">{children}</h3>;
+        if (isToc(id)) return <h3 id={id} className="scroll-mt-24 text-xl font-bold mt-8 mb-3 text-emerald-800 tracking-tight">{children}</h3>;
         return (
-            <h3 id={id} className="scroll-mt-24 text-xl font-bold mt-8 mb-3 text-slate-900 tracking-tight border-l-3 border-emerald-400 pl-3 py-0.5">
+            <h3 id={id} className="scroll-mt-24 text-xl font-bold mt-8 mb-3 text-emerald-800 tracking-tight">
                 {children}
             </h3>
         );
     },
     h4: ({ children, id }: any) => {
-        if (isToc(id)) return <h4 id={id} className="scroll-mt-24 text-lg font-bold mt-6 mb-2 text-slate-900 tracking-tight">{children}</h4>;
+        if (isToc(id)) return <h4 id={id} className="scroll-mt-24 text-lg font-bold mt-6 mb-2 text-emerald-800 tracking-tight">{children}</h4>;
         return (
-            <h4 id={id} className="scroll-mt-24 text-lg font-bold mt-6 mb-2 text-slate-900 tracking-tight border-l-2 border-slate-300 pl-2.5">
+            <h4 id={id} className="scroll-mt-24 text-lg font-bold mt-6 mb-2 text-emerald-800 tracking-tight">
                 {children}
             </h4>
         );
@@ -208,7 +208,7 @@ const components = {
 const PostBody = ({ content }: Props) => {
     return (
         <div className="max-w-2xl mx-auto">
-            <div className="prose prose-slate prose-emerald max-w-none prose-a:no-underline prose-a:text-emerald-600 hover:prose-a:text-emerald-500 transition-colors prose-headings:text-slate-900">
+            <div className="prose prose-slate prose-emerald max-w-none prose-a:no-underline prose-a:text-emerald-600 hover:prose-a:text-emerald-500 transition-colors">
                 <MDXRemote
                     source={content}
                     components={components}
