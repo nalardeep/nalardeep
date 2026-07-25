@@ -54,9 +54,9 @@ const Header = () => {
                                         <Link 
                                             href={link.path} 
                                             className={`px-3.5 py-2 rounded-lg transition-all duration-300 block font-medium text-sm ${
-                                                active
-                                                    ? "bg-emerald-500  text-white font-semibold border border-emerald-100/50 "
-                                                    : " hover:text-emerald-500 transition-colors"
+                                            active
+                                                ? "text-emerald-800 font-semibold"
+                                                : "text-slate-600 hover:text-emerald-500 transition-colors"
                                             }`}
                                         >
                                             {link.name}
@@ -103,7 +103,7 @@ const Header = () => {
                                     href={link.path}
                                     className={`w-full text-center py-2.5 text-sm font-semibold uppercase tracking-wider rounded-lg transition-all ${
                                         active
-                                            ? "bg-emerald-500 text-emerald-600 text-white border border-emerald-100/50"
+                                            ? "text-emerald-800 font-semibold"
                                             : "text-slate-600 border border-transparent"
                                     }`}
                                     onClick={() => setIsOpen(false)}
