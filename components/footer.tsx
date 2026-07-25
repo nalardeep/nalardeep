@@ -48,6 +48,7 @@ const Footer = () => {
                         <h4 className="font-bold text-slate-900 text-sm uppercase tracking-wider mb-6">Perusahaan</h4>
                         <ul className="space-y-4 text-sm text-slate-500">
                             <li><Link href="/about" className="hover:text-emerald-500 transition-colors">Tentang Kami</Link></li>
+                            <li><Link href="/authors" className="hover:text-emerald-500 transition-colors">Penulis</Link></li>
                             <li><Link href="/privacy" className="hover:text-emerald-500 transition-colors">Kebijakan Privasi</Link></li>
                             <li><Link href="/terms" className="hover:text-emerald-500 transition-colors">Syarat & Ketentuan</Link></li>
                             <li><Link href="/cookies" className="hover:text-emerald-500 transition-colors">Kebijakan Cookie</Link></li>
