@@ -114,7 +114,7 @@ export default function Contact() {
                                     </div>
                                     <div>
                                         <div className="font-bold text-slate-900">Phone</div>
-                                        <p className="text-slate-500">+62 853 4224 8110</p>
+                                        <p className="text-slate-500">+62 896 6038 9250</p>
                                     </div>
                                 </div>
                             </div>
