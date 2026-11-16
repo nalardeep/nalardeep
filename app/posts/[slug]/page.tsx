@@ -48,7 +48,9 @@ export default async function Post({ params }: { params: Promise<{ slug: string 
             name: 'NalarDeep',
             logo: {
                 '@type': 'ImageObject',
-                url: `${BASE_URL}/logo.png`,
+                url: `${BASE_URL}/icon-512.png`,
+                width: 512,
+                height: 512,
             },
         },
     };

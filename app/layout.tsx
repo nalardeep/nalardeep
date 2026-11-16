@@ -28,11 +28,15 @@ export const metadata: Metadata = {
   },
   description: "Berita terbaru tentang ekosistem AI. Mulai dari implementasi MCP, otomatisasi n8n, hingga pengembangan chatbot cerdas untuk mengakselerasi proyek Anda.",
   icons: {
+    // Ikon harus persegi (1:1) agar tidak tampil lonjong di Google Search
+    // dan tidak diregangkan saat diskalakan ke slot ikon yang kotak.
     icon: [
+      { url: '/icon-512.png', sizes: '512x512', type: 'image/png' },
+      { url: '/icon-192.png', sizes: '192x192', type: 'image/png' },
       { url: '/favicon.svg', type: 'image/svg+xml' },
     ],
     apple: [
-      { url: '/logo.png', sizes: '180x180', type: 'image/png' },
+      { url: '/apple-icon-180.png', sizes: '180x180', type: 'image/png' },
     ],
   },
   openGraph: {
@@ -44,8 +48,8 @@ export const metadata: Metadata = {
     images: [
       {
         url: '/logo.png',
-        width: 800,
-        height: 216,
+        width: 666,
+        height: 375,
         alt: 'NalarDeep Logo',
       },
     ],
@@ -88,7 +92,12 @@ const jsonLd = {
       "@type": "Organization",
       "name": "NalarDeep",
       "url": "https://nalardeep.com",
-      "logo": "https://nalardeep.com/logo.png",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://nalardeep.com/icon-512.png",
+        "width": 512,
+        "height": 512
+      },
       "description": "Platform dokumentasi tutorial AI dan programming. Menyajikan artikel berdasarkan eksperimen dan evaluasi yang telah dilakukan.",
       "foundingDate": "2025",
       "address": {
